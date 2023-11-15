@@ -84,6 +84,7 @@ public class Carte {
     /**
      * Methode qui permet d'ajouter un joueur sur la carte
      * @param player
+     *         Le joueur qui se tient sur la carte
      */
     public void addPlayerRidingCard(Joueur player){
         this.isRidedByPlayers.add(player);
@@ -92,6 +93,7 @@ public class Carte {
     /**
      * Methode qui permet d'enlever un joueur sur la carte
      * @param player
+     *         Le joueur qui ne se tient plus sur la carte
      */
     public void removePlayerRidingCard(Joueur player){
         this.isRidedByPlayers.remove(player);
@@ -128,6 +130,7 @@ public class Carte {
     /**
      * Setter Posx
      * @param posx
+     *          La position x sur le plateau
      */
     public void setPosx(int posx) {
         this.posx = posx;
@@ -136,6 +139,7 @@ public class Carte {
     /**
      * Setter Posy
      * @param posy
+     *          La position y sur le plateau
      */
     public void setPosy(int posy) {
         this.posy = posy;
@@ -144,6 +148,7 @@ public class Carte {
     /**
      * Getter Posx
      * @return
+     *          La position x sur le plateau
      */
     public int getPosx() {
         return posx;
@@ -152,6 +157,7 @@ public class Carte {
     /**
      * Getter Posy
      * @return
+     *          La position y sur le plateua
      */
     public int getPosy() {
         return posy;
