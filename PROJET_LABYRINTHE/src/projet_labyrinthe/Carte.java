@@ -49,6 +49,13 @@ public class Carte {
      */
     private Mission mission;
     
+    /**
+     * La variable movable décrit si cette carte est déplçable dans le 
+     * plateau ou non.
+     * @see movable
+     */
+    private boolean movable;
+    
 
     /**
      * Constructeur par coodonnées
@@ -161,6 +168,24 @@ public class Carte {
      */
     public int getPosy() {
         return posy;
+    }
+
+    /**
+     * Getter Movable
+     * @return
+     *       Le booléen qui décrit si la carte est déplaçable sur le plateau.
+     */
+    public boolean isMovable() {
+        return movable;
+    }
+
+    /**
+     * Setter Movable
+     * @param movable
+     *        Variable qui décrit si la carte est déplaçable sur le plateau
+     */
+    public void setMovable(boolean movable) {
+        this.movable = movable;
     }
     
     
