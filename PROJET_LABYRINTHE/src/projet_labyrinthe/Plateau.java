@@ -75,10 +75,7 @@ public class Plateau {
                 } else carte.setMovable(true);
                 
                 plateau.get(i).add(carte);
-                
-                
-                
-                
+
             }
         }
     }
