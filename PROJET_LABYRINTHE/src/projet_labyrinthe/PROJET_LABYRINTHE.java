@@ -17,7 +17,7 @@ public class PROJET_LABYRINTHE {
         // TODO code application logic here
         
         int size = 7;
-        int line =6;
+        int line =0;
         Plateau plato = new Plateau(size);
         plato.initialiserPlateau();
             for(int i=0;i<size;i++){
@@ -25,6 +25,9 @@ public class PROJET_LABYRINTHE {
             if(plato.plateau.get(line).get(i).isMovable()==true){
                 System.out.println("Déplacable");
             } else System.out.println("Non Déplacable");
+            System.out.println(plato.plateau.get(line).get(i));
+            
+            // Incohérent donc à Revoir
         }
 
     }

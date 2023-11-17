@@ -61,12 +61,11 @@ public class Plateau {
      */
     
     public void initialiserPlateau(){
-        for(int i=0;i<size;i++){
-            
-            plateau.add(new ArrayList<>());
-            
+        for(int i=0;i<size;i++){ 
+
             for(int j=0;j<size;j++){
                 
+                plateau.add(new ArrayList<Carte>());
                 Carte carte = new Carte(i,j);
                 
                 // Initialisation de la variable Movable des cartes en fonction de leur position
@@ -75,12 +74,32 @@ public class Plateau {
                         carte.setMovable(false);
                     } else carte.setMovable(true);
                 } else carte.setMovable(true);
-                
-
-                
+             
                 plateau.get(i).add(carte);
             }
+            
+
         }
+            // Initialisation de la variable allowingDirections des cartes non déplacables en fonction de leur position
+            // --> Pour un plateau de taille 7
+            
+            //Angles
+            plateau.get(0).get(0).gen1CornerUpRight();
+            plateau.get(0).get(size-1).gen1CornerUpLeft();
+            plateau.get(size-1).get(0).gen1CornerDownLeft();
+            plateau.get(size-1).get(size-1).gen1CornerDownRight();
+            
+            //Colonnes non déplacables extrêmes
+            plateau.get(0).get(2).gen1TRight();
+            plateau.get(0).get(4).gen1TRight();
+            plateau.get(size-1).get(2).gen1TLeft();
+            plateau.get(size-1).get(4).gen1TLeft();
+            
+            //Cartes non déplacables centrales
+            plateau.get(2).get(2).gen1TRight();
+            plateau.get(2).get(4).gen1TUp();
+            plateau.get(4).get(2).gen1TDown();
+            plateau.get(4).get(4).gen1TLeft();
     }
     
     

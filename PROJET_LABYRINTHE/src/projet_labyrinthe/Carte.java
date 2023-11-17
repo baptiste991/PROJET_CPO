@@ -191,7 +191,7 @@ public class Carte {
     /**
      * Methode qui initialise les directions d'une carte type T Bas
      */
-    public void gen1Tdown(){
+    public void gen1TDown(){
         setDirectionsAllowing(false,true,true,true);
     }
     
@@ -243,6 +243,18 @@ public class Carte {
     public void gen1CornerDownRight(){
         setDirectionsAllowing(true,false,false,true);
     }
+
+    /**
+     * ToString
+     * @return
+     *          Chaine de caractère qui représente les directions qu'autorisent la carte.
+     */
+    @Override
+    public String toString() {
+        return "Carte{" + "allowingDirections=" + "North:"+allowingDirections[0] + ",South:"+allowingDirections[1]+",East:"+allowingDirections[2]+",West:"+allowingDirections[3]+ '}';
+    }
+    
+    
     
     
     
