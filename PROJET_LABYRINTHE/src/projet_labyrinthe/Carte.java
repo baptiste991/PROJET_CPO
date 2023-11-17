@@ -188,6 +188,62 @@ public class Carte {
         this.movable = movable;
     }
     
+    /**
+     * Methode qui initialise les directions d'une carte type T Bas
+     */
+    public void gen1Tdown(){
+        setDirectionsAllowing(false,true,true,true);
+    }
+    
+    /**
+     * Methode qui initialise les directions d'une carte type T Haut
+     */
+    public void gen1TUp(){
+        setDirectionsAllowing(true,false,true,true);
+    }
+    
+     /**
+     * Methode qui initialise les directions d'une carte type T Droit
+     */
+    public void gen1TRight(){
+        setDirectionsAllowing(true,true,true,false);
+    }
+    
+    /**
+     * Methode qui initialise les directions d'une carte type T Gauche
+     */
+    public void gen1TLeft(){
+        setDirectionsAllowing(true,true,false,true);
+    }
+    
+    /**
+     * Methode qui initialise les directions d'une carte type angle supérieur gauche
+     */
+    public void gen1CornerUpLeft(){
+        setDirectionsAllowing(false,true,true,false);
+    }
+    
+    /**
+     * Methode qui initialise les directions d'une carte type angle supérieur droit
+     */
+    public void gen1CornerUpRight(){
+        setDirectionsAllowing(false,true,false,true);
+    }
+    
+    /**
+     * Methode qui initialise les directions d'une carte type angle inférieur gauche
+     */
+    public void gen1CornerDownLeft(){
+        setDirectionsAllowing(true,false,true,false);
+    }
+    
+    /**
+     * Methode qui initialise les directions d'une carte type angle inférieur droit
+     */
+    public void gen1CornerDownRight(){
+        setDirectionsAllowing(true,false,false,true);
+    }
+    
     
     
     

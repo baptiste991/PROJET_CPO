@@ -28,10 +28,9 @@ public class Plateau {
      *          La taille du plateau
      */
     public Plateau(int size) {
-        this.size = size;
         if(size%2==0){
             displayError(1);
-        }
+        } else this.size = size;
     }
     
     /**
@@ -44,7 +43,7 @@ public class Plateau {
     public final void displayError(int i){
         switch(i){
             case 1->{
-                System.out.println("Erreur : La taille du plateau doit être un nombre impair.");
+                System.out.println("Erreur : La taille du plateau doit être un nombre impaire.");
             }
         }
     }
@@ -56,6 +55,9 @@ public class Plateau {
      * 
      * On initialise aussi les variables "movable" des cartes en fonction de 
      * leur position sur le plateau.
+     * 
+     * On initialise aussi les directions possibles des cartes non déplacables
+     * i.e la variable allowingDirections
      */
     
     public void initialiserPlateau(){
@@ -67,15 +69,16 @@ public class Plateau {
                 
                 Carte carte = new Carte(i,j);
                 
-                // Initialisation de la vairiable Movable des cartes en fonction de leur position
+                // Initialisation de la variable Movable des cartes en fonction de leur position
                 if(j%2==0){ // Carte est sur une colonne non déplacable
                     if(i%2==0){//Carte sur une ligne non déplacable
                         carte.setMovable(false);
                     } else carte.setMovable(true);
                 } else carte.setMovable(true);
                 
-                plateau.get(i).add(carte);
 
+                
+                plateau.get(i).add(carte);
             }
         }
     }
