@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Ody
  * @version 1.0
  */
-public class Carte {
+public class Carte{
     
      /**
      * @see posx
@@ -289,6 +289,7 @@ public class Carte {
     public void setAllowingDirections(boolean[] allowingDirections) {
         this.allowingDirections = allowingDirections;
     }
+    
     
     
     
