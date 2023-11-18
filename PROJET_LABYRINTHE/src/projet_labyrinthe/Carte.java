@@ -251,6 +251,13 @@ public class Carte {
     public void gen1CornerDownRight(){
         setDirectionsAllowing(true,false,false,true);
     }
+    
+    /**
+     * Methode qui initialise les directions d'une carte type I
+     */
+    public void gen1I(){
+        setDirectionsAllowing(true,true,false,false);
+    }
 
     /**
      * ToString

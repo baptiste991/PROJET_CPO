@@ -25,6 +25,10 @@ public abstract class Settings {
         "Lizard","Trophy","Rat","Keys","Crown","Gold","Chest","Genius","Ghost",
         "Painting","Drake","Spider"};
     
+    /**
+     * Un arrayList de mission qui représente toutes les missions du plateau
+     */
+    private ArrayList<Mission> allMissions = new ArrayList();
     
     /**
      * Methode qui met à jour la liste des joueurs de la partie
@@ -92,12 +96,8 @@ public abstract class Settings {
     /**
      * Methode qui initialise toutes les missions  i.e associe à chaque objet
      * (représenté par une chaine de caractère) un joueur pour le récupérer
-     * @return
-     *     Un ArrayList de Mission ; il y a autant de missions que d'objets
      */
-    public ArrayList<Mission> setAllMissions(){
-        
-        ArrayList<Mission> allMissions = new ArrayList();
+    public void setAllMissions(){
         
         // Remarque : Le switch suivant fait apparaitre beaucoup de code surement factorisable, il serait interessant
         // de trouver une façon de le condenser, mais actuellement on l'utilise.
@@ -109,7 +109,7 @@ public abstract class Settings {
                     allMissions.add(mission);
                 }
             }
-                
+            
             case 2 ->{
                 Random random = new Random();
                 
@@ -168,6 +168,14 @@ public abstract class Settings {
             }
             
         }
+    }
+    
+    /**
+     * Getter AllMissions
+     * @return
+     *       ArrayList de Mission qui représente toutes les missions du plateau
+     */
+    public ArrayList<Mission> getAllMissions(){
         return allMissions;
     }
     

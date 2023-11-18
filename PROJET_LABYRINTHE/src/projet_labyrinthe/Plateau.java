@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Ody
  * @version 1.0
  */
-public class Plateau {
+public class Plateau extends Settings{
     
     /**
      * Le plateau est défini comme un array de carte à 2 dimensions
@@ -110,27 +110,80 @@ public class Plateau {
             plateau.get(4).get(4).gen1TLeft();
     }
     
-    
-    public ArrayList<Carte> gen1CarteDeplacable(){
+    /**
+     * Methode qui permet de générer l'ensemble des cartes déplacables sous 
+     * forme d'ArrayList de Carte.
+     * @return
+     *          Ensemble des cartes déplacables sous forme d'arrayList.
+     */
+    public ArrayList<Carte> gen1DeckCarteDeplacable(){
         
         ArrayList<Carte> carteDeplacable = new ArrayList();
         
-        // Cartes angle bas droite
+        // Cartes angle bas droit
         for(int i=0;i<3;i++){
             Carte carte = new Carte();
             carte.gen1CornerDownRight();
             
             switch(i){
                 case 2->{
-                    
-                    Mission mission = new Mission();
-                    carte.setMission(mission);
+                    carte.setMission(findMissionInAllDeckbyObject("Spider"));
+                }
+                case 3->{
+                    carte.setMission(findMissionInAllDeckbyObject("Lizard"));
                 }
             }
             carteDeplacable.add(carte);
         }
         
+        // Cartes angle haut droit
+        for(int i=0;i<4;i++){
+            Carte carte = new Carte();
+            carte.gen1CornerUpRight();
+            
+            if(i==3){
+                carte.setMission(findMissionInAllDeckbyObject("Rat"));
+            }
+            carteDeplacable.add(carte);
+        }
+        
+        // Cartes allowingPermission North & South (type I)
+        for(int i=0;i<6;i++){
+            Carte carte = new Carte();
+            carte.gen1I();
+            carteDeplacable.add(carte);
+        }
+        
+        // Cartes Tdown
+        for(int i=0;i<2;i++){
+            Carte carte = new Carte();
+            carte.gen1TDown();
+            if(i==0){
+                carte.setMission(findMissionInAllDeckbyObject("Gobelin"));
+            } else carte.setMission(findMissionInAllDeckbyObject("Ghost"));
+        }
+            
         return carteDeplacable;
+        
+        
+    }
+    
+    /**
+     * Methode qui permet de retrouver une mission en fonction du nom de l'objet
+     * qui est concerné par la mission
+     * (principalement utilisée dans la méthode gen1DeckCarteDeplacable)
+     * @param objectName
+     *          Le nom de l'objet concerné par la mission
+     * @return
+     */
+    public Mission findMissionInAllDeckbyObject(String objectName){
+        Mission mission = new Mission();
+        for(int j=0;j<this.getAllMissions().size();j++){
+                        if(objectName.equals(this.getAllMissions().get(j).objet)){
+                            mission = this.getAllMissions().get(j);
+                        }
+                    }
+        return mission;
     }
     
     
