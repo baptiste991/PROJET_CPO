@@ -14,7 +14,12 @@ public class Plateau extends Settings{
      * Le plateau est défini comme un array de carte à 2 dimensions
      * @see plateau
      */
-    ArrayList<ArrayList<Carte>> plateau = new ArrayList<>();    
+    private ArrayList<ArrayList<Carte>> plateau = new ArrayList<>();    
+    
+    /**
+     * Toutes les cartes qui sont actuellement sur le plateau
+     */
+    private ArrayList<Carte> deckCardOnBoard = new ArrayList();
     
     
     /** 
@@ -126,10 +131,10 @@ public class Plateau extends Settings{
             carte.gen1CornerDownRight();
             
             switch(i){
-                case 2->{
+                case 1->{
                     carte.setMission(findMissionInAllDeckbyObject("Spider"));
                 }
-                case 3->{
+                case 2->{
                     carte.setMission(findMissionInAllDeckbyObject("Lizard"));
                 }
             }
@@ -137,11 +142,11 @@ public class Plateau extends Settings{
         }
         
         // Cartes angle haut droit
-        for(int i=0;i<4;i++){
+        for(int i=0;i<3;i++){
             Carte carte = new Carte();
             carte.gen1CornerUpRight();
             
-            if(i==3){
+            if(i==2){
                 carte.setMission(findMissionInAllDeckbyObject("Rat"));
             }
             carteDeplacable.add(carte);
@@ -154,18 +159,33 @@ public class Plateau extends Settings{
             carteDeplacable.add(carte);
         }
         
-        // Cartes Tdown
-        for(int i=0;i<2;i++){
+        // Cartes Tup
+        for(int i=0;i<3;i++){
             Carte carte = new Carte();
-            carte.gen1TDown();
-            if(i==0){
-                carte.setMission(findMissionInAllDeckbyObject("Gobelin"));
-            } else carte.setMission(findMissionInAllDeckbyObject("Ghost"));
+            carte.gen1TUp();
+            switch (i) {
+                case 0 -> carte.setMission(findMissionInAllDeckbyObject("Gobelin"));
+                case 1 -> carte.setMission(findMissionInAllDeckbyObject("Ghost"));
+                default -> carte.setMission(findMissionInAllDeckbyObject("Genius"));
+            }
+            carteDeplacable.add(carte);
+        }
+        
+        // Cartes angle haut gauche
+        for(int i=0;i<4;i++){
+            Carte carte = new Carte();
+            carte.gen1CornerUpLeft();
+            carteDeplacable.add(carte);
+        }
+        
+        // Cartes allowingDirections East West (type _)
+        for(int i=0;i<4;i++){
+            Carte carte = new Carte();
+            carte.gen1_();
+            carteDeplacable.add(carte);
         }
             
         return carteDeplacable;
-        
-        
     }
     
     /**

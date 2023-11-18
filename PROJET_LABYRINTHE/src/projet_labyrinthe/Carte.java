@@ -258,6 +258,13 @@ public class Carte {
     public void gen1I(){
         setDirectionsAllowing(true,true,false,false);
     }
+    
+    /**
+     * Methode qui initialise les directions d'une carte type _
+     */
+    public void gen1_(){
+        setDirectionsAllowing(false,false,true,true);
+}
 
     /**
      * ToString
@@ -266,7 +273,13 @@ public class Carte {
      */
     @Override
     public String toString() {
-        return "Carte{" + "allowingDirections=" + "North:"+allowingDirections[0] + ",South:"+allowingDirections[1]+",East:"+allowingDirections[2]+",West:"+allowingDirections[3]+ '}';
+         
+        String str="Carte{" + "allowingDirections=(" + "North:"+allowingDirections[0] + ",South:"+allowingDirections[1]+",East:"+allowingDirections[2]+",West:"+allowingDirections[3]+ "), mission=(";
+        if(this.mission==null){
+            str+="Pas de mission)}";
+        } else str+= "object="+this.mission.objet+"}";
+        
+        return str;
     }
     
     

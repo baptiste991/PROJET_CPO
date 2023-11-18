@@ -4,9 +4,11 @@
  */
 package projet_labyrinthe;
 
+import java.util.ArrayList;
+
 /**
- *
- * @author bapti
+ * Classe Brouillon pour tester la validité de toutes les autres classe
+ * @author Ody
  */
 public class PROJET_LABYRINTHE {
 
@@ -16,17 +18,15 @@ public class PROJET_LABYRINTHE {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        int size = 7;
-        int line =6;
-        Plateau plato = new Plateau(size);
+        Plateau plato = new Plateau(7);
         plato.initialiserPlateau();
-            for(int i=0;i<size;i++){
-            System.out.println("x="+plato.plateau.get(line).get(i).getPosx()+" y="+plato.plateau.get(line).get(i).getPosy());
-            if(plato.plateau.get(line).get(i).isMovable()==true){
-                System.out.println("Déplacable");
-            } else System.out.println("Non Déplacable");
-            System.out.println(plato.plateau.get(line).get(i));
+        Joueur player1 = new Joueur();
+        plato.setPlayerList(player1);
+        plato.setAllMissions();
+        ArrayList<Carte> cartesdép = plato.gen1DeckCarteDeplacable();
             
+        for(int i=0;i<cartesdép.size();i++){
+            System.out.println(cartesdép.get(i));
         }
 
     }
