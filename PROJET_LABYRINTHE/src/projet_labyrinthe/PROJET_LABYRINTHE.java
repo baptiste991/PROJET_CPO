@@ -27,7 +27,6 @@ public class PROJET_LABYRINTHE {
             } else System.out.println("Non Déplacable");
             System.out.println(plato.plateau.get(line).get(i));
             
-            // Incohérent donc à Revoir
         }
 
     }

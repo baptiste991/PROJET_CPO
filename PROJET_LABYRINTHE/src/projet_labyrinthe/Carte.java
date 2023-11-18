@@ -70,6 +70,14 @@ public class Carte {
     }
     
     /**
+     * Constructeur vide. (Pour les cartes déplacables qui n'ont pas 
+     * forcement de coordonnées intiales)
+     */
+    public Carte() {
+
+    }
+    
+    /**
      * Methode qui décrit les directions sur lesquelles un joueur situé sur la 
      * carte peut aller
      * @param n

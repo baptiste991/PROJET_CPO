@@ -16,6 +16,7 @@ public class Plateau {
      */
     ArrayList<ArrayList<Carte>> plateau = new ArrayList<>();    
     
+    
     /** 
      * La taille du plateau est définie par la variable size
      * @see size
@@ -45,6 +46,8 @@ public class Plateau {
             case 1->{
                 System.out.println("Erreur : La taille du plateau doit être un nombre impaire.");
             }
+            
+            //Lorsque on aura d'autres erreurs à displayer on rajoutera des case
         }
     }
      
@@ -107,6 +110,28 @@ public class Plateau {
             plateau.get(4).get(4).gen1TLeft();
     }
     
+    
+    public ArrayList<Carte> gen1CarteDeplacable(){
+        
+        ArrayList<Carte> carteDeplacable = new ArrayList();
+        
+        // Cartes angle bas droite
+        for(int i=0;i<3;i++){
+            Carte carte = new Carte();
+            carte.gen1CornerDownRight();
+            
+            switch(i){
+                case 2->{
+                    
+                    Mission mission = new Mission();
+                    carte.setMission(mission);
+                }
+            }
+            carteDeplacable.add(carte);
+        }
+        
+        return carteDeplacable;
+    }
     
     
     
