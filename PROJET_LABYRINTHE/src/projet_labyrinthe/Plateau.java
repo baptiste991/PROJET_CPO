@@ -1,6 +1,7 @@
 package projet_labyrinthe;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -9,6 +10,11 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Plateau extends Settings{
+    
+    /**
+     * L'instance de random
+    */
+    Random random = new Random();
     
     /**
      * Le plateau est défini comme un array de carte à 2 dimensions
@@ -20,6 +26,11 @@ public class Plateau extends Settings{
      * Toutes les cartes qui sont actuellement sur le plateau
      */
     private ArrayList<Carte> deckCardOnBoard = new ArrayList();
+    
+    /**
+     * Toutes les cartes qui peuvent être déplacées
+     */
+    private ArrayList<Carte> deckCartesDeplacables = gen1DeckCarteDeplacable();
     
     
     /** 
@@ -66,13 +77,20 @@ public class Plateau extends Settings{
      * 
      * On initialise aussi les directions possibles des cartes non déplacables
      * i.e la variable allowingDirections
+     * 
+     * Les cartes déplacables sont placées aléatoirement sur le plateau.
      */
     
     public void initialiserPlateau(){
-        for(int i=0;i<size;i++){ 
-
-            for(int j=0;j<size;j++){
                 
+        //Creation d'une copie 
+        ArrayList<Carte> cartesDeplacablesRestantesAPlacer = new ArrayList();
+        for(int i=0;i<this.deckCartesDeplacables.size();i++){
+                cartesDeplacablesRestantesAPlacer.add(deckCartesDeplacables.get(i));        
+                }
+        
+        for(int i=0;i<size;i++){ 
+            for(int j=0;j<size;j++){
                 plateau.add(new ArrayList<Carte>());
                 Carte carte = new Carte(i,j);
                 
@@ -80,10 +98,21 @@ public class Plateau extends Settings{
                 if(j%2==0){ // Carte est sur une colonne non déplacable
                     if(i%2==0){//Carte sur une ligne non déplacable
                         carte.setMovable(false);
-                    } else carte.setMovable(true);
-                } else carte.setMovable(true);
-             
+                    } else {
+                        carte.setMovable(true);
+                        int indexRandom = random.nextInt(cartesDeplacablesRestantesAPlacer.size());
+                        carte.setAllowingDirections(cartesDeplacablesRestantesAPlacer.get(indexRandom).getAllowingDirections());
+                        cartesDeplacablesRestantesAPlacer.remove(indexRandom);
+                    }
+                } else {
+                    carte.setMovable(true);
+                    int indexRandom = random.nextInt(cartesDeplacablesRestantesAPlacer.size());
+                    carte.setAllowingDirections(cartesDeplacablesRestantesAPlacer.get(indexRandom).getAllowingDirections());
+                    cartesDeplacablesRestantesAPlacer.remove(indexRandom);
+                }
+                
                 plateau.get(i).add(carte);
+                deckCardOnBoard.add(carte);
             }
             
 
@@ -125,66 +154,44 @@ public class Plateau extends Settings{
         
         ArrayList<Carte> carteDeplacable = new ArrayList();
         
-        // Cartes angle bas droit
-        for(int i=0;i<3;i++){
+        //Besoin de 33 Cartes pour combler le plateau : On en a donc besoin de 34 : génération aléatoire
+        for(int i=0;i<34;i++){
             Carte carte = new Carte();
-            carte.gen1CornerDownRight();
-            
-            switch(i){
-                case 1->{
-                    carte.setMission(findMissionInAllDeckbyObject("Spider"));
+            int j = random.nextInt(10);
+            switch(j){
+                case 0 -> {
+                    carte.gen1TDown();
                 }
-                case 2->{
-                    carte.setMission(findMissionInAllDeckbyObject("Lizard"));
+                case 1 ->{
+                    carte.gen1TLeft();
+                }
+                case 2 ->{
+                    carte.gen1TRight();
+                }
+                case 3 ->{
+                    carte.gen1TUp();
+                }
+                case 4->{
+                    carte.gen1I();
+                }
+                case 5-> {
+                    carte.gen1_();
+                }
+                case 6->{
+                    carte.gen1CornerDownLeft();
+                }
+                case 7->{
+                    carte.gen1CornerDownRight();
+                }
+                case 8->{
+                    carte.gen1CornerUpLeft();
+                }
+                case 9->{
+                    carte.gen1CornerUpRight();
                 }
             }
             carteDeplacable.add(carte);
-        }
-        
-        // Cartes angle haut droit
-        for(int i=0;i<3;i++){
-            Carte carte = new Carte();
-            carte.gen1CornerUpRight();
-            
-            if(i==2){
-                carte.setMission(findMissionInAllDeckbyObject("Rat"));
-            }
-            carteDeplacable.add(carte);
-        }
-        
-        // Cartes allowingPermission North & South (type I)
-        for(int i=0;i<6;i++){
-            Carte carte = new Carte();
-            carte.gen1I();
-            carteDeplacable.add(carte);
-        }
-        
-        // Cartes Tup
-        for(int i=0;i<3;i++){
-            Carte carte = new Carte();
-            carte.gen1TUp();
-            switch (i) {
-                case 0 -> carte.setMission(findMissionInAllDeckbyObject("Gobelin"));
-                case 1 -> carte.setMission(findMissionInAllDeckbyObject("Ghost"));
-                default -> carte.setMission(findMissionInAllDeckbyObject("Genius"));
-            }
-            carteDeplacable.add(carte);
-        }
-        
-        // Cartes angle haut gauche
-        for(int i=0;i<4;i++){
-            Carte carte = new Carte();
-            carte.gen1CornerUpLeft();
-            carteDeplacable.add(carte);
-        }
-        
-        // Cartes allowingDirections East West (type _)
-        for(int i=0;i<4;i++){
-            Carte carte = new Carte();
-            carte.gen1_();
-            carteDeplacable.add(carte);
-        }
-            
+        }     
         return carteDeplacable;
     }
     
@@ -196,7 +203,7 @@ public class Plateau extends Settings{
      *          Le nom de l'objet concerné par la mission
      * @return
      */
-    public Mission findMissionInAllDeckbyObject(String objectName){
+    public Mission findMissionInAllkbyObject(String objectName){
         Mission mission = new Mission();
         for(int j=0;j<this.getAllMissions().size();j++){
                         if(objectName.equals(this.getAllMissions().get(j).objet)){
@@ -205,6 +212,23 @@ public class Plateau extends Settings{
                     }
         return mission;
     }
+
+    /**
+     * Getter DeckCardOnBoard
+     * @return
+     */
+    public ArrayList<Carte> getDeckCardOnBoard() {
+        return deckCardOnBoard;
+    }
+
+    /**
+     * Getter Plateau
+     * @return
+     */
+    public ArrayList<ArrayList<Carte>> getPlateau() {
+        return plateau;
+    }
+    
     
     
     

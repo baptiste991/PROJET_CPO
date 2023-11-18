@@ -19,12 +19,13 @@ public class PROJET_LABYRINTHE {
         Joueur player1 = new Joueur();
         plato.setPlayerList(player1);
         plato.setAllMissions();
-        ArrayList<Carte> cartesdép = plato.gen1DeckCarteDeplacable();
+        ArrayList<Carte> cartesdép = plato.getDeckCardOnBoard();
             
-        for(int i=0;i<cartesdép.size();i++){
-            System.out.println(cartesdép.get(i));
+        int line =6;
+        for(int i=0;i<7;i++){
+            System.out.println(plato.getPlateau().get(line).get(i));
         }
-
+        
     }
     
 }

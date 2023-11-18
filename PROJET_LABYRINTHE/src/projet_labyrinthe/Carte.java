@@ -274,13 +274,23 @@ public class Carte {
     @Override
     public String toString() {
          
-        String str="Carte{" + "allowingDirections=(" + "North:"+allowingDirections[0] + ",South:"+allowingDirections[1]+",East:"+allowingDirections[2]+",West:"+allowingDirections[3]+ "), mission=(";
+        String str="Carte{x="+this.getPosx()+",y="+this.getPosy() + ", allowingDirections=(" + "North:"+allowingDirections[0] + ",South:"+allowingDirections[1]+",East:"+allowingDirections[2]+",West:"+allowingDirections[3]+ "), mission=(";
         if(this.mission==null){
-            str+="Pas de mission)}";
-        } else str+= "object="+this.mission.objet+"}";
-        
+            str+="Pas de mission), ";
+        } else str+= "object="+this.mission.objet+", ";
+        str+="movable="+this.isMovable()+"}";
         return str;
     }
+
+    /**
+     * SetterAllowingDIrections
+     * @param allowingDirections
+     */
+    public void setAllowingDirections(boolean[] allowingDirections) {
+        this.allowingDirections = allowingDirections;
+    }
+    
+    
     
     
     
