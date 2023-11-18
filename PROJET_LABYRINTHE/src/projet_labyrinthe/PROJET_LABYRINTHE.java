@@ -17,7 +17,7 @@ public class PROJET_LABYRINTHE {
         // TODO code application logic here
         
         int size = 7;
-        int line =0;
+        int line =6;
         Plateau plato = new Plateau(size);
         plato.initialiserPlateau();
             for(int i=0;i<size;i++){

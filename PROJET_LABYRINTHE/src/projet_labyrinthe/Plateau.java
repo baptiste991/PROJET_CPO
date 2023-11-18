@@ -84,21 +84,26 @@ public class Plateau {
             // --> Pour un plateau de taille 7
             
             //Angles
-            plateau.get(0).get(0).gen1CornerUpRight();
-            plateau.get(0).get(size-1).gen1CornerUpLeft();
+            plateau.get(0).get(0).gen1CornerUpLeft();
+            plateau.get(0).get(size-1).gen1CornerUpRight();
             plateau.get(size-1).get(0).gen1CornerDownLeft();
             plateau.get(size-1).get(size-1).gen1CornerDownRight();
             
-            //Colonnes non déplacables extrêmes
-            plateau.get(0).get(2).gen1TRight();
-            plateau.get(0).get(4).gen1TRight();
-            plateau.get(size-1).get(2).gen1TLeft();
-            plateau.get(size-1).get(4).gen1TLeft();
+            //Colonnes non déplacables colonnes extrêmes
+            plateau.get(2).get(0).gen1TRight();
+            plateau.get(4).get(0).gen1TRight();
+            plateau.get(2).get(size-1).gen1TLeft();
+            plateau.get(4).get(size-1).gen1TLeft();
             
+            //Lignes non déplacables extrèmes
+            plateau.get(0).get(2).gen1TDown();
+            plateau.get(0).get(4).gen1TDown();
+            plateau.get(size-1).get(2).gen1TUp();
+            plateau.get(size-1).get(4).gen1TUp();
             //Cartes non déplacables centrales
             plateau.get(2).get(2).gen1TRight();
-            plateau.get(2).get(4).gen1TUp();
-            plateau.get(4).get(2).gen1TDown();
+            plateau.get(2).get(4).gen1TDown();
+            plateau.get(4).get(2).gen1TUp();
             plateau.get(4).get(4).gen1TLeft();
     }
     
