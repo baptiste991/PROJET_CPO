@@ -97,11 +97,16 @@ public abstract class Settings{
     /**
      * Methode qui initialise toutes les missions  i.e associe à chaque objet
      * (représenté par une chaine de caractère) un joueur pour le récupérer
+     * 
+     * C'est à dire que l'array d'objet type "Mission" contient 16 Missions :
+     * Pour rappel une mission est un objet qui comporte deux attributs :
+     * un obet et un joueur. Ces 16 missions sont donc uniques.
      */
     public void setAllMissions(){
         
-        // Remarque : Le switch suivant fait apparaitre beaucoup de code surement factorisable, il serait interessant
-        // de trouver une façon de le condenser, mais actuellement on l'utilise.
+        // Remarque : Le switch suivant fait apparaitre beaucoup de code surement factorisable 
+        // en créant une méthode sous jacente, il serait interessant de le faire mais
+        // actuellement on l'utilisera comme tel.
         switch(this.listeDeJoueurs.size()){
             
             case 1->{
