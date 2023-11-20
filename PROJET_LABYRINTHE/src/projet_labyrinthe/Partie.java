@@ -1,25 +1,23 @@
+
 package projet_labyrinthe;
 
-
-
-
 /**
- * Classe qui va représenter la partie du lancement à sa fin
+ *
  * @author Ody
- * @version 1.0
  */
-public abstract class Partie {
-
-    public void Partie(){
+public class Partie {
         
-        Plateau plato = new Plateau(7);
-        plato.initialiserPlateau();
+    /**
+     * Constructeur Partie
+     */
+    public Partie() {
+        
+        Plateau plateau = new Plateau();
         Joueur player1 = new Joueur();
-        plato.setPlayerList(player1);
-        plato.setAllMissions();
+        plateau.setPlayerList(player1);
+        plateau.setAllMissions();
+        FenetrePrincipale gamewindow = new FenetrePrincipale(plateau);
     }
-    
-    
-
-    
+        
+        
 }

@@ -11,16 +11,26 @@ import java.util.Random;
  */
 public class Plateau extends Settings{
     
-    /**
-     * L'instance de random
-    */
-    Random random = new Random();
-    
+        
     /**
      * Le plateau est défini comme un array de carte à 2 dimensions
      * @see plateau
      */
-    private ArrayList<ArrayList<Carte>> plateau = new ArrayList<>();    
+    private ArrayList<ArrayList<Carte>> plateau = new ArrayList<>();  
+    
+     /**
+     * Getter Plateau
+     * @return
+     */
+    protected ArrayList<ArrayList<Carte>> getPlateau() {
+        return plateau;
+    }
+    
+    
+    /**
+     * L'instance de random
+    */
+    Random random = new Random();
     
     /**
      * Toutes les cartes qui sont actuellement sur le plateau
@@ -44,10 +54,10 @@ public class Plateau extends Settings{
      * @param size
      *          La taille du plateau
      */
-    public Plateau(int size) {
-        if(size%2==0){
-            displayError(1);
-        } else this.size = size;
+    public Plateau() {
+        this.size = 7;
+        this.initialiserPlateau();
+        
     }
     
     /**
@@ -90,7 +100,7 @@ public class Plateau extends Settings{
                 }
         
         for(int i=0;i<size;i++){ 
-            plateau.add(new ArrayList<Carte>());
+            this.getPlateau().add(new ArrayList<Carte>());
             for(int j=0;j<size;j++){
                 Carte carte = new Carte(i,j);
                 
@@ -111,7 +121,7 @@ public class Plateau extends Settings{
                     cartesDeplacablesRestantesAPlacer.remove(indexRandom);
                 }
                 
-                plateau.get(i).add(carte);
+                this.getPlateau().get(i).add(carte);
                 deckCardOnBoard.add(carte);
             }
             
@@ -121,27 +131,27 @@ public class Plateau extends Settings{
             // --> Pour un plateau de taille 7
             
             //Angles
-            plateau.get(0).get(0).gen1CornerUpLeft();
-            plateau.get(0).get(size-1).gen1CornerUpRight();
-            plateau.get(size-1).get(0).gen1CornerDownLeft();
-            plateau.get(size-1).get(size-1).gen1CornerDownRight();
+            this.getPlateau().get(0).get(0).gen1CornerUpLeft();
+            this.getPlateau().get(0).get(size-1).gen1CornerUpRight();
+            this.getPlateau().get(size-1).get(0).gen1CornerDownLeft();
+            this.getPlateau().get(size-1).get(size-1).gen1CornerDownRight();
             
             //Colonnes non déplacables colonnes extrêmes
-            plateau.get(2).get(0).gen1TRight();
-            plateau.get(4).get(0).gen1TRight();
-            plateau.get(2).get(size-1).gen1TLeft();
-            plateau.get(4).get(size-1).gen1TLeft();
+            this.getPlateau().get(2).get(0).gen1TRight();
+            this.getPlateau().get(4).get(0).gen1TRight();
+            this.getPlateau().get(2).get(size-1).gen1TLeft();
+            this.getPlateau().get(4).get(size-1).gen1TLeft();
             
             //Lignes non déplacables extrèmes
-            plateau.get(0).get(2).gen1TDown();
-            plateau.get(0).get(4).gen1TDown();
-            plateau.get(size-1).get(2).gen1TUp();
-            plateau.get(size-1).get(4).gen1TUp();
+            this.getPlateau().get(0).get(2).gen1TDown();
+            this.getPlateau().get(0).get(4).gen1TDown();
+            this.getPlateau().get(size-1).get(2).gen1TUp();
+            this.getPlateau().get(size-1).get(4).gen1TUp();
             //Cartes non déplacables centrales
-            plateau.get(2).get(2).gen1TRight();
-            plateau.get(2).get(4).gen1TDown();
-            plateau.get(4).get(2).gen1TUp();
-            plateau.get(4).get(4).gen1TLeft();
+            this.getPlateau().get(2).get(2).gen1TRight();
+            this.getPlateau().get(2).get(4).gen1TDown();
+            this.getPlateau().get(4).get(2).gen1TUp();
+            this.getPlateau().get(4).get(4).gen1TLeft();
     }
     
     /**
@@ -221,13 +231,7 @@ public class Plateau extends Settings{
         return deckCardOnBoard;
     }
 
-    /**
-     * Getter Plateau
-     * @return
-     */
-    public ArrayList<ArrayList<Carte>> getPlateau() {
-        return plateau;
-    }
+
     
     /**
      * Methode qui va attribuer toutes les missions à toutes les cartes

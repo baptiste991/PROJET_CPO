@@ -17,6 +17,11 @@ public class Carte{
      */
     private int posx,posy;
     
+    /**
+    * Le nom du type attribué à la carte : exemple : I/_/TopRightC
+    */
+    private String type;
+    
      /**
      * @see north
      *      La direction Nord est accessible par la carte
@@ -201,6 +206,7 @@ public class Carte{
      */
     public void gen1TDown(){
         setDirectionsAllowing(false,true,true,true);
+        this.type = "TDown";
     }
     
     /**
@@ -208,6 +214,7 @@ public class Carte{
      */
     public void gen1TUp(){
         setDirectionsAllowing(true,false,true,true);
+        this.type = "TUp";
     }
     
      /**
@@ -215,6 +222,7 @@ public class Carte{
      */
     public void gen1TRight(){
         setDirectionsAllowing(true,true,true,false);
+        this.type = "TRight";
     }
     
     /**
@@ -222,6 +230,7 @@ public class Carte{
      */
     public void gen1TLeft(){
         setDirectionsAllowing(true,true,false,true);
+        this.type = "TLeft";
     }
     
     /**
@@ -229,6 +238,7 @@ public class Carte{
      */
     public void gen1CornerUpLeft(){
         setDirectionsAllowing(false,true,true,false);
+        this.type = "CornerUpLeft";
     }
     
     /**
@@ -236,6 +246,7 @@ public class Carte{
      */
     public void gen1CornerUpRight(){
         setDirectionsAllowing(false,true,false,true);
+        this.type = "CornerUpRight";
     }
     
     /**
@@ -243,6 +254,7 @@ public class Carte{
      */
     public void gen1CornerDownLeft(){
         setDirectionsAllowing(true,false,true,false);
+        this.type = "CornerDownLeft";
     }
     
     /**
@@ -250,6 +262,7 @@ public class Carte{
      */
     public void gen1CornerDownRight(){
         setDirectionsAllowing(true,false,false,true);
+        this.type = "CornerDownRight";
     }
     
     /**
@@ -257,6 +270,7 @@ public class Carte{
      */
     public void gen1I(){
         setDirectionsAllowing(true,true,false,false);
+        this.type = "I";
     }
     
     /**
@@ -264,6 +278,7 @@ public class Carte{
      */
     public void gen1_(){
         setDirectionsAllowing(false,false,true,true);
+        this.type = "_";
 }
 
     /**
@@ -289,6 +304,16 @@ public class Carte{
     public void setAllowingDirections(boolean[] allowingDirections) {
         this.allowingDirections = allowingDirections;
     }
+
+    /**
+     * Getter Type
+     * @return
+     */
+    public String getType() {
+        return type;
+    }
+    
+    
     
     
     

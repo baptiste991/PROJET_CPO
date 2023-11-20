@@ -13,28 +13,25 @@ import javax.swing.JLabel;
  */
 public class FenetrePrincipale extends javax.swing.JFrame  {
 
-    
     /**
-     * Le plateau est défini comme un array de carte à 2 dimensions
-     * @see plateau
+     * Le plateau de jeu
      */
-    private ArrayList<ArrayList<Carte>> plateau = new ArrayList<>();  
-    
-     /**
-     * Getter Plateau
-     * @return
-     */
-    protected ArrayList<ArrayList<Carte>> getPlateau() {
-        return plateau;
-    }
+ 
+    Plateau plateau = new Plateau();
     
     /**
      * Creates new form FenetrePrincipale
      */
-    public FenetrePrincipale() {
+    public FenetrePrincipale(Plateau plateau) {
+        this.plateau = plateau;
         initComponents();
         UIcardPlacement(0,1);
+        this.setVisible(true);
 }
+
+    private FenetrePrincipale() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     /**
      * Methode qui place graphiquement les cartes du plateau 

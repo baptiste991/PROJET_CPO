@@ -9,7 +9,8 @@ import java.util.Random;
  * @author Ody
  * @version 1.0
  */
-public abstract class Settings {
+public abstract class Settings{
+    
     
     /**
      * La liste des joueurs de la partie
@@ -168,6 +169,7 @@ public abstract class Settings {
             }
             
         }
+
     }
     
     /**
