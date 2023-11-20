@@ -51,8 +51,7 @@ public class Plateau extends Settings{
     
     /**
      * Constructeur de la classe Plateau
-     * @param size
-     *          La taille du plateau
+     * 
      */
     public Plateau() {
         this.size = 7;
@@ -145,8 +144,6 @@ public class Plateau extends Settings{
     /**
      * Methode qui permet de générer l'ensemble des cartes déplacables sous 
      * forme d'ArrayList de Carte.
-     * @return
-     *          Ensemble des cartes déplacables sous forme d'arrayList.
      */
     public void gen1DeckCarteDeplacable(){
         
