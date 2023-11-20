@@ -25,7 +25,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
     public FenetrePrincipale(Plateau plateau) {
         this.plateau = plateau;
         initComponents();
-        UIcardPlacement(0,1);
+        genUIofBoard();
         this.setVisible(true);
 }
 
@@ -41,16 +41,64 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
      *          Coordonnée y 
      */
     public void UIcardPlacement(int posx,int posy){
-        /*
+        
+        
         // Assignation graphique du type de carte
-        switch(this.plateau.get(posx).get(posy).getType()){
+        switch(this.plateau.getPlateau().get(posx).get(posy).getType()){
             case "I" ->{
-                 getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/I.png")));
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/I.png")));
+            }
+            case "_" ->{
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/_.png")));
+            }
+            case "TUp" ->{
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png")));
+            }
+            case "TDown" ->{
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png")));
+            }
+            case "TRight" ->{
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png")));
+            }
+            case "TLeft" ->{
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png")));
+            }
+            case "UpRightC" ->{
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpRightC.png")));
+            }
+            case "UpLeftC" ->{
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpLeftC.png")));
+            }
+            case "DownRightC" ->{
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownRightC.png")));
+            }
+            case "DownLeftC" ->{
+                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownLeftC.png")));
+            } 
+        }
+    
+        //Points de départs
+        getLabelByName("x0y0").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/blue.png")));
+        getLabelByName("x0y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/green.png")));
+        getLabelByName("x6y0").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/yellow.png")));
+        getLabelByName("x6y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/red.png")));
+
+    }
+    
+    /**
+     * Methode qui assigne graphiquement a l'ensemble des cartes leur 
+     * image respective.
+     */
+    public void genUIofBoard(){
+        
+        //On parcout toutes les cartes du plateau
+        for(int x=0;x<7;x++){
+            for(int y=0;y<7;y++){
+                UIcardPlacement(x,y);
             }
         }
-        */
-
-
+        
+        //Une fois toutes les images assignées on re déssine le layout
         // Affichage des JLabel
         Plateau.revalidate();
         Plateau.repaint();
@@ -145,68 +193,36 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
 
         Plateau.setBackground(new java.awt.Color(204, 204, 255));
 
-        x0y0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Spawn/blue.png"))); // NOI18N
-        x0y0.setText("jLabel1");
         x0y0.setName("x0y0"); // NOI18N
 
-        x0y2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png"))); // NOI18N
-        x0y2.setText("jLabel1");
         x0y2.setName("x0y2"); // NOI18N
 
-        x0y4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png"))); // NOI18N
-        x0y4.setText("jLabel1");
         x0y4.setName("x0y4"); // NOI18N
 
-        x0y6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Spawn/green.png"))); // NOI18N
-        x0y6.setText("jLabel1");
         x0y6.setName("x0y6"); // NOI18N
 
-        x2y0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png"))); // NOI18N
-        x2y0.setText("jLabel1");
         x2y0.setName("x2y0"); // NOI18N
 
-        x2y2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png"))); // NOI18N
-        x2y2.setText("jLabel1");
         x2y2.setName("x2y2"); // NOI18N
 
-        x2y4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png"))); // NOI18N
-        x2y4.setText("jLabel1");
         x2y4.setName("x2y4"); // NOI18N
 
-        x2y6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png"))); // NOI18N
-        x2y6.setText("jLabel1");
         x2y6.setName("x2y6"); // NOI18N
 
-        x4y0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png"))); // NOI18N
-        x4y0.setText("jLabel1");
         x4y0.setName("x4y0"); // NOI18N
 
-        x4y2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png"))); // NOI18N
-        x4y2.setText("jLabel1");
         x4y2.setName("x4y2"); // NOI18N
 
-        x4y4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png"))); // NOI18N
-        x4y4.setText("jLabel1");
         x4y4.setName("x4y4"); // NOI18N
 
-        x4y6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png"))); // NOI18N
-        x4y6.setText("jLabel1");
         x4y6.setName("x4y6"); // NOI18N
 
-        x6y0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Spawn/yellow.png"))); // NOI18N
-        x6y0.setText("jLabel1");
         x6y0.setName("x6y0"); // NOI18N
 
-        x6y2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png"))); // NOI18N
-        x6y2.setText("jLabel1");
         x6y2.setName("x6y2"); // NOI18N
 
-        x6y4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png"))); // NOI18N
-        x6y4.setText("jLabel1");
         x6y4.setName("x6y4"); // NOI18N
 
-        x6y6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Spawn/red.png"))); // NOI18N
-        x6y6.setText("jLabel1");
         x6y6.setName("x6y6"); // NOI18N
 
         x0y1.setName("x0y1"); // NOI18N
@@ -227,7 +243,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
 
         x1y5.setName("x1y5"); // NOI18N
 
-        x1y6.setName("x1y5"); // NOI18N
+        x1y6.setName("x1y6"); // NOI18N
 
         x2y1.setName("x2y1"); // NOI18N
 

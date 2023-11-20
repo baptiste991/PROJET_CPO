@@ -296,145 +296,81 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="x0y0">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Spawn/blue.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x0y0" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x0y2">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TDown.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x0y2" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x0y4">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TDown.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x0y4" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x0y6">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Spawn/green.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x0y6" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x2y0">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TRight.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x2y0" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x2y2">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TRight.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x2y2" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x2y4">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TDown.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x2y4" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x2y6">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TLeft.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x2y6" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x4y0">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TRight.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x4y0" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x4y2">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TUp.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x4y2" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x4y4">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TLeft.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x4y4" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x4y6">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TLeft.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x4y6" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x6y0">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Spawn/yellow.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x6y0" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x6y2">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TUp.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x6y2" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x6y4">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Cards/missionless/TUp.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x6y4" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x6y6">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Spawn/red.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
             <Property name="name" type="java.lang.String" value="x6y6" noResource="true"/>
           </Properties>
         </Component>
@@ -485,7 +421,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="x1y6">
           <Properties>
-            <Property name="name" type="java.lang.String" value="x1y5" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="x1y6" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="x2y1">

@@ -40,7 +40,7 @@ public class Plateau extends Settings{
     /**
      * Toutes les cartes qui peuvent être déplacées
      */
-    private ArrayList<Carte> deckCartesDeplacables = gen1DeckCarteDeplacable();
+    private ArrayList<Carte> deckCartesDeplacables = new ArrayList<Carte>();
     
     
     /** 
@@ -56,26 +56,11 @@ public class Plateau extends Settings{
      */
     public Plateau() {
         this.size = 7;
+        this.gen1DeckCarteDeplacable();
         this.initialiserPlateau();
         
     }
     
-    /**
-     * Cette méthode permet d'afficher une erreur et son problème
-     * 
-     * Liste des erreurs en fonction de leur numéro :
-     * 1 : La taille spécifiée ne correspond pas
-     * @param i
-     */
-    public final void displayError(int i){
-        switch(i){
-            case 1->{
-                System.out.println("Erreur : La taille du plateau doit être un nombre impaire.");
-            }
-            
-            //Lorsque on aura d'autres erreurs à displayer on rajoutera des case
-        }
-    }
      
     /**
      * initialiserPlateau est la méthode qui réserve l'emplacement de toutes
@@ -112,12 +97,14 @@ public class Plateau extends Settings{
                         carte.setMovable(true);
                         int indexRandom = random.nextInt(cartesDeplacablesRestantesAPlacer.size());
                         carte.setAllowingDirections(cartesDeplacablesRestantesAPlacer.get(indexRandom).getAllowingDirections());
+                        carte.setType(cartesDeplacablesRestantesAPlacer.get(indexRandom).getType());
                         cartesDeplacablesRestantesAPlacer.remove(indexRandom);
                     }
                 } else {
                     carte.setMovable(true);
                     int indexRandom = random.nextInt(cartesDeplacablesRestantesAPlacer.size());
                     carte.setAllowingDirections(cartesDeplacablesRestantesAPlacer.get(indexRandom).getAllowingDirections());
+                    carte.setType(cartesDeplacablesRestantesAPlacer.get(indexRandom).getType());
                     cartesDeplacablesRestantesAPlacer.remove(indexRandom);
                 }
                 
@@ -152,6 +139,7 @@ public class Plateau extends Settings{
             this.getPlateau().get(2).get(4).gen1TDown();
             this.getPlateau().get(4).get(2).gen1TUp();
             this.getPlateau().get(4).get(4).gen1TLeft();
+            
     }
     
     /**
@@ -160,9 +148,7 @@ public class Plateau extends Settings{
      * @return
      *          Ensemble des cartes déplacables sous forme d'arrayList.
      */
-    public ArrayList<Carte> gen1DeckCarteDeplacable(){
-        
-        ArrayList<Carte> carteDeplacable = new ArrayList();
+    public void gen1DeckCarteDeplacable(){
         
         //Besoin de 33 Cartes pour combler le plateau : On en a donc besoin de 34 : génération aléatoire
         for(int i=0;i<34;i++){
@@ -200,9 +186,8 @@ public class Plateau extends Settings{
                     carte.gen1CornerUpRight();
                 }
             }
-            carteDeplacable.add(carte);
+            deckCartesDeplacables.add(carte);
         }     
-        return carteDeplacable;
     }
     
     /**

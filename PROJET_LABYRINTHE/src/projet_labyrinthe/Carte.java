@@ -99,6 +99,10 @@ public class Carte{
         this.allowingDirections[1]=s;
         this.allowingDirections[2]=e;
         this.allowingDirections[3]=w;
+        this.north=n;
+        this.south=s;
+        this.east=e;
+        this.west=w;
     }
     
     /**
@@ -238,7 +242,7 @@ public class Carte{
      */
     public void gen1CornerUpLeft(){
         setDirectionsAllowing(false,true,true,false);
-        this.type = "CornerUpLeft";
+        this.type = "UpLeftC";
     }
     
     /**
@@ -246,7 +250,7 @@ public class Carte{
      */
     public void gen1CornerUpRight(){
         setDirectionsAllowing(false,true,false,true);
-        this.type = "CornerUpRight";
+        this.type = "UpRightC";
     }
     
     /**
@@ -254,7 +258,7 @@ public class Carte{
      */
     public void gen1CornerDownLeft(){
         setDirectionsAllowing(true,false,true,false);
-        this.type = "CornerDownLeft";
+        this.type = "DownLeftC";
     }
     
     /**
@@ -262,7 +266,7 @@ public class Carte{
      */
     public void gen1CornerDownRight(){
         setDirectionsAllowing(true,false,false,true);
-        this.type = "CornerDownRight";
+        this.type = "DownRightC";
     }
     
     /**
@@ -303,6 +307,10 @@ public class Carte{
      */
     public void setAllowingDirections(boolean[] allowingDirections) {
         this.allowingDirections = allowingDirections;
+        this.north=allowingDirections[0];
+        this.south=allowingDirections[1];
+        this.east=allowingDirections[2];
+        this.west=allowingDirections[3];
     }
 
     /**
@@ -311,6 +319,14 @@ public class Carte{
      */
     public String getType() {
         return type;
+    }
+
+    /**
+     * Setter Type
+     * @param type
+     */
+    public void setType(String type) {
+        this.type = type;
     }
     
     
