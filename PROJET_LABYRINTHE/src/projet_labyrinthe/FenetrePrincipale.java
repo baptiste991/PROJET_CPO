@@ -83,7 +83,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         getLabelByName("x0y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/green.png")));
         getLabelByName("x6y0").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/yellow.png")));
         getLabelByName("x6y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/red.png")));
-
+        
     }
     
     /**
@@ -99,6 +99,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
             }
         }
     }
+
     
     /**
      * Methode qui génère graphiquement une mission sur le plateau :
@@ -237,6 +238,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         x6y1 = new javax.swing.JLabel();
         x6y3 = new javax.swing.JLabel();
         x6y5 = new javax.swing.JLabel();
+        panneau_carte_attente = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -549,6 +551,21 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
 
         getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 48, 600, 600));
 
+        panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
+
+        javax.swing.GroupLayout panneau_carte_attenteLayout = new javax.swing.GroupLayout(panneau_carte_attente);
+        panneau_carte_attente.setLayout(panneau_carte_attenteLayout);
+        panneau_carte_attenteLayout.setHorizontalGroup(
+            panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        panneau_carte_attenteLayout.setVerticalGroup(
+            panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 280, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 260, 280));
+
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
         pack();
@@ -591,6 +608,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Plateau;
+    private javax.swing.JPanel panneau_carte_attente;
     private javax.swing.JLabel x0y0;
     private javax.swing.JLabel x0y1;
     private javax.swing.JLabel x0y2;
