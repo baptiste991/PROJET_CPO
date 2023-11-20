@@ -1,9 +1,6 @@
 package projet_labyrinthe;
 
 import java.awt.Component;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JLabel;
 
 /**
@@ -20,12 +17,16 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
     Plateau plateau = new Plateau();
     
     /**
-     * Creates new form FenetrePrincipale
+     * Constructeur de la fenêtre
+     * Cette fenetre représente graphiquement le plateau ainsi que 
+     * l'interface graphique du jeu.
+     * @param plateau
+     *          Le plateau de jeu qui comprend les missions, cartes, et joueurs
      */
     public FenetrePrincipale(Plateau plateau) {
         this.plateau = plateau;
         initComponents();
-        genUIofBoard();
+        genUIBoard();
         this.setVisible(true);
 }
 
@@ -40,7 +41,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
      * @param posy
      *          Coordonnée y 
      */
-    public void UIcardPlacement(int posx,int posy){
+    public void gen1UIcard(int posx,int posy){
         
         
         // Assignation graphique du type de carte
@@ -89,14 +90,67 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
      * Methode qui assigne graphiquement a l'ensemble des cartes leur 
      * image respective.
      */
-    public void genUIofBoard(){
+    public void genUICards(){
         
         //On parcout toutes les cartes du plateau
         for(int x=0;x<7;x++){
             for(int y=0;y<7;y++){
-                UIcardPlacement(x,y);
+                gen1UIcard(x,y);
             }
         }
+    }
+    
+    /**
+     * Methode qui génère graphiquement une mission sur le plateau :
+     * Associe à une mission sa représentation graphique
+     */
+    public void genUIMissions(){
+
+        //On parcourt toutes les missions pour les représenter
+        for(int i=0;i<16;i++){
+            gen1UIMission(this.plateau.getAllMissions().get(i));
+        }
+    }
+    
+    /**
+     * Methode qui génère graphiquement toutes les missions sur le plateau :
+     * Associe a toutes les missions leur représentation graphique
+     * @param mission
+     *        La mission que l'on va représenter graphiquement
+     */
+    public void gen1UIMission(Mission mission){
+
+    }
+    
+    /**
+     * Methode qui représente graphiquement un joueur
+     * @param player
+     *          Le joueur a afficher sur le plateau
+     */
+    public void gen1UIPlayer(Joueur player){
+        
+    }
+    
+    /**
+     * Methode qui affiche l'ensemble des joueurs sur le plateau
+     */
+    public void genUIPlayers(){
+     
+        //On parcourt le nombre de joueurs
+        for(int i=0;i<this.plateau.getListeDeJoueurs().size();i++){
+            gen1UIPlayer(this.plateau.getListeDeJoueurs().get(i));
+        }
+    }
+    
+    /**
+     * Methode qui génère graphiquement tout le plateau :
+     * Les cartes, les missions, et les joueurs
+     */
+    public void genUIBoard(){
+        
+        genUIMissions();
+        genUICards();
+        genUIPlayers();
         
         //Une fois toutes les images assignées on re déssine le layout
         // Affichage des JLabel
@@ -193,6 +247,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
 
         Plateau.setBackground(new java.awt.Color(204, 204, 255));
 
+        x0y0.setText("0");
         x0y0.setName("x0y0"); // NOI18N
 
         x0y2.setName("x0y2"); // NOI18N
