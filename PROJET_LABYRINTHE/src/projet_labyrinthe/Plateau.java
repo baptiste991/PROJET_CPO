@@ -59,6 +59,7 @@ public class Plateau extends Settings {
         this.size = 7;
         this.gen1DeckCarteDeplacable();
         this.initialiserPlateau();
+        this.carteAttente = genRandomCard();
 
     }
 
@@ -153,6 +154,10 @@ public class Plateau extends Settings {
         }
     }
 
+    /**
+     * méthode qui génère aléatoirement une carte du plateau
+     * @return une carte 
+     */
     public Carte genRandomCard() {
         Carte carte = new Carte();
         int j = random.nextInt(10);
@@ -191,10 +196,14 @@ public class Plateau extends Settings {
         return carte;
     }
     
+    /**
+     * méthode qui créé une carte en plus du plateau à injecter au prochain tour
+     */
     public void genWaitCard(){
         
         carteAttente = new Carte();
-        
+       
+        // on set ses coordonnées en 10 10 pour qu'elle soit pas confondu avec une carte du plateau
         carteAttente.setPosx(10);
         carteAttente.setPosy(10);
         
