@@ -27,6 +27,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         this.plateau = plateau;
         initComponents();
         genUIBoard();
+        genUIWaitingCard(this.plateau.carteAttente);
         this.setVisible(true);
 }
 
@@ -83,8 +84,49 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         getLabelByName("x0y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/green.png")));
         getLabelByName("x6y0").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/yellow.png")));
         getLabelByName("x6y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/red.png")));
-        
     }
+    
+    /**
+     * méthode qui affiche une carte dans l'emplacement de la carte à injecter dans le plateau
+     * @param carte carte à afficher en tant que carte à injecter
+     */
+    public void genUIWaitingCard(Carte carte){
+        
+        //assignation graphique de la carte
+        switch(carte.getType()){
+            case "I" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/I.png")));
+            }
+            case "_" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/_.png")));
+            }
+            case "TUp" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png")));
+            }
+            case "TDown" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png")));
+            }
+            case "TRight" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png")));
+            }
+            case "TLeft" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png")));
+            }
+            case "UpRightC" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpRightC.png")));
+            }
+            case "UpLeftC" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpLeftC.png")));
+            }
+            case "DownRightC" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownRightC.png")));
+            }
+            case "DownLeftC" ->{
+                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownLeftC.png")));
+            } 
+        }
+    }
+    
     
     /**
      * Methode qui assigne graphiquement a l'ensemble des cartes leur 
@@ -92,7 +134,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
      */
     public void genUICards(){
         
-        //On parcout toutes les cartes du plateau
+        //On parcours toutes les cartes du plateau
         for(int x=0;x<7;x++){
             for(int y=0;y<7;y++){
                 gen1UIcard(x,y);
@@ -239,6 +281,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         x6y3 = new javax.swing.JLabel();
         x6y5 = new javax.swing.JLabel();
         panneau_carte_attente = new javax.swing.JPanel();
+        lbl_carteAttente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -416,7 +459,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
                                         .addComponent(x4y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(PlateauLayout.createSequentialGroup()
                         .addComponent(x3y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(x3y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(x3y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -553,15 +596,23 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
 
         panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
 
+        lbl_carteAttente.setName("lbl_carteAttente"); // NOI18N
+
         javax.swing.GroupLayout panneau_carte_attenteLayout = new javax.swing.GroupLayout(panneau_carte_attente);
         panneau_carte_attente.setLayout(panneau_carte_attenteLayout);
         panneau_carte_attenteLayout.setHorizontalGroup(
             panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
+            .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(lbl_carteAttente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         panneau_carte_attenteLayout.setVerticalGroup(
             panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneau_carte_attenteLayout.createSequentialGroup()
+                .addContainerGap(102, Short.MAX_VALUE)
+                .addComponent(lbl_carteAttente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98))
         );
 
         getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 260, 280));
@@ -608,6 +659,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Plateau;
+    private javax.swing.JLabel lbl_carteAttente;
     private javax.swing.JPanel panneau_carte_attente;
     private javax.swing.JLabel x0y0;
     private javax.swing.JLabel x0y1;
