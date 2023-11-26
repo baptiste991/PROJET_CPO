@@ -241,6 +241,7 @@ public class Plateau extends Settings {
      * Méthode qui injecte la carteAttente en prmière place d'une ligne
      *
      * @param x ligne en question à injecter
+     * @param gauche boolean permettant d'injecter à gauche en true ou à droite en false
      */
     public void injectX(int x, boolean gauche) {
 
@@ -266,6 +267,11 @@ public class Plateau extends Settings {
         }
     }
 
+    /**
+     * Méthode qui permet d'injecter la carteAttente dans une grille et qui met à jour la carteAttente
+     * @param y numéro de colonne à injecter
+     * @param haut boolean permettant d'injectant en haut si true ou en bas si false
+     */
     public void injectY(int y, boolean haut) {
 
         Carte temp1 = null;
@@ -290,9 +296,24 @@ public class Plateau extends Settings {
 
                 carteAttente = lastCard;
             }
-        }
-        else{
-            
+        } else {
+            // Récupérer la première carte de la colonne
+                Carte firstCard = getPlateau().get(0).get(y);
+            for (int i = size - 1; i >= 0; i--) {
+
+                if (i == size - 1) {
+                    temp1 = getPlateau().get(i).get(y);
+                    getPlateau().get(i).remove(y);
+                    getPlateau().get(i).add(y, carteAttente);
+                } else {
+                    // Sinon, réorganiser les cartes dans la colonne
+                    temp2 = getPlateau().get(i).get(y);
+                    getPlateau().get(i).remove(y);
+                    getPlateau().get(i).add(y, temp1);
+                    temp1 = temp2;
+                }
+            }
+            carteAttente = firstCard;
         }
     }
 

@@ -702,12 +702,27 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         getContentPane().add(btn_y5h, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, -1, -1));
 
         btn_y1b.setText("▲");
+        btn_y1b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y1bActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 670, -1, -1));
 
         btn_y3b.setText("▲");
+        btn_y3b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y3bActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 670, -1, -1));
 
         btn_y5b.setText("▲");
+        btn_y5b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y5bActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 670, -1, -1));
 
         getAccessibleContext().setAccessibleName("Labyrinthe");
@@ -759,6 +774,21 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         plateau.injectY(3, true);
         genUIBoard();
     }//GEN-LAST:event_btn_y3hActionPerformed
+
+    private void btn_y1bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1bActionPerformed
+        plateau.injectY(1, false);
+        genUIBoard();
+    }//GEN-LAST:event_btn_y1bActionPerformed
+
+    private void btn_y3bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3bActionPerformed
+        plateau.injectY(3, false);
+        genUIBoard();
+    }//GEN-LAST:event_btn_y3bActionPerformed
+
+    private void btn_y5bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5bActionPerformed
+        plateau.injectY(5, false);
+        genUIBoard();
+    }//GEN-LAST:event_btn_y5bActionPerformed
 
     /**
      * @param args the command line arguments
