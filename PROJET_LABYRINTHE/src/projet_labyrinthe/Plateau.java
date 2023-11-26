@@ -254,29 +254,46 @@ public class Plateau extends Settings {
 
             // Supprimer la dernière carte de la ligne
             getPlateau().get(x).remove(lastIndex);
-        }
-        else{
-           // Ajouter la carteAttente en tant que denière carte de la ligne
-            getPlateau().get(x).add(size , carteAttente);
+        } else {
+            // Ajouter la carteAttente en tant que denière carte de la ligne
+            getPlateau().get(x).add(size, carteAttente);
 
             // Mettre à jour la carteAttente avec la première carte de la ligne
             carteAttente = getPlateau().get(x).get(0);
 
             // Supprimer la première carte de la ligne
-            getPlateau().get(x).remove(0); 
+            getPlateau().get(x).remove(0);
         }
     }
 
-    public void injectY(int y) {
-        // Ajouter la carteAttente en tant que première carte de la colonne
-        getPlateau().get(0).add(y, carteAttente);
+    public void injectY(int y, boolean haut) {
 
-        // Mettre à jour la carteAttente avec la dernière carte de la colonne
-        int lastIndex = getPlateau().get(size - 1).size() - 1;
-        carteAttente = getPlateau().get(lastIndex).get(y);
+        Carte temp1 = null;
+        Carte temp2;
 
-        // Supprimer la dernière carte de la colonne
-        getPlateau().get(size - 1).remove(y);
+        if (haut) {
+            Carte lastCard = getPlateau().get(size - 1).get(y);
+
+            for (int i = 0; i < size; i++) {
+                // Si c'est la première colonne, ajouter la carteAttente en tant que première carte
+                if (i == 0) {
+                    temp1 = getPlateau().get(i).get(y);
+                    getPlateau().get(i).remove(y);
+                    getPlateau().get(i).add(y, carteAttente);
+                } else {
+                    // Sinon, réorganiser les cartes dans la colonne
+                    temp2 = getPlateau().get(i).get(y);
+                    getPlateau().get(i).remove(y);
+                    getPlateau().get(i).add(y, temp1);
+                    temp1 = temp2;
+                }
+
+                carteAttente = lastCard;
+            }
+        }
+        else{
+            
+        }
     }
 
     /**

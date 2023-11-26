@@ -287,6 +287,12 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         btn_x3g = new javax.swing.JButton();
         btn_x3d = new javax.swing.JButton();
         btn_x5d = new javax.swing.JButton();
+        btn_y1h = new javax.swing.JButton();
+        btn_y3h = new javax.swing.JButton();
+        btn_y5h = new javax.swing.JButton();
+        btn_y1b = new javax.swing.JButton();
+        btn_y3b = new javax.swing.JButton();
+        btn_y5b = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -671,6 +677,39 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         });
         getContentPane().add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 510, -1, -1));
 
+        btn_y1h.setText("▼");
+        btn_y1h.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y1hActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_y1h, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, -1, -1));
+
+        btn_y3h.setText("▼");
+        btn_y3h.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y3hActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_y3h, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+
+        btn_y5h.setText("▼");
+        btn_y5h.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y5hActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_y5h, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, -1, -1));
+
+        btn_y1b.setText("▲");
+        getContentPane().add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 670, -1, -1));
+
+        btn_y3b.setText("▲");
+        getContentPane().add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 670, -1, -1));
+
+        btn_y5b.setText("▲");
+        getContentPane().add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 670, -1, -1));
+
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
         pack();
@@ -705,6 +744,21 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         plateau.injectX(5, false);
         genUIBoard();
     }//GEN-LAST:event_btn_x5dActionPerformed
+
+    private void btn_y1hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1hActionPerformed
+        plateau.injectY(1, true);
+        genUIBoard();
+    }//GEN-LAST:event_btn_y1hActionPerformed
+
+    private void btn_y5hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5hActionPerformed
+        plateau.injectY(5, true);
+        genUIBoard();
+    }//GEN-LAST:event_btn_y5hActionPerformed
+
+    private void btn_y3hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3hActionPerformed
+        plateau.injectY(3, true);
+        genUIBoard();
+    }//GEN-LAST:event_btn_y3hActionPerformed
 
     /**
      * @param args the command line arguments
@@ -749,6 +803,12 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
     private javax.swing.JButton btn_x3g;
     private javax.swing.JButton btn_x5d;
     private javax.swing.JButton btn_x5g;
+    private javax.swing.JButton btn_y1b;
+    private javax.swing.JButton btn_y1h;
+    private javax.swing.JButton btn_y3b;
+    private javax.swing.JButton btn_y3h;
+    private javax.swing.JButton btn_y5b;
+    private javax.swing.JButton btn_y5h;
     private javax.swing.JLabel lbl_carteAttente;
     private javax.swing.JPanel panneau_carte_attente;
     private javax.swing.JLabel x0y0;
