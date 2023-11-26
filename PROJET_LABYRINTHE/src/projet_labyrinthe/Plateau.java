@@ -48,7 +48,7 @@ public class Plateau extends Settings {
      * @see size
      */
     int size;
-    
+
     Carte carteAttente;
 
     /**
@@ -156,7 +156,8 @@ public class Plateau extends Settings {
 
     /**
      * méthode qui génère aléatoirement une carte du plateau
-     * @return une carte 
+     *
+     * @return une carte
      */
     public Carte genRandomCard() {
         Carte carte = new Carte();
@@ -195,18 +196,18 @@ public class Plateau extends Settings {
         }
         return carte;
     }
-    
+
     /**
      * méthode qui créé une carte en plus du plateau à injecter au prochain tour
      */
-    public void genWaitCard(){
-        
+    public void genWaitCard() {
+
         carteAttente = new Carte();
-       
+
         // on set ses coordonnées en 10 10 pour qu'elle soit pas confondu avec une carte du plateau
         carteAttente.setPosx(10);
         carteAttente.setPosy(10);
-        
+
     }
 
     /**
@@ -234,6 +235,48 @@ public class Plateau extends Settings {
      */
     public ArrayList<Carte> getDeckCardOnBoard() {
         return deckCardOnBoard;
+    }
+
+    /**
+     * Méthode qui injecte la carteAttente en prmière place d'une ligne
+     *
+     * @param x ligne en question à injecter
+     */
+    public void injectX(int x, boolean gauche) {
+
+        if (gauche) {
+            // Ajouter la carteAttente en tant que première carte de la ligne
+            getPlateau().get(x).add(0, carteAttente);
+
+            // Mettre à jour la carteAttente avec la dernière carte de la ligne
+            int lastIndex = getPlateau().get(x).size() - 1;
+            carteAttente = getPlateau().get(x).get(lastIndex);
+
+            // Supprimer la dernière carte de la ligne
+            getPlateau().get(x).remove(lastIndex);
+        }
+        else{
+           // Ajouter la carteAttente en tant que denière carte de la ligne
+            getPlateau().get(x).add(size , carteAttente);
+
+            // Mettre à jour la carteAttente avec la première carte de la ligne
+            carteAttente = getPlateau().get(x).get(0);
+
+            // Supprimer la première carte de la ligne
+            getPlateau().get(x).remove(0); 
+        }
+    }
+
+    public void injectY(int y) {
+        // Ajouter la carteAttente en tant que première carte de la colonne
+        getPlateau().get(0).add(y, carteAttente);
+
+        // Mettre à jour la carteAttente avec la dernière carte de la colonne
+        int lastIndex = getPlateau().get(size - 1).size() - 1;
+        carteAttente = getPlateau().get(lastIndex).get(y);
+
+        // Supprimer la dernière carte de la colonne
+        getPlateau().get(size - 1).remove(y);
     }
 
     /**

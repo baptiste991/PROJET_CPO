@@ -194,6 +194,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         genUIMissions();
         genUICards();
         genUIPlayers();
+        genUIWaitingCard(plateau.carteAttente);
         
         //Une fois toutes les images assignées on re déssine le layout
         // Affichage des JLabel
@@ -216,8 +217,6 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         }
         return null; // Aucun JLabel trouvé avec le nom spécifié
     }
-
-
    
     
    
@@ -282,6 +281,12 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         x6y5 = new javax.swing.JLabel();
         panneau_carte_attente = new javax.swing.JPanel();
         lbl_carteAttente = new javax.swing.JLabel();
+        btn_x1g = new javax.swing.JButton();
+        btn_x1d = new javax.swing.JButton();
+        btn_x5g = new javax.swing.JButton();
+        btn_x3g = new javax.swing.JButton();
+        btn_x3d = new javax.swing.JButton();
+        btn_x5d = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -618,10 +623,88 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
 
         getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 260, 280));
 
+        btn_x1g.setText("▶");
+        btn_x1g.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x1gActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_x1g, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+
+        btn_x1d.setText("◀");
+        btn_x1d.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x1dActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_x1d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 170, -1, -1));
+
+        btn_x5g.setText("▶");
+        btn_x5g.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x5gActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_x5g, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, -1, -1));
+
+        btn_x3g.setText("▶");
+        btn_x3g.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x3gActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_x3g, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, -1, -1));
+
+        btn_x3d.setText("◀");
+        btn_x3d.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x3dActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_x3d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 340, -1, -1));
+
+        btn_x5d.setText("◀");
+        btn_x5d.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x5dActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 510, -1, -1));
+
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_x1gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1gActionPerformed
+        plateau.injectX(1, true);
+        genUIBoard();
+    }//GEN-LAST:event_btn_x1gActionPerformed
+
+    private void btn_x1dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1dActionPerformed
+        plateau.injectX(1, false);
+        genUIBoard();
+    }//GEN-LAST:event_btn_x1dActionPerformed
+
+    private void btn_x3gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3gActionPerformed
+        plateau.injectX(3, true);
+        genUIBoard();
+    }//GEN-LAST:event_btn_x3gActionPerformed
+
+    private void btn_x5gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5gActionPerformed
+        plateau.injectX(5, true);
+        genUIBoard();
+    }//GEN-LAST:event_btn_x5gActionPerformed
+
+    private void btn_x3dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3dActionPerformed
+        plateau.injectX(3, false);
+        genUIBoard();
+    }//GEN-LAST:event_btn_x3dActionPerformed
+
+    private void btn_x5dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5dActionPerformed
+        plateau.injectX(5, false);
+        genUIBoard();
+    }//GEN-LAST:event_btn_x5dActionPerformed
 
     /**
      * @param args the command line arguments
@@ -660,6 +743,12 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Plateau;
+    private javax.swing.JButton btn_x1d;
+    private javax.swing.JButton btn_x1g;
+    private javax.swing.JButton btn_x3d;
+    private javax.swing.JButton btn_x3g;
+    private javax.swing.JButton btn_x5d;
+    private javax.swing.JButton btn_x5g;
     private javax.swing.JLabel lbl_carteAttente;
     private javax.swing.JPanel panneau_carte_attente;
     private javax.swing.JLabel x0y0;
