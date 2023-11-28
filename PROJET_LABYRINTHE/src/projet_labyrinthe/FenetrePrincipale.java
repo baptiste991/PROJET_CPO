@@ -1,6 +1,7 @@
 package projet_labyrinthe;
 
 import java.awt.Component;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
@@ -29,6 +30,8 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         genUIBoard();
         genUIWaitingCard(this.plateau.carteAttente);
         this.setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 }
 
     private FenetrePrincipale() {
