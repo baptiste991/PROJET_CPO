@@ -19,7 +19,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         CustomInitComponents();
     }
     
-    public void CustomInitComponents(){
+    private void CustomInitComponents(){
     // Définir les propriétés de la JFrame (ouverture de la fenetre en plein écran + bouton pour quitter)
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -82,10 +82,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FenetreAccueil().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FenetreAccueil().setVisible(true);
         });
     }
 
