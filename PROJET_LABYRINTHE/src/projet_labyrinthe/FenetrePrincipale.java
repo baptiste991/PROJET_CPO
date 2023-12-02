@@ -1,28 +1,30 @@
 package projet_labyrinthe;
 
 import java.awt.Component;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 
 /**
  * Fenetre Principale du Jeu
+ *
  * @author Ody
  * @version 1.0
  */
-public class FenetrePrincipale extends javax.swing.JFrame  {
+public class FenetrePrincipale extends javax.swing.JFrame {
 
     /**
      * Le plateau de jeu
      */
- 
     Plateau plateau = new Plateau();
-    
+
     /**
-     * Constructeur de la fenêtre
-     * Cette fenetre représente graphiquement le plateau ainsi que 
-     * l'interface graphique du jeu.
-     * @param plateau
-     *          Le plateau de jeu qui comprend les missions, cartes, et joueurs
+     * Constructeur de la fenêtre Cette fenetre représente graphiquement le
+     * plateau ainsi que l'interface graphique du jeu.
+     *
+     * @param plateau Le plateau de jeu qui comprend les missions, cartes, et
+     * joueurs
      */
     public FenetrePrincipale(Plateau plateau) {
         this.plateau = plateau;
@@ -30,185 +32,221 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         genUIBoard();
         genUIWaitingCard(this.plateau.carteAttente);
         this.setVisible(true);
+
+        //addMissionCards();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-}
+    }
 
     private FenetrePrincipale() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
-     * Methode qui place graphiquement les cartes du plateau 
-     * @param posx
-     *          Coordonnée x 
-     * @param posy
-     *          Coordonnée y 
+     * Methode qui place graphiquement les cartes du plateau
+     *
+     * @param posx Coordonnée x
+     * @param posy Coordonnée y
      */
-    public void gen1UIcard(int posx,int posy){
-        
-        
+    public void gen1UIcard(int posx, int posy) {
+
+
         // Assignation graphique du type de carte
-        switch(this.plateau.getPlateau().get(posx).get(posy).getType()){
-            case "I" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/I.png")));
+        switch (this.plateau.getPlateau().get(posx).get(posy).getType()) {
+            case "I" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/I.png")));
             }
-            case "_" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/_.png")));
+            case "_" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/_.png")));
             }
-            case "TUp" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png")));
+            case "TUp" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png")));
             }
-            case "TDown" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png")));
+            case "TDown" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png")));
             }
-            case "TRight" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png")));
+            case "TRight" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png")));
             }
-            case "TLeft" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png")));
+            case "TLeft" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png")));
             }
-            case "UpRightC" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpRightC.png")));
+            case "UpRightC" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpRightC.png")));
             }
-            case "UpLeftC" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpLeftC.png")));
+            case "UpLeftC" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpLeftC.png")));
             }
-            case "DownRightC" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownRightC.png")));
+            case "DownRightC" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownRightC.png")));
             }
-            case "DownLeftC" ->{
-                getLabelByName("x"+String.valueOf(posx)+"y"+String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownLeftC.png")));
-            } 
+            case "DownLeftC" -> {
+                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownLeftC.png")));
+            }
         }
-    
+
         //Points de départs
         getLabelByName("x0y0").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/blue.png")));
         getLabelByName("x0y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/green.png")));
         getLabelByName("x6y0").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/yellow.png")));
         getLabelByName("x6y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/red.png")));
     }
-    
+
     /**
-     * méthode qui affiche une carte dans l'emplacement de la carte à injecter dans le plateau
+     * méthode qui affiche une carte dans l'emplacement de la carte à injecter
+     * dans le plateau
+     *
      * @param carte carte à afficher en tant que carte à injecter
      */
-    public void genUIWaitingCard(Carte carte){
-        
+    public void genUIWaitingCard(Carte carte) {
+
         //assignation graphique de la carte
-        switch(carte.getType()){
-            case "I" ->{
+        switch (carte.getType()) {
+            case "I" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/I.png")));
             }
-            case "_" ->{
+            case "_" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/_.png")));
             }
-            case "TUp" ->{
+            case "TUp" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png")));
             }
-            case "TDown" ->{
+            case "TDown" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png")));
             }
-            case "TRight" ->{
+            case "TRight" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png")));
             }
-            case "TLeft" ->{
+            case "TLeft" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png")));
             }
-            case "UpRightC" ->{
+            case "UpRightC" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpRightC.png")));
             }
-            case "UpLeftC" ->{
+            case "UpLeftC" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpLeftC.png")));
             }
-            case "DownRightC" ->{
+            case "DownRightC" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownRightC.png")));
             }
-            case "DownLeftC" ->{
+            case "DownLeftC" -> {
                 lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownLeftC.png")));
-            } 
-        }
-    }
-    
-    
-    /**
-     * Methode qui assigne graphiquement a l'ensemble des cartes leur 
-     * image respective.
-     */
-    public void genUICards(){
-        
-        //On parcours toutes les cartes du plateau
-        for(int x=0;x<7;x++){
-            for(int y=0;y<7;y++){
-                gen1UIcard(x,y);
             }
         }
     }
 
-    
     /**
-     * Methode qui génère graphiquement une mission sur le plateau :
-     * Associe à une mission sa représentation graphique
+     * Methode qui assigne graphiquement a l'ensemble des cartes leur image
+     * respective.
      */
-    public void genUIMissions(){
+    public void genUICards() {
+
+        //On parcours toutes les cartes du plateau
+        for (int x = 0; x < 7; x++) {
+            for (int y = 0; y < 7; y++) {
+                gen1UIcard(x, y);
+            }
+        }
+    }
+
+    /**
+     * Methode qui génère graphiquement une mission sur le plateau : Associe à
+     * une mission sa représentation graphique
+     */
+    public void genUIMissions() {
 
         //On parcourt toutes les missions pour les représenter
-        for(int i=0;i<16;i++){
+        for (int i = 0; i < 16; i++) {
             gen1UIMission(this.plateau.getAllMissions().get(i));
         }
     }
-    
+
     /**
      * Methode qui génère graphiquement toutes les missions sur le plateau :
      * Associe a toutes les missions leur représentation graphique
-     * @param mission
-     *        La mission que l'on va représenter graphiquement
+     *
+     * @param mission La mission que l'on va représenter graphiquement
      */
-    public void gen1UIMission(Mission mission){
+    public void gen1UIMission(Mission mission) {
 
     }
-    
+
+    /**
+     * Méthode qui ajoute les missions sur les cartes du plateau ayant des
+     * missions
+     */
+    public void addMissionCards() {
+
+        // on définit les missions + les attribus sur des cartes spécifiques
+        this.plateau.setAllMissions();
+        this.plateau.setAllMissionsToCards();
+
+        // on parcourt le plateau pour afficher les missions sur les cartes
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                // test si la carte possède une mission
+                if (this.plateau.getPlateau().get(i).get(j).getMission() != null) {
+                    // Obtenez la mission associée à la carte
+                    Mission mission = this.plateau.getPlateau().get(i).get(j).getMission();
+
+                    // Obtenez le nom de l'objet de la mission
+                    String objectName = mission.getObjet();
+
+                    // Obtenez le chemin de l'image correspondante à la mission
+                    String imagePath = "/images/Cards/mission/" + objectName + ".png";
+
+                    // Créez un nouvel ImageIcon à partir du chemin de l'image
+                    ImageIcon missionIcon = new ImageIcon(getClass().getResource(imagePath));
+
+                    // Affectez l'icône à l'étiquette de la carte
+                    getLabelByName("x" + i + "y" + j).setIcon(missionIcon);
+                }
+            }
+
+        }
+    }
+
     /**
      * Methode qui représente graphiquement un joueur
-     * @param player
-     *          Le joueur a afficher sur le plateau
+     *
+     * @param player Le joueur a afficher sur le plateau
      */
-    public void gen1UIPlayer(Joueur player){
-        
+    public void gen1UIPlayer(Joueur player) {
+
     }
-    
+
     /**
      * Methode qui affiche l'ensemble des joueurs sur le plateau
      */
-    public void genUIPlayers(){
-     
+    public void genUIPlayers() {
+
         //On parcourt le nombre de joueurs
-        for(int i=0;i<this.plateau.getListeDeJoueurs().size();i++){
+        for (int i = 0; i < this.plateau.getListeDeJoueurs().size(); i++) {
             gen1UIPlayer(this.plateau.getListeDeJoueurs().get(i));
         }
     }
-    
+
     /**
-     * Methode qui génère graphiquement tout le plateau :
-     * Les cartes, les missions, et les joueurs
+     * Methode qui génère graphiquement tout le plateau : Les cartes, les
+     * missions, et les joueurs
      */
-    public void genUIBoard(){
-        
+    public void genUIBoard() {
+
         genUIMissions();
         genUICards();
         genUIPlayers();
         genUIWaitingCard(plateau.carteAttente);
-        
+
         //Une fois toutes les images assignées on re déssine le layout
         // Affichage des JLabel
         Plateau.revalidate();
         Plateau.repaint();
     }
-    
+
     /**
      * Methode qui permet d'accéder à un Jlabel en fonction de son nom
-     * @param labelName
-     *        Le nom du label
+     *
+     * @param labelName Le nom du label
      * @return
      */
     public JLabel getLabelByName(String labelName) {
@@ -220,9 +258,7 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
         }
         return null; // Aucun JLabel trouvé avec le nom spécifié
     }
-   
-    
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -895,4 +931,3 @@ public class FenetrePrincipale extends javax.swing.JFrame  {
     private javax.swing.JLabel x6y6;
     // End of variables declaration//GEN-END:variables
 }
-
