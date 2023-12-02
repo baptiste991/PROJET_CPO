@@ -17,6 +17,7 @@ public class Carte{
      */
     private int posx,posy;
     
+    
     /**
     * Le nom du type attribué à la carte : exemple : I/_/TopRightC
     */

@@ -44,7 +44,7 @@ public class Mission {
      * Methode qui retourne l'objet que doit trouver le joueur sous forme de str
      * @return
      */
-    public String getObjectToFind(){
+    public String getObjet(){
         return objet;
     }
     
