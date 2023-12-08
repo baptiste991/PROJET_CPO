@@ -32,6 +32,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         genUIBoard();
         genUIWaitingCard(this.plateau.carteAttente);
         this.setVisible(true);
+        
+        
+        for (int i=0;i < 9; i++ ){
+            panelDarties.add(new dartiesCase(i));
+         }
+    
 
         //addMissionCards();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -155,6 +161,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      */
     public void genUIMissions() {
 
+        // on définit les missions + les attribus sur des cartes spécifiques
+        this.plateau.setAllMissions();
+        this.plateau.setAllMissionsToCards();
+        
         //On parcourt toutes les missions pour les représenter
         for (int i = 0; i < 16; i++) {
             gen1UIMission(this.plateau.getAllMissions().get(i));
@@ -168,43 +178,42 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * @param mission La mission que l'on va représenter graphiquement
      */
     public void gen1UIMission(Mission mission) {
+        
+        int nbMission=0;
 
-    }
-
-    /**
-     * Méthode qui ajoute les missions sur les cartes du plateau ayant des
-     * missions
-     */
-    public void addMissionCards() {
-
-        // on définit les missions + les attribus sur des cartes spécifiques
-        this.plateau.setAllMissions();
-        this.plateau.setAllMissionsToCards();
-
-        // on parcourt le plateau pour afficher les missions sur les cartes
+        //*
+        //On parcourt toutes les cartes pour trouver les coordonnées de la mission
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
-                // test si la carte possède une mission
-                if (this.plateau.getPlateau().get(i).get(j).getMission() != null) {
-                    // Obtenez la mission associée à la carte
-                    Mission mission = this.plateau.getPlateau().get(i).get(j).getMission();
-
-                    // Obtenez le nom de l'objet de la mission
-                    String objectName = mission.getObjet();
-
-                    // Obtenez le chemin de l'image correspondante à la mission
-                    String imagePath = "/images/Cards/mission/" + objectName + ".png";
-
-                    // Créez un nouvel ImageIcon à partir du chemin de l'image
-                    ImageIcon missionIcon = new ImageIcon(getClass().getResource(imagePath));
+                /*
+                Mission missionFound = this.plateau.getPlateau().get(i).get(j).getMission();
+           
+                //Si la carte de coordonnée [i:j] détient la mission
+                if(missionFound != null && missionFound.equals(mission)){
+                    
+                    nbMission++;
+                    
+                    // On cherche l'image correspondante à la mission
+                    String missionImagePath = "/images/Cards/mission/" + mission.getObjet() + ".png";
+                    
+                    // Nouvel ImageIcon à partir du chemin de l'image
+                    ImageIcon missionIcon = new ImageIcon(getClass().getResource(missionImagePath));
 
                     // Affectez l'icône à l'étiquette de la carte
-                    getLabelByName("x" + i + "y" + j).setIcon(missionIcon);
+                    getLabelByName("Mission1").setIcon(missionIcon);
+                    
+                     
                 }
+                */
             }
-
         }
+        
+        
     }
+
+
+
+
 
     /**
      * Methode qui représente graphiquement un joueur
@@ -231,7 +240,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * missions, et les joueurs
      */
     public void genUIBoard() {
-
         genUIMissions();
         genUICards();
         genUIPlayers();
@@ -332,6 +340,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btn_y1b = new javax.swing.JButton();
         btn_y3b = new javax.swing.JButton();
         btn_y5b = new javax.swing.JButton();
+        panelDarties = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -342,7 +351,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         Plateau.setBackground(new java.awt.Color(204, 204, 255));
 
-        x0y0.setText("0");
         x0y0.setName("x0y0"); // NOI18N
 
         x0y2.setName("x0y2"); // NOI18N
@@ -764,6 +772,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         getContentPane().add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 670, -1, -1));
 
+        panelDarties.setBackground(new java.awt.Color(242, 0, 242));
+        panelDarties.setLayout(new java.awt.GridLayout(3, 3));
+        getContentPane().add(panelDarties, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 220, 180));
+
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
         pack();
@@ -879,6 +891,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btn_y5b;
     private javax.swing.JButton btn_y5h;
     private javax.swing.JLabel lbl_carteAttente;
+    private javax.swing.JPanel panelDarties;
     private javax.swing.JPanel panneau_carte_attente;
     private javax.swing.JLabel x0y0;
     private javax.swing.JLabel x0y1;
