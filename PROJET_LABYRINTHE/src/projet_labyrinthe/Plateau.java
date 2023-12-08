@@ -118,9 +118,14 @@ public class Plateau extends Settings {
 
         //Angles
         this.getPlateau().get(0).get(0).gen1CornerUpLeft();
+        this.getPlateau().get(0).get(0).setType("SpawnUpLeft");
         this.getPlateau().get(0).get(size - 1).gen1CornerUpRight();
+        this.getPlateau().get(0).get(size - 1).setType("SpawnUpRight");
         this.getPlateau().get(size - 1).get(0).gen1CornerDownLeft();
+        this.getPlateau().get(size - 1).get(0).setType("SpawnDownLeft");
         this.getPlateau().get(size - 1).get(size - 1).gen1CornerDownRight();
+        this.getPlateau().get(size - 1).get(size - 1).setType("SpawnDownRight");
+
 
         //Colonnes non déplacables colonnes extrêmes
         this.getPlateau().get(2).get(0).gen1TRight();
@@ -197,18 +202,7 @@ public class Plateau extends Settings {
         return carte;
     }
 
-    /**
-     * méthode qui créé une carte en plus du plateau à injecter au prochain tour
-     */
-    public void genWaitCard() {
 
-        carteAttente = new Carte();
-
-        // on set ses coordonnées en 10 10 pour qu'elle soit pas confondu avec une carte du plateau
-        carteAttente.setPosx(10);
-        carteAttente.setPosy(10);
-
-    }
 
     /**
      * Methode qui permet de retrouver une mission en fonction du nom de l'objet
@@ -218,7 +212,7 @@ public class Plateau extends Settings {
      * @param objectName Le nom de l'objet concerné par la mission
      * @return
      */
-    public Mission findMissionInAllkbyObject(String objectName) {
+    public Mission findMissionInAllbyObject(String objectName) {
         Mission mission = new Mission();
         for (int j = 0; j < this.getAllMissions().size(); j++) {
             if (objectName.equals(this.getAllMissions().get(j).objet)) {
@@ -238,6 +232,20 @@ public class Plateau extends Settings {
     }
 
     /**
+     * Methode qui set les coordonnées correcte de chaque carte en fonction
+     * de leur position sur le plateau
+     */
+    public void setCorrectCoordinates(){
+        for(int i=0;i<7;i++){
+            for(int j=0;j<7;j++){
+                this.plateau.get(i).get(j).setPosx(i);
+                this.plateau.get(i).get(j).setPosy(j);
+            }
+        }
+    }
+    
+    
+    /**
      * Méthode qui injecte la carteAttente en prmière place d'une ligne
      *
      * @param x ligne en question à injecter
@@ -247,24 +255,31 @@ public class Plateau extends Settings {
 
         if (gauche) {
             // Ajouter la carteAttente en tant que première carte de la ligne
-            getPlateau().get(x).add(0, carteAttente);
+            this.plateau.get(x).add(0, carteAttente);
+
 
             // Mettre à jour la carteAttente avec la dernière carte de la ligne
-            int lastIndex = getPlateau().get(x).size() - 1;
+            int lastIndex = getPlateau().get(x).size()-1 ;
             carteAttente = getPlateau().get(x).get(lastIndex);
 
             // Supprimer la dernière carte de la ligne
             getPlateau().get(x).remove(lastIndex);
+            
         } else {
             // Ajouter la carteAttente en tant que denière carte de la ligne
+            // et modifier ses coordonnées
             getPlateau().get(x).add(size, carteAttente);
+
 
             // Mettre à jour la carteAttente avec la première carte de la ligne
             carteAttente = getPlateau().get(x).get(0);
 
             // Supprimer la première carte de la ligne
             getPlateau().get(x).remove(0);
+            
         }
+        
+
     }
 
     /**

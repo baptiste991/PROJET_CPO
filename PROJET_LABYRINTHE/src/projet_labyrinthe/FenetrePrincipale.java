@@ -30,15 +30,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.plateau = plateau;
         initComponents();
         genUIBoard();
-        genUIWaitingCard(this.plateau.carteAttente);
         this.setVisible(true);
         
-        
-        for (int i=0;i < 9; i++ ){
-            panelDarties.add(new dartiesCase(i));
-         }
-    
-
         //addMissionCards();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -48,55 +41,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    /**
-     * Methode qui place graphiquement les cartes du plateau
-     *
-     * @param posx Coordonnée x
-     * @param posy Coordonnée y
-     */
-    public void gen1UIcard(int posx, int posy) {
 
-
-        // Assignation graphique du type de carte
-        switch (this.plateau.getPlateau().get(posx).get(posy).getType()) {
-            case "I" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/I.png")));
-            }
-            case "_" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/_.png")));
-            }
-            case "TUp" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png")));
-            }
-            case "TDown" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png")));
-            }
-            case "TRight" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png")));
-            }
-            case "TLeft" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png")));
-            }
-            case "UpRightC" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpRightC.png")));
-            }
-            case "UpLeftC" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpLeftC.png")));
-            }
-            case "DownRightC" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownRightC.png")));
-            }
-            case "DownLeftC" -> {
-                getLabelByName("x" + String.valueOf(posx) + "y" + String.valueOf(posy)).setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownLeftC.png")));
-            }
-        }
-
-        //Points de départs
-        getLabelByName("x0y0").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/blue.png")));
-        getLabelByName("x0y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/green.png")));
-        getLabelByName("x6y0").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/yellow.png")));
-        getLabelByName("x6y6").setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/Spawn/red.png")));
-    }
 
     /**
      * méthode qui affiche une carte dans l'emplacement de la carte à injecter
@@ -107,52 +52,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public void genUIWaitingCard(Carte carte) {
 
         //assignation graphique de la carte
-        switch (carte.getType()) {
-            case "I" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/I.png")));
-            }
-            case "_" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/_.png")));
-            }
-            case "TUp" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TUp.png")));
-            }
-            case "TDown" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TDown.png")));
-            }
-            case "TRight" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TRight.png")));
-            }
-            case "TLeft" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/TLeft.png")));
-            }
-            case "UpRightC" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpRightC.png")));
-            }
-            case "UpLeftC" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/UpLeftC.png")));
-            }
-            case "DownRightC" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownRightC.png")));
-            }
-            case "DownLeftC" -> {
-                lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cards/missionless/DownLeftC.png")));
-            }
-        }
-    }
-
-    /**
-     * Methode qui assigne graphiquement a l'ensemble des cartes leur image
-     * respective.
-     */
-    public void genUICards() {
-
-        //On parcours toutes les cartes du plateau
-        for (int x = 0; x < 7; x++) {
-            for (int y = 0; y < 7; y++) {
-                gen1UIcard(x, y);
-            }
-        }
+        lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("../images/"+carte.getType()+".png")));
     }
 
     /**
@@ -207,13 +107,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 */
             }
         }
-        
-        
+ 
     }
-
-
-
-
 
     /**
      * Methode qui représente graphiquement un joueur
@@ -240,33 +135,40 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * missions, et les joueurs
      */
     public void genUIBoard() {
+
+           //Generation de la grille dans le cas ou c'est la première génération
+            for (int x=0;x < 7; x++ ){
+                for(int y=0;y<7;y++){
+                    GridPanel.add(new UICarte(this.plateau.getPlateau().get(x).get(y)));  
+                } 
+            }
+        
         genUIMissions();
-        genUICards();
         genUIPlayers();
         genUIWaitingCard(plateau.carteAttente);
-
-        //Une fois toutes les images assignées on re déssine le layout
-        // Affichage des JLabel
-        Plateau.revalidate();
-        Plateau.repaint();
     }
+    
+    public void injectUIX(int x, boolean gauche){
+        plateau.injectX(x, gauche);
+        GridPanel.removeAll();
+        genUIBoard();
+        revalidate();
+        repaint();
+        // On corrige les coordonnées des cartes
+        this.plateau.setCorrectCoordinates();
 
-    /**
-     * Methode qui permet d'accéder à un Jlabel en fonction de son nom
-     *
-     * @param labelName Le nom du label
-     * @return
-     */
-    public JLabel getLabelByName(String labelName) {
-        Component[] components = this.Plateau.getComponents();
-        for (Component component : components) {
-            if (component instanceof JLabel && component.getName().equals(labelName)) {
-                return (JLabel) component;
-            }
-        }
-        return null; // Aucun JLabel trouvé avec le nom spécifié
     }
-
+    
+    public void injectUIY(int y, boolean haut){
+        plateau.injectY(y, haut);
+        GridPanel.removeAll();
+        genUIBoard();
+        revalidate();
+        repaint();
+        // On corrige les coordonnées des cartes
+        this.plateau.setCorrectCoordinates();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -276,58 +178,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Plateau = new javax.swing.JPanel();
-        x0y0 = new javax.swing.JLabel();
-        x0y2 = new javax.swing.JLabel();
-        x0y4 = new javax.swing.JLabel();
-        x0y6 = new javax.swing.JLabel();
-        x2y0 = new javax.swing.JLabel();
-        x2y2 = new javax.swing.JLabel();
-        x2y4 = new javax.swing.JLabel();
-        x2y6 = new javax.swing.JLabel();
-        x4y0 = new javax.swing.JLabel();
-        x4y2 = new javax.swing.JLabel();
-        x4y4 = new javax.swing.JLabel();
-        x4y6 = new javax.swing.JLabel();
-        x6y0 = new javax.swing.JLabel();
-        x6y2 = new javax.swing.JLabel();
-        x6y4 = new javax.swing.JLabel();
-        x6y6 = new javax.swing.JLabel();
-        x0y1 = new javax.swing.JLabel();
-        x0y3 = new javax.swing.JLabel();
-        x0y5 = new javax.swing.JLabel();
-        x1y0 = new javax.swing.JLabel();
-        x1y1 = new javax.swing.JLabel();
-        x1y2 = new javax.swing.JLabel();
-        x1y3 = new javax.swing.JLabel();
-        x1y4 = new javax.swing.JLabel();
-        x1y5 = new javax.swing.JLabel();
-        x1y6 = new javax.swing.JLabel();
-        x2y1 = new javax.swing.JLabel();
-        x2y3 = new javax.swing.JLabel();
-        x2y5 = new javax.swing.JLabel();
-        x3y0 = new javax.swing.JLabel();
-        x3y1 = new javax.swing.JLabel();
-        x3y2 = new javax.swing.JLabel();
-        x3y3 = new javax.swing.JLabel();
-        x3y4 = new javax.swing.JLabel();
-        x3y5 = new javax.swing.JLabel();
-        x3y6 = new javax.swing.JLabel();
-        x4y1 = new javax.swing.JLabel();
-        x4y3 = new javax.swing.JLabel();
-        x4y5 = new javax.swing.JLabel();
-        x5y0 = new javax.swing.JLabel();
-        x5y1 = new javax.swing.JLabel();
-        x5y2 = new javax.swing.JLabel();
-        x5y3 = new javax.swing.JLabel();
-        x5y4 = new javax.swing.JLabel();
-        x5y6 = new javax.swing.JLabel();
-        x5y5 = new javax.swing.JLabel();
-        x6y1 = new javax.swing.JLabel();
-        x6y3 = new javax.swing.JLabel();
-        x6y5 = new javax.swing.JLabel();
         panneau_carte_attente = new javax.swing.JPanel();
         lbl_carteAttente = new javax.swing.JLabel();
+        RotateRight = new javax.swing.JButton();
+        RotateRight1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         btn_x1g = new javax.swing.JButton();
         btn_x1d = new javax.swing.JButton();
         btn_x5g = new javax.swing.JButton();
@@ -340,341 +195,73 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btn_y1b = new javax.swing.JButton();
         btn_y3b = new javax.swing.JButton();
         btn_y5b = new javax.swing.JButton();
-        panelDarties = new javax.swing.JPanel();
+        GridPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
+        setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1515, 750));
         setName("Labyrinthe"); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Plateau.setBackground(new java.awt.Color(204, 204, 255));
-
-        x0y0.setName("x0y0"); // NOI18N
-
-        x0y2.setName("x0y2"); // NOI18N
-
-        x0y4.setName("x0y4"); // NOI18N
-
-        x0y6.setName("x0y6"); // NOI18N
-
-        x2y0.setName("x2y0"); // NOI18N
-
-        x2y2.setName("x2y2"); // NOI18N
-
-        x2y4.setName("x2y4"); // NOI18N
-
-        x2y6.setName("x2y6"); // NOI18N
-
-        x4y0.setName("x4y0"); // NOI18N
-
-        x4y2.setName("x4y2"); // NOI18N
-
-        x4y4.setName("x4y4"); // NOI18N
-
-        x4y6.setName("x4y6"); // NOI18N
-
-        x6y0.setName("x6y0"); // NOI18N
-
-        x6y2.setName("x6y2"); // NOI18N
-
-        x6y4.setName("x6y4"); // NOI18N
-
-        x6y6.setName("x6y6"); // NOI18N
-
-        x0y1.setName("x0y1"); // NOI18N
-
-        x0y3.setName("x0y3"); // NOI18N
-
-        x0y5.setName("x0y5"); // NOI18N
-
-        x1y0.setName("x1y0"); // NOI18N
-
-        x1y1.setName("x1y1"); // NOI18N
-
-        x1y2.setName("x1y2"); // NOI18N
-
-        x1y3.setName("x1y3"); // NOI18N
-
-        x1y4.setName("x1y4"); // NOI18N
-
-        x1y5.setName("x1y5"); // NOI18N
-
-        x1y6.setName("x1y6"); // NOI18N
-
-        x2y1.setName("x2y1"); // NOI18N
-
-        x2y3.setName("x2y3"); // NOI18N
-
-        x2y5.setName("x2y5"); // NOI18N
-
-        x3y0.setName("x3y0"); // NOI18N
-
-        x3y1.setName("x3y1"); // NOI18N
-
-        x3y2.setName("x3y2"); // NOI18N
-
-        x3y3.setName("x3y3"); // NOI18N
-
-        x3y4.setName("x3y4"); // NOI18N
-
-        x3y5.setName("x3y5"); // NOI18N
-
-        x3y6.setName("x3y6"); // NOI18N
-
-        x4y1.setName("x4y1"); // NOI18N
-
-        x4y3.setName("x4y3"); // NOI18N
-
-        x4y5.setName("x4y5"); // NOI18N
-
-        x5y0.setName("x5y0"); // NOI18N
-
-        x5y1.setName("x5y1"); // NOI18N
-
-        x5y2.setName("x5y2"); // NOI18N
-
-        x5y3.setName("x5y3"); // NOI18N
-
-        x5y4.setName("x5y4"); // NOI18N
-
-        x5y6.setName("x5y6"); // NOI18N
-
-        x5y5.setName("x5y5"); // NOI18N
-
-        x6y1.setName("x6y1"); // NOI18N
-
-        x6y3.setName("x6y3"); // NOI18N
-
-        x6y5.setName("x6y5"); // NOI18N
-
-        javax.swing.GroupLayout PlateauLayout = new javax.swing.GroupLayout(Plateau);
-        Plateau.setLayout(PlateauLayout);
-        PlateauLayout.setHorizontalGroup(
-            PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlateauLayout.createSequentialGroup()
-                .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PlateauLayout.createSequentialGroup()
-                        .addComponent(x4y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x4y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x4y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PlateauLayout.createSequentialGroup()
-                        .addComponent(x0y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x0y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x0y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PlateauLayout.createSequentialGroup()
-                        .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(x3y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(x3y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addComponent(x2y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x2y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(x2y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(x3y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(6, 6, 6)
-                .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PlateauLayout.createSequentialGroup()
-                        .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addComponent(x2y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x2y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addComponent(x4y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x4y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addComponent(x0y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x0y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(x2y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x2y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(x0y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x0y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x4y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(PlateauLayout.createSequentialGroup()
-                        .addComponent(x3y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x3y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x3y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x3y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(PlateauLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PlateauLayout.createSequentialGroup()
-                        .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addComponent(x1y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x1y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x1y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x1y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x1y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x1y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(x1y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(x4y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(PlateauLayout.createSequentialGroup()
-                                    .addComponent(x5y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(x5y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(x5y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(x5y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(x5y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(x5y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(x5y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(18, Short.MAX_VALUE))
-                    .addGroup(PlateauLayout.createSequentialGroup()
-                        .addComponent(x6y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x6y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x6y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x6y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x6y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x6y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(x6y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        PlateauLayout.setVerticalGroup(
-            PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlateauLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PlateauLayout.createSequentialGroup()
-                        .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(PlateauLayout.createSequentialGroup()
-                                .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(x0y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(x0y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(x0y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x0y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x0y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x0y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x0y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(x1y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x1y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x1y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x1y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x1y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x1y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x1y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(x2y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(x2y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(x2y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(x2y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x2y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(x2y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(x2y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(x3y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(x3y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(x3y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(x3y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(x3y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(x3y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(x3y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(x4y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(x4y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(x4y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(x4y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(x4y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(x4y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(x4y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(x5y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(x5y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(x5y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(x5y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(x5y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(x5y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(x5y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(x6y0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(x6y2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(x6y4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(x6y6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(x6y1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(x6y3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(x6y5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(Plateau, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 48, 620, 620));
-
         panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
 
         lbl_carteAttente.setName("lbl_carteAttente"); // NOI18N
+
+        RotateRight.setText("↱");
+        RotateRight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRightActionPerformed(evt);
+            }
+        });
+
+        RotateRight1.setText("↰");
+        RotateRight1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRight1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel1.setText("Carte en dehors du plateau :");
 
         javax.swing.GroupLayout panneau_carte_attenteLayout = new javax.swing.GroupLayout(panneau_carte_attente);
         panneau_carte_attente.setLayout(panneau_carte_attenteLayout);
         panneau_carte_attenteLayout.setHorizontalGroup(
             panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(lbl_carteAttente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGroup(panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(RotateRight)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_carteAttente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RotateRight1)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         panneau_carte_attenteLayout.setVerticalGroup(
             panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneau_carte_attenteLayout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
-                .addComponent(lbl_carteAttente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98))
+            .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_carteAttente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(RotateRight)
+                            .addComponent(RotateRight1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 260, 280));
+        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 260, 150));
 
         btn_x1g.setText("▶");
         btn_x1g.addActionListener(new java.awt.event.ActionListener() {
@@ -682,7 +269,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x1gActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x1g, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+        getContentPane().add(btn_x1g, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
 
         btn_x1d.setText("◀");
         btn_x1d.addActionListener(new java.awt.event.ActionListener() {
@@ -690,7 +277,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x1dActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x1d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 170, -1, -1));
+        getContentPane().add(btn_x1d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 190, -1, -1));
 
         btn_x5g.setText("▶");
         btn_x5g.addActionListener(new java.awt.event.ActionListener() {
@@ -698,7 +285,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x5gActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x5g, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, -1, -1));
+        getContentPane().add(btn_x5g, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 540, -1, -1));
 
         btn_x3g.setText("▶");
         btn_x3g.addActionListener(new java.awt.event.ActionListener() {
@@ -706,7 +293,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x3gActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x3g, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, -1, -1));
+        getContentPane().add(btn_x3g, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, -1, -1));
 
         btn_x3d.setText("◀");
         btn_x3d.addActionListener(new java.awt.event.ActionListener() {
@@ -714,7 +301,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x3dActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x3d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 340, -1, -1));
+        getContentPane().add(btn_x3d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 360, -1, -1));
 
         btn_x5d.setText("◀");
         btn_x5d.addActionListener(new java.awt.event.ActionListener() {
@@ -722,7 +309,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x5dActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 510, -1, -1));
+        getContentPane().add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 540, -1, -1));
 
         btn_y1h.setText("▼");
         btn_y1h.addActionListener(new java.awt.event.ActionListener() {
@@ -730,7 +317,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y1hActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y1h, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, -1, -1));
+        getContentPane().add(btn_y1h, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, -1, -1));
 
         btn_y3h.setText("▼");
         btn_y3h.addActionListener(new java.awt.event.ActionListener() {
@@ -738,7 +325,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y3hActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y3h, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        getContentPane().add(btn_y3h, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
 
         btn_y5h.setText("▼");
         btn_y5h.addActionListener(new java.awt.event.ActionListener() {
@@ -754,7 +341,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y1bActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 670, -1, -1));
+        getContentPane().add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 710, -1, -1));
 
         btn_y3b.setText("▲");
         btn_y3b.addActionListener(new java.awt.event.ActionListener() {
@@ -762,7 +349,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y3bActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 670, -1, -1));
+        getContentPane().add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 710, -1, -1));
 
         btn_y5b.setText("▲");
         btn_y5b.addActionListener(new java.awt.event.ActionListener() {
@@ -770,11 +357,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y5bActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 670, -1, -1));
+        getContentPane().add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 710, -1, -1));
 
-        panelDarties.setBackground(new java.awt.Color(242, 0, 242));
-        panelDarties.setLayout(new java.awt.GridLayout(3, 3));
-        getContentPane().add(panelDarties, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 220, 180));
+        GridPanel.setBackground(new java.awt.Color(105, 55, 0));
+        GridPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        GridPanel.setLayout(new java.awt.GridLayout(7, 7));
+        getContentPane().add(GridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 630, 630));
 
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
@@ -782,64 +370,71 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_x1gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1gActionPerformed
-        plateau.injectX(1, true);
-        genUIBoard();
+
+        injectUIX(1, true);
     }//GEN-LAST:event_btn_x1gActionPerformed
 
     private void btn_x1dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1dActionPerformed
-        plateau.injectX(1, false);
-        genUIBoard();
+        injectUIX(1, false);
     }//GEN-LAST:event_btn_x1dActionPerformed
 
     private void btn_x3gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3gActionPerformed
-        plateau.injectX(3, true);
-        genUIBoard();
+        injectUIX(3, true);
     }//GEN-LAST:event_btn_x3gActionPerformed
 
     private void btn_x5gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5gActionPerformed
-        plateau.injectX(5, true);
-        genUIBoard();
+        injectUIX(5, true);
     }//GEN-LAST:event_btn_x5gActionPerformed
 
     private void btn_x3dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3dActionPerformed
-        plateau.injectX(3, false);
-        genUIBoard();
+        injectUIX(3, false);
     }//GEN-LAST:event_btn_x3dActionPerformed
 
     private void btn_x5dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5dActionPerformed
-        plateau.injectX(5, false);
-        genUIBoard();
+        injectUIX(5, false);
     }//GEN-LAST:event_btn_x5dActionPerformed
 
     private void btn_y1hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1hActionPerformed
-        plateau.injectY(1, true);
-        genUIBoard();
+        injectUIY(1,true);
     }//GEN-LAST:event_btn_y1hActionPerformed
 
     private void btn_y5hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5hActionPerformed
-        plateau.injectY(5, true);
-        genUIBoard();
+        injectUIY(5,true);
     }//GEN-LAST:event_btn_y5hActionPerformed
 
     private void btn_y3hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3hActionPerformed
-        plateau.injectY(3, true);
-        genUIBoard();
+        injectUIY(3,true);
     }//GEN-LAST:event_btn_y3hActionPerformed
 
     private void btn_y1bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1bActionPerformed
-        plateau.injectY(1, false);
-        genUIBoard();
+        injectUIY(1,false);
     }//GEN-LAST:event_btn_y1bActionPerformed
 
     private void btn_y3bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3bActionPerformed
-        plateau.injectY(3, false);
-        genUIBoard();
+        injectUIY(3,false);
     }//GEN-LAST:event_btn_y3bActionPerformed
 
     private void btn_y5bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5bActionPerformed
-        plateau.injectY(5, false);
-        genUIBoard();
+        injectUIY(5,false);
     }//GEN-LAST:event_btn_y5bActionPerformed
+
+    private void RotateRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRightActionPerformed
+        // TODO add your handling code here:
+        this.plateau.carteAttente.rotateRight();
+        GridPanel.removeAll();
+        genUIBoard();
+        revalidate();
+        repaint();
+    }//GEN-LAST:event_RotateRightActionPerformed
+
+    private void RotateRight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRight1ActionPerformed
+        // TODO add your handling code here:
+        this.plateau.carteAttente.rotateLeft();
+        GridPanel.removeAll();
+        genUIBoard();
+        revalidate();
+        repaint();
+    }//GEN-LAST:event_RotateRight1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -877,7 +472,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Plateau;
+    private javax.swing.JPanel GridPanel;
+    private javax.swing.JButton RotateRight;
+    private javax.swing.JButton RotateRight1;
     private javax.swing.JButton btn_x1d;
     private javax.swing.JButton btn_x1g;
     private javax.swing.JButton btn_x3d;
@@ -890,57 +487,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btn_y3h;
     private javax.swing.JButton btn_y5b;
     private javax.swing.JButton btn_y5h;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_carteAttente;
-    private javax.swing.JPanel panelDarties;
     private javax.swing.JPanel panneau_carte_attente;
-    private javax.swing.JLabel x0y0;
-    private javax.swing.JLabel x0y1;
-    private javax.swing.JLabel x0y2;
-    private javax.swing.JLabel x0y3;
-    private javax.swing.JLabel x0y4;
-    private javax.swing.JLabel x0y5;
-    private javax.swing.JLabel x0y6;
-    private javax.swing.JLabel x1y0;
-    private javax.swing.JLabel x1y1;
-    private javax.swing.JLabel x1y2;
-    private javax.swing.JLabel x1y3;
-    private javax.swing.JLabel x1y4;
-    private javax.swing.JLabel x1y5;
-    private javax.swing.JLabel x1y6;
-    private javax.swing.JLabel x2y0;
-    private javax.swing.JLabel x2y1;
-    private javax.swing.JLabel x2y2;
-    private javax.swing.JLabel x2y3;
-    private javax.swing.JLabel x2y4;
-    private javax.swing.JLabel x2y5;
-    private javax.swing.JLabel x2y6;
-    private javax.swing.JLabel x3y0;
-    private javax.swing.JLabel x3y1;
-    private javax.swing.JLabel x3y2;
-    private javax.swing.JLabel x3y3;
-    private javax.swing.JLabel x3y4;
-    private javax.swing.JLabel x3y5;
-    private javax.swing.JLabel x3y6;
-    private javax.swing.JLabel x4y0;
-    private javax.swing.JLabel x4y1;
-    private javax.swing.JLabel x4y2;
-    private javax.swing.JLabel x4y3;
-    private javax.swing.JLabel x4y4;
-    private javax.swing.JLabel x4y5;
-    private javax.swing.JLabel x4y6;
-    private javax.swing.JLabel x5y0;
-    private javax.swing.JLabel x5y1;
-    private javax.swing.JLabel x5y2;
-    private javax.swing.JLabel x5y3;
-    private javax.swing.JLabel x5y4;
-    private javax.swing.JLabel x5y5;
-    private javax.swing.JLabel x5y6;
-    private javax.swing.JLabel x6y0;
-    private javax.swing.JLabel x6y1;
-    private javax.swing.JLabel x6y2;
-    private javax.swing.JLabel x6y3;
-    private javax.swing.JLabel x6y4;
-    private javax.swing.JLabel x6y5;
-    private javax.swing.JLabel x6y6;
     // End of variables declaration//GEN-END:variables
 }
