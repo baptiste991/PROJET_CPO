@@ -331,6 +331,47 @@ public class Plateau extends Settings {
             carteAttente = firstCard;
         }
     }
+    
+    /**
+     * Methode qui a pour but de placer les joueurs sur leur spawn
+     */
+    public void placeAllPlayers(){
+
+        ArrayList<String> spawn = new ArrayList<String>();
+        spawn.add("SpawnUpLeft");
+        spawn.add("SpawnUpRight");
+        spawn.add("SpawnDownLeft");
+        spawn.add("SpawnDownRight");
+
+        // Boucle sur le nombre de joueurs de la partie
+        for(int p=0;p<this.getListeDeJoueurs().size();p++){
+            
+            //Tirage aléatoire du spawn
+            int randomint = random.nextInt(spawn.size());
+            int nbiteration=0;
+            
+            // Parcourt de toutes les cartes du plateau pour trouver le spawn
+            for(int i=0;i<7;i++){
+                if(nbiteration==1){
+                    nbiteration=0;
+                    break;
+                }
+                for(int j=0;j<7;j++){
+
+                    Carte carte = this.plateau.get(i).get(j);
+
+                    if(carte.getType()==spawn.get(randomint)){
+                        carte.isRidedByPlayers.add(this.getListeDeJoueurs().get(0));
+                        this.getListeDeJoueurs().get(p).setPosx(carte.getPosx());
+                        this.getListeDeJoueurs().get(p).setPosy(carte.getPosy());
+                        spawn.remove(spawn.get(randomint));
+                        nbiteration++;
+                        break;
+                    }
+                }
+            }
+        }  
+    }
 
     /**
      * Methode qui va attribuer toutes les missions à toutes les cartes Les
