@@ -29,8 +29,7 @@ public class Partie {
         Joueur player1 = new Joueur("Ulysse","");
         Joueur player2 = new Joueur("Baptiste","");     
         Joueur player3 = new Joueur("Adrien","");
-        Joueur player4 = new Joueur("Greg","");
-        plateau.setPlayerList(player1, player2, player3, player4);
+        plateau.setPlayerList(player1, player2, player3);
         plateau.placeAllPlayers();
 
         for(int i=0;i<plateau.getListeDeJoueurs().size();i++){
