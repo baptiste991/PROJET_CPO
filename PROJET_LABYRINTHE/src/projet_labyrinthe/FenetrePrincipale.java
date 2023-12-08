@@ -32,7 +32,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         genUIBoard();
         genUIWaitingCard(this.plateau.carteAttente);
         this.setVisible(true);
-
+        
+        
+        for (int i=0;i < 9; i++ ){
+            panelDarties.add(new dartiesCase(i));
+         }
+    
 
         //addMissionCards();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -335,6 +340,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btn_y1b = new javax.swing.JButton();
         btn_y3b = new javax.swing.JButton();
         btn_y5b = new javax.swing.JButton();
+        panelDarties = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -766,6 +772,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         getContentPane().add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 670, -1, -1));
 
+        panelDarties.setBackground(new java.awt.Color(242, 0, 242));
+        panelDarties.setLayout(new java.awt.GridLayout(3, 3));
+        getContentPane().add(panelDarties, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 220, 180));
+
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
         pack();
@@ -881,6 +891,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btn_y5b;
     private javax.swing.JButton btn_y5h;
     private javax.swing.JLabel lbl_carteAttente;
+    private javax.swing.JPanel panelDarties;
     private javax.swing.JPanel panneau_carte_attente;
     private javax.swing.JLabel x0y0;
     private javax.swing.JLabel x0y1;
