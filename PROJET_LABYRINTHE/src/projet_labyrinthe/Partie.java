@@ -28,6 +28,7 @@ public class Partie {
         Joueur player1 = new Joueur();
         plateau.setPlayerList(player1);
         plateau.setAllMissions();
+        plateau.setAllMissionsToCards();
         FenetrePrincipale gamewindow = new FenetrePrincipale(plateau);
     }
         

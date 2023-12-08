@@ -1,6 +1,7 @@
 package projet_labyrinthe;
 
 import java.awt.Component;
+import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -52,63 +53,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public void genUIWaitingCard(Carte carte) {
 
         //assignation graphique de la carte
-        lbl_carteAttente.setIcon(new javax.swing.ImageIcon(getClass().getResource("../images/"+carte.getType()+".png")));
+        panneau_carte_attente.removeAll();
+        panneau_carte_attente.add(new UICarteOut(carte));
     }
 
-    /**
-     * Methode qui génère graphiquement une mission sur le plateau : Associe à
-     * une mission sa représentation graphique
-     */
-    public void genUIMissions() {
 
-        // on définit les missions + les attribus sur des cartes spécifiques
-        this.plateau.setAllMissions();
-        this.plateau.setAllMissionsToCards();
-        
-        //On parcourt toutes les missions pour les représenter
-        for (int i = 0; i < 16; i++) {
-            gen1UIMission(this.plateau.getAllMissions().get(i));
-        }
-    }
-
-    /**
-     * Methode qui génère graphiquement toutes les missions sur le plateau :
-     * Associe a toutes les missions leur représentation graphique
-     *
-     * @param mission La mission que l'on va représenter graphiquement
-     */
-    public void gen1UIMission(Mission mission) {
-        
-        int nbMission=0;
-
-        //*
-        //On parcourt toutes les cartes pour trouver les coordonnées de la mission
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                /*
-                Mission missionFound = this.plateau.getPlateau().get(i).get(j).getMission();
-           
-                //Si la carte de coordonnée [i:j] détient la mission
-                if(missionFound != null && missionFound.equals(mission)){
-                    
-                    nbMission++;
-                    
-                    // On cherche l'image correspondante à la mission
-                    String missionImagePath = "/images/Cards/mission/" + mission.getObjet() + ".png";
-                    
-                    // Nouvel ImageIcon à partir du chemin de l'image
-                    ImageIcon missionIcon = new ImageIcon(getClass().getResource(missionImagePath));
-
-                    // Affectez l'icône à l'étiquette de la carte
-                    getLabelByName("Mission1").setIcon(missionIcon);
-                    
-                     
-                }
-                */
-            }
-        }
- 
-    }
 
     /**
      * Methode qui représente graphiquement un joueur
@@ -139,11 +88,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
            //Generation de la grille dans le cas ou c'est la première génération
             for (int x=0;x < 7; x++ ){
                 for(int y=0;y<7;y++){
+
                     GridPanel.add(new UICarte(this.plateau.getPlateau().get(x).get(y)));  
                 } 
             }
-        
-        genUIMissions();
         genUIPlayers();
         genUIWaitingCard(plateau.carteAttente);
     }
@@ -179,10 +127,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         panneau_carte_attente = new javax.swing.JPanel();
-        lbl_carteAttente = new javax.swing.JLabel();
-        RotateRight = new javax.swing.JButton();
-        RotateRight1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         btn_x1g = new javax.swing.JButton();
         btn_x1d = new javax.swing.JButton();
         btn_x5g = new javax.swing.JButton();
@@ -196,6 +140,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btn_y3b = new javax.swing.JButton();
         btn_y5b = new javax.swing.JButton();
         GridPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        RotateRight1 = new javax.swing.JButton();
+        RotateRight = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -206,62 +153,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
-
-        lbl_carteAttente.setName("lbl_carteAttente"); // NOI18N
-
-        RotateRight.setText("↱");
-        RotateRight.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RotateRightActionPerformed(evt);
-            }
-        });
-
-        RotateRight1.setText("↰");
-        RotateRight1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RotateRight1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel1.setText("Carte en dehors du plateau :");
-
-        javax.swing.GroupLayout panneau_carte_attenteLayout = new javax.swing.GroupLayout(panneau_carte_attente);
-        panneau_carte_attente.setLayout(panneau_carte_attenteLayout);
-        panneau_carte_attenteLayout.setHorizontalGroup(
-            panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
-                .addGroup(panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(RotateRight)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbl_carteAttente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RotateRight1)))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-        panneau_carte_attenteLayout.setVerticalGroup(
-            panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_carteAttente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panneau_carte_attenteLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(panneau_carte_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RotateRight)
-                            .addComponent(RotateRight1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 260, 150));
+        panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
+        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 90, 90));
 
         btn_x1g.setText("▶");
         btn_x1g.addActionListener(new java.awt.event.ActionListener() {
@@ -363,6 +256,26 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         GridPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         GridPanel.setLayout(new java.awt.GridLayout(7, 7));
         getContentPane().add(GridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 630, 630));
+
+        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel1.setText("Carte en dehors du plateau :");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+
+        RotateRight1.setText("↰");
+        RotateRight1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRight1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+
+        RotateRight.setText("↱");
+        RotateRight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRightActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
 
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
@@ -488,7 +401,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btn_y5b;
     private javax.swing.JButton btn_y5h;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lbl_carteAttente;
     private javax.swing.JPanel panneau_carte_attente;
     // End of variables declaration//GEN-END:variables
 }

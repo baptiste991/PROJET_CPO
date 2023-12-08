@@ -18,10 +18,12 @@ public class UICarte extends JLabel {
 
     Carte carte;
     BufferedImage image=null;
+    BufferedImage mission=null;
 
     public UICarte(Carte carte) {
         this.carte = carte;
     }
+    
     
     // On repeint visuellement la carte
     @Override
@@ -33,10 +35,10 @@ public class UICarte extends JLabel {
             String type = carte.getType() ;
             if((type== "SpawnUpLeft") ||( type == "SpawnUpRight" )|| (type == "SpawnDownLeft" )||( type== "SpawnDownRight")){
                 // Charge l'image du spawn depuis le chemin spécifié
-                image = ImageIO.read(new File("./src/Cards/Spawn/"+carte.getType()+".png"));
+                image = ImageIO.read(new File("./src/SpawnCards/"+carte.getType()+".png"));
             } else {
                 // Charge les autres images 
-                image = ImageIO.read(new File("./src/images/"+carte.getType()+".png"));
+                image = ImageIO.read(new File("./src/Cards/"+carte.getType()+".png"));
             }
                         
             } catch (IOException e) {
@@ -44,7 +46,26 @@ public class UICarte extends JLabel {
                 e.printStackTrace();
             }
             g.drawImage(image, 0, 0, 90, 90, null);
-     }
+            
+        //Recherche de mission
+        if(carte.getMission()!=null){
+            
+           //Récupération du path de l'image correspondante
+            try { 
+                mission = ImageIO.read(new File("./src/Missions/"+carte.getMission().getObjet()+".png"));
+            } catch (IOException e) {
+                    System.out.println(e.getCause());
+                    e.printStackTrace();
+                }
+            
+            // Display de l'image de la mission
+            g.drawImage(mission, 17, 12, 55, 55, null);
+            
+        }
+   
+    }        
+            
+     
     
     
 }
