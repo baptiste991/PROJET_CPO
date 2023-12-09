@@ -330,7 +330,83 @@ public class Carte{
         this.type = type;
     }
     
+    /**
+     * Methode qui a pour but de tourner la carte a 90° a droite
+     */
+    public void rotateRight(){
+        switch(this.type){
+            case "I"->{
+                this.gen1_();
+            }
+            case "_"->{
+                this.gen1I();
+            }
+            case"DownLeftC"->{
+                this.gen1CornerUpLeft();
+            }
+            case"DownRightC"->{
+                this.gen1CornerDownLeft();
+            }
+            case"UpLeftC"->{
+                this.gen1CornerUpRight();
+            }
+            case"UpRightC"->{
+                this.gen1CornerDownRight();
+            }
+            case"TDown"->{
+                this.gen1TLeft();
+            }
+            case"TUp"->{
+                this.gen1TRight();
+            }
+            case"TRight"->{
+                this.gen1TDown();
+            }
+            case"TLeft"->{
+                this.gen1TUp();
+            }
+            
+        }
+    }
     
+     /**
+     * Methode qui a pour but de tourner la carte a 90° a gauche
+     */
+    public void rotateLeft(){
+        switch(this.type){
+            case "I"->{
+                this.gen1_();
+            }
+            case "_"->{
+                this.gen1I();
+            }
+            case"DownLeftC"->{
+                this.gen1CornerDownRight();
+            }
+            case"DownRightC"->{
+                this.gen1CornerUpRight();
+            }
+            case"UpLeftC"->{
+                this.gen1CornerDownLeft();
+            }
+            case"UpRightC"->{
+                this.gen1CornerUpLeft();
+            }
+            case"TDown"->{
+                this.gen1TRight();
+            }
+            case"TUp"->{
+                this.gen1TLeft();
+            }
+            case"TRight"->{
+                this.gen1TUp();
+            }
+            case"TLeft"->{
+                this.gen1TDown();
+            }
+            
+        }
+    }
     
     
     

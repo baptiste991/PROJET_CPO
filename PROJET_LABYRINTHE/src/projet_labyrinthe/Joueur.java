@@ -15,6 +15,46 @@ public class Joueur {
      */
     
     private int posx, posy;
+    String name;
+    String skinpath;
+
+    /**
+     * Getter Posx
+     * @return
+     */
+    public int getPosx() {
+        return posx;
+    }
+
+    /**
+     * Getter Posy
+     * @return
+     */
+    public int getPosy() {
+        return posy;
+    }
+
+    
+    
+    /**
+     * Constructeur simple
+     */
+    public Joueur() {
+        
+    }
+
+    
+    /**
+     * Constructeur qui prend un string type nom et un string type path
+     * @param name
+     * @param skinpath
+     */
+    public Joueur(String name, String skinpath) {
+        this.name = name;
+        this.skinpath = skinpath;
+    }
+    
+    
     
     /**
      * Methode qui permet le déplacement d'un joueur au Nord de la carte
@@ -59,6 +99,23 @@ public class Joueur {
     public void deplacementOuest(){
         posx--;
     }
+
+    /**
+     * Setter posX
+     * @param posx
+     */
+    public void setPosx(int posx) {
+        this.posx = posx;
+    }
+
+    /**
+     * Setter PosY
+     * @param posy
+     */
+    public void setPosy(int posy) {
+        this.posy = posy;
+    }
+    
     
     
     

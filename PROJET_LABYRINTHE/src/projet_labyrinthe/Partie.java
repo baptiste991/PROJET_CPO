@@ -24,10 +24,22 @@ public class Partie {
      */
     public Partie() {
         
-        Plateau plateau = new Plateau();
-        Joueur player1 = new Joueur();
-        plateau.setPlayerList(player1);
+        Plateau plateau = new Plateau(); 
+        
+        Joueur player1 = new Joueur("Ulysse","");
+        Joueur player2 = new Joueur("Baptiste","");     
+        Joueur player3 = new Joueur("Adrien","");
+        plateau.setPlayerList(player1, player2, player3);
+        plateau.placeAllPlayers();
+
+        for(int i=0;i<plateau.getListeDeJoueurs().size();i++){
+            System.out.println(plateau.getListeDeJoueurs().get(i).name);
+            System.out.println( plateau.getListeDeJoueurs().get(i).getPosx());
+            System.out.println( plateau.getListeDeJoueurs().get(i).getPosy());
+        }
+
         plateau.setAllMissions();
+        plateau.setAllMissionsToCards();
         FenetrePrincipale gamewindow = new FenetrePrincipale(plateau);
     }
         

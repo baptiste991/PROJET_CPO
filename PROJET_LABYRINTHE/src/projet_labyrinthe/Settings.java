@@ -146,25 +146,26 @@ public abstract class Settings{
                 // On supprime un objet car 3 joueurs => this.listeDesObjets.length/3 pas entier
                 
                 for(int j=0;j<3;j++){
-                    for(int i=0;i<objetsRestants.size()/3;j++){
+                    for(int i=0;i<5;i++){
                         int indexRandom = random.nextInt(objetsRestants.size());
                         Mission mission = new Mission(this.listeDeJoueurs.get(j), objetsRestants.get(indexRandom));
                         allMissions.add(mission);
                         objetsRestants.remove(indexRandom);
                     }
                 }
+               
             }
             
             case 4->{
                 Random random = new Random();
                 
                 ArrayList<String> objetsRestants = new ArrayList();
-                for(int i=0;i<this.listeDesObjets.length;i++){
+                for(int i=0;i<16;i++){
                     objetsRestants.add(this.listeDesObjets[i]);
                 }
                 
                 for(int j=0;j<4;j++){
-                    for(int i=0;i<objetsRestants.size()/3;j++){
+                    for(int i=0;i<4;i++){
                         int indexRandom = random.nextInt(objetsRestants.size());
                         Mission mission = new Mission(this.listeDeJoueurs.get(j), objetsRestants.get(indexRandom));
                         allMissions.add(mission);
@@ -172,6 +173,7 @@ public abstract class Settings{
                     }
                 }
             }
+
             
         }
 

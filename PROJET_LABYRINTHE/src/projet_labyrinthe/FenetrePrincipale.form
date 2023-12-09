@@ -4,6 +4,9 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="69" green="a8" id="Actions.Green" palette="3" red="59" type="palette"/>
+    </Property>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Default Cursor"/>
     </Property>
@@ -36,513 +39,6 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="Plateau">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="cc" type="rgb"/>
-        </Property>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="440" y="48" width="620" height="620"/>
-        </Constraint>
-      </Constraints>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="x4y0" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x4y1" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x4y2" min="-2" pref="80" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="x0y0" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x0y1" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x0y2" min="-2" pref="80" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x3y0" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="x3y1" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="x2y0" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x2y1" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="x2y2" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="x3y2" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="x2y3" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x2y4" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="x4y3" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x4y4" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="x0y3" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x0y4" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="x2y5" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x2y6" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="x0y5" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x0y6" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x4y5" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="x3y3" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x3y4" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x3y5" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x3y6" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="x1y0" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x1y1" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x1y2" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x1y3" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x1y4" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x1y5" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="x1y6" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="x4y6" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="x5y0" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="x5y1" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="x5y2" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="x5y3" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="x5y4" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="x5y5" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="x5y6" min="-2" pref="80" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="x6y0" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x6y1" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x6y2" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x6y3" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x6y4" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x6y5" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="x6y6" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="x0y2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                                          <Component id="x0y1" min="-2" pref="80" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="x0y3" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x0y5" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x0y0" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x0y6" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x0y4" min="-2" pref="80" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="x1y0" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x1y1" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x1y2" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x1y3" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x1y4" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x1y5" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x1y6" min="-2" pref="80" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="x2y0" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                                          <Component id="x2y2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                                          <Component id="x2y4" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="x2y3" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x2y5" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="x2y6" min="-2" pref="80" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="x2y1" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="x3y0" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="x3y1" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="x3y2" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="x3y3" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="x3y4" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="x3y5" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="x3y6" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="x4y0" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="x4y2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="x4y4" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="x4y3" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="x4y5" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="x4y6" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="x4y1" min="-2" pref="80" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="x5y0" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="x5y1" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="x5y2" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="x5y3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="x5y4" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="x5y6" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="x5y5" min="-2" pref="80" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="x6y0" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="x6y2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="x6y4" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="x6y6" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="x6y1" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="x6y3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="x6y5" min="-2" pref="80" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="x0y0">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x0y0" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x0y2">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x0y2" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x0y4">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x0y4" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x0y6">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x0y6" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x2y0">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x2y0" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x2y2">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x2y2" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x2y4">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x2y4" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x2y6">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x2y6" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x4y0">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x4y0" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x4y2">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x4y2" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x4y4">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x4y4" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x4y6">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x4y6" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x6y0">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x6y0" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x6y2">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x6y2" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x6y4">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x6y4" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x6y6">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x6y6" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x0y1">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x0y1" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x0y3">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x0y3" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x0y5">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x0y5" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x1y0">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x1y0" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x1y1">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x1y1" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x1y2">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x1y2" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x1y3">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x1y3" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x1y4">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x1y4" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x1y5">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x1y5" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x1y6">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x1y6" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x2y1">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x2y1" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x2y3">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x2y3" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x2y5">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x2y5" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x3y0">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x3y0" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x3y1">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x3y1" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x3y2">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x3y2" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x3y3">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x3y3" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x3y4">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x3y4" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x3y5">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x3y5" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x3y6">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x3y6" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x4y1">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x4y1" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x4y3">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x4y3" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x4y5">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x4y5" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x5y0">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x5y0" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x5y1">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x5y1" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x5y2">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x5y2" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x5y3">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x5y3" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x5y4">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x5y4" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x5y6">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x5y6" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x5y5">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x5y5" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x6y1">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x6y1" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x6y3">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x6y3" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="x6y5">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="x6y5" noResource="true"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
     <Container class="javax.swing.JPanel" name="panneau_carte_attente">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -551,37 +47,14 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="50" width="260" height="280"/>
+          <AbsoluteConstraints x="120" y="340" width="90" height="90"/>
         </Constraint>
       </Constraints>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                  <Component id="lbl_carteAttente" min="-2" pref="80" max="-2" attributes="0"/>
-                  <EmptySpace pref="92" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="102" max="32767" attributes="0"/>
-                  <Component id="lbl_carteAttente" min="-2" pref="80" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+        <Property name="columns" type="int" value="1"/>
+        <Property name="rows" type="int" value="1"/>
       </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lbl_carteAttente">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="lbl_carteAttente" noResource="true"/>
-          </Properties>
-        </Component>
-      </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="btn_x1g">
       <Properties>
@@ -592,7 +65,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="170" width="-1" height="-1"/>
+          <AbsoluteConstraints x="350" y="190" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -605,7 +78,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1070" y="170" width="-1" height="-1"/>
+          <AbsoluteConstraints x="1090" y="190" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -618,7 +91,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="510" width="-1" height="-1"/>
+          <AbsoluteConstraints x="350" y="540" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -631,7 +104,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="340" width="-1" height="-1"/>
+          <AbsoluteConstraints x="350" y="360" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -644,7 +117,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1070" y="340" width="-1" height="-1"/>
+          <AbsoluteConstraints x="1090" y="360" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -657,7 +130,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1070" y="510" width="-1" height="-1"/>
+          <AbsoluteConstraints x="1090" y="540" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -670,7 +143,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="560" y="20" width="-1" height="-1"/>
+          <AbsoluteConstraints x="540" y="20" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -683,7 +156,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="730" y="20" width="-1" height="-1"/>
+          <AbsoluteConstraints x="720" y="20" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -709,7 +182,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="560" y="670" width="-1" height="-1"/>
+          <AbsoluteConstraints x="540" y="710" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -722,7 +195,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="730" y="670" width="-1" height="-1"/>
+          <AbsoluteConstraints x="720" y="710" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -735,26 +208,75 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="910" y="670" width="-1" height="-1"/>
+          <AbsoluteConstraints x="900" y="710" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Container class="javax.swing.JPanel" name="panelDarties">
+    <Container class="javax.swing.JPanel" name="GridPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="0" red="f2" type="rgb"/>
+          <Color blue="0" green="37" red="69" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+            <BevelBorder bevelType="1">
+              <Color PropertyName="highlightOuter" blue="0" green="0" red="0" type="rgb"/>
+              <Color PropertyName="highlightInner" blue="0" green="0" red="0" type="rgb"/>
+              <Color PropertyName="shadowOuter" blue="0" green="0" red="0" type="rgb"/>
+              <Color PropertyName="shadowInner" blue="0" green="0" red="0" type="rgb"/>
+            </BevelBorder>
+          </Border>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="80" y="390" width="220" height="180"/>
+          <AbsoluteConstraints x="430" y="60" width="630" height="630"/>
         </Constraint>
       </Constraints>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-        <Property name="columns" type="int" value="3"/>
-        <Property name="rows" type="int" value="3"/>
+        <Property name="columns" type="int" value="7"/>
+        <Property name="rows" type="int" value="7"/>
       </Layout>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Monospaced" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Carte en dehors du plateau :"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="50" y="310" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="RotateRight1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x21b0;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RotateRight1ActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="220" y="370" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="RotateRight">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x21b1;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RotateRightActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="70" y="370" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>
