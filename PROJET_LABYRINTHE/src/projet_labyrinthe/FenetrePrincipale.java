@@ -44,7 +44,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         plateau.setListMissionOfPlayers();
         initComponents();
         gen1UItour(ordre);
-        
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
@@ -403,11 +403,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Valider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Jeu");
         setAlwaysOnTop(true);
         setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFocusTraversalPolicyProvider(true);
         setMinimumSize(new java.awt.Dimension(1515, 750));
         setName("Labyrinthe"); // NOI18N
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
@@ -553,6 +563,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Left.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LeftActionPerformed(evt);
+            }
+        });
+        Left.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LeftKeyPressed(evt);
             }
         });
         getContentPane().add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 50, 40));
@@ -828,6 +843,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_ValiderActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+        // TODO add your handling code h
+    }//GEN-LAST:event_formKeyTyped
+
+    private void LeftKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LeftKeyPressed
+        // TODO add your handling code here:
+                
+    }//GEN-LAST:event_LeftKeyPressed
 
     /**
      * @param args the command line arguments
