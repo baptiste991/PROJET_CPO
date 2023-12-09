@@ -60,6 +60,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         panneau_carte_attente.add(new UICarteOut(carte));
     }
 
+    public void genUIPlayerHasToPlay(Joueur player) {
+
+        Carte carte = new Carte();
+        //assignation graphique du panel
+        PanelTour.removeAll();
+        PanelTour.add(new UICarteOut(carte));
+    }
 
 
  
@@ -123,9 +130,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btn_y3b = new javax.swing.JButton();
         btn_y5b = new javax.swing.JButton();
         GridPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Text1 = new javax.swing.JLabel();
         RotateRight1 = new javax.swing.JButton();
         RotateRight = new javax.swing.JButton();
+        Text2 = new javax.swing.JLabel();
+        PanelTour = new javax.swing.JPanel();
+        Text3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -137,7 +147,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
         panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
-        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 90, 90));
+        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 90, 90));
 
         btn_x1g.setText("▶");
         btn_x1g.addActionListener(new java.awt.event.ActionListener() {
@@ -240,9 +250,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         GridPanel.setLayout(new java.awt.GridLayout(7, 7));
         getContentPane().add(GridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 630, 630));
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel1.setText("Carte en dehors du plateau :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        Text1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text1.setText("Carte en dehors du plateau :");
+        getContentPane().add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         RotateRight1.setText("↰");
         RotateRight1.addActionListener(new java.awt.event.ActionListener() {
@@ -250,7 +260,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 RotateRight1ActionPerformed(evt);
             }
         });
-        getContentPane().add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+        getContentPane().add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
 
         RotateRight.setText("↱");
         RotateRight.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +268,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 RotateRightActionPerformed(evt);
             }
         });
-        getContentPane().add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+        getContentPane().add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        Text2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text2.setText("    C'est au tour de :");
+        getContentPane().add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+
+        PanelTour.setBackground(new java.awt.Color(153, 255, 153));
+        PanelTour.setForeground(new java.awt.Color(204, 204, 255));
+        PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
+        getContentPane().add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
+
+        Text3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text3.setText("    Actions possibles :");
+        getContentPane().add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
 
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
@@ -369,8 +392,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel GridPanel;
+    private javax.swing.JPanel PanelTour;
     private javax.swing.JButton RotateRight;
     private javax.swing.JButton RotateRight1;
+    private javax.swing.JLabel Text1;
+    private javax.swing.JLabel Text2;
+    private javax.swing.JLabel Text3;
     private javax.swing.JButton btn_x1d;
     private javax.swing.JButton btn_x1g;
     private javax.swing.JButton btn_x3d;
@@ -383,7 +410,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btn_y3h;
     private javax.swing.JButton btn_y5b;
     private javax.swing.JButton btn_y5h;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panneau_carte_attente;
     // End of variables declaration//GEN-END:variables
 }

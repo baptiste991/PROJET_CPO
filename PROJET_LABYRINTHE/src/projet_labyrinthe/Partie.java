@@ -1,6 +1,8 @@
 
 package projet_labyrinthe;
 
+import java.util.ArrayList;
+
 /**
  * Classe qui génère et gère une partie.
  * Elle est instancée dans la classe Run, i.e c'est la classe run qui lance 
@@ -18,22 +20,46 @@ package projet_labyrinthe;
  * @version 1.0
  */
 public class Partie {
-        
+     
+    
+    Joueur firstturn = new Joueur();
+    Plateau plateau = new Plateau(); 
     /**
      * Constructeur Partie
+     * @param listeJoueurs
      */
-    public Partie() {
+    public Partie(ArrayList<Joueur> listeJoueurs) {
         
-        Plateau plateau = new Plateau(); 
-        
-        Joueur player1 = new Joueur("Ulysse","skin1");
-        Joueur player2 = new Joueur("Baptiste","skin2");     
-        Joueur player3 = new Joueur("Adrien","skin3");
-        Joueur player4 = new Joueur("Gregory","skin4");
-        plateau.setPlayerList(player1, player2, player3, player4);
-        FenetrePrincipale gamewindow = new FenetrePrincipale(plateau);
-
+       //On lance la bonne méthode setPlayerList en fonction du nb de joueur
+       switch(listeJoueurs.size()){
+           case 1->{
+                plateau.setPlayerList(listeJoueurs.get(0));    
+           }
+           case 2->{
+                plateau.setPlayersList(listeJoueurs.get(0), listeJoueurs.get(1));
+           }
+           case 3->{
+                plateau.setPlayerList(listeJoueurs.get(0), listeJoueurs.get(1), listeJoueurs.get(2));
+           }
+           case 4->{
+                plateau.setPlayerList(listeJoueurs.get(0), listeJoueurs.get(1), listeJoueurs.get(2), listeJoueurs.get(3));
+           }
+       }
     }
+    
+    /**
+     * Methode qui permet de définir la première personne à commencer à jouer
+     * @param first
+     */
+    public void setFirstTurn(Joueur first){
+        this.firstturn = first;
+    }
+    
+    public void startWindow(){
+        FenetrePrincipale gamewindow = new FenetrePrincipale(plateau);
+    }
+    
+    
         
         
 }
