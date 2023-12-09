@@ -2,6 +2,7 @@ package projet_labyrinthe;
 
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -80,47 +81,64 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public void genUIRightSide(){
         switch(this.plateau.getListeDeJoueurs().size()){
             case 1->{
-                Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
                 
-                for(int i=0;i<4;i++){
-                    MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
+                MissionsView1.setVisible(true);
+                MissionsView43.setVisible(false);
+                MissionsView2.setVisible(false);
+                
+                Skin111.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
+                
+                for(int i=0;i<16;i++){
+                    MissionsP111.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
-                
                 Player1.setVisible(true);
-                Player2.setVisible(false);
-                Player3.setVisible(false);
-                Player4.setVisible(false);
             }
             
             case 2 ->{
-                Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
-                Skin2.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
+                MissionsView43.setVisible(false);
+                MissionsView2.setVisible(true);
+                MissionsView1.setVisible(false);
                 
-                for(int i=0;i<4;i++){
-                    MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
+                Skin21.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
+                Skin22.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
+
+                
+                
+                for(int i=0;i<8;i++){
+                    MissionsP21.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
-                for(int i=0;i<4;i++){
-                    MissionP2.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
+                for(int i=0;i<8;i++){
+                    MissionsP22.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
                 }
                 
+
                 Player1.setVisible(true);
                 Player2.setVisible(true);
-                Player3.setVisible(false);
-                Player4.setVisible(false);
+                
+
             }
             
             case 3->{
+                MissionsView2.setVisible(false);
+                MissionsView1.setVisible(false);
                 Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
                 Skin2.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
                 Skin3.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(2)));
                 
-                for(int i=0;i<4;i++){
+                GridLayout MissionP1for3 = new GridLayout(1, 5);
+                MissionP1.setLayout(MissionP1for3);
+                GridLayout MissionP2for3 = new GridLayout(1, 5);
+                MissionP1.setLayout(MissionP2for3);
+                GridLayout MissionP3for3 = new GridLayout(1, 5);
+                MissionP1.setLayout(MissionP3for3);
+                
+                for(int i=0;i<5;i++){
                     MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
-                for(int i=0;i<4;i++){
+                for(int i=0;i<5;i++){
                     MissionP2.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
                 }
-                for(int i=0;i<4;i++){
+                for(int i=0;i<5;i++){
                     MissionP3.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(2).getObjets().get(i)));
                 }
                 Player1.setVisible(true);
@@ -129,6 +147,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 Player4.setVisible(false);
             }
             case 4->{
+                MissionsView1.setVisible(false);
+                MissionsView2.setVisible(false);
                 Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
                 Skin2.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
                 Skin3.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(2)));
@@ -286,7 +306,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Up = new javax.swing.JButton();
         Down = new javax.swing.JButton();
         Right = new javax.swing.JButton();
-        MissionsView = new javax.swing.JPanel();
+        MissionsView1 = new javax.swing.JPanel();
+        Player111 = new javax.swing.JPanel();
+        Skin111 = new javax.swing.JPanel();
+        MissionsP111 = new javax.swing.JPanel();
+        MissionsView2 = new javax.swing.JPanel();
+        Player21 = new javax.swing.JPanel();
+        Skin21 = new javax.swing.JPanel();
+        MissionsP21 = new javax.swing.JPanel();
+        Player22 = new javax.swing.JPanel();
+        Skin22 = new javax.swing.JPanel();
+        MissionsP22 = new javax.swing.JPanel();
+        MissionsView43 = new javax.swing.JPanel();
         Player1 = new javax.swing.JPanel();
         Skin1 = new javax.swing.JPanel();
         MissionP1 = new javax.swing.JPanel();
@@ -465,8 +496,52 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Right.setText("→");
         getContentPane().add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 50, 40));
 
-        MissionsView.setBackground(new java.awt.Color(255, 0, 255));
-        MissionsView.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        MissionsView1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Player111.setBackground(new java.awt.Color(255, 204, 204));
+        Player111.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin111.setLayout(new java.awt.GridLayout(1, 1));
+        Player111.add(Skin111, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionsP111.setBackground(new java.awt.Color(153, 255, 204));
+        MissionsP111.setLayout(new java.awt.GridLayout(4, 4));
+        Player111.add(MissionsP111, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 310));
+
+        MissionsView1.add(Player111, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 370));
+
+        getContentPane().add(MissionsView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 90, 320, 560));
+
+        MissionsView2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Player21.setBackground(new java.awt.Color(255, 204, 204));
+        Player21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin21.setLayout(new java.awt.GridLayout(1, 1));
+        Player21.add(Skin21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionsP21.setBackground(new java.awt.Color(153, 255, 204));
+        MissionsP21.setLayout(new java.awt.GridLayout(2, 4));
+        Player21.add(MissionsP21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 160));
+
+        MissionsView2.add(Player21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, -1));
+
+        Player22.setBackground(new java.awt.Color(204, 204, 255));
+        Player22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin22.setLayout(new java.awt.GridLayout(1, 1));
+        Player22.add(Skin22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionsP22.setBackground(new java.awt.Color(102, 255, 153));
+        MissionsP22.setLayout(new java.awt.GridLayout(2, 4));
+        Player22.add(MissionsP22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 140));
+
+        MissionsView2.add(Player22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 200));
+
+        getContentPane().add(MissionsView2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 90, 320, 560));
+
+        MissionsView43.setBackground(new java.awt.Color(255, 0, 255));
+        MissionsView43.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Player1.setBackground(new java.awt.Color(255, 204, 204));
         Player1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -477,7 +552,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionP1.setLayout(new java.awt.GridLayout(1, 4));
         Player1.add(MissionP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
 
-        MissionsView.add(Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 120));
+        MissionsView43.add(Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 120));
 
         Player3.setBackground(new java.awt.Color(204, 204, 255));
         Player3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -488,7 +563,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionP3.setLayout(new java.awt.GridLayout(1, 4));
         Player3.add(MissionP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
 
-        MissionsView.add(Player3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 120));
+        MissionsView43.add(Player3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 120));
 
         Player2.setBackground(new java.awt.Color(204, 255, 204));
         Player2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -499,7 +574,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionP2.setLayout(new java.awt.GridLayout(1, 4));
         Player2.add(MissionP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
 
-        MissionsView.add(Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 300, 120));
+        MissionsView43.add(Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 300, 120));
 
         Player4.setBackground(new java.awt.Color(204, 204, 0));
         Player4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -510,9 +585,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionP4.setLayout(new java.awt.GridLayout(1, 4));
         Player4.add(MissionP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
 
-        MissionsView.add(Player4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 120));
+        MissionsView43.add(Player4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 120));
 
-        getContentPane().add(MissionsView, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 90, 320, 560));
+        getContentPane().add(MissionsView43, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 90, 320, 560));
 
         Objets.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         Objets.setText("Objets à récupérer");
@@ -648,18 +723,29 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel MissionP2;
     private javax.swing.JPanel MissionP3;
     private javax.swing.JPanel MissionP4;
-    private javax.swing.JPanel MissionsView;
+    private javax.swing.JPanel MissionsP111;
+    private javax.swing.JPanel MissionsP21;
+    private javax.swing.JPanel MissionsP22;
+    private javax.swing.JPanel MissionsView1;
+    private javax.swing.JPanel MissionsView2;
+    private javax.swing.JPanel MissionsView43;
     private javax.swing.JLabel Objets;
     private javax.swing.JPanel PanelTour;
     private javax.swing.JPanel Player1;
+    private javax.swing.JPanel Player111;
     private javax.swing.JPanel Player2;
+    private javax.swing.JPanel Player21;
+    private javax.swing.JPanel Player22;
     private javax.swing.JPanel Player3;
     private javax.swing.JPanel Player4;
     private javax.swing.JButton Right;
     private javax.swing.JButton RotateRight;
     private javax.swing.JButton RotateRight1;
     private javax.swing.JPanel Skin1;
+    private javax.swing.JPanel Skin111;
     private javax.swing.JPanel Skin2;
+    private javax.swing.JPanel Skin21;
+    private javax.swing.JPanel Skin22;
     private javax.swing.JPanel Skin3;
     private javax.swing.JPanel Skin4;
     private javax.swing.JLabel Text1;
