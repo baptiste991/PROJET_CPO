@@ -34,7 +34,7 @@ public class run {
         listejoueur.add(player4);
         
         Partie partie = new Partie(listejoueur);
-        partie.setFirstTurn(player1);
+        partie.setFirstTurn(player4);
         partie.startWindow();
     
         }

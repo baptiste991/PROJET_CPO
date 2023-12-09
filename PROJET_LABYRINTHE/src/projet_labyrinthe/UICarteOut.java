@@ -25,17 +25,18 @@ public class UICarteOut extends JLabel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
 
-        // On récupère le path de l'image
-        try {
-            String type = carte.getType() ;
-            
-            image = ImageIO.read(new File("./src/Cards/"+carte.getType()+".png"));
-                      
-            } catch (IOException e) {
-                System.out.println(e.getCause());
-                e.printStackTrace();
-            }
-            g.drawImage(image, 0, 0, 90, 90, null);
+        // On récupère le path de l'image 
+            try {
+                String type = carte.getType() ;
+
+                image = ImageIO.read(new File("./src/Cards/"+carte.getType()+".png"));
+
+                } catch (IOException e) {
+                    System.out.println(e.getCause());
+                    e.printStackTrace();
+                }
+                g.drawImage(image, 0, 0, 90, 90, null);
+        
         
         //Si Mission
         if(carte.getMission()!=null){
@@ -50,6 +51,24 @@ public class UICarteOut extends JLabel {
         // Display de l'image de la mission
         g.drawImage(mission, 25, 10, 50, 50, null);
         
+        }
+        
+        //Si joueur
+        if( !carte.isRidedByPlayers.isEmpty()){
+            
+        for(int i=0;i<carte.isRidedByPlayers.size();i++){
+            
+            //Récupération du path de l'image correspondante
+            try { 
+                image = ImageIO.read(new File("./src/Players/"+carte.isRidedByPlayers.get(i).skinpath+".png"));
+            } catch (IOException e) {
+                    System.out.println(e.getCause());
+                    e.printStackTrace();
+                }
+
+            // Display de l'image de la mission
+            g.drawImage(image, 17, -8, 55, 65, null);
+            }
         }
     }
 

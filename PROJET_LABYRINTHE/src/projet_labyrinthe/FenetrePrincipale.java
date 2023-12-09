@@ -63,13 +63,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public void genUIPlayerHasToPlay(Joueur player) {
 
         Carte carte = new Carte();
+        carte.isRidedByPlayers.add(player);
         //assignation graphique du panel
         PanelTour.removeAll();
-        PanelTour.add(new UICarteOut(carte));
+        PanelTour.add(new UITurn(carte));
     }
 
 
- 
 
     /**
      * Methode qui génère graphiquement tout le plateau : Les cartes, les
@@ -277,6 +277,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanelTour.setBackground(new java.awt.Color(153, 255, 153));
         PanelTour.setForeground(new java.awt.Color(204, 204, 255));
         PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
+        PanelTour.setLayout(new java.awt.GridLayout(1, 1));
         getContentPane().add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
 
         Text3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N

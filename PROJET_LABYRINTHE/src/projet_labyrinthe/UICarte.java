@@ -74,7 +74,6 @@ public class UICarte extends JLabel {
 
                 // Display de l'image de la mission
                 g.drawImage(image, 17, -8, 55, 65, null);
-                System.out.println("Image peinte du joueur "+carte.isRidedByPlayers.get(i).name);
                 }
           }
    
