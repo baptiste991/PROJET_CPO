@@ -29,9 +29,9 @@ public class run {
         
         ArrayList<Joueur> listejoueur = new ArrayList<Joueur>();
         listejoueur.add(player1);
-        //listejoueur.add(player2);
-        //listejoueur.add(player3);
-        //listejoueur.add(player4);
+        listejoueur.add(player2);
+        listejoueur.add(player3);
+        listejoueur.add(player4);
         
         Partie partie = new Partie(listejoueur);
         partie.setFirstTurn(player1);

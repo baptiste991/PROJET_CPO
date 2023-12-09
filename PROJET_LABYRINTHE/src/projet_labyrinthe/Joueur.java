@@ -68,7 +68,7 @@ public class Joueur {
      *          La position sur y du joueur sur le plateau
      */
     public void deplacementNord(){
-        posy++;
+        posx--;
     }
     
      /**
@@ -79,7 +79,7 @@ public class Joueur {
      *          La position sur y du joueur sur le plateau
      */
     public void deplacementSud(){
-        posy--;
+        posx++;
     }
     
      /**
@@ -90,7 +90,7 @@ public class Joueur {
      *          La position sur x du joueur sur le plateau
      */
     public void deplacementEst(){
-        posx++;
+        posy++;
     }
     
      /**
@@ -101,7 +101,7 @@ public class Joueur {
      *          La position sur x du joueur sur le plateau
      */
     public void deplacementOuest(){
-        posx--;
+        posy--;
     }
 
     /**

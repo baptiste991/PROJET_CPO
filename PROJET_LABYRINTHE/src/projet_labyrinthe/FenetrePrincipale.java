@@ -242,6 +242,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * missions, et les joueurs
      */
     public void genUIBoard() {
+            GridPanel.removeAll();
            //Generation de la grille dans le cas ou c'est la première génération
             for (int x=0;x < 7; x++ ){
                 for(int y=0;y<7;y++){
@@ -250,14 +251,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 } 
             }
         genUIWaitingCard(plateau.carteAttente);
+        revalidate();
+        repaint();
     }
     
     public void injectUIX(int x, boolean gauche){
         plateau.injectX(x, gauche);
-        GridPanel.removeAll();
         genUIBoard();
-        revalidate();
-        repaint();
         // On corrige les coordonnées des cartes
         this.plateau.setCorrectCoordinates();
 
@@ -265,10 +265,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     
     public void injectUIY(int y, boolean haut){
         plateau.injectY(y, haut);
-        GridPanel.removeAll();
         genUIBoard();
-        revalidate();
-        repaint();
         // On corrige les coordonnées des cartes
         this.plateau.setCorrectCoordinates();
     }
@@ -480,6 +477,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
 
         Left.setText("←");
+        Left.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LeftActionPerformed(evt);
+            }
+        });
         getContentPane().add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 50, 40));
 
         Up.setText("↑");
@@ -491,9 +493,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(Up, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 50, 40));
 
         Down.setText("↓");
+        Down.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DownActionPerformed(evt);
+            }
+        });
         getContentPane().add(Down, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 50, 40));
 
         Right.setText("→");
+        Right.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RightActionPerformed(evt);
+            }
+        });
         getContentPane().add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 50, 40));
 
         MissionsView1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -661,24 +673,50 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void RotateRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRightActionPerformed
         // TODO add your handling code here:
         this.plateau.carteAttente.rotateRight();
-        GridPanel.removeAll();
         genUIBoard();
-        revalidate();
-        repaint();
     }//GEN-LAST:event_RotateRightActionPerformed
 
     private void RotateRight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRight1ActionPerformed
         // TODO add your handling code here:
         this.plateau.carteAttente.rotateLeft();
-        GridPanel.removeAll();
         genUIBoard();
-        revalidate();
-        repaint();
     }//GEN-LAST:event_RotateRight1ActionPerformed
 
     private void UpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpActionPerformed
         // TODO add your handling code here:
+        this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.remove(turnOff);
+        turnOff.deplacementNord();
+        this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
+        genUIBoard();
+        genUIPossibleActions();
     }//GEN-LAST:event_UpActionPerformed
+
+    private void LeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeftActionPerformed
+        // TODO add your handling code here:
+        this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.remove(turnOff);
+        turnOff.deplacementOuest();
+        this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
+        genUIBoard();
+        genUIPossibleActions();
+    }//GEN-LAST:event_LeftActionPerformed
+
+    private void RightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RightActionPerformed
+        // TODO add your handling code here:
+        this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.remove(turnOff);
+        turnOff.deplacementEst();
+        this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
+        genUIBoard();
+        genUIPossibleActions();
+    }//GEN-LAST:event_RightActionPerformed
+
+    private void DownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownActionPerformed
+        // TODO add your handling code here:
+        this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.remove(turnOff);
+        turnOff.deplacementSud();
+        this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
+        genUIBoard();
+        genUIPossibleActions();
+    }//GEN-LAST:event_DownActionPerformed
 
     /**
      * @param args the command line arguments
