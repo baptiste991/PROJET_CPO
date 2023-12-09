@@ -2,6 +2,7 @@
 package projet_labyrinthe;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Classe qui génère et gère une partie.
@@ -21,9 +22,11 @@ import java.util.ArrayList;
  */
 public class Partie {
      
-    
-    Joueur firstturn = new Joueur();
     Plateau plateau = new Plateau(); 
+    ArrayList<Joueur> ordre = new ArrayList<Joueur>();
+    Random r = new Random();
+    Joueur temp = new Joueur();
+    FenetrePrincipale gamewindow;
     /**
      * Constructeur Partie
      * @param listeJoueurs
@@ -34,6 +37,7 @@ public class Partie {
        switch(listeJoueurs.size()){
            case 1->{
                 plateau.setPlayerList(listeJoueurs.get(0));    
+                ordre.add(listeJoueurs.get(0));
            }
            case 2->{
                 plateau.setPlayersList(listeJoueurs.get(0), listeJoueurs.get(1));
@@ -45,19 +49,32 @@ public class Partie {
                 plateau.setPlayerList(listeJoueurs.get(0), listeJoueurs.get(1), listeJoueurs.get(2), listeJoueurs.get(3));
            }
        }
+       
+       ArrayList<Joueur> listetemp = new ArrayList<Joueur>();
+       //copie dans un arraylist de la liste des joueurs
+       for(int i=0;i<listeJoueurs.size();i++){
+           listetemp.add(listeJoueurs.get(i));
+       }
+
+       //Etablissement de l'ordre de passage
+       for(int p=0;p<listeJoueurs.size();p++){
+           int indexrandom = r.nextInt(listetemp.size());
+           ordre.add(listetemp.get(indexrandom));
+           listetemp.remove(indexrandom);
+       }
     }
-    
+
     /**
-     * Methode qui permet de définir la première personne à commencer à jouer
-     * @param first
+     * Constructeur vide permettant d'utiliser les methodes de la classe
      */
-    public void setFirstTurn(Joueur first){
-        this.firstturn = first;
+    public Partie() {
     }
+
     
     public void startWindow(){
-        FenetrePrincipale gamewindow = new FenetrePrincipale(plateau, firstturn);
+        this.gamewindow = new FenetrePrincipale(plateau, ordre);
     }
+    
     
     
         

@@ -27,6 +27,9 @@ public class run {
         Joueur player3 = new Joueur("Adrien","skin3");
         Joueur player4 = new Joueur("Gregory","skin4");
         
+
+       
+        
         ArrayList<Joueur> listejoueur = new ArrayList<Joueur>();
         listejoueur.add(player1);
         listejoueur.add(player2);
@@ -34,7 +37,6 @@ public class run {
         listejoueur.add(player4);
         
         Partie partie = new Partie(listejoueur);
-        partie.setFirstTurn(player1);
         partie.startWindow();
     
         }

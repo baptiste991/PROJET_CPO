@@ -3,6 +3,7 @@ package projet_labyrinthe;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,7 +22,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      */
     Plateau plateau = new Plateau();
     
+    Partie partie = new Partie();
+    
     Joueur turnOff = new Joueur();
+    
+    ArrayList<Joueur> ordre;
 
     /**
      * Constructeur de la fenêtre Cette fenetre représente graphiquement le
@@ -30,23 +35,27 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * @param plateau Le plateau de jeu qui comprend les missions, cartes, et
      * joueurs
      */
-    public FenetrePrincipale(Plateau plateau, Joueur first) {
+    public FenetrePrincipale(Plateau plateau, ArrayList<Joueur> ordre) {
         this.plateau = plateau;
-        this.turnOff = first;
+        this.ordre = ordre;
         plateau.setAllMissions();
         plateau.setAllMissionsToCards();
         plateau.placeAllPlayers();
         plateau.setListMissionOfPlayers();
         initComponents();
+        gen1UItour(ordre);
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }
+    
+    public void gen1UItour(ArrayList<Joueur> ordre){
+        turnOff = ordre.get(0);
         genUIBoard();
-        genUIPlayerHasToPlay(first);
+        genUIPlayerHasToPlay(turnOff);
         genUIPossibleActions();
         genUIRightSide();
         this.setVisible(true);
-        
-        //addMissionCards();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     private FenetrePrincipale() {
@@ -86,8 +95,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 MissionsView43.setVisible(false);
                 MissionsView2.setVisible(false);
                 
+                Skin111.removeAll();
                 Skin111.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
-                
+                MissionsP111.removeAll();
                 for(int i=0;i<16;i++){
                     MissionsP111.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
@@ -99,11 +109,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 MissionsView2.setVisible(true);
                 MissionsView1.setVisible(false);
                 
+                Skin21.removeAll();
+                Skin22.removeAll();
                 Skin21.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
                 Skin22.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
 
                 
-                
+                MissionsP21.removeAll();
+                MissionsP22.removeAll();
                 for(int i=0;i<8;i++){
                     MissionsP21.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
@@ -121,6 +134,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             case 3->{
                 MissionsView2.setVisible(false);
                 MissionsView1.setVisible(false);
+                
+                Skin1.removeAll();
+                Skin2.removeAll();
+                Skin3.removeAll();
                 Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
                 Skin2.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
                 Skin3.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(2)));
@@ -132,6 +149,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 GridLayout MissionP3for3 = new GridLayout(1, 5);
                 MissionP1.setLayout(MissionP3for3);
                 
+                MissionP1.removeAll();
+                MissionP2.removeAll();
+                MissionP3.removeAll();
                 for(int i=0;i<5;i++){
                     MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
@@ -149,11 +169,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             case 4->{
                 MissionsView1.setVisible(false);
                 MissionsView2.setVisible(false);
+                
+                Skin1.removeAll();
+                Skin2.removeAll();
+                Skin3.removeAll();
+                Skin4.removeAll();
                 Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
                 Skin2.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
                 Skin3.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(2)));
                 Skin4.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(3)));
                 
+                MissionP1.removeAll();
+                MissionP2.removeAll();
+                MissionP3.removeAll();
+                MissionP4.removeAll();
                 for(int i=0;i<4;i++){
                     MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
@@ -343,6 +372,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Skin4 = new javax.swing.JPanel();
         MissionP4 = new javax.swing.JPanel();
         Objets = new javax.swing.JLabel();
+        Valider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -620,6 +650,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Objets.setText("Objets à récupérer");
         getContentPane().add(Objets, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 60, 170, -1));
 
+        Valider.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
+        Valider.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        Valider.setText("Valider le tour");
+        Valider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValiderActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 680, 160, 50));
+
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
         pack();
@@ -745,6 +785,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         genUIPossibleActions();
     }//GEN-LAST:event_DownActionPerformed
 
+    private void ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActionPerformed
+        // TODO add your handling code here:
+        
+        // Reaffichage des boutons
+        setInjectionButtonsVisible(true);
+        
+        // Changement de joueur
+        Joueur temp = ordre.get(0);
+        ordre.remove(0);
+        ordre.add(temp);
+        gen1UItour(ordre);
+    }//GEN-LAST:event_ValiderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -817,6 +870,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JLabel Text2;
     private javax.swing.JLabel Text3;
     private javax.swing.JButton Up;
+    private javax.swing.JButton Valider;
     private javax.swing.JButton btn_x1d;
     private javax.swing.JButton btn_x1g;
     private javax.swing.JButton btn_x3d;
