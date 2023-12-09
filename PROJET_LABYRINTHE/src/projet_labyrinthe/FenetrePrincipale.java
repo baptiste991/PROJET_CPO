@@ -96,6 +96,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 if(this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).getMission().getObjet().equals(turnOff.getObjets().get(missions))){
                     // Suppression de cet objet à trouver
                     turnOff.getObjets().remove(this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).getMission().getObjet());
+                    // Suppression de l'objet sur le plateau
+                    this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).setMission(null);
                     // On vérifie que ça n'a pas fait gagner le joueur
                     verifWin();
                 }
