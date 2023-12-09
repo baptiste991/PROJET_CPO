@@ -56,8 +56,7 @@ public class Partie {
     }
     
     public void startWindow(){
-        FenetrePrincipale gamewindow = new FenetrePrincipale(plateau);
-        gamewindow.genUIPlayerHasToPlay(firstturn);
+        FenetrePrincipale gamewindow = new FenetrePrincipale(plateau, firstturn);
     }
     
     

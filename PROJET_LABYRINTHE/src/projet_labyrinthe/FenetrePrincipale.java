@@ -19,6 +19,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * Le plateau de jeu
      */
     Plateau plateau = new Plateau();
+    
+    Joueur turnOff = new Joueur();
 
     /**
      * Constructeur de la fenêtre Cette fenetre représente graphiquement le
@@ -27,13 +29,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * @param plateau Le plateau de jeu qui comprend les missions, cartes, et
      * joueurs
      */
-    public FenetrePrincipale(Plateau plateau) {
+    public FenetrePrincipale(Plateau plateau, Joueur first) {
         this.plateau = plateau;
+        this.turnOff = first;
         plateau.setAllMissions();
         plateau.setAllMissionsToCards();
         plateau.placeAllPlayers();
         initComponents();
         genUIBoard();
+        genUIPlayerHasToPlay(first);
+        genUIPossibleActions();
         this.setVisible(true);
         
         //addMissionCards();
@@ -61,7 +66,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     public void genUIPlayerHasToPlay(Joueur player) {
-
+        
+        this.turnOff = player;
         Carte carte = new Carte();
         carte.isRidedByPlayers.add(player);
         //assignation graphique du panel
@@ -69,6 +75,64 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanelTour.add(new UITurn(carte));
     }
 
+    public void genUIPossibleActions(){
+        
+        //Recuperation des coordonnees du joueur dont c'est le tour
+        int posx = turnOff.getPosx();
+        int posy = turnOff.getPosy();
+        
+        // Temp est la variable qui représente la direction testée
+        boolean temp;
+        // Tempclose représente la direction de la carte conjuguée pour la vérif
+        boolean tempclose = false;
+        
+        //Up -> 3 Conditions :
+        // Il n'est pas en x=0 
+        // Sa carte permet d'aller vers le haut
+        // La carte du dessus permet d'aller vers le bas
+
+        temp = this.plateau.getPlateau().get(posx).get(posy).getAllowingDirections()[0];
+        if(posx!=0){tempclose = this.plateau.getPlateau().get(posx-1).get(posy).getAllowingDirections()[1];}
+        
+        if(posx !=0 && temp && tempclose){
+            Up.setVisible(true);
+        } else Up.setVisible(false);
+        
+        //Down -> 3 Conditions :
+        // Il n'est pas en x=6
+        // Sa carte permet d'aller vers le bas
+        // La carte d'en dessous permet d'aller vers le haut
+        
+        temp = this.plateau.getPlateau().get(posx).get(posy).getAllowingDirections()[1];
+        if(posx!=6){tempclose = this.plateau.getPlateau().get(posx+1).get(posy).getAllowingDirections()[0];}
+        
+        if(posx!=6 && temp && tempclose){
+            Down.setVisible(true);
+        } else Down.setVisible(false);
+        
+        //Right -> 3 conditions :
+        // Il n'est pas en y=6
+        // Sa carte permet d'aller vers la droite
+        // La carte à sa droite permet d'aller vers la gauche
+        
+        temp = this.plateau.getPlateau().get(posx).get(posy).getAllowingDirections()[2];
+        if(posy!=6){tempclose = this.plateau.getPlateau().get(posx).get(posy+1).getAllowingDirections()[3];}
+        if(posx!=6 && temp && tempclose){
+            Right.setVisible(true);
+        } else Right.setVisible(false);
+        
+        //Left -> 3 conditions :
+        // Il n'est pas en y=0
+        // Sa carte permet d'aller à gauche
+        // La carte à sa gauche permet d'aller vers la droite
+        
+        temp = this.plateau.getPlateau().get(posx).get(posy).getAllowingDirections()[3];
+        if(posy!=0){tempclose = this.plateau.getPlateau().get(posx).get(posy-1).getAllowingDirections()[2];}
+        if(posy!=0 && temp && tempclose){
+            Left.setVisible(true);
+        } else Left.setVisible(false);
+        
+    }
 
 
     /**
@@ -136,6 +200,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Text2 = new javax.swing.JLabel();
         PanelTour = new javax.swing.JPanel();
         Text3 = new javax.swing.JLabel();
+        Left = new javax.swing.JButton();
+        Up = new javax.swing.JButton();
+        Down = new javax.swing.JButton();
+        Right = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -284,6 +352,23 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Text3.setText("    Actions possibles :");
         getContentPane().add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
 
+        Left.setText("←");
+        getContentPane().add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 50, 40));
+
+        Up.setText("↑");
+        Up.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Up, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 50, 40));
+
+        Down.setText("↓");
+        getContentPane().add(Down, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 50, 40));
+
+        Right.setText("→");
+        getContentPane().add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 50, 40));
+
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
         pack();
@@ -356,6 +441,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_RotateRight1ActionPerformed
 
+    private void UpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -392,13 +481,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Down;
     private javax.swing.JPanel GridPanel;
+    private javax.swing.JButton Left;
     private javax.swing.JPanel PanelTour;
+    private javax.swing.JButton Right;
     private javax.swing.JButton RotateRight;
     private javax.swing.JButton RotateRight1;
     private javax.swing.JLabel Text1;
     private javax.swing.JLabel Text2;
     private javax.swing.JLabel Text3;
+    private javax.swing.JButton Up;
     private javax.swing.JButton btn_x1d;
     private javax.swing.JButton btn_x1g;
     private javax.swing.JButton btn_x3d;
