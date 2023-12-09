@@ -26,21 +26,13 @@ public class Partie {
         
         Plateau plateau = new Plateau(); 
         
-        Joueur player1 = new Joueur("Ulysse","");
-        Joueur player2 = new Joueur("Baptiste","");     
-        Joueur player3 = new Joueur("Adrien","");
-        plateau.setPlayerList(player1, player2, player3);
-        plateau.placeAllPlayers();
-
-        for(int i=0;i<plateau.getListeDeJoueurs().size();i++){
-            System.out.println(plateau.getListeDeJoueurs().get(i).name);
-            System.out.println( plateau.getListeDeJoueurs().get(i).getPosx());
-            System.out.println( plateau.getListeDeJoueurs().get(i).getPosy());
-        }
-
-        plateau.setAllMissions();
-        plateau.setAllMissionsToCards();
+        Joueur player1 = new Joueur("Ulysse","skin1");
+        Joueur player2 = new Joueur("Baptiste","skin2");     
+        Joueur player3 = new Joueur("Adrien","skin3");
+        Joueur player4 = new Joueur("Gregory","skin4");
+        plateau.setPlayerList(player1, player2, player3, player4);
         FenetrePrincipale gamewindow = new FenetrePrincipale(plateau);
+
     }
         
         

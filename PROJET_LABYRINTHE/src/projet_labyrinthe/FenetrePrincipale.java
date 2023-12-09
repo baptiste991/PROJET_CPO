@@ -29,6 +29,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      */
     public FenetrePrincipale(Plateau plateau) {
         this.plateau = plateau;
+        plateau.setAllMissions();
+        plateau.setAllMissionsToCards();
+        plateau.placeAllPlayers();
         initComponents();
         genUIBoard();
         this.setVisible(true);
@@ -59,32 +62,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
 
 
-    /**
-     * Methode qui représente graphiquement un joueur
-     *
-     * @param player Le joueur a afficher sur le plateau
-     */
-    public void gen1UIPlayer(Joueur player) {
-
-    }
-
-    /**
-     * Methode qui affiche l'ensemble des joueurs sur le plateau
-     */
-    public void genUIPlayers() {
-
-        //On parcourt le nombre de joueurs
-        for (int i = 0; i < this.plateau.getListeDeJoueurs().size(); i++) {
-            gen1UIPlayer(this.plateau.getListeDeJoueurs().get(i));
-        }
-    }
+ 
 
     /**
      * Methode qui génère graphiquement tout le plateau : Les cartes, les
      * missions, et les joueurs
      */
     public void genUIBoard() {
-
            //Generation de la grille dans le cas ou c'est la première génération
             for (int x=0;x < 7; x++ ){
                 for(int y=0;y<7;y++){
@@ -92,7 +76,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     GridPanel.add(new UICarte(this.plateau.getPlateau().get(x).get(y)));  
                 } 
             }
-        genUIPlayers();
         genUIWaitingCard(plateau.carteAttente);
     }
     
