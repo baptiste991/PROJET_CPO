@@ -219,7 +219,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         
         temp = this.plateau.getPlateau().get(posx).get(posy).getAllowingDirections()[2];
         if(posy!=6){tempclose = this.plateau.getPlateau().get(posx).get(posy+1).getAllowingDirections()[3];}
-        if(posx!=6 && temp && tempclose){
+        if(posy!=6 && temp && tempclose){
             Right.setVisible(true);
         } else Right.setVisible(false);
         
@@ -268,6 +268,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         genUIBoard();
         // On corrige les coordonnées des cartes
         this.plateau.setCorrectCoordinates();
+    }
+    
+    public void setInjectionButtonsVisible(boolean action){
+        btn_x1g.setVisible(action);
+        btn_x1d.setVisible(action);
+        btn_x3g.setVisible(action);
+        btn_x3d.setVisible(action);
+        btn_x5g.setVisible(action);
+        btn_x5d.setVisible(action);
+        btn_y1h.setVisible(action);
+        btn_y1b.setVisible(action);
+        btn_y3h.setVisible(action);
+        btn_y3b.setVisible(action);
+        btn_y5h.setVisible(action);
+        btn_y5b.setVisible(action);
     }
     
     /**
@@ -613,61 +628,73 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void btn_x1gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1gActionPerformed
         injectUIX(1, true);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x1gActionPerformed
 
     private void btn_x1dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1dActionPerformed
         injectUIX(1, false);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x1dActionPerformed
 
     private void btn_x3gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3gActionPerformed
         injectUIX(3, true);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x3gActionPerformed
 
     private void btn_x5gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5gActionPerformed
         injectUIX(5, true);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x5gActionPerformed
 
     private void btn_x3dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3dActionPerformed
         injectUIX(3, false);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x3dActionPerformed
 
     private void btn_x5dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5dActionPerformed
         injectUIX(5, false);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x5dActionPerformed
 
     private void btn_y1hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1hActionPerformed
         injectUIY(1,true);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y1hActionPerformed
 
     private void btn_y5hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5hActionPerformed
         injectUIY(5,true);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y5hActionPerformed
 
     private void btn_y3hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3hActionPerformed
         injectUIY(3,true);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y3hActionPerformed
 
     private void btn_y1bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1bActionPerformed
         injectUIY(1,false);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y1bActionPerformed
 
     private void btn_y3bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3bActionPerformed
         injectUIY(3,false);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y3bActionPerformed
 
     private void btn_y5bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5bActionPerformed
         injectUIY(5,false);
         genUIPossibleActions();
+        setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y5bActionPerformed
 
     private void RotateRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRightActionPerformed
