@@ -244,6 +244,22 @@ public class Plateau extends Settings {
         }
     }
     
+    /**
+     * Methode qui attribue aux joueurs tous les objets à récupérer
+     */
+    public void setListMissionOfPlayers(){
+        for(int p=0;p<this.getListeDeJoueurs().size();p++){
+            
+            for(int missions=0;missions<this.getAllMissions().size();missions++){
+                if(this.getListeDeJoueurs().get(p).equals(getAllMissions().get(missions).player) ){
+                    this.getListeDeJoueurs().get(p).addObjets(getAllMissions().get(missions).getObjet());
+                }
+            }
+
+
+        }
+    }
+    
     
     /**
      * Méthode qui injecte la carteAttente en prmière place d'une ligne

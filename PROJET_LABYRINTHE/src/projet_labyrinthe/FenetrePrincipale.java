@@ -35,10 +35,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         plateau.setAllMissions();
         plateau.setAllMissionsToCards();
         plateau.placeAllPlayers();
+        plateau.setListMissionOfPlayers();
         initComponents();
         genUIBoard();
         genUIPlayerHasToPlay(first);
         genUIPossibleActions();
+        genUIRightSide();
         this.setVisible(true);
         
         //addMissionCards();
@@ -72,9 +74,89 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         carte.isRidedByPlayers.add(player);
         //assignation graphique du panel
         PanelTour.removeAll();
-        PanelTour.add(new UITurn(carte));
+        PanelTour.add(new UIPlayerCard(carte));
     }
 
+    public void genUIRightSide(){
+        switch(this.plateau.getListeDeJoueurs().size()){
+            case 1->{
+                Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
+                
+                for(int i=0;i<4;i++){
+                    MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
+                }
+                
+                Player1.setVisible(true);
+                Player2.setVisible(false);
+                Player3.setVisible(false);
+                Player4.setVisible(false);
+            }
+            
+            case 2 ->{
+                Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
+                Skin2.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
+                
+                for(int i=0;i<4;i++){
+                    MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
+                }
+                for(int i=0;i<4;i++){
+                    MissionP2.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
+                }
+                
+                Player1.setVisible(true);
+                Player2.setVisible(true);
+                Player3.setVisible(false);
+                Player4.setVisible(false);
+            }
+            
+            case 3->{
+                Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
+                Skin2.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
+                Skin3.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(2)));
+                
+                for(int i=0;i<4;i++){
+                    MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
+                }
+                for(int i=0;i<4;i++){
+                    MissionP2.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
+                }
+                for(int i=0;i<4;i++){
+                    MissionP3.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(2).getObjets().get(i)));
+                }
+                Player1.setVisible(true);
+                Player2.setVisible(true);
+                Player3.setVisible(true);
+                Player4.setVisible(false);
+            }
+            case 4->{
+                Skin1.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
+                Skin2.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(1)));
+                Skin3.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(2)));
+                Skin4.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(3)));
+                
+                for(int i=0;i<4;i++){
+                    MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
+                }
+                for(int i=0;i<4;i++){
+                    MissionP2.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
+                }
+                for(int i=0;i<4;i++){
+                    MissionP3.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(2).getObjets().get(i)));
+                }
+                for(int i=0;i<4;i++){
+                    MissionP4.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(3).getObjets().get(i)));
+                }
+                
+                Player1.setVisible(true);
+                Player2.setVisible(true);
+                Player3.setVisible(true);
+                Player4.setVisible(true);
+                
+            }
+        }
+    }
+    
+    
     public void genUIPossibleActions(){
         
         //Recuperation des coordonnees du joueur dont c'est le tour
@@ -204,6 +286,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Up = new javax.swing.JButton();
         Down = new javax.swing.JButton();
         Right = new javax.swing.JButton();
+        MissionsView = new javax.swing.JPanel();
+        Player1 = new javax.swing.JPanel();
+        Skin1 = new javax.swing.JPanel();
+        MissionP1 = new javax.swing.JPanel();
+        Player3 = new javax.swing.JPanel();
+        Skin3 = new javax.swing.JPanel();
+        MissionP3 = new javax.swing.JPanel();
+        Player2 = new javax.swing.JPanel();
+        Skin2 = new javax.swing.JPanel();
+        MissionP2 = new javax.swing.JPanel();
+        Player4 = new javax.swing.JPanel();
+        Skin4 = new javax.swing.JPanel();
+        MissionP4 = new javax.swing.JPanel();
+        Objets = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -369,6 +465,59 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Right.setText("→");
         getContentPane().add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 50, 40));
 
+        MissionsView.setBackground(new java.awt.Color(255, 0, 255));
+        MissionsView.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Player1.setBackground(new java.awt.Color(255, 204, 204));
+        Player1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin1.setLayout(new java.awt.GridLayout(1, 1));
+        Player1.add(Skin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionP1.setLayout(new java.awt.GridLayout(1, 4));
+        Player1.add(MissionP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionsView.add(Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 120));
+
+        Player3.setBackground(new java.awt.Color(204, 204, 255));
+        Player3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin3.setLayout(new java.awt.GridLayout(1, 1));
+        Player3.add(Skin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionP3.setLayout(new java.awt.GridLayout(1, 4));
+        Player3.add(MissionP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionsView.add(Player3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 120));
+
+        Player2.setBackground(new java.awt.Color(204, 255, 204));
+        Player2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin2.setLayout(new java.awt.GridLayout(1, 1));
+        Player2.add(Skin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionP2.setLayout(new java.awt.GridLayout(1, 4));
+        Player2.add(MissionP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionsView.add(Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 300, 120));
+
+        Player4.setBackground(new java.awt.Color(204, 204, 0));
+        Player4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin4.setLayout(new java.awt.GridLayout(1, 1));
+        Player4.add(Skin4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionP4.setLayout(new java.awt.GridLayout(1, 4));
+        Player4.add(MissionP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionsView.add(Player4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 120));
+
+        getContentPane().add(MissionsView, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 90, 320, 560));
+
+        Objets.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Objets.setText("Objets à récupérer");
+        getContentPane().add(Objets, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 60, 170, -1));
+
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
         pack();
@@ -495,10 +644,24 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton Down;
     private javax.swing.JPanel GridPanel;
     private javax.swing.JButton Left;
+    private javax.swing.JPanel MissionP1;
+    private javax.swing.JPanel MissionP2;
+    private javax.swing.JPanel MissionP3;
+    private javax.swing.JPanel MissionP4;
+    private javax.swing.JPanel MissionsView;
+    private javax.swing.JLabel Objets;
     private javax.swing.JPanel PanelTour;
+    private javax.swing.JPanel Player1;
+    private javax.swing.JPanel Player2;
+    private javax.swing.JPanel Player3;
+    private javax.swing.JPanel Player4;
     private javax.swing.JButton Right;
     private javax.swing.JButton RotateRight;
     private javax.swing.JButton RotateRight1;
+    private javax.swing.JPanel Skin1;
+    private javax.swing.JPanel Skin2;
+    private javax.swing.JPanel Skin3;
+    private javax.swing.JPanel Skin4;
     private javax.swing.JLabel Text1;
     private javax.swing.JLabel Text2;
     private javax.swing.JLabel Text3;
