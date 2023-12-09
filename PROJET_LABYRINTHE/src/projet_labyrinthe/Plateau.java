@@ -348,12 +348,12 @@ public class Plateau extends Settings {
             
             //Tirage aléatoire du spawn
             int randomint = random.nextInt(spawn.size());
-            int nbiteration=0;
+            int out=0;
             
             // Parcourt de toutes les cartes du plateau pour trouver le spawn
             for(int i=0;i<7;i++){
-                if(nbiteration==1){
-                    nbiteration=0;
+                if(out==1){
+                    out=0;
                     break;
                 }
                 for(int j=0;j<7;j++){
@@ -361,11 +361,11 @@ public class Plateau extends Settings {
                     Carte carte = this.plateau.get(i).get(j);
 
                     if(carte.getType()==spawn.get(randomint)){
-                        carte.isRidedByPlayers.add(this.getListeDeJoueurs().get(0));
+                        carte.isRidedByPlayers.add(this.getListeDeJoueurs().get(p));
                         this.getListeDeJoueurs().get(p).setPosx(carte.getPosx());
                         this.getListeDeJoueurs().get(p).setPosy(carte.getPosy());
                         spawn.remove(spawn.get(randomint));
-                        nbiteration++;
+                        out++;
                         break;
                     }
                 }

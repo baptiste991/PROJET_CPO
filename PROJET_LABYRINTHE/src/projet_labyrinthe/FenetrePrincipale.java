@@ -19,6 +19,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * Le plateau de jeu
      */
     Plateau plateau = new Plateau();
+    
+    Joueur turnOff = new Joueur();
 
     /**
      * Constructeur de la fenêtre Cette fenetre représente graphiquement le
@@ -27,10 +29,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * @param plateau Le plateau de jeu qui comprend les missions, cartes, et
      * joueurs
      */
-    public FenetrePrincipale(Plateau plateau) {
+    public FenetrePrincipale(Plateau plateau, Joueur first) {
         this.plateau = plateau;
+        this.turnOff = first;
+        plateau.setAllMissions();
+        plateau.setAllMissionsToCards();
+        plateau.placeAllPlayers();
         initComponents();
         genUIBoard();
+        genUIPlayerHasToPlay(first);
+        genUIPossibleActions();
         this.setVisible(true);
         
         //addMissionCards();
@@ -57,34 +65,81 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         panneau_carte_attente.add(new UICarteOut(carte));
     }
 
-
-
-    /**
-     * Methode qui représente graphiquement un joueur
-     *
-     * @param player Le joueur a afficher sur le plateau
-     */
-    public void gen1UIPlayer(Joueur player) {
-
+    public void genUIPlayerHasToPlay(Joueur player) {
+        
+        this.turnOff = player;
+        Carte carte = new Carte();
+        carte.isRidedByPlayers.add(player);
+        //assignation graphique du panel
+        PanelTour.removeAll();
+        PanelTour.add(new UITurn(carte));
     }
 
-    /**
-     * Methode qui affiche l'ensemble des joueurs sur le plateau
-     */
-    public void genUIPlayers() {
+    public void genUIPossibleActions(){
+        
+        //Recuperation des coordonnees du joueur dont c'est le tour
+        int posx = turnOff.getPosx();
+        int posy = turnOff.getPosy();
+        
+        // Temp est la variable qui représente la direction testée
+        boolean temp;
+        // Tempclose représente la direction de la carte conjuguée pour la vérif
+        boolean tempclose = false;
+        
+        //Up -> 3 Conditions :
+        // Il n'est pas en x=0 
+        // Sa carte permet d'aller vers le haut
+        // La carte du dessus permet d'aller vers le bas
 
-        //On parcourt le nombre de joueurs
-        for (int i = 0; i < this.plateau.getListeDeJoueurs().size(); i++) {
-            gen1UIPlayer(this.plateau.getListeDeJoueurs().get(i));
-        }
+        temp = this.plateau.getPlateau().get(posx).get(posy).getAllowingDirections()[0];
+        if(posx!=0){tempclose = this.plateau.getPlateau().get(posx-1).get(posy).getAllowingDirections()[1];}
+        
+        if(posx !=0 && temp && tempclose){
+            Up.setVisible(true);
+        } else Up.setVisible(false);
+        
+        //Down -> 3 Conditions :
+        // Il n'est pas en x=6
+        // Sa carte permet d'aller vers le bas
+        // La carte d'en dessous permet d'aller vers le haut
+        
+        temp = this.plateau.getPlateau().get(posx).get(posy).getAllowingDirections()[1];
+        if(posx!=6){tempclose = this.plateau.getPlateau().get(posx+1).get(posy).getAllowingDirections()[0];}
+        
+        if(posx!=6 && temp && tempclose){
+            Down.setVisible(true);
+        } else Down.setVisible(false);
+        
+        //Right -> 3 conditions :
+        // Il n'est pas en y=6
+        // Sa carte permet d'aller vers la droite
+        // La carte à sa droite permet d'aller vers la gauche
+        
+        temp = this.plateau.getPlateau().get(posx).get(posy).getAllowingDirections()[2];
+        if(posy!=6){tempclose = this.plateau.getPlateau().get(posx).get(posy+1).getAllowingDirections()[3];}
+        if(posx!=6 && temp && tempclose){
+            Right.setVisible(true);
+        } else Right.setVisible(false);
+        
+        //Left -> 3 conditions :
+        // Il n'est pas en y=0
+        // Sa carte permet d'aller à gauche
+        // La carte à sa gauche permet d'aller vers la droite
+        
+        temp = this.plateau.getPlateau().get(posx).get(posy).getAllowingDirections()[3];
+        if(posy!=0){tempclose = this.plateau.getPlateau().get(posx).get(posy-1).getAllowingDirections()[2];}
+        if(posy!=0 && temp && tempclose){
+            Left.setVisible(true);
+        } else Left.setVisible(false);
+        
     }
+
 
     /**
      * Methode qui génère graphiquement tout le plateau : Les cartes, les
      * missions, et les joueurs
      */
     public void genUIBoard() {
-
            //Generation de la grille dans le cas ou c'est la première génération
             for (int x=0;x < 7; x++ ){
                 for(int y=0;y<7;y++){
@@ -92,7 +147,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     GridPanel.add(new UICarte(this.plateau.getPlateau().get(x).get(y)));  
                 } 
             }
-        genUIPlayers();
         genUIWaitingCard(plateau.carteAttente);
     }
     
@@ -140,9 +194,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btn_y3b = new javax.swing.JButton();
         btn_y5b = new javax.swing.JButton();
         GridPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Text1 = new javax.swing.JLabel();
         RotateRight1 = new javax.swing.JButton();
         RotateRight = new javax.swing.JButton();
+        Text2 = new javax.swing.JLabel();
+        PanelTour = new javax.swing.JPanel();
+        Text3 = new javax.swing.JLabel();
+        Left = new javax.swing.JButton();
+        Up = new javax.swing.JButton();
+        Down = new javax.swing.JButton();
+        Right = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -154,7 +215,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
         panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
-        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 90, 90));
+        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 90, 90));
 
         btn_x1g.setText("▶");
         btn_x1g.addActionListener(new java.awt.event.ActionListener() {
@@ -257,9 +318,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         GridPanel.setLayout(new java.awt.GridLayout(7, 7));
         getContentPane().add(GridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 630, 630));
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel1.setText("Carte en dehors du plateau :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        Text1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text1.setText("Carte en dehors du plateau :");
+        getContentPane().add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         RotateRight1.setText("↰");
         RotateRight1.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +328,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 RotateRight1ActionPerformed(evt);
             }
         });
-        getContentPane().add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+        getContentPane().add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
 
         RotateRight.setText("↱");
         RotateRight.addActionListener(new java.awt.event.ActionListener() {
@@ -275,7 +336,38 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 RotateRightActionPerformed(evt);
             }
         });
-        getContentPane().add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+        getContentPane().add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        Text2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text2.setText("    C'est au tour de :");
+        getContentPane().add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+
+        PanelTour.setBackground(new java.awt.Color(153, 255, 153));
+        PanelTour.setForeground(new java.awt.Color(204, 204, 255));
+        PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
+        PanelTour.setLayout(new java.awt.GridLayout(1, 1));
+        getContentPane().add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
+
+        Text3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text3.setText("    Actions possibles :");
+        getContentPane().add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
+
+        Left.setText("←");
+        getContentPane().add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 50, 40));
+
+        Up.setText("↑");
+        Up.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Up, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 50, 40));
+
+        Down.setText("↓");
+        getContentPane().add(Down, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 50, 40));
+
+        Right.setText("→");
+        getContentPane().add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 50, 40));
 
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
@@ -283,52 +375,63 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_x1gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1gActionPerformed
-
         injectUIX(1, true);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_x1gActionPerformed
 
     private void btn_x1dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1dActionPerformed
         injectUIX(1, false);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_x1dActionPerformed
 
     private void btn_x3gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3gActionPerformed
         injectUIX(3, true);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_x3gActionPerformed
 
     private void btn_x5gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5gActionPerformed
         injectUIX(5, true);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_x5gActionPerformed
 
     private void btn_x3dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3dActionPerformed
         injectUIX(3, false);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_x3dActionPerformed
 
     private void btn_x5dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5dActionPerformed
         injectUIX(5, false);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_x5dActionPerformed
 
     private void btn_y1hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1hActionPerformed
         injectUIY(1,true);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_y1hActionPerformed
 
     private void btn_y5hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5hActionPerformed
         injectUIY(5,true);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_y5hActionPerformed
 
     private void btn_y3hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3hActionPerformed
         injectUIY(3,true);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_y3hActionPerformed
 
     private void btn_y1bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1bActionPerformed
         injectUIY(1,false);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_y1bActionPerformed
 
     private void btn_y3bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3bActionPerformed
         injectUIY(3,false);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_y3bActionPerformed
 
     private void btn_y5bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5bActionPerformed
         injectUIY(5,false);
+        genUIPossibleActions();
     }//GEN-LAST:event_btn_y5bActionPerformed
 
     private void RotateRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRightActionPerformed
@@ -348,6 +451,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         revalidate();
         repaint();
     }//GEN-LAST:event_RotateRight1ActionPerformed
+
+    private void UpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,9 +492,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Down;
     private javax.swing.JPanel GridPanel;
+    private javax.swing.JButton Left;
+    private javax.swing.JPanel PanelTour;
+    private javax.swing.JButton Right;
     private javax.swing.JButton RotateRight;
     private javax.swing.JButton RotateRight1;
+    private javax.swing.JLabel Text1;
+    private javax.swing.JLabel Text2;
+    private javax.swing.JLabel Text3;
+    private javax.swing.JButton Up;
     private javax.swing.JButton btn_x1d;
     private javax.swing.JButton btn_x1g;
     private javax.swing.JButton btn_x3d;
@@ -400,7 +515,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btn_y3h;
     private javax.swing.JButton btn_y5b;
     private javax.swing.JButton btn_y5h;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panneau_carte_attente;
     // End of variables declaration//GEN-END:variables
 }

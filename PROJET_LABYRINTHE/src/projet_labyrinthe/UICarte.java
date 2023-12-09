@@ -60,12 +60,24 @@ public class UICarte extends JLabel {
             
             // Display de l'image de la mission
             g.drawImage(mission, 17, 12, 55, 55, null);
-            
         }
+        //Recherche de joeuurs
+        if( !carte.isRidedByPlayers.isEmpty()){
+            for(int i=0;i<carte.isRidedByPlayers.size();i++){
+                //Récupération du path de l'image correspondante
+                try { 
+                    image = ImageIO.read(new File("./src/Players/"+carte.isRidedByPlayers.get(i).skinpath+".png"));
+                } catch (IOException e) {
+                        System.out.println(e.getCause());
+                        e.printStackTrace();
+                    }
+
+                // Display de l'image de la mission
+                g.drawImage(image, 17, -8, 55, 65, null);
+                }
+          }
    
-    }        
-            
-     
-    
-    
+               
+
+    }
 }

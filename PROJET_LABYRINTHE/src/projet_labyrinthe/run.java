@@ -1,6 +1,8 @@
 
 package projet_labyrinthe;
 
+import java.util.ArrayList;
+
 /**
  * Classe qui permet l'exécution du jeu. Elle crée une Partie. 
  * Ensuite comme la classe partie génère une instance de plateau.
@@ -19,7 +21,21 @@ public class run {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Partie partie = new Partie();
-    }
+        
+        Joueur player1 = new Joueur("Ulysse","skin1");
+        Joueur player2 = new Joueur("Baptiste","skin2");     
+        Joueur player3 = new Joueur("Adrien","skin3");
+        Joueur player4 = new Joueur("Gregory","skin4");
+        
+        ArrayList<Joueur> listejoueur = new ArrayList<Joueur>();
+        listejoueur.add(player1);
+        listejoueur.add(player2);
+        listejoueur.add(player3);
+        listejoueur.add(player4);
+        
+        Partie partie = new Partie(listejoueur);
+        partie.setFirstTurn(player1);
+        partie.startWindow();
     
+        }
 }
