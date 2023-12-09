@@ -87,6 +87,32 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanelTour.add(new UIPlayerCard(carte));
     }
 
+    public void verifFinDeTour(){
+        
+        //Si le joueur se trouve sur une mission
+        if(this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).getMission()!=null){
+            //Si cette mission est à faire par le joueur dont c'est le tour
+            for(int missions=0;missions<turnOff.getObjets().size();missions++){
+                if(this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).getMission().getObjet().equals(turnOff.getObjets().get(missions))){
+                    // Suppression de cet objet à trouver
+                    turnOff.getObjets().remove(this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).getMission().getObjet());
+                    // On vérifie que ça n'a pas fait gagner le joueur
+                    verifWin();
+                }
+            }
+        }
+    }
+    
+    public void verifWin(){
+        // Pour tous les joueurs
+        for(int players=0;players<this.plateau.getListeDeJoueurs().size();players++){
+            //Si un d'eux n'a plus d'objets il gagne
+            if(this.plateau.getListeDeJoueurs().get(players).getObjets().isEmpty()){
+                System.out.println("Victoire de "+this.plateau.getListeDeJoueurs().get(players).name);
+            }
+        }
+    }
+    
     public void genUIRightSide(){
         switch(this.plateau.getListeDeJoueurs().size()){
             case 1->{
@@ -98,7 +124,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 Skin111.removeAll();
                 Skin111.add(new UIPlayerIcon(this.plateau.getListeDeJoueurs().get(0)));
                 MissionsP111.removeAll();
-                for(int i=0;i<16;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(0).getObjets().size();i++){
                     MissionsP111.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
                 Player1.setVisible(true);
@@ -117,10 +143,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 
                 MissionsP21.removeAll();
                 MissionsP22.removeAll();
-                for(int i=0;i<8;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(0).getObjets().size();i++){
                     MissionsP21.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
-                for(int i=0;i<8;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(1).getObjets().size();i++){
                     MissionsP22.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
                 }
                 
@@ -152,13 +178,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 MissionP1.removeAll();
                 MissionP2.removeAll();
                 MissionP3.removeAll();
-                for(int i=0;i<5;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(0).getObjets().size();i++){
                     MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
-                for(int i=0;i<5;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(1).getObjets().size();i++){
                     MissionP2.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
                 }
-                for(int i=0;i<5;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(2).getObjets().size();i++){
                     MissionP3.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(2).getObjets().get(i)));
                 }
                 Player1.setVisible(true);
@@ -183,16 +209,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 MissionP2.removeAll();
                 MissionP3.removeAll();
                 MissionP4.removeAll();
-                for(int i=0;i<4;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(0).getObjets().size();i++){
                     MissionP1.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
-                for(int i=0;i<4;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(1).getObjets().size();i++){
                     MissionP2.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
                 }
-                for(int i=0;i<4;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(2).getObjets().size();i++){
                     MissionP3.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(2).getObjets().get(i)));
                 }
-                for(int i=0;i<4;i++){
+                for(int i=0;i<this.plateau.getListeDeJoueurs().get(3).getObjets().size();i++){
                     MissionP4.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(3).getObjets().get(i)));
                 }
                 
@@ -787,15 +813,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     private void ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActionPerformed
         // TODO add your handling code here:
-        
+        // Le joueur a récupéré un objet?
+        verifFinDeTour();
         // Reaffichage des boutons
         setInjectionButtonsVisible(true);
-        
+       
         // Changement de joueur
         Joueur temp = ordre.get(0);
         ordre.remove(0);
         ordre.add(temp);
         gen1UItour(ordre);
+        
+        
     }//GEN-LAST:event_ValiderActionPerformed
 
     /**

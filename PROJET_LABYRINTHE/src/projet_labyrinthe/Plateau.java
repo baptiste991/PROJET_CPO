@@ -213,7 +213,7 @@ public class Plateau extends Settings {
      * @return
      */
     public Mission findMissionInAllbyObject(String objectName) {
-        Mission mission = new Mission();
+        Mission mission = new Mission(new Joueur(), "name");
         for (int j = 0; j < this.getAllMissions().size(); j++) {
             if (objectName.equals(this.getAllMissions().get(j).objet)) {
                 mission = this.getAllMissions().get(j);
@@ -408,7 +408,7 @@ public class Plateau extends Settings {
 
         //Randomisation des missions sur les cartes
         for (int i = 0; i < this.getAllMissions().size(); i++) {
-            //i itère sur le nombre de missions soit 16
+            //on itère sur le nombre de missions soit 16
 
             int indexRandomX, indexRandomY;
             //On choisit des coordonnées aléatoires

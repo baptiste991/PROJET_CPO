@@ -29,16 +29,7 @@ public class Mission {
         this.objet = objet;
     }
     
-    /**
-     * Constructeur utilisé lors de necessité d'initialisation d'objet type 
-     * Mission qui va ensuite trouver sa vraie valeur
-     * (utilisé notament dans la méthode findMissionInAllDeckbyObject de la 
-     * classe Plateau
-     */
-    public Mission(){
-        this.objet=null;
-        this.player=null;
-    }
+
     
     /**
      * Methode qui retourne l'objet que doit trouver le joueur sous forme de str

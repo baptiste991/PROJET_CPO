@@ -129,6 +129,13 @@ public class Joueur {
     }
 
     /**
+     * Remover Objets
+     * @param objets
+     */
+    public void removeObjets(String objet) {
+        this.objets.remove(objet);
+    }
+    /**
      * Getter Objets
      * @return
      */
