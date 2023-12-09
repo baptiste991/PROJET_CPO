@@ -32,7 +32,7 @@ public class Carte{
      * @see west
      *      La direction Sud est accessible par la carte
      */
-    boolean north,south,east,west;
+    private boolean north,south,east,west;
     
      /**
      * @see allowingDirections
