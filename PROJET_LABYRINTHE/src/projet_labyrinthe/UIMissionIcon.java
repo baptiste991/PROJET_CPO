@@ -1,3 +1,4 @@
+
 package projet_labyrinthe;
 
 import java.awt.Graphics;
@@ -8,31 +9,30 @@ import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 
 /**
- * Methode qui gère l'affichage du tour
+ * Peint l'image de la mission
  * @author Ody
  */
-public class UITurn extends JLabel {
-    Carte carte;
-    BufferedImage image=null;
+public class UIMissionIcon extends JLabel{
     
-    public UITurn(Carte carte) {
-        this.carte = carte;
+    BufferedImage image=null;
+    String name;
+    
+    public UIMissionIcon(String name) {
+        this.name = name;
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
 
-    // On récupère le joueur
+    // On récupère l'image du joueur
         try {
-            String path = carte.isRidedByPlayers.get(0).skinpath ;
-
-            image = ImageIO.read(new File("./src/Players/"+path+".png"));
+            image = ImageIO.read(new File("./src/Missions/"+name+".png"));
 
             } catch (IOException e) {
                 System.out.println(e.getCause());
                 e.printStackTrace();
             }
-            g.drawImage(image, 0, 0, 90, 90, null);
+            g.drawImage(image,0 , 0, 60, 55, null);
     }
 }

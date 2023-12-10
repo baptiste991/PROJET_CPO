@@ -213,7 +213,7 @@ public class Plateau extends Settings {
      * @return
      */
     public Mission findMissionInAllbyObject(String objectName) {
-        Mission mission = new Mission();
+        Mission mission = new Mission(new Joueur(), "name");
         for (int j = 0; j < this.getAllMissions().size(); j++) {
             if (objectName.equals(this.getAllMissions().get(j).objet)) {
                 mission = this.getAllMissions().get(j);
@@ -241,6 +241,22 @@ public class Plateau extends Settings {
                 this.plateau.get(i).get(j).setPosx(i);
                 this.plateau.get(i).get(j).setPosy(j);
             }
+        }
+    }
+    
+    /**
+     * Methode qui attribue aux joueurs tous les objets à récupérer
+     */
+    public void setListMissionOfPlayers(){
+        for(int p=0;p<this.getListeDeJoueurs().size();p++){
+            
+            for(int missions=0;missions<this.getAllMissions().size();missions++){
+                if(this.getListeDeJoueurs().get(p).equals(getAllMissions().get(missions).player) ){
+                    this.getListeDeJoueurs().get(p).addObjets(getAllMissions().get(missions).getObjet());
+                }
+            }
+
+
         }
     }
     
@@ -392,7 +408,7 @@ public class Plateau extends Settings {
 
         //Randomisation des missions sur les cartes
         for (int i = 0; i < this.getAllMissions().size(); i++) {
-            //i itère sur le nombre de missions soit 16
+            //on itère sur le nombre de missions soit 16
 
             int indexRandomX, indexRandomY;
             //On choisit des coordonnées aléatoires

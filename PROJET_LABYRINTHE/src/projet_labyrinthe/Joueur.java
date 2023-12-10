@@ -1,5 +1,7 @@
 package projet_labyrinthe;
 
+import java.util.ArrayList;
+
 /**
  * Classe qui représente un joueur
  * @author Ody
@@ -17,6 +19,8 @@ public class Joueur {
     private int posx, posy;
     String name;
     String skinpath;
+    
+    private ArrayList<String> objets = new ArrayList<String>();
 
     /**
      * Getter Posx
@@ -64,7 +68,7 @@ public class Joueur {
      *          La position sur y du joueur sur le plateau
      */
     public void deplacementNord(){
-        posy++;
+        posx--;
     }
     
      /**
@@ -75,7 +79,7 @@ public class Joueur {
      *          La position sur y du joueur sur le plateau
      */
     public void deplacementSud(){
-        posy--;
+        posx++;
     }
     
      /**
@@ -86,7 +90,7 @@ public class Joueur {
      *          La position sur x du joueur sur le plateau
      */
     public void deplacementEst(){
-        posx++;
+        posy++;
     }
     
      /**
@@ -97,7 +101,7 @@ public class Joueur {
      *          La position sur x du joueur sur le plateau
      */
     public void deplacementOuest(){
-        posx--;
+        posy--;
     }
 
     /**
@@ -115,6 +119,30 @@ public class Joueur {
     public void setPosy(int posy) {
         this.posy = posy;
     }
+
+    /**
+     * Adder Objets
+     * @param objets
+     */
+    public void addObjets(String objet) {
+        this.objets.add(objet);
+    }
+
+    /**
+     * Remover Objets
+     * @param objets
+     */
+    public void removeObjets(String objet) {
+        this.objets.remove(objet);
+    }
+    /**
+     * Getter Objets
+     * @return
+     */
+    public ArrayList<String> getObjets() {
+        return objets;
+    }
+    
     
     
     
