@@ -269,10 +269,30 @@ public class Plateau extends Settings {
      */
     public void injectX(int x, boolean gauche) {
 
-        if (gauche) {
+        // Si un joueur présent sur la ligne x on incrémente sa coordonnée sur x
+        for(int y=0;y<7;y++){
+            // Joueurs sur la ligne
+            if(this.plateau.get(x).get(y).isRidedByPlayers.size() !=0){
+                // Pour tous les joueurs de cette ligne
+                for (int p=0;p<this.plateau.get(x).get(y).isRidedByPlayers.size();p++){
+                    
+                    if(gauche){
+                        //On incrémente leur coordonnée sur x 
+                        this.plateau.get(x).get(y).isRidedByPlayers.get(p).deplacementEst();
+                    } else {
+                        //On incrémente leur coordonnée sur x 
+                        this.plateau.get(x).get(y).isRidedByPlayers.get(p).deplacementOuest();
+                    }
+
+                }
+            }
+        }
+        
+        // En fonction de l'injection
+        if(gauche){
+           
             // Ajouter la carteAttente en tant que première carte de la ligne
             this.plateau.get(x).add(0, carteAttente);
-
 
             // Mettre à jour la carteAttente avec la dernière carte de la ligne
             int lastIndex = getPlateau().get(x).size()-1 ;
@@ -280,23 +300,20 @@ public class Plateau extends Settings {
 
             // Supprimer la dernière carte de la ligne
             getPlateau().get(x).remove(lastIndex);
-            
-        } else {
-            // Ajouter la carteAttente en tant que denière carte de la ligne
-            // et modifier ses coordonnées
-            getPlateau().get(x).add(size, carteAttente);
 
+        }  else {
+
+            // Ajouter la carteAttente en tant que denière carte de la ligne
+            this.plateau.get(x).add(carteAttente);
 
             // Mettre à jour la carteAttente avec la première carte de la ligne
             carteAttente = getPlateau().get(x).get(0);
 
             // Supprimer la première carte de la ligne
             getPlateau().get(x).remove(0);
-            
-        }
-        
 
-    }
+            } 
+        }
 
     /**
      * Méthode qui permet d'injecter la carteAttente dans une grille et qui met à jour la carteAttente
@@ -304,10 +321,30 @@ public class Plateau extends Settings {
      * @param haut boolean permettant d'injectant en haut si true ou en bas si false
      */
     public void injectY(int y, boolean haut) {
+        
+        // Si un joueur présent sur la colonne y on incrémente sa coordonnée sur y
+        for(int x=0;x<7;x++){
+            // Joueurs sur la colonne
+            if(this.plateau.get(x).get(y).isRidedByPlayers.size() !=0){
+                // Pour tous les joueurs de cette ligne
+                for (int p=0;p<this.plateau.get(x).get(y).isRidedByPlayers.size();p++){
+                    
+                    if(haut){
+                        //On incrémente leur coordonnée sur y
+                        this.plateau.get(x).get(y).isRidedByPlayers.get(p).deplacementSud();
+                    } else {
+                        //On incrémente leur coordonnée sur y 
+                        this.plateau.get(x).get(y).isRidedByPlayers.get(p).deplacementNord();
+                    }
 
+                }
+            }
+        }
+        
         Carte temp1 = null;
         Carte temp2;
 
+        //En fonction de l'injection
         if (haut) {
             Carte lastCard = getPlateau().get(size - 1).get(y);
 
