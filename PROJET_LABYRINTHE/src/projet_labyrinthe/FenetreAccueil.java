@@ -6,6 +6,7 @@ package projet_labyrinthe;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.event.DocumentEvent;
@@ -159,7 +160,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_noms.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 300, 80));
 
-        jLabel5.setText("Veuillez rentrer tous les noms. ");
+        jLabel5.setText("Veuillez entrer tous les noms. ");
         panel_erreur.add(jLabel5);
 
         panel_noms.add(panel_erreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 220, 40));
@@ -292,14 +293,39 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
 
+        ArrayList<Joueur> listeJoueur = new ArrayList<Joueur>();
+        String nomJ1 = nomJoueur1.getText();
+        String nomJ2 = nomJoueur2.getText();
+        String nomJ3 = nomJoueur3.getText();
+        String nomJ4 = nomJoueur4.getText();
+
+        Joueur player1 = new Joueur(nomJ1, "skin1");
+        Joueur player2 = new Joueur(nomJ2, "skin2");
+        Joueur player3 = new Joueur(nomJ3, "skin3");
+        Joueur player4 = new Joueur(nomJ4, "skin4");
+
         switch (nbJoueurs) {
 
+            case 1:
+                panel_noms.add(panel_erreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 220, 40));
+                if (nomJoueur1.getText().isEmpty()) {
+                    panel_erreur.setVisible(true);
+                }
+                else{
+                    listeJoueur.add(player1);
+                    Partie partie = new Partie(listeJoueur);
+                    partie.startWindow();
+                    this.dispose();
+                }
             case 2:
                 panel_noms.add(panel_erreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 220, 40));
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
                 } else {
-                    run play = new run(2, nomJoueur1.getText(), nomJoueur2.getText(), nomJoueur3.getText(), nomJoueur4.getText());
+                    listeJoueur.add(player1);
+                    listeJoueur.add(player2);
+                    Partie partie = new Partie(listeJoueur);
+                    partie.startWindow();
                     this.dispose();
                 }
                 break;
@@ -308,7 +334,11 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty() || nomJoueur3.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
                 } else {
-                    run play = new run(3, nomJoueur1.getText(), nomJoueur2.getText(), nomJoueur3.getText(), nomJoueur4.getText());
+                    listeJoueur.add(player1);
+                    listeJoueur.add(player2);
+                    listeJoueur.add(player3);
+                    Partie partie = new Partie(listeJoueur);
+                    partie.startWindow();
                     this.dispose();
                 }
                 break;
@@ -317,7 +347,12 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty() || nomJoueur3.getText().isEmpty() || nomJoueur4.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
                 } else {
-                    run play = new run(3, nomJoueur1.getText(), nomJoueur2.getText(), nomJoueur3.getText(), nomJoueur4.getText());
+                    listeJoueur.add(player1);
+                    listeJoueur.add(player2);
+                    listeJoueur.add(player3);
+                    listeJoueur.add(player4);
+                    Partie partie = new Partie(listeJoueur);
+                    partie.startWindow();
                     this.dispose();
                 }
                 break;
@@ -340,7 +375,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_multiplayerActionPerformed
 
     private void btn_solovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solovsActionPerformed
-        // TODO add your handling code here:
+        clickBouton(true, 1);
     }//GEN-LAST:event_btn_solovsActionPerformed
 
     private void btn_solovsIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solovsIAActionPerformed
@@ -353,15 +388,26 @@ public class FenetreAccueil extends javax.swing.JFrame {
         panel_btn.setVisible(!cliqué);
         panel_noms.setVisible(cliqué);
         panel_j1.setVisible(cliqué);
-        panel_j1.setVisible(cliqué);
+        panel_j2.setVisible(false);
         panel_j3.setVisible(false);
         panel_j4.setVisible(false);
 
-        if (nbJoueurs == 3) {
-            panel_j3.setVisible(cliqué);
-        } else if (nbJoueurs == 4) {
-            panel_j3.setVisible(cliqué);
-            panel_j4.setVisible(cliqué);
+        switch (nbJoueurs) {
+            case 2:
+                panel_j2.setVisible(cliqué);
+                panel_solo.setVisible(false);
+                break;
+            case 3:
+                panel_j2.setVisible(cliqué);
+                panel_j3.setVisible(cliqué);
+                break;
+            case 4:
+                panel_j2.setVisible(cliqué);
+                panel_j3.setVisible(cliqué);
+                panel_j4.setVisible(cliqué);
+                break;
+            default:
+                break;
         }
 
     }
