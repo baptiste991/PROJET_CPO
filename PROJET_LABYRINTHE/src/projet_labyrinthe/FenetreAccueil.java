@@ -66,6 +66,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        btn_home = new javax.swing.JButton();
         panel_noms = new javax.swing.JPanel();
         panel_j1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -99,6 +100,16 @@ public class FenetreAccueil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_labyrinthe/bouton-daccueil-pour-linterface.png"))); // NOI18N
+        btn_home.setActionCommand("");
+        btn_home.setContentAreaFilled(false);
+        btn_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_homeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 580, 70, 70));
 
         panel_noms.setOpaque(false);
         panel_noms.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -158,7 +169,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 btn_startActionPerformed(evt);
             }
         });
-        panel_noms.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 300, 80));
+        panel_noms.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 300, 80));
 
         jLabel5.setText("Veuillez entrer tous les noms. ");
         panel_erreur.add(jLabel5);
@@ -234,9 +245,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_btn.add(btn_3j, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 110, 43));
 
-        panel_multiplayer.add(panel_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 350, 190));
+        panel_multiplayer.add(panel_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 130, 170));
 
-        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 450, 230));
+        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 180, 230));
 
         panel_modes.setOpaque(false);
         panel_modes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -261,11 +272,11 @@ public class FenetreAccueil extends javax.swing.JFrame {
         getContentPane().add(panel_modes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 570, 610, 120));
 
         img_labyrinthe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_labyrinthe/accueil.png"))); // NOI18N
-        getContentPane().add(img_labyrinthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 910, 640));
+        getContentPane().add(img_labyrinthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 910, 640));
 
         fond_noir.setBackground(new java.awt.Color(0, 51, 51));
         fond_noir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_labyrinthe/fond_noir.png"))); // NOI18N
-        getContentPane().add(fond_noir, new org.netbeans.lib.awtextra.AbsoluteConstraints(-620, 110, 1940, 830));
+        getContentPane().add(fond_noir, new org.netbeans.lib.awtextra.AbsoluteConstraints(-620, 120, 1940, 830));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -382,6 +393,29 @@ public class FenetreAccueil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_solovsIAActionPerformed
 
+    private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
+        home();
+        
+    }//GEN-LAST:event_btn_homeActionPerformed
+
+    private void home(){
+        img_labyrinthe.setVisible(true);
+        
+        panel_noms.setVisible(false);
+
+        panel_erreur.setVisible(false);
+
+        panel_solo.setVisible(false);
+
+        panel_multiplayer.setVisible(false);
+        
+        panel_modes.setVisible(true);
+        
+        clickBouton(false, 5);
+
+        
+    }
+    
     private void clickBouton(boolean cliqué, int nbJoueurs) {
 
         this.nbJoueurs = nbJoueurs;
@@ -451,6 +485,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JButton btn_2j;
     private javax.swing.JButton btn_3j;
     private javax.swing.JButton btn_4j;
+    private javax.swing.JButton btn_home;
     private javax.swing.JButton btn_multiplayer;
     private javax.swing.JButton btn_solo;
     private javax.swing.JButton btn_solovs;
