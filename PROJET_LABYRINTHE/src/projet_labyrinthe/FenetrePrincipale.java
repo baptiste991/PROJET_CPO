@@ -313,18 +313,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
     
     public void injectUIX(int x, boolean gauche){
-        plateau.injectX(x, gauche);
-        genUIBoard();
+        plateau.injectXPlayer(x, gauche);
         // On corrige les coordonnées des cartes
-        this.plateau.setCorrectCoordinates();
+        this.plateau.setCorrectCardsCoordinates();
+        genUIBoard();
+
 
     }
     
     public void injectUIY(int y, boolean haut){
-        plateau.injectY(y, haut);
+        plateau.InjectYPlayer(y, haut);
         genUIBoard();
         // On corrige les coordonnées des cartes
-        this.plateau.setCorrectCoordinates();
+        this.plateau.setCorrectCardsCoordinates();
     }
     
     public void setInjectionButtonsVisible(boolean action){

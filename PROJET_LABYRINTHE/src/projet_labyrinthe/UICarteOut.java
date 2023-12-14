@@ -53,23 +53,11 @@ public class UICarteOut extends JLabel {
         
         }
         
-        //Si joueur
+        //Si joueur on supprime car il ne peut pas y avoir de joueur ici
         if( !carte.isRidedByPlayers.isEmpty()){
-            
-        for(int i=0;i<carte.isRidedByPlayers.size();i++){
-            
-            //Récupération du path de l'image correspondante
-            try { 
-                image = ImageIO.read(new File("./src/Players/"+carte.isRidedByPlayers.get(i).skinpath+".png"));
-            } catch (IOException e) {
-                    System.out.println(e.getCause());
-                    e.printStackTrace();
-                }
-
-            // Display de l'image de la mission
-            g.drawImage(image, 17, -8, 55, 65, null);
+            for(int i=0;i<carte.isRidedByPlayers.size();i++){
+            carte.isRidedByPlayers.remove(i);
             }
-        }
+         }
     }
-
 }

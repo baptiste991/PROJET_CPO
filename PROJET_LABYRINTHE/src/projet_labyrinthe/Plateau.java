@@ -235,7 +235,7 @@ public class Plateau extends Settings {
      * Methode qui set les coordonnées correcte de chaque carte en fonction
      * de leur position sur le plateau
      */
-    public void setCorrectCoordinates(){
+    public void setCorrectCardsCoordinates(){
         for(int i=0;i<7;i++){
             for(int j=0;j<7;j++){
                 this.plateau.get(i).get(j).setPosx(i);
@@ -260,86 +260,127 @@ public class Plateau extends Settings {
         }
     }
     
-    
+
+
     /**
      * Méthode qui injecte la carteAttente en prmière place d'une ligne
      *
      * @param x ligne en question à injecter
      * @param gauche boolean permettant d'injecter à gauche en true ou à droite en false
      */
-    public void injectX(int x, boolean gauche) {
-
-        // Si un joueur présent sur la ligne x on incrémente sa coordonnée sur x
+    public void injectXPlayer(int x, boolean gauche) {
+        
+        int playerontheline =0;
+        ArrayList<Joueur> playeronthelineList= new ArrayList<Joueur>();
+        // Y a-t-il des joueurs sur cette ligne ? si oui on les supprime de la carte
         for(int y=0;y<7;y++){
-            // Joueurs sur la ligne
-            if(this.plateau.get(x).get(y).isRidedByPlayers.size() !=0){
-                // Pour tous les joueurs de cette ligne
-                for (int p=0;p<this.plateau.get(x).get(y).isRidedByPlayers.size();p++){
-                    
-                    if(gauche){
-                        //On incrémente leur coordonnée sur x 
-                        this.plateau.get(x).get(y).isRidedByPlayers.get(p).deplacementEst();
-                    } else {
-                        //On incrémente leur coordonnée sur x 
-                        this.plateau.get(x).get(y).isRidedByPlayers.get(p).deplacementOuest();
+                if(this.plateau.get(x).get(y).isRidedByPlayers.size()!=0){
+                    playerontheline += this.plateau.get(x).get(y).isRidedByPlayers.size();
+                    for(int nb=0;nb<this.plateau.get(x).get(y).isRidedByPlayers.size();nb++){
+                         playeronthelineList.add(this.plateau.get(x).get(y).isRidedByPlayers.get(nb));
+                         this.plateau.get(x).get(y).isRidedByPlayers.remove(playeronthelineList.get(playeronthelineList.size()-1));
                     }
-
-                }
             }
         }
         
-        // En fonction de l'injection
-        if(gauche){
-           
+        // Si il y a des gens sur la ligne à modifier
+        if(playerontheline!=0){
+            
+            ArrayList<Integer> saveposy = new ArrayList<Integer>();
+            
+            // Pour chaque joueur
+            for (int p=0;p<playerontheline;p++){
+                
+                // Si le joueur est à un extreme
+                //Gauche
+                if(playeronthelineList.get(p).getPosy()== 0){
+                    saveposy.add(playeronthelineList.get(p).getPosy());
+                    
+                } else if (playeronthelineList.get(p).getPosy()== 6){
+                //Droite     
+                    saveposy.add(playeronthelineList.get(p).getPosy());
+                  // Le joueur n'est pas à un extreme
+                } else {
+                    if(gauche){
+                        saveposy.add(playeronthelineList.get(p).getPosy());
+                        playeronthelineList.get(p).deplacementEst();
+                    } else {
+                        saveposy.add(playeronthelineList.get(p).getPosy());
+                        playeronthelineList.get(p).deplacementOuest();
+                    }
+                    
+                }
+                
+            }
+            
+            injectXCards(x, gauche);
+            
+            // On update les coordonnées des joueurs sur la ligne
+            for(int i=0;i<saveposy.size();i++){
+                // Si extreme gauche & gauche -> Deplacement gauche
+                if(saveposy.get(i)==0 && gauche){
+                    playeronthelineList.get(i).setPosy(1);
+                    this.plateau.get(x).get(playeronthelineList.get(i).getPosy()).isRidedByPlayers.add(playeronthelineList.get(i));
+                    
+                  // Si extreme droite et gauche --> Change d'extreme
+                } else if(saveposy.get(i)==6 && gauche){
+                    playeronthelineList.get(i).setPosy(0);
+                    this.plateau.get(x).get(playeronthelineList.get(i).getPosy()).isRidedByPlayers.add(playeronthelineList.get(i));
+                    
+                 // Si extreme gauche et droite --> Deplacement droite
+                } else if(saveposy.get(i)==0 && (!gauche)){
+                    playeronthelineList.get(i).setPosy(6);
+                    this.plateau.get(x).get(playeronthelineList.get(i).getPosy()).isRidedByPlayers.add(playeronthelineList.get(i));
+                    
+                 // si extreme droite et droite -> Change d'extreme
+                } else if(saveposy.get(i)==6 && (!gauche)){
+                    playeronthelineList.get(i).setPosy(5);
+                    this.plateau.get(x).get(playeronthelineList.get(i).getPosy()).isRidedByPlayers.add(playeronthelineList.get(i));
+                  
+                 // Pas à l'extreme   
+                } else if(saveposy.get(i)!= 0 || saveposy.get(i)!=6){
+                    this.plateau.get(x).get(playeronthelineList.get(i).getPosy()).isRidedByPlayers.add(playeronthelineList.get(i));
+                }
+            }
+            
+        
+        
+        // Si il n'y a personne sur la ligne a modifier 
+        } else {
+            injectXCards(x, gauche);
+            
+        }
+        
+    }
+    
+    public void injectXCards(int x, boolean gauche){
+        
+        if (gauche) {
             // Ajouter la carteAttente en tant que première carte de la ligne
-            this.plateau.get(x).add(0, carteAttente);
+            getPlateau().get(x).add(0, carteAttente);
 
             // Mettre à jour la carteAttente avec la dernière carte de la ligne
-            int lastIndex = getPlateau().get(x).size()-1 ;
+            int lastIndex = getPlateau().get(x).size() - 1;
             carteAttente = getPlateau().get(x).get(lastIndex);
 
             // Supprimer la dernière carte de la ligne
             getPlateau().get(x).remove(lastIndex);
-
-        }  else {
-
-            // Ajouter la carteAttente en tant que denière carte de la ligne
-            this.plateau.get(x).add(carteAttente);
+        }
+        else{
+           // Ajouter la carteAttente en tant que denière carte de la ligne
+            getPlateau().get(x).add(size , carteAttente);
 
             // Mettre à jour la carteAttente avec la première carte de la ligne
             carteAttente = getPlateau().get(x).get(0);
 
             // Supprimer la première carte de la ligne
-            getPlateau().get(x).remove(0);
-
-            } 
+            getPlateau().get(x).remove(0); 
         }
-
-    /**
-     * Méthode qui permet d'injecter la carteAttente dans une grille et qui met à jour la carteAttente
-     * @param y numéro de colonne à injecter
-     * @param haut boolean permettant d'injectant en haut si true ou en bas si false
-     */
-    public void injectY(int y, boolean haut) {
         
-        // Si un joueur présent sur la colonne y on incrémente sa coordonnée sur y
-        for(int x=0;x<7;x++){
-            // Joueurs sur la colonne
-            if(this.plateau.get(x).get(y).isRidedByPlayers.size() !=0){
-                // Pour tous les joueurs de cette ligne
-                for (int p=0;p<this.plateau.get(x).get(y).isRidedByPlayers.size();p++){
-                    
-                    if(haut){
-                        //On incrémente leur coordonnée sur y
-                        this.plateau.get(x).get(y).isRidedByPlayers.get(p).deplacementSud();
-                    } else {
-                        //On incrémente leur coordonnée sur y 
-                        this.plateau.get(x).get(y).isRidedByPlayers.get(p).deplacementNord();
-                    }
+        
+    }
 
-                }
-            }
-        }
+    public void injectYCards(int y, boolean haut){
         
         Carte temp1 = null;
         Carte temp2;
@@ -383,7 +424,100 @@ public class Plateau extends Settings {
             }
             carteAttente = firstCard;
         }
+        
     }
+    
+    /**
+     * Méthode qui permet d'injecter la carteAttente dans une grille et qui met à jour la carteAttente
+     * @param y numéro de colonne à injecter
+     * @param haut boolean permettant d'injectant en haut si true ou en bas si false
+     */
+    public void InjectYPlayer(int y, boolean haut) {
+        
+        int playeronthecol =0;
+        ArrayList<Joueur> playeronthecolList= new ArrayList<Joueur>();
+        
+        // Y a-t-il des joueurs sur cette colonne ? si oui on les supprime de la carte
+        for(int x=0;x<7;x++){
+                if(this.plateau.get(x).get(y).isRidedByPlayers.size()!=0){
+                    playeronthecol += this.plateau.get(x).get(y).isRidedByPlayers.size();
+                    for(int nb=0;nb<this.plateau.get(x).get(y).isRidedByPlayers.size();nb++){
+                         playeronthecolList.add(this.plateau.get(x).get(y).isRidedByPlayers.get(nb));
+                         this.plateau.get(x).get(y).isRidedByPlayers.remove(playeronthecolList.get(playeronthecolList.size()-1));
+                    }
+                }
+        }
+        
+        // Si il y a des gens sur la colonne à modifier
+        if(playeronthecol!=0){
+            
+            ArrayList<Integer> saveposx = new ArrayList<Integer>();
+            
+            // Pour chaque joueur
+            for (int p=0;p<playeronthecol;p++){
+                
+                // Si le joueur est à un extreme
+                //Haut
+                if(playeronthecolList.get(p).getPosx()== 0){
+                    saveposx.add(playeronthecolList.get(p).getPosx());
+                    
+                } else if (playeronthecolList.get(p).getPosx()== 6){
+                //Bas     
+                    saveposx.add(playeronthecolList.get(p).getPosx());
+                  // Le joueur n'est pas à un extreme
+                } else {
+                    if(haut){
+                        saveposx.add(playeronthecolList.get(p).getPosx());
+                        playeronthecolList.get(p).deplacementSud();
+                    } else {
+                        saveposx.add(playeronthecolList.get(p).getPosx());
+                        playeronthecolList.get(p).deplacementNord();
+                    }
+                    
+                }
+                
+            }
+        
+            injectYCards(y, haut);
+
+            // On update les coordonnées des joueurs sur la ligne
+            for(int i=0;i<saveposx.size();i++){
+                // Si extreme haut & haut -> Deplacement bas
+                if(saveposx.get(i)==0 && haut){
+                    playeronthecolList.get(i).setPosx(1);
+                    this.plateau.get(playeronthecolList.get(i).getPosx()).get(y).isRidedByPlayers.add(playeronthecolList.get(i));
+
+                  // Si extreme bas et haut --> Change d'extreme
+                } else if(saveposx.get(i)==6 && haut){
+                    playeronthecolList.get(i).setPosx(0);
+                    this.plateau.get(playeronthecolList.get(i).getPosx()).get(y).isRidedByPlayers.add(playeronthecolList.get(i));
+
+                 // Si extreme haut et bas --> Change d'extreme
+                } else if(saveposx.get(i)==0 && (!haut)){
+                    playeronthecolList.get(i).setPosx(6);
+                    this.plateau.get(playeronthecolList.get(i).getPosx()).get(y).isRidedByPlayers.add(playeronthecolList.get(i));
+
+                 // si extreme bas et bas -> Déplacement haut
+                } else if(saveposx.get(i)==6 && (!haut)){
+                    playeronthecolList.get(i).setPosx(5);
+                    this.plateau.get(playeronthecolList.get(i).getPosx()).get(y).isRidedByPlayers.add(playeronthecolList.get(i));
+
+                 // Pas à l'extreme   
+                } else if(saveposx.get(i)!= 0 || saveposx.get(i)!=6){
+                    this.plateau.get(playeronthecolList.get(i).getPosx()).get(y).isRidedByPlayers.add(playeronthecolList.get(i));
+                }
+                
+            }
+        
+        // Si il n'y a personne sur la colonne a modifier 
+        } else {
+            injectYCards(y, haut);
+            
+        }
+    }
+
+        
+    
     
     /**
      * Methode qui a pour but de placer les joueurs sur leur spawn
