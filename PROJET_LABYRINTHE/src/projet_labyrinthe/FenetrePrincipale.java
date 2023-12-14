@@ -80,6 +80,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public void genUIPlayerHasToPlay(Joueur player) {
         
         this.turnOff = player;
+        Text2.setText("    C'est au tour de : " + turnOff.name);
         Carte carte = new Carte();
         carte.isRidedByPlayers.add(player);
         //assignation graphique du panel
@@ -547,7 +548,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         Text2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        Text2.setText("    C'est au tour de :");
+        Text2.setText("    C'est au tour de : " + turnOff.name);
         getContentPane().add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         PanelTour.setBackground(new java.awt.Color(153, 255, 153));
