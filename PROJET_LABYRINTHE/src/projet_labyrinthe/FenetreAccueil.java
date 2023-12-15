@@ -67,6 +67,11 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         btn_home = new javax.swing.JButton();
+        panel_multiplayer = new javax.swing.JPanel();
+        panel_btn = new javax.swing.JPanel();
+        btn_2j = new javax.swing.JButton();
+        btn_4j = new javax.swing.JButton();
+        btn_3j = new javax.swing.JButton();
         panel_noms = new javax.swing.JPanel();
         panel_j1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -86,11 +91,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
         panel_solo = new javax.swing.JPanel();
         btn_solovs = new javax.swing.JButton();
         btn_solovsIA = new javax.swing.JButton();
-        panel_multiplayer = new javax.swing.JPanel();
-        panel_btn = new javax.swing.JPanel();
-        btn_2j = new javax.swing.JButton();
-        btn_4j = new javax.swing.JButton();
-        btn_3j = new javax.swing.JButton();
         panel_modes = new javax.swing.JPanel();
         btn_solo = new javax.swing.JButton();
         btn_multiplayer = new javax.swing.JButton();
@@ -102,7 +102,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_labyrinthe/bouton-daccueil-pour-linterface.png"))); // NOI18N
-        btn_home.setActionCommand("");
         btn_home.setContentAreaFilled(false);
         btn_home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +109,49 @@ public class FenetreAccueil extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 580, 70, 70));
+
+        panel_multiplayer.setOpaque(false);
+        panel_multiplayer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel_btn.setBackground(new java.awt.Color(0, 0, 0));
+        panel_btn.setOpaque(false);
+        panel_btn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_2j.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_2j.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_labyrinthe/button2players.png"))); // NOI18N
+        btn_2j.setToolTipText("");
+        btn_2j.setActionCommand("Start");
+        btn_2j.setDoubleBuffered(true);
+        btn_2j.setFocusCycleRoot(true);
+        btn_2j.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_2jActionPerformed(evt);
+            }
+        });
+        panel_btn.add(btn_2j, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 300, 80));
+
+        btn_4j.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_4j.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_labyrinthe/button4players.png"))); // NOI18N
+        btn_4j.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_4jActionPerformed(evt);
+            }
+        });
+        panel_btn.add(btn_4j, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 300, 80));
+
+        btn_3j.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_3j.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projet_labyrinthe/button3players.png"))); // NOI18N
+        btn_3j.setDefaultCapable(false);
+        btn_3j.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_3jActionPerformed(evt);
+            }
+        });
+        panel_btn.add(btn_3j, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 300, 80));
+
+        panel_multiplayer.add(panel_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 340, 290));
+
+        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 420, 460));
 
         panel_noms.setOpaque(false);
         panel_noms.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -217,48 +259,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
         panel_solo.add(btn_solovsIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 200, 40));
 
         getContentPane().add(panel_solo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 280, 140));
-
-        panel_multiplayer.setOpaque(false);
-        panel_multiplayer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panel_btn.setBackground(new java.awt.Color(0, 0, 0));
-        panel_btn.setOpaque(false);
-        panel_btn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn_2j.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btn_2j.setText("2 joueurs");
-        btn_2j.setActionCommand("Start");
-        btn_2j.setDoubleBuffered(true);
-        btn_2j.setFocusCycleRoot(true);
-        btn_2j.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_2jActionPerformed(evt);
-            }
-        });
-        panel_btn.add(btn_2j, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 43));
-
-        btn_4j.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btn_4j.setText("4 joueurs");
-        btn_4j.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_4jActionPerformed(evt);
-            }
-        });
-        panel_btn.add(btn_4j, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 110, 43));
-
-        btn_3j.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btn_3j.setText("3 joueurs");
-        btn_3j.setDefaultCapable(false);
-        btn_3j.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_3jActionPerformed(evt);
-            }
-        });
-        panel_btn.add(btn_3j, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 110, 43));
-
-        panel_multiplayer.add(panel_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 130, 170));
-
-        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 180, 230));
 
         panel_modes.setOpaque(false);
         panel_modes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
