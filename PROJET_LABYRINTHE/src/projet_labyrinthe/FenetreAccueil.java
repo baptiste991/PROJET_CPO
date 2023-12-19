@@ -7,6 +7,7 @@ package projet_labyrinthe;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -22,7 +23,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     int numSkin2 = 2;
     int numSkin3 = 3;
     int numSkin4 = 4;
-    int[] tabSkin = new int[4];
+    ArrayList<Integer> tabSkin = new ArrayList<Integer>();
 
     /**
      * Creates new form FenetreAccueil
@@ -374,16 +375,13 @@ public class FenetreAccueil extends javax.swing.JFrame {
         Joueur player1 = new Joueur(nomJ1, "skin" + numSkin1);
         Joueur player2 = new Joueur(nomJ2, "skin" + numSkin2);
         Joueur player3 = new Joueur(nomJ3, "skin" + numSkin3);
-        Joueur player4 = new Joueur(nomJ4, "skin" + numSkin4);
-
-        tabSkin[0] = numSkin1;
-        tabSkin[1] = numSkin2;
-        tabSkin[2] = numSkin3;
-        tabSkin[3] = numSkin4;
+        Joueur player4 = new Joueur(nomJ4, "skin" + numSkin4);    
+        
 
         switch (nbJoueurs) {
 
             case 1:
+                tabSkin.add(numSkin1);
                 if (nomJoueur1.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(true);
@@ -395,6 +393,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 }
                 break;
             case 2:
+                tabSkin.add(numSkin1);
+                tabSkin.add(numSkin2);
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(true);
@@ -416,6 +416,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 }
                 break;
             case 3:
+                tabSkin.add(numSkin1);
+                tabSkin.add(numSkin2);
+                tabSkin.add(numSkin3);
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty() || nomJoueur3.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(true);
@@ -441,6 +444,10 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 }
                 break;
             case 4:
+                tabSkin.add(numSkin1);
+                tabSkin.add(numSkin2);
+                tabSkin.add(numSkin3);
+                tabSkin.add(numSkin4);
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty() || nomJoueur3.getText().isEmpty() || nomJoueur4.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(true);
@@ -463,6 +470,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 }
                 break;
         }
+        
+        tabSkin.clear();
     }//GEN-LAST:event_btn_startActionPerformed
 
     private void btn_mode() {
@@ -511,10 +520,10 @@ public class FenetreAccueil extends javax.swing.JFrame {
         changeSkin(4);
     }//GEN-LAST:event_skinJ4ActionPerformed
 
-    private boolean nombrePareil(int[] tab) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = i + 1; j < 4; j++) {
-                if (tab[i] == tab[j]) {
+    private boolean nombrePareil(ArrayList<Integer> tab) {
+        for (int i = 0; i < tab.size() - 1; i++) {
+            for (int j = i + 1; j < tab.size(); j++) {
+                if (Objects.equals(tab.get(i), tab.get(j))) {
                     return true;
                 }
             }
