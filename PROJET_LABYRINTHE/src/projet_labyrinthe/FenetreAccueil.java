@@ -427,13 +427,11 @@ public class FenetreAccueil extends javax.swing.JFrame {
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(false);
                     lbl_erreur_skins.setVisible(true);
-                } 
-                else if (nombrePareil(tabSkin)) {
+                } else if (nombrePareil(tabSkin)) {
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(false);
                     lbl_erreur_skins.setVisible(true);
-                }
-                else {
+                } else {
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
                     listeJoueur.add(player3);
@@ -450,13 +448,11 @@ public class FenetreAccueil extends javax.swing.JFrame {
                     if (nombrePareil(tabSkin)) {
                         lbl_erreur_skins.setVisible(true);
                     }
-                } 
-                else if (nombrePareil(tabSkin)) {
+                } else if (nombrePareil(tabSkin)) {
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(false);
                     lbl_erreur_skins.setVisible(true);
-                }
-                else {
+                } else {
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
                     listeJoueur.add(player3);
@@ -586,6 +582,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         clickBouton(false, 5);
 
+        resetUIJoueurs();
     }
 
     private void clickBouton(boolean cliqué, int nbJoueurs) {
@@ -617,6 +614,26 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 break;
         }
 
+    }
+
+    private void resetUIJoueurs() {
+        // on vide les indexes d'écritures
+        nomJoueur1.setText(null);
+        nomJoueur2.setText(null);
+        nomJoueur3.setText(null);
+        nomJoueur4.setText(null);
+
+        // on remet les icones initiaux des skins
+        skinJ1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin1.png")));
+        skinJ2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin2.png")));
+        skinJ3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin3.png")));
+        skinJ4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin4.png")));
+
+        // on reset les numéros correspondants au icones reset au dessus
+        numSkin1=1;
+        numSkin2=2;
+        numSkin3=3;
+        numSkin4=4;
     }
 
     /**
