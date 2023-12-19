@@ -430,10 +430,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(false);
                     lbl_erreur_skins.setVisible(true);
-                } else if (nombrePareil(tabSkin)) {
-                    panel_erreur.setVisible(true);
-                    lbl_erreur_noms.setVisible(false);
-                    lbl_erreur_skins.setVisible(true);
                 } else {
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
