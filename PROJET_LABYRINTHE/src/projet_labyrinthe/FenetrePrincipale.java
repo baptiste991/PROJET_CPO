@@ -405,7 +405,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Valider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Jeu");
+        setTitle("Labyrinthe Remastered");
         setAlwaysOnTop(true);
         setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
