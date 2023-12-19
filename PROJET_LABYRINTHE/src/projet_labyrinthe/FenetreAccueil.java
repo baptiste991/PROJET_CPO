@@ -22,6 +22,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     int numSkin2 = 2;
     int numSkin3 = 3;
     int numSkin4 = 4;
+    int[] tabSkin = new int[4];
 
     /**
      * Creates new form FenetreAccueil
@@ -86,11 +87,12 @@ public class FenetreAccueil extends javax.swing.JFrame {
         skinJ3 = new javax.swing.JButton();
         btn_start = new javax.swing.JButton();
         panel_erreur = new javax.swing.JPanel();
+        lbl_erreur_noms = new javax.swing.JLabel();
+        lbl_erreur_skins = new javax.swing.JLabel();
         panel_j2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         nomJoueur2 = new javax.swing.JTextField();
         skinJ2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         panel_multiplayer = new javax.swing.JPanel();
         panel_btn = new javax.swing.JPanel();
         btn_2j = new javax.swing.JButton();
@@ -209,7 +211,17 @@ public class FenetreAccueil extends javax.swing.JFrame {
         panel_noms.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 300, 80));
 
         panel_erreur.setOpaque(false);
-        panel_noms.add(panel_erreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 220, 40));
+        panel_erreur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_erreur_noms.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lbl_erreur_noms.setText("Veuillez entrer tous les noms ");
+        panel_erreur.add(lbl_erreur_noms, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        lbl_erreur_skins.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lbl_erreur_skins.setText("Choisissez chacun un skin différent !");
+        panel_erreur.add(lbl_erreur_skins, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 240, 40));
+
+        panel_noms.add(panel_erreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 300, 120));
 
         panel_j2.setOpaque(false);
         panel_j2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -228,10 +240,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
         panel_j2.add(skinJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 126, 201));
 
         panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 360, 220));
-
-        jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        jLabel5.setText("Veuillez entrer tous les noms. ");
-        panel_noms.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
 
         getContentPane().add(panel_noms, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 1080, 620));
 
@@ -363,25 +371,42 @@ public class FenetreAccueil extends javax.swing.JFrame {
         String nomJ3 = nomJoueur3.getText();
         String nomJ4 = nomJoueur4.getText();
 
-        Joueur player1 = new Joueur(nomJ1, "skin1");
-        Joueur player2 = new Joueur(nomJ2, "skin2");
-        Joueur player3 = new Joueur(nomJ3, "skin3");
-        Joueur player4 = new Joueur(nomJ4, "skin4");
+        Joueur player1 = new Joueur(nomJ1, "skin" + numSkin1);
+        Joueur player2 = new Joueur(nomJ2, "skin" + numSkin2);
+        Joueur player3 = new Joueur(nomJ3, "skin" + numSkin3);
+        Joueur player4 = new Joueur(nomJ4, "skin" + numSkin4);
+
+        tabSkin[0] = numSkin1;
+        tabSkin[1] = numSkin2;
+        tabSkin[2] = numSkin3;
+        tabSkin[3] = numSkin4;
 
         switch (nbJoueurs) {
 
             case 1:
                 if (nomJoueur1.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
+                    lbl_erreur_noms.setVisible(true);
                 } else {
                     listeJoueur.add(player1);
                     Partie partie = new Partie(listeJoueur);
                     partie.startWindow();
                     this.dispose();
                 }
+                break;
             case 2:
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
+                    lbl_erreur_noms.setVisible(true);
+                    lbl_erreur_skins.setVisible(false);
+
+                    if (nombrePareil(tabSkin)) {
+                        lbl_erreur_skins.setVisible(true);
+                    }
+                } else if (nombrePareil(tabSkin)) {
+                    panel_erreur.setVisible(true);
+                    lbl_erreur_noms.setVisible(false);
+                    lbl_erreur_skins.setVisible(true);
                 } else {
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
@@ -393,7 +418,22 @@ public class FenetreAccueil extends javax.swing.JFrame {
             case 3:
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty() || nomJoueur3.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
-                } else {
+                    lbl_erreur_noms.setVisible(true);
+                    lbl_erreur_skins.setVisible(false);
+                    if (nombrePareil(tabSkin)) {
+                        lbl_erreur_skins.setVisible(true);
+                    }
+                } else if (nombrePareil(tabSkin)) {
+                    panel_erreur.setVisible(true);
+                    lbl_erreur_noms.setVisible(false);
+                    lbl_erreur_skins.setVisible(true);
+                } 
+                else if (nombrePareil(tabSkin)) {
+                    panel_erreur.setVisible(true);
+                    lbl_erreur_noms.setVisible(false);
+                    lbl_erreur_skins.setVisible(true);
+                }
+                else {
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
                     listeJoueur.add(player3);
@@ -405,7 +445,18 @@ public class FenetreAccueil extends javax.swing.JFrame {
             case 4:
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty() || nomJoueur3.getText().isEmpty() || nomJoueur4.getText().isEmpty()) {
                     panel_erreur.setVisible(true);
-                } else {
+                    lbl_erreur_noms.setVisible(true);
+                    lbl_erreur_skins.setVisible(false);
+                    if (nombrePareil(tabSkin)) {
+                        lbl_erreur_skins.setVisible(true);
+                    }
+                } 
+                else if (nombrePareil(tabSkin)) {
+                    panel_erreur.setVisible(true);
+                    lbl_erreur_noms.setVisible(false);
+                    lbl_erreur_skins.setVisible(true);
+                }
+                else {
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
                     listeJoueur.add(player3);
@@ -463,6 +514,17 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private void skinJ4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skinJ4ActionPerformed
         changeSkin(4);
     }//GEN-LAST:event_skinJ4ActionPerformed
+
+    private boolean nombrePareil(int[] tab) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = i + 1; j < 4; j++) {
+                if (tab[i] == tab[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     private void changeSkin(int numPlayer) {
         switch (numPlayer) {
@@ -610,7 +672,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbl_erreur_noms;
+    private javax.swing.JLabel lbl_erreur_skins;
     private javax.swing.JTextField nomJoueur1;
     private javax.swing.JTextField nomJoueur2;
     private javax.swing.JTextField nomJoueur3;
