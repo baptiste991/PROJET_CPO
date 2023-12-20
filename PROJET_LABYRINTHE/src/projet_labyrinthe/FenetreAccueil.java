@@ -36,6 +36,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private void CustomInitComponents() {
 
         initComponents();
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // on créé un fond noir
@@ -200,7 +201,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_j3.add(skinJ3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 126, 201));
 
-        panel_noms.add(panel_j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 340, 240));
+        panel_noms.add(panel_j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 340, 240));
 
         btn_start.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/Play.png"))); // NOI18N
         btn_start.setToolTipText("");
@@ -240,7 +241,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_j2.add(skinJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 126, 201));
 
-        panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 360, 220));
+        panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 360, 220));
 
         getContentPane().add(panel_noms, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 1080, 620));
 
@@ -262,7 +263,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 btn_2jActionPerformed(evt);
             }
         });
-        panel_btn.add(btn_2j, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 300, 80));
+        panel_btn.add(btn_2j, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 80));
 
         btn_4j.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btn_4j.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/button4players.png"))); // NOI18N
@@ -271,7 +272,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 btn_4jActionPerformed(evt);
             }
         });
-        panel_btn.add(btn_4j, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 300, 80));
+        panel_btn.add(btn_4j, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 300, 80));
 
         btn_3j.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btn_3j.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/button3players.png"))); // NOI18N
@@ -281,11 +282,11 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 btn_3jActionPerformed(evt);
             }
         });
-        panel_btn.add(btn_3j, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 300, 80));
+        panel_btn.add(btn_3j, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 300, 80));
 
-        panel_multiplayer.add(panel_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 970, 110));
+        panel_multiplayer.add(panel_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 520));
 
-        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 980, 130));
+        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 980, 500));
 
         panel_solo.setOpaque(false);
         panel_solo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -366,12 +367,14 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
 
+        //récupération des noms des jouerus
         ArrayList<Joueur> listeJoueur = new ArrayList<Joueur>();
         String nomJ1 = nomJoueur1.getText();
         String nomJ2 = nomJoueur2.getText();
         String nomJ3 = nomJoueur3.getText();
         String nomJ4 = nomJoueur4.getText();
 
+        //assignation des skins sélectionnés dans la création des players
         Joueur player1 = new Joueur(nomJ1, "skin" + numSkin1);
         Joueur player2 = new Joueur(nomJ2, "skin" + numSkin2);
         Joueur player3 = new Joueur(nomJ3, "skin" + numSkin3);
@@ -379,13 +382,16 @@ public class FenetreAccueil extends javax.swing.JFrame {
         
 
         switch (nbJoueurs) {
-
+            
             case 1:
                 tabSkin.add(numSkin1);
                 if (nomJoueur1.getText().isEmpty()) {
+                    //test si les noms sont tous rentrés + affichage des labels d'erreurs 
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(true);
+                    lbl_erreur_skins.setVisible(false);
                 } else {
+                    //lancement de la partie + suppréssion de la fenetre
                     listeJoueur.add(player1);
                     Partie partie = new Partie(listeJoueur);
                     partie.startWindow();
@@ -396,18 +402,22 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 tabSkin.add(numSkin1);
                 tabSkin.add(numSkin2);
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty()) {
+                    //test si les noms sont tous rentrés + affichage des labels d'erreurs 
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(true);
                     lbl_erreur_skins.setVisible(false);
 
                     if (nombrePareil(tabSkin)) {
+                        //test si à minima deux personne ont séléctionner le même skin + affichage message d'erreur dans le cas où les noms ne sont pas tous rentrés aussi
                         lbl_erreur_skins.setVisible(true);
                     }
                 } else if (nombrePareil(tabSkin)) {
+                    //test si à minima deux personne ont séléctionner le même skin + affichage message d'erreur
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(false);
                     lbl_erreur_skins.setVisible(true);
                 } else {
+                    //lancement de la partie + suppréssion de la fenetre
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
                     Partie partie = new Partie(listeJoueur);
@@ -420,17 +430,21 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 tabSkin.add(numSkin2);
                 tabSkin.add(numSkin3);
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty() || nomJoueur3.getText().isEmpty()) {
+                    //test si les noms sont tous rentrés + affichage des labels d'erreurs 
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(true);
                     lbl_erreur_skins.setVisible(false);
                     if (nombrePareil(tabSkin)) {
+                        //test si à minima deux personne ont séléctionner le même skin + affichage message d'erreur dans le cas où les noms ne sont pas tous rentrés aussi                        
                         lbl_erreur_skins.setVisible(true);
                     }
                 } else if (nombrePareil(tabSkin)) {
+                    //test si à minima deux personne ont séléctionner le même skin + affichage message d'erreur
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(false);
                     lbl_erreur_skins.setVisible(true);
                 } else {
+                    //lancement de la partie + suppréssion de la fenetre
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
                     listeJoueur.add(player3);
@@ -445,17 +459,21 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 tabSkin.add(numSkin3);
                 tabSkin.add(numSkin4);
                 if (nomJoueur1.getText().isEmpty() || nomJoueur2.getText().isEmpty() || nomJoueur3.getText().isEmpty() || nomJoueur4.getText().isEmpty()) {
+                    //test si les noms sont tous rentrés + affichage des labels d'erreurs
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(true);
                     lbl_erreur_skins.setVisible(false);
                     if (nombrePareil(tabSkin)) {
+                        //test si à minima deux personne ont séléctionner le même skin + affichage message d'erreur dans le cas où les noms ne sont pas tous rentrés aussi 
                         lbl_erreur_skins.setVisible(true);
                     }
                 } else if (nombrePareil(tabSkin)) {
+                    //test si à minima deux personne ont séléctionner le même skin + affichage message d'erreur
                     panel_erreur.setVisible(true);
                     lbl_erreur_noms.setVisible(false);
                     lbl_erreur_skins.setVisible(true);
                 } else {
+                    //lancement de la partie + suppréssion de la fenetre
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
                     listeJoueur.add(player3);
@@ -466,7 +484,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 }
                 break;
         }
-        
+        //on vide tabSkin afin de ne pas fausser les prochain test si on doit appuyer plusieurs fois sur le bouton start
         tabSkin.clear();
     }//GEN-LAST:event_btn_startActionPerformed
 
