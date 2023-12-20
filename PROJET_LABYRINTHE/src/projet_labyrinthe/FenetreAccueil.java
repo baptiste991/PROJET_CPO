@@ -34,14 +34,17 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }
 
     private void CustomInitComponents() {
-
-        initComponents();
+        // initialise la frame sur la base de initComponent
         
+        initComponents();
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // on créé un fond noir
         getContentPane().add(fond_noir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, getWidth(), getHeight()));
 
+        
+        // on affiche les panels et labels correspondants au menu d'accueil
         panel_noms.setVisible(false);
 
         panel_erreur.setVisible(false);
@@ -72,7 +75,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         btn_home = new javax.swing.JButton();
         panel_noms = new javax.swing.JPanel();
         panel_j1 = new javax.swing.JPanel();
@@ -111,6 +113,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
         fond_noir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(908, 650));
+        setMinimumSize(new java.awt.Dimension(908, 633));
+        setPreferredSize(new java.awt.Dimension(920, 670));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/bouton-daccueil-pour-linterface.png"))); // NOI18N
@@ -120,7 +125,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 btn_homeActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 580, 70, 70));
+        getContentPane().add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 525, -1, 70));
 
         panel_noms.setOpaque(false);
         panel_noms.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -149,7 +154,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_j1.add(skinJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 126, -1));
 
-        panel_noms.add(panel_j1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 250));
+        panel_noms.add(panel_j1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 240));
 
         panel_j4.setOpaque(false);
         panel_j4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -175,7 +180,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_j4.add(skinJ4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 126, 201));
 
-        panel_noms.add(panel_j4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, 340, 240));
+        panel_noms.add(panel_j4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 340, 240));
 
         panel_j3.setOpaque(false);
         panel_j3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,9 +204,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 skinJ3ActionPerformed(evt);
             }
         });
-        panel_j3.add(skinJ3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 126, 201));
+        panel_j3.add(skinJ3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 126, 201));
 
-        panel_noms.add(panel_j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 340, 240));
+        panel_noms.add(panel_j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 340, 220));
 
         btn_start.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/Play.png"))); // NOI18N
         btn_start.setToolTipText("");
@@ -210,7 +215,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 btn_startActionPerformed(evt);
             }
         });
-        panel_noms.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 300, 80));
+        panel_noms.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, 300, 80));
 
         panel_erreur.setOpaque(false);
         panel_erreur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -223,7 +228,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         lbl_erreur_skins.setText("Choisissez chacun un skin différent !");
         panel_erreur.add(lbl_erreur_skins, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 240, 40));
 
-        panel_noms.add(panel_erreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 300, 120));
+        panel_noms.add(panel_erreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 300, 120));
 
         panel_j2.setOpaque(false);
         panel_j2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -241,9 +246,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_j2.add(skinJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 126, 201));
 
-        panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 360, 220));
+        panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 360, 220));
 
-        getContentPane().add(panel_noms, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 1080, 620));
+        getContentPane().add(panel_noms, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 920, 670));
 
         panel_multiplayer.setOpaque(false);
         panel_multiplayer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -286,7 +291,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         panel_multiplayer.add(panel_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 520));
 
-        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 980, 500));
+        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 980, 500));
 
         panel_solo.setOpaque(false);
         panel_solo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -329,13 +334,15 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_modes.add(btn_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 300, 80));
 
-        getContentPane().add(panel_modes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 570, 610, 120));
+        getContentPane().add(panel_modes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 520, 610, 120));
 
         img_labyrinthe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/accueil.png"))); // NOI18N
-        getContentPane().add(img_labyrinthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 910, 640));
+        getContentPane().add(img_labyrinthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 908, 633));
 
         fond_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/landscape.png"))); // NOI18N
-        getContentPane().add(fond_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -170, -1, -1));
+        fond_menu.setMaximumSize(new java.awt.Dimension(920, 770));
+        fond_menu.setPreferredSize(new java.awt.Dimension(920, 770));
+        getContentPane().add(fond_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, -1, -1));
 
         fond_noir.setBackground(new java.awt.Color(0, 51, 51));
         fond_noir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/fond_noir.png"))); // NOI18N
@@ -345,15 +352,15 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_4jActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4jActionPerformed
-        clickBouton(true, 4);
+        clickBtnPlayers(true, 4);
     }//GEN-LAST:event_btn_4jActionPerformed
 
     private void btn_3jActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3jActionPerformed
-        clickBouton(true, 3);
+        clickBtnPlayers(true, 3);
     }//GEN-LAST:event_btn_3jActionPerformed
 
     private void btn_2jActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2jActionPerformed
-        clickBouton(true, 2);
+        clickBtnPlayers(true, 2);
     }//GEN-LAST:event_btn_2jActionPerformed
 
     private void nomJoueur1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomJoueur1ActionPerformed
@@ -378,11 +385,10 @@ public class FenetreAccueil extends javax.swing.JFrame {
         Joueur player1 = new Joueur(nomJ1, "skin" + numSkin1);
         Joueur player2 = new Joueur(nomJ2, "skin" + numSkin2);
         Joueur player3 = new Joueur(nomJ3, "skin" + numSkin3);
-        Joueur player4 = new Joueur(nomJ4, "skin" + numSkin4);    
-        
+        Joueur player4 = new Joueur(nomJ4, "skin" + numSkin4);
 
         switch (nbJoueurs) {
-            
+
             case 1:
                 tabSkin.add(numSkin1);
                 if (nomJoueur1.getText().isEmpty()) {
@@ -484,16 +490,15 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 }
                 break;
         }
-        //on vide tabSkin afin de ne pas fausser les prochain test si on doit appuyer plusieurs fois sur le bouton start
+        //on vide tabSkin pour éviter tout conflits en cas de revenue sur les menus suivant ou de plusieurs tentatives de selection des kisns et nom joueurs
         tabSkin.clear();
     }//GEN-LAST:event_btn_startActionPerformed
 
     private void btn_mode() {
+        // permet de passer au menu suivant une fois le mode singleplayer ou multiplayer selectionné
         img_labyrinthe.setVisible(false);
         panel_modes.setVisible(false);
         fond_menu.setVisible(true);
-        skinJ1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin1.png"))); // NOI18N
-
     }
 
     private void btn_soloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_soloActionPerformed
@@ -507,7 +512,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_multiplayerActionPerformed
 
     private void btn_solovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solovsActionPerformed
-        clickBouton(true, 1);
+        clickBtnPlayers(true, 1);
     }//GEN-LAST:event_btn_solovsActionPerformed
 
     private void btn_solovsIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solovsIAActionPerformed
@@ -535,6 +540,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_skinJ4ActionPerformed
 
     private boolean nombrePareil(ArrayList<Integer> tab) {
+
+        //test si dans un tableau il y a au moins deux fois un même élément
         for (int i = 0; i < tab.size() - 1; i++) {
             for (int j = i + 1; j < tab.size(); j++) {
                 if (Objects.equals(tab.get(i), tab.get(j))) {
@@ -546,48 +553,65 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }
 
     private void changeSkin(int numPlayer) {
+        //update le skin lorsque l'on change celui-ci 
         switch (numPlayer) {
             case 1:
+                // cas du skin du joueur1
                 if (numSkin1 == 5) {
+                    // cas ou on arrive au dernier skin, fait reboucler au premier
                     numSkin1 = 1;
                 } else {
+                    // sinon on augmente simplement l'indice du skin selectionné
                     numSkin1++;
                 }
+                // on change l'icone du skin sur le btn par le suivant
                 skinJ1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin" + numSkin1 + ".png")));
                 break;
 
             case 2:
+                // cas du skin du joueur2
                 if (numSkin2 == 5) {
+                    // cas ou on arrive au dernier skin, fait reboucler au premier
                     numSkin2 = 1;
                 } else {
+                    // sinon on augmente simplement l'indice du skin selectionné
                     numSkin2++;
                 }
+                // on change l'icone du skin sur le btn par le suivant
                 skinJ2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin" + numSkin2 + ".png")));
                 break;
 
             case 3:
+                // cas du skin du joueur3
                 if (numSkin3 == 5) {
+                    // cas ou on arrive au dernier skin, fait reboucler au premier
                     numSkin3 = 1;
                 } else {
+                    // sinon on augmente simplement l'indice du skin selectionné
                     numSkin3++;
                 }
+                // on change l'icone du skin sur le btn par le suivant
                 skinJ3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin" + numSkin3 + ".png")));
-
                 break;
 
             case 4:
+                // cas du skin du joueur4
                 if (numSkin4 == 5) {
+                    // cas ou on arrive au dernier skin, fait reboucler au premier
                     numSkin4 = 1;
                 } else {
+                    // sinon on augmente simplement l'indice du skin selectionné
                     numSkin4++;
                 }
+                // on change l'icone du skin sur le btn par le suivant
                 skinJ4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin" + numSkin4 + ".png")));
                 break;
         }
     }
 
     private void home() {
-        numSkin1 = 1;
+        // permet de revenir a la fenêtre du début, d'accueil
+        // sans oublier de reset tous les espaces d'entrer clavier, et de remettre les skins par défauts
 
         img_labyrinthe.setVisible(true);
 
@@ -603,13 +627,16 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         panel_modes.setVisible(true);
 
-        clickBouton(false, 5);
+        clickBtnPlayers(false, 5);
 
         resetUIJoueurs();
     }
 
-    private void clickBouton(boolean cliqué, int nbJoueurs) {
+    private void clickBtnPlayers(boolean cliqué, int nbJoueurs) {
 
+        // permet de faire l'étape lorsque le nombre de joueur a été selectionné, on différentie chaque cas de selon le nombre de joueurs
+        
+        // on set le nombre de joueurs en question et on affiche ou non les panels qu'il faut pour passer au menu suivant
         this.nbJoueurs = nbJoueurs;
         panel_btn.setVisible(!cliqué);
         panel_noms.setVisible(cliqué);
@@ -619,6 +646,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         panel_j4.setVisible(false);
 
         switch (nbJoueurs) {
+            // on affiche les joueurs qu'il faut dans chaque cas de nombre de joueurs sélectionné
             case 2:
                 panel_j2.setVisible(cliqué);
                 panel_solo.setVisible(false);
@@ -633,6 +661,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 panel_j4.setVisible(cliqué);
                 break;
             default:
+                //le default correspond au cas solo
                 panel_solo.setVisible(false);
                 break;
         }
@@ -653,10 +682,10 @@ public class FenetreAccueil extends javax.swing.JFrame {
         skinJ4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin4.png")));
 
         // on reset les numéros correspondants au icones reset au dessus
-        numSkin1=1;
-        numSkin2=2;
-        numSkin3=3;
-        numSkin4=4;
+        numSkin1 = 1;
+        numSkin2 = 2;
+        numSkin3 = 3;
+        numSkin4 = 4;
     }
 
     /**
@@ -689,7 +718,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             FenetreAccueil fenetre = new FenetreAccueil();
-            fenetre.setExtendedState(JFrame.MAXIMIZED_BOTH); // Ouvrir en plein écran
+            //fenetre.setExtendedState(JFrame.MAXIMIZED_BOTH); // Ouvrir en plein écran
             fenetre.setVisible(true);
         });
     }
@@ -704,7 +733,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JButton btn_solovs;
     private javax.swing.JButton btn_solovsIA;
     private javax.swing.JButton btn_start;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel fond_menu;
     private javax.swing.JLabel fond_noir;
     private javax.swing.JLabel img_labyrinthe;
