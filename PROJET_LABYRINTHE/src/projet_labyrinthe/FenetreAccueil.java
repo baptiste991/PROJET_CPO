@@ -161,7 +161,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel4.setText("Joueur 4 : ");
-        panel_j4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+        panel_j4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
 
         nomJoueur4.setToolTipText("");
         nomJoueur4.setPreferredSize(new java.awt.Dimension(100, 22));
@@ -180,14 +180,14 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_j4.add(skinJ4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 126, 201));
 
-        panel_noms.add(panel_j4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 340, 240));
+        panel_noms.add(panel_j4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 340, 230));
 
         panel_j3.setOpaque(false);
         panel_j3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel1.setText("Joueur 3 :");
-        panel_j3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+        panel_j3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
 
         nomJoueur3.setToolTipText("");
         nomJoueur3.setPreferredSize(new java.awt.Dimension(100, 22));
@@ -215,7 +215,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 btn_startActionPerformed(evt);
             }
         });
-        panel_noms.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, 300, 80));
+        panel_noms.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 300, 80));
 
         panel_erreur.setOpaque(false);
         panel_erreur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -246,7 +246,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_j2.add(skinJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 126, 201));
 
-        panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 360, 220));
+        panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 340, 220));
 
         getContentPane().add(panel_noms, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 920, 670));
 
@@ -291,7 +291,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         panel_multiplayer.add(panel_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 520));
 
-        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 980, 500));
+        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 980, 500));
 
         panel_solo.setOpaque(false);
         panel_solo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
