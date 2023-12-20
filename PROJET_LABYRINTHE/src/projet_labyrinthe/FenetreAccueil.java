@@ -291,7 +291,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         panel_multiplayer.add(panel_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 520));
 
-        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 980, 500));
+        getContentPane().add(panel_multiplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 980, 500));
 
         panel_solo.setOpaque(false);
         panel_solo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
