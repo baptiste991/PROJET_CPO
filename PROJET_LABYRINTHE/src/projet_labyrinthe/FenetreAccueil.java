@@ -55,6 +55,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         fond_menu.setVisible(false);
 
+        setLocationRelativeTo(null);
+        
         pack();
         setVisible(true);
     }
