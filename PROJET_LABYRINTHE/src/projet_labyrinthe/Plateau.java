@@ -578,27 +578,49 @@ public class Plateau extends Settings {
         //49 Cartes du plateau copiées en 2D 
 
         //Randomisation des missions sur les cartes
+        
+        int [][] coordsMissions = new int [this.getAllMissions().size()][2];
+        boolean coordsalreadyused;
+        
         for (int i = 0; i < this.getAllMissions().size(); i++) {
             //on itère sur le nombre de missions soit 16
 
             int indexRandomX, indexRandomY;
             //On choisit des coordonnées aléatoires
             do {
+                coordsalreadyused = false;
                 indexRandomX = random.nextInt(7);
                 indexRandomY = random.nextInt(7);
-            } while (cartesRestantes.get(indexRandomX).get(indexRandomY).getPosx() < 0 && cartesRestantes.get(indexRandomX).get(indexRandomY).getPosy() < 0);
+                
+                for(int coords=0;coords<this.getAllMissions().size();coords++){
+                    if(indexRandomX == coordsMissions[coords][0] && indexRandomY == coordsMissions[coords][1]){
+                        coordsalreadyused = true;
+                        break;
+                    }
+                }
+                
+                if(!coordsalreadyused){
+                    coordsMissions[i][0] = indexRandomX;
+                    coordsMissions[i][1] = indexRandomY;
+                }
+                
+                
+                
+            } while (coordsalreadyused);
+            
+
+            
             // On vérifie que ces coordonnées n'aient pas déja été choisies
-
-            //carte du plateau au hasard par ces coordonnées pour lui attribuer la mission
-            cartesRestantes.get(indexRandomX).get(indexRandomY).setMission(this.getAllMissions().get(i));
-            //La carte de carteRestante d'indice indexRandomX,indexRandomY doit donner sa mission a la carte de mêmes coordonnées
+            
+            
+            System.out.println("Mission en :"+indexRandomX +" "+indexRandomY);
+            
+            //La carte d'indice indexRandomX,indexRandomY doit donner sa mission a la carte de mêmes coordonnées
             this.getPlateau().get(indexRandomX).get(indexRandomY).setMission(this.getAllMissions().get(i));
-            //Pour la suite on va opposer les coordonnées de la carte choisie 
-            cartesRestantes.get(indexRandomX).get(indexRandomY).setPosx(-(cartesRestantes.get(indexRandomX).get(indexRandomY).getPosx()));
-            cartesRestantes.get(indexRandomX).get(indexRandomY).setPosy(-(cartesRestantes.get(indexRandomX).get(indexRandomY).getPosy()));
-
+           
         }
 
+        
     }
 
 }
