@@ -2,6 +2,8 @@ package projet_labyrinthe;
 
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -44,9 +46,35 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         plateau.setListMissionOfPlayers();
         initComponents();
         gen1UItour(ordre);
+        
+        // Configuration du layout de la JFrame
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
 
+        // Configuration du panel gauche
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.VERTICAL;
+        add(panel_gauche, gbc);
+
+        // Configuration du panel grille
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0; // Permet à ce panel de prendre l'espace disponible en largeur
+        add(panel_grille, gbc);
+
+        // Configuration du panel droite
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.VERTICAL;
+        add(panel_droite, gbc);
+
+        pack();
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
     }
     
     public void gen1UItour(ArrayList<Joueur> ordre){
@@ -352,8 +380,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        panneau_carte_attente = new javax.swing.JPanel();
+        panel_grille = new javax.swing.JPanel();
         btn_x1g = new javax.swing.JButton();
         btn_x1d = new javax.swing.JButton();
         btn_x5g = new javax.swing.JButton();
@@ -367,16 +396,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btn_y3b = new javax.swing.JButton();
         btn_y5b = new javax.swing.JButton();
         GridPanel = new javax.swing.JPanel();
-        Text1 = new javax.swing.JLabel();
-        RotateRight1 = new javax.swing.JButton();
-        RotateRight = new javax.swing.JButton();
-        Text2 = new javax.swing.JLabel();
-        PanelTour = new javax.swing.JPanel();
-        Text3 = new javax.swing.JLabel();
+        panel_gauche = new javax.swing.JPanel();
         Left = new javax.swing.JButton();
         Up = new javax.swing.JButton();
         Down = new javax.swing.JButton();
         Right = new javax.swing.JButton();
+        Text3 = new javax.swing.JLabel();
+        PanelTour = new javax.swing.JPanel();
+        Text2 = new javax.swing.JLabel();
+        panneau_carte_attente = new javax.swing.JPanel();
+        RotateRight1 = new javax.swing.JButton();
+        RotateRight = new javax.swing.JButton();
+        Text1 = new javax.swing.JLabel();
+        panel_droite = new javax.swing.JPanel();
+        Objets = new javax.swing.JLabel();
         MissionsView1 = new javax.swing.JPanel();
         Player111 = new javax.swing.JPanel();
         Skin111 = new javax.swing.JPanel();
@@ -401,7 +434,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Player4 = new javax.swing.JPanel();
         Skin4 = new javax.swing.JPanel();
         MissionP4 = new javax.swing.JPanel();
-        Objets = new javax.swing.JLabel();
         Valider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -420,11 +452,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 formKeyTyped(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
-        panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
-        getContentPane().add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 90, 90));
+        panel_grille.setOpaque(false);
+        panel_grille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_x1g.setText("▶");
         btn_x1g.addActionListener(new java.awt.event.ActionListener() {
@@ -432,7 +463,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x1gActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x1g, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
+        panel_grille.add(btn_x1g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
 
         btn_x1d.setText("◀");
         btn_x1d.addActionListener(new java.awt.event.ActionListener() {
@@ -440,7 +471,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x1dActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x1d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 190, -1, -1));
+        panel_grille.add(btn_x1d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, -1, -1));
 
         btn_x5g.setText("▶");
         btn_x5g.addActionListener(new java.awt.event.ActionListener() {
@@ -448,7 +479,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x5gActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x5g, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 540, -1, -1));
+        panel_grille.add(btn_x5g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, -1, -1));
 
         btn_x3g.setText("▶");
         btn_x3g.addActionListener(new java.awt.event.ActionListener() {
@@ -456,7 +487,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x3gActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x3g, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, -1, -1));
+        panel_grille.add(btn_x3g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
 
         btn_x3d.setText("◀");
         btn_x3d.addActionListener(new java.awt.event.ActionListener() {
@@ -464,7 +495,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x3dActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x3d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 360, -1, -1));
+        panel_grille.add(btn_x3d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, -1, -1));
 
         btn_x5d.setText("◀");
         btn_x5d.addActionListener(new java.awt.event.ActionListener() {
@@ -472,7 +503,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_x5dActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 540, -1, -1));
+        panel_grille.add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
 
         btn_y1h.setText("▼");
         btn_y1h.addActionListener(new java.awt.event.ActionListener() {
@@ -480,7 +511,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y1hActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y1h, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, -1, -1));
+        panel_grille.add(btn_y1h, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 0, -1, -1));
 
         btn_y3h.setText("▼");
         btn_y3h.addActionListener(new java.awt.event.ActionListener() {
@@ -488,7 +519,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y3hActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y3h, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
+        panel_grille.add(btn_y3h, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 0, -1, -1));
 
         btn_y5h.setText("▼");
         btn_y5h.addActionListener(new java.awt.event.ActionListener() {
@@ -496,7 +527,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y5hActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y5h, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, -1, -1));
+        panel_grille.add(btn_y5h, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 0, -1, -1));
 
         btn_y1b.setText("▲");
         btn_y1b.addActionListener(new java.awt.event.ActionListener() {
@@ -504,7 +535,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y1bActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 710, -1, -1));
+        panel_grille.add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 660, -1, -1));
 
         btn_y3b.setText("▲");
         btn_y3b.addActionListener(new java.awt.event.ActionListener() {
@@ -512,7 +543,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y3bActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 710, -1, -1));
+        panel_grille.add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 660, -1, -1));
 
         btn_y5b.setText("▲");
         btn_y5b.addActionListener(new java.awt.event.ActionListener() {
@@ -520,46 +551,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btn_y5bActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 710, -1, -1));
+        panel_grille.add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 660, -1, -1));
 
         GridPanel.setBackground(new java.awt.Color(105, 55, 0));
         GridPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         GridPanel.setLayout(new java.awt.GridLayout(7, 7));
-        getContentPane().add(GridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 630, 630));
+        panel_grille.add(GridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 630, 630));
 
-        Text1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        Text1.setText("Carte en dehors du plateau :");
-        getContentPane().add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        getContentPane().add(panel_grille, new java.awt.GridBagConstraints());
 
-        RotateRight1.setText("↰");
-        RotateRight1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RotateRight1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
-
-        RotateRight.setText("↱");
-        RotateRight.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RotateRightActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-
-        Text2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        Text2.setText("    C'est au tour de : " + turnOff.name);
-        getContentPane().add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
-
-        PanelTour.setBackground(new java.awt.Color(153, 255, 153));
-        PanelTour.setForeground(new java.awt.Color(204, 204, 255));
-        PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
-        PanelTour.setLayout(new java.awt.GridLayout(1, 1));
-        getContentPane().add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
-
-        Text3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        Text3.setText("    Actions possibles :");
-        getContentPane().add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
+        panel_gauche.setOpaque(false);
+        panel_gauche.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Left.setText("←");
         Left.addActionListener(new java.awt.event.ActionListener() {
@@ -572,7 +574,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 LeftKeyPressed(evt);
             }
         });
-        getContentPane().add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 50, 40));
+        panel_gauche.add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 50, 40));
 
         Up.setText("↑");
         Up.addActionListener(new java.awt.event.ActionListener() {
@@ -580,7 +582,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 UpActionPerformed(evt);
             }
         });
-        getContentPane().add(Up, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 50, 40));
+        panel_gauche.add(Up, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 50, 40));
 
         Down.setText("↓");
         Down.addActionListener(new java.awt.event.ActionListener() {
@@ -588,7 +590,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 DownActionPerformed(evt);
             }
         });
-        getContentPane().add(Down, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 50, 40));
+        panel_gauche.add(Down, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 50, 40));
 
         Right.setText("→");
         Right.addActionListener(new java.awt.event.ActionListener() {
@@ -596,7 +598,60 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 RightActionPerformed(evt);
             }
         });
-        getContentPane().add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 50, 40));
+        panel_gauche.add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 50, 40));
+
+        Text3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text3.setText("    Actions possibles :");
+        panel_gauche.add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, -1, -1));
+
+        PanelTour.setBackground(new java.awt.Color(153, 255, 153));
+        PanelTour.setForeground(new java.awt.Color(204, 204, 255));
+        PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
+        PanelTour.setLayout(new java.awt.GridLayout(1, 1));
+        panel_gauche.add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+
+        Text2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text2.setText("    C'est au tour de : " + turnOff.name);
+        panel_gauche.add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
+
+        panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
+        panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
+        panel_gauche.add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 90, 90));
+
+        RotateRight1.setText("↰");
+        RotateRight1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRight1ActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
+
+        RotateRight.setText("↱");
+        RotateRight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRightActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        Text1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text1.setText("Carte en dehors du plateau :");
+        panel_gauche.add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 17;
+        gridBagConstraints.ipady = 180;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        getContentPane().add(panel_gauche, gridBagConstraints);
+
+        panel_droite.setOpaque(false);
+        panel_droite.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Objets.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Objets.setText("Objets à récupérer");
+        panel_droite.add(Objets, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 170, 20));
 
         MissionsView1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -610,9 +665,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionsP111.setLayout(new java.awt.GridLayout(4, 4));
         Player111.add(MissionsP111, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 310));
 
-        MissionsView1.add(Player111, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 370));
+        MissionsView1.add(Player111, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 300, 370));
 
-        getContentPane().add(MissionsView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 90, 320, 560));
+        panel_droite.add(MissionsView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 300, 570));
 
         MissionsView2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -640,7 +695,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         MissionsView2.add(Player22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 200));
 
-        getContentPane().add(MissionsView2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 90, 320, 560));
+        panel_droite.add(MissionsView2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 320, 560));
 
         MissionsView43.setBackground(new java.awt.Color(255, 0, 255));
         MissionsView43.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -689,11 +744,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         MissionsView43.add(Player4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 120));
 
-        getContentPane().add(MissionsView43, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 90, 320, 560));
-
-        Objets.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        Objets.setText("Objets à récupérer");
-        getContentPane().add(Objets, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 60, 170, -1));
+        panel_droite.add(MissionsView43, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 320, 560));
 
         Valider.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
         Valider.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
@@ -703,7 +754,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 ValiderActionPerformed(evt);
             }
         });
-        getContentPane().add(Valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 680, 160, 50));
+        panel_droite.add(Valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 630, 160, 50));
+
+        getContentPane().add(panel_droite, new java.awt.GridBagConstraints());
 
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
@@ -944,6 +997,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btn_y3h;
     private javax.swing.JButton btn_y5b;
     private javax.swing.JButton btn_y5h;
+    private javax.swing.JPanel panel_droite;
+    private javax.swing.JPanel panel_gauche;
+    private javax.swing.JPanel panel_grille;
     private javax.swing.JPanel panneau_carte_attente;
     // End of variables declaration//GEN-END:variables
 }
