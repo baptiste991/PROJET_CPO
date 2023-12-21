@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -29,6 +30,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     Joueur turnOff = new Joueur();
     
     ArrayList<Joueur> ordre;
+    
+    Image imageFond;
 
     /**
      * Constructeur de la fenêtre Cette fenetre représente graphiquement le
@@ -44,6 +47,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         plateau.setAllMissionsToCards();
         plateau.placeAllPlayers();
         plateau.setListMissionOfPlayers();
+                imageFond = new ImageIcon(getClass().getResource("/imgMenus/landscape.png")).getImage();
+
         initComponents();
         gen1UItour(ordre);
         
@@ -70,12 +75,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         gbc.fill = GridBagConstraints.VERTICAL;
         add(panel_droite, gbc);
 
+        
         pack();
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         
     }
+
     
     public void gen1UItour(ArrayList<Joueur> ordre){
         turnOff = ordre.get(0);
@@ -108,7 +115,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public void genUIPlayerHasToPlay(Joueur player) {
         
         this.turnOff = player;
-        Text2.setText("    C'est au tour de : " + turnOff.name);
+        Text2.setText("                         C'est au tour de : " );
+        lbl_nom_joueur.setText(turnOff.name);
         Carte carte = new Carte();
         carte.isRidedByPlayers.add(player);
         //assignation graphique du panel
@@ -408,6 +416,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         RotateRight1 = new javax.swing.JButton();
         RotateRight = new javax.swing.JButton();
         Text1 = new javax.swing.JLabel();
+        lbl_nom_joueur = new javax.swing.JLabel();
         panel_droite = new javax.swing.JPanel();
         Objets = new javax.swing.JLabel();
         MissionsView1 = new javax.swing.JPanel();
@@ -439,7 +448,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Labyrinthe Remastered");
         setAlwaysOnTop(true);
-        setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFocusTraversalPolicyProvider(true);
         setMinimumSize(new java.awt.Dimension(1515, 750));
@@ -457,7 +465,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         panel_grille.setOpaque(false);
         panel_grille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_x1g.setText("▶");
+        btn_x1g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
+        btn_x1g.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x1g.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_x1gActionPerformed(evt);
@@ -465,7 +474,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x1g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
 
-        btn_x1d.setText("◀");
+        btn_x1d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
+        btn_x1d.setOpaque(true);
+        btn_x1d.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x1d.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_x1dActionPerformed(evt);
@@ -473,7 +484,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x1d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, -1, -1));
 
-        btn_x5g.setText("▶");
+        btn_x5g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
+        btn_x5g.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x5g.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_x5gActionPerformed(evt);
@@ -481,7 +493,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x5g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, -1, -1));
 
-        btn_x3g.setText("▶");
+        btn_x3g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
+        btn_x3g.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x3g.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_x3gActionPerformed(evt);
@@ -489,7 +502,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x3g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
 
-        btn_x3d.setText("◀");
+        btn_x3d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
+        btn_x3d.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x3d.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_x3dActionPerformed(evt);
@@ -497,7 +511,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x3d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, -1, -1));
 
-        btn_x5d.setText("◀");
+        btn_x5d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
+        btn_x5d.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x5d.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_x5dActionPerformed(evt);
@@ -505,7 +520,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
 
-        btn_y1h.setText("▼");
+        btn_y1h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
+        btn_y1h.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y1h.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_y1hActionPerformed(evt);
@@ -513,7 +529,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y1h, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 0, -1, -1));
 
-        btn_y3h.setText("▼");
+        btn_y3h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
+        btn_y3h.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y3h.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_y3hActionPerformed(evt);
@@ -521,7 +538,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y3h, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 0, -1, -1));
 
-        btn_y5h.setText("▼");
+        btn_y5h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
+        btn_y5h.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y5h.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_y5hActionPerformed(evt);
@@ -529,7 +547,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y5h, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 0, -1, -1));
 
-        btn_y1b.setText("▲");
+        btn_y1b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
+        btn_y1b.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y1b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_y1bActionPerformed(evt);
@@ -537,7 +556,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 660, -1, -1));
 
-        btn_y3b.setText("▲");
+        btn_y3b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
+        btn_y3b.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y3b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_y3bActionPerformed(evt);
@@ -545,7 +565,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 660, -1, -1));
 
-        btn_y5b.setText("▲");
+        btn_y5b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
+        btn_y5b.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y5b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_y5bActionPerformed(evt);
@@ -600,21 +621,23 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_gauche.add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 50, 40));
 
-        Text3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Text3.setText("    Actions possibles :");
         panel_gauche.add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, -1, -1));
 
         PanelTour.setBackground(new java.awt.Color(153, 255, 153));
         PanelTour.setForeground(new java.awt.Color(204, 204, 255));
+        PanelTour.setOpaque(false);
         PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
         PanelTour.setLayout(new java.awt.GridLayout(1, 1));
         panel_gauche.add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
 
-        Text2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Text2.setText("    C'est au tour de : " + turnOff.name);
-        panel_gauche.add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
+        panel_gauche.add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 30));
 
         panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
+        panneau_carte_attente.setOpaque(false);
         panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
         panel_gauche.add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 90, 90));
 
@@ -634,9 +657,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_gauche.add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        Text1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Text1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Text1.setText("Carte en dehors du plateau :");
-        panel_gauche.add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
+        panel_gauche.add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        lbl_nom_joueur.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lbl_nom_joueur.setText("nom joueur");
+        panel_gauche.add(lbl_nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 80, 30));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -649,13 +676,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         panel_droite.setOpaque(false);
         panel_droite.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Objets.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Objets.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
         Objets.setText("Objets à récupérer");
         panel_droite.add(Objets, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 170, 20));
 
+        MissionsView1.setOpaque(false);
         MissionsView1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Player111.setBackground(new java.awt.Color(255, 204, 204));
+        Player111.setOpaque(false);
         Player111.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Skin111.setLayout(new java.awt.GridLayout(1, 1));
@@ -669,9 +698,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         panel_droite.add(MissionsView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 300, 570));
 
+        MissionsView2.setOpaque(false);
         MissionsView2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Player21.setBackground(new java.awt.Color(255, 204, 204));
+        Player21.setOpaque(false);
         Player21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Skin21.setLayout(new java.awt.GridLayout(1, 1));
@@ -684,6 +715,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionsView2.add(Player21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, -1));
 
         Player22.setBackground(new java.awt.Color(204, 204, 255));
+        Player22.setOpaque(false);
         Player22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Skin22.setLayout(new java.awt.GridLayout(1, 1));
@@ -698,9 +730,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         panel_droite.add(MissionsView2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 320, 560));
 
         MissionsView43.setBackground(new java.awt.Color(255, 0, 255));
+        MissionsView43.setOpaque(false);
         MissionsView43.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Player1.setBackground(new java.awt.Color(255, 204, 204));
+        Player1.setOpaque(false);
         Player1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Skin1.setLayout(new java.awt.GridLayout(1, 1));
@@ -712,6 +746,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionsView43.add(Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 120));
 
         Player3.setBackground(new java.awt.Color(204, 204, 255));
+        Player3.setOpaque(false);
         Player3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Skin3.setLayout(new java.awt.GridLayout(1, 1));
@@ -723,6 +758,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionsView43.add(Player3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 120));
 
         Player2.setBackground(new java.awt.Color(204, 255, 204));
+        Player2.setOpaque(false);
         Player2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Skin2.setLayout(new java.awt.GridLayout(1, 1));
@@ -734,6 +770,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionsView43.add(Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 300, 120));
 
         Player4.setBackground(new java.awt.Color(204, 204, 0));
+        Player4.setOpaque(false);
         Player4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Skin4.setLayout(new java.awt.GridLayout(1, 1));
@@ -746,15 +783,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         panel_droite.add(MissionsView43, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 320, 560));
 
-        Valider.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
         Valider.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
-        Valider.setText("Valider le tour");
+        Valider.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/bouton valider.png"))); // NOI18N
+        Valider.setDoubleBuffered(true);
+        Valider.setFocusCycleRoot(true);
+        Valider.setMaximumSize(new java.awt.Dimension(300, 80));
+        Valider.setMinimumSize(new java.awt.Dimension(300, 80));
+        Valider.setPreferredSize(new java.awt.Dimension(300, 80));
         Valider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ValiderActionPerformed(evt);
             }
         });
-        panel_droite.add(Valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 630, 160, 50));
+        panel_droite.add(Valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 300, 80));
 
         getContentPane().add(panel_droite, new java.awt.GridBagConstraints());
 
@@ -997,6 +1038,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btn_y3h;
     private javax.swing.JButton btn_y5b;
     private javax.swing.JButton btn_y5h;
+    private javax.swing.JLabel lbl_nom_joueur;
     private javax.swing.JPanel panel_droite;
     private javax.swing.JPanel panel_gauche;
     private javax.swing.JPanel panel_grille;
