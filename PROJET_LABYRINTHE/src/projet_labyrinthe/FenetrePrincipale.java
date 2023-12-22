@@ -141,7 +141,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         for(int players=0;players<this.plateau.getListeDeJoueurs().size();players++){
             //Si un d'eux n'a plus d'objets il gagne
             if(this.plateau.getListeDeJoueurs().get(players).getObjets().isEmpty()){
-                System.out.println("Victoire du joueur : "+this.plateau.getListeDeJoueurs().get(players).name);
                 this.ordre.remove(this.plateau.getListeDeJoueurs().get(players));
                 break;
             }
@@ -151,7 +150,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 if(this.ordre.size()==0){
                 FenetreVictoire win = new FenetreVictoire();
                 this.dispose();
-                System.out.println("Victoire");
                 
             }
         }
