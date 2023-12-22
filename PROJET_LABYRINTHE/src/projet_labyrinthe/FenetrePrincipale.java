@@ -150,6 +150,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 if(this.ordre.size()==0){
                 FenetreVictoire win = new FenetreVictoire();
                 this.dispose();
+                System.out.println("Victoire");
+                
             }
         }
         

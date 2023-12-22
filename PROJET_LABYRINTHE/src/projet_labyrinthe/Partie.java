@@ -57,11 +57,16 @@ public class Partie {
            listetemp.add(listeJoueurs.get(i));
        }
 
+
        //Etablissement de l'ordre de passage
        for(int p=0;p<listeJoueurs.size();p++){
+           if(listeJoueurs.size()==1){
+               break;
+           } else{
            int indexrandom = r.nextInt(listetemp.size());
            ordre.add(listetemp.get(indexrandom));
            listetemp.remove(indexrandom);
+           }
        }
     }
 
