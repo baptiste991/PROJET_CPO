@@ -1,7 +1,5 @@
 package projet_labyrinthe;
 
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -9,8 +7,6 @@ import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 
 /**
  * Fenetre Principale du Jeu
@@ -29,7 +25,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     
     ArrayList<Joueur> ordre;
     
-    Image imageFond;
 
     /**
      * Constructeur de la fenêtre Cette fenetre représente graphiquement le
@@ -45,7 +40,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         plateau.setAllMissionsToCards();
         plateau.placeAllPlayers();
         plateau.setListMissionOfPlayers();
-                imageFond = new ImageIcon(getClass().getResource("/imgMenus/landscape.png")).getImage();
 
         initComponents();
         gen1UItour(ordre);
@@ -521,10 +515,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Player22.setOpaque(false);
         Player22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Skin22.setOpaque(false);
         Skin22.setLayout(new java.awt.GridLayout(1, 1));
         Player22.add(Skin22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
 
         MissionsP22.setBackground(new java.awt.Color(102, 255, 153));
+        MissionsP22.setOpaque(false);
         MissionsP22.setLayout(new java.awt.GridLayout(2, 4));
         Player22.add(MissionsP22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 140));
 

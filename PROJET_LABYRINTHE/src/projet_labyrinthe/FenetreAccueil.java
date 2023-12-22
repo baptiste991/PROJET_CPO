@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -23,7 +25,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
     int numSkin2 = 2;
     int numSkin3 = 3;
     int numSkin4 = 4;
-    ArrayList<Integer> tabSkin = new ArrayList<Integer>();
+    ArrayList<Integer> tabSkin = new ArrayList<>();
+    ArrayList<Joueur> listeJoueur = new ArrayList<>();
 
     /**
      * Creates new form FenetreAccueil
@@ -35,7 +38,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
     private void CustomInitComponents() {
         // initialise la frame sur la base de initComponent
-        
+
         initComponents();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,7 +46,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
         // on créé un fond noir
         getContentPane().add(fond_noir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, getWidth(), getHeight()));
 
-        
         // on affiche les panels et labels correspondants au menu d'accueil
         panel_noms.setVisible(false);
 
@@ -56,7 +58,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
         fond_menu.setVisible(false);
 
         setLocationRelativeTo(null);
-        
+
+        panel_reglages.setVisible(false);
+
         pack();
         setVisible(true);
     }
@@ -77,6 +81,12 @@ public class FenetreAccueil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel_reglages = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        slider_nbCartes = new javax.swing.JSlider();
+        lbl_nb_cartes = new javax.swing.JLabel();
+        btn_start = new javax.swing.JButton();
         btn_home = new javax.swing.JButton();
         panel_noms = new javax.swing.JPanel();
         panel_j1 = new javax.swing.JPanel();
@@ -91,7 +101,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         nomJoueur3 = new javax.swing.JTextField();
         skinJ3 = new javax.swing.JButton();
-        btn_start = new javax.swing.JButton();
+        btn_valider = new javax.swing.JButton();
         panel_erreur = new javax.swing.JPanel();
         lbl_erreur_noms = new javax.swing.JLabel();
         lbl_erreur_skins = new javax.swing.JLabel();
@@ -119,6 +129,38 @@ public class FenetreAccueil extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(908, 633));
         setPreferredSize(new java.awt.Dimension(920, 670));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel_reglages.setMaximumSize(new java.awt.Dimension(920, 670));
+        panel_reglages.setMinimumSize(new java.awt.Dimension(920, 670));
+        panel_reglages.setOpaque(false);
+        panel_reglages.setPreferredSize(new java.awt.Dimension(920, 670));
+        panel_reglages.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 36)); // NOI18N
+        jLabel5.setText("Réglages Partie");
+        panel_reglages.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        jLabel6.setText("Nombre de cartes par joueur :");
+        panel_reglages.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
+
+        slider_nbCartes.setMaximum(16);
+        slider_nbCartes.setMinimum(1);
+        panel_reglages.add(slider_nbCartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, -1));
+
+        lbl_nb_cartes.setText("nb cartes");
+        panel_reglages.add(lbl_nb_cartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
+
+        btn_start.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/Play.png"))); // NOI18N
+        btn_start.setPreferredSize(new java.awt.Dimension(300, 80));
+        btn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startActionPerformed(evt);
+            }
+        });
+        panel_reglages.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 300, 80));
+
+        getContentPane().add(panel_reglages, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 670));
 
         btn_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/bouton-daccueil-pour-linterface.png"))); // NOI18N
         btn_home.setContentAreaFilled(false);
@@ -210,14 +252,14 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         panel_noms.add(panel_j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 340, 220));
 
-        btn_start.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/Play.png"))); // NOI18N
-        btn_start.setToolTipText("");
-        btn_start.addActionListener(new java.awt.event.ActionListener() {
+        btn_valider.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/bouton valider.png"))); // NOI18N
+        btn_valider.setToolTipText("");
+        btn_valider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_startActionPerformed(evt);
+                btn_validerActionPerformed(evt);
             }
         });
-        panel_noms.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 300, 80));
+        panel_noms.add(btn_valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 300, 80));
 
         panel_erreur.setOpaque(false);
         panel_erreur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -374,10 +416,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private void nomJoueur4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomJoueur4ActionPerformed
     }//GEN-LAST:event_nomJoueur4ActionPerformed
 
-    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+    private void btn_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validerActionPerformed
 
         //récupération des noms des jouerus
-        ArrayList<Joueur> listeJoueur = new ArrayList<Joueur>();
         String nomJ1 = nomJoueur1.getText();
         String nomJ2 = nomJoueur2.getText();
         String nomJ3 = nomJoueur3.getText();
@@ -401,9 +442,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 } else {
                     //lancement de la partie + suppréssion de la fenetre
                     listeJoueur.add(player1);
-                    Partie partie = new Partie(listeJoueur);
-                    partie.startWindow();
-                    this.dispose();
+                    menu_reglages();
                 }
                 break;
             case 2:
@@ -425,12 +464,11 @@ public class FenetreAccueil extends javax.swing.JFrame {
                     lbl_erreur_noms.setVisible(false);
                     lbl_erreur_skins.setVisible(true);
                 } else {
-                    //lancement de la partie + suppréssion de la fenetre
+
+                    //lancement menu reglages partie + ajout des joueurs dans la liste des joueurs
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
-                    Partie partie = new Partie(listeJoueur);
-                    partie.startWindow();
-                    this.dispose();
+                    menu_reglages();
                 }
                 break;
             case 3:
@@ -456,9 +494,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                     listeJoueur.add(player1);
                     listeJoueur.add(player2);
                     listeJoueur.add(player3);
-                    Partie partie = new Partie(listeJoueur);
-                    partie.startWindow();
-                    this.dispose();
+                    menu_reglages();
                 }
                 break;
             case 4:
@@ -486,15 +522,13 @@ public class FenetreAccueil extends javax.swing.JFrame {
                     listeJoueur.add(player2);
                     listeJoueur.add(player3);
                     listeJoueur.add(player4);
-                    Partie partie = new Partie(listeJoueur);
-                    partie.startWindow();
-                    this.dispose();
+                    menu_reglages();
                 }
                 break;
         }
         //on vide tabSkin pour éviter tout conflits en cas de revenue sur les menus suivant ou de plusieurs tentatives de selection des kisns et nom joueurs
         tabSkin.clear();
-    }//GEN-LAST:event_btn_startActionPerformed
+    }//GEN-LAST:event_btn_validerActionPerformed
 
     private void btn_mode() {
         // permet de passer au menu suivant une fois le mode singleplayer ou multiplayer selectionné
@@ -540,6 +574,12 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private void skinJ4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skinJ4ActionPerformed
         changeSkin(4);
     }//GEN-LAST:event_skinJ4ActionPerformed
+
+    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        Partie partie = new Partie(listeJoueur);
+        partie.startWindow();
+        this.dispose();
+    }//GEN-LAST:event_btn_startActionPerformed
 
     private boolean nombrePareil(ArrayList<Integer> tab) {
 
@@ -631,13 +671,50 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         clickBtnPlayers(false, 5);
 
+        panel_reglages.setVisible(false);
+
         resetUIJoueurs();
+
+        listeJoueur.clear();
+    }
+
+    private void menu_reglages() {
+        int max = 16 / nbJoueurs;
+
+        panel_noms.setVisible(false);
+
+        panel_reglages.setVisible(true);
+
+        // Ajustez le maximum du slider
+        slider_nbCartes.setMaximum(max);
+
+// Ajustez le minimum du slider (si nécessaire, bien que vous ayez mentionné que le minimum devrait être 1)
+        slider_nbCartes.setMinimum(1);
+
+// Définissez les graduations pour chaque unité
+        slider_nbCartes.setMajorTickSpacing(1);
+        slider_nbCartes.setPaintTicks(true);
+
+        // Définissez la valeur initiale au milieu
+        int valeurInitiale = (max + 1) / 2; // Utilisez (max + 1) pour obtenir la valeur au milieu
+        slider_nbCartes.setValue(valeurInitiale);
+        lbl_nb_cartes.setText("" + valeurInitiale);
+
+// Rafraîchissez le composant (peut être nécessaire selon votre environnement de développement)
+        slider_nbCartes.repaint();
+
+        slider_nbCartes.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int value = slider_nbCartes.getValue();
+                lbl_nb_cartes.setText("" + value);
+            }
+        });
     }
 
     private void clickBtnPlayers(boolean cliqué, int nbJoueurs) {
 
         // permet de faire l'étape lorsque le nombre de joueur a été selectionné, on différentie chaque cas de selon le nombre de joueurs
-        
         // on set le nombre de joueurs en question et on affiche ou non les panels qu'il faut pour passer au menu suivant
         this.nbJoueurs = nbJoueurs;
         panel_btn.setVisible(!cliqué);
@@ -735,6 +812,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JButton btn_solovs;
     private javax.swing.JButton btn_solovsIA;
     private javax.swing.JButton btn_start;
+    private javax.swing.JButton btn_valider;
     private javax.swing.JLabel fond_menu;
     private javax.swing.JLabel fond_noir;
     private javax.swing.JLabel img_labyrinthe;
@@ -742,8 +820,11 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lbl_erreur_noms;
     private javax.swing.JLabel lbl_erreur_skins;
+    private javax.swing.JLabel lbl_nb_cartes;
     private javax.swing.JTextField nomJoueur1;
     private javax.swing.JTextField nomJoueur2;
     private javax.swing.JTextField nomJoueur3;
@@ -757,10 +838,12 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JPanel panel_modes;
     private javax.swing.JPanel panel_multiplayer;
     private javax.swing.JPanel panel_noms;
+    private javax.swing.JPanel panel_reglages;
     private javax.swing.JPanel panel_solo;
     private javax.swing.JButton skinJ1;
     private javax.swing.JButton skinJ2;
     private javax.swing.JButton skinJ3;
     private javax.swing.JButton skinJ4;
+    private javax.swing.JSlider slider_nbCartes;
     // End of variables declaration//GEN-END:variables
 }
