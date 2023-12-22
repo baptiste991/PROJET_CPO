@@ -1,7 +1,6 @@
 package projet_labyrinthe;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Cette classe a pour but d'initialiser les paramètres de la partie comme :
@@ -66,6 +65,10 @@ public abstract class Settings{
         this.listeDeJoueurs.add(player2);
         this.listeDeJoueurs.add(player3);
     }
+
+    public String[] getListeDesObjets() {
+        return listeDesObjets;
+    }
     
      /**
      * Methode qui met à jour la liste des joueurs de la partie
@@ -92,91 +95,6 @@ public abstract class Settings{
      */
     public ArrayList<Joueur> getListeDeJoueurs(){
         return listeDeJoueurs;
-    }
-    
-    /**
-     * Methode qui initialise toutes les missions  i.e associe à chaque objet
-     * (représenté par une chaine de caractère) un joueur pour le récupérer
-     * 
-     * C'est à dire que l'array d'objet type "Mission" contient 16 Missions :
-     * Pour rappel une mission est un objet qui comporte deux attributs :
-     * un obet et un joueur. Ces 16 missions sont donc uniques.
-     */
-    public void setAllMissions(){
-        
-        // Remarque : Le switch suivant fait apparaitre beaucoup de code surement factorisable 
-        // en créant une méthode sous jacente, il serait interessant de le faire mais
-        // actuellement on l'utilisera comme tel.
-        switch(this.listeDeJoueurs.size()){
-            
-            case 1->{
-                for(int i=0;i<this.listeDesObjets.length;i++){
-                    Mission mission = new Mission(this.listeDeJoueurs.get(0), this.listeDesObjets[i]);
-                    allMissions.add(mission);
-                }
-            }
-            
-            case 2 ->{
-                Random random = new Random();
-                
-                ArrayList<String> objetsRestants = new ArrayList();
-                for(int i=0;i<this.listeDesObjets.length;i++){
-                    objetsRestants.add(this.listeDesObjets[i]);
-                }
-                                
-                for(int j=0;j<2;j++){
-                    for(int i=0;i<this.listeDesObjets.length/2;i++){
-                        int indexRandom = random.nextInt(objetsRestants.size());
-                        Mission mission = new Mission(this.listeDeJoueurs.get(j), objetsRestants.get(indexRandom));
-                        allMissions.add(mission);
-                        objetsRestants.remove(indexRandom);
-                    }
-                }
-            }    
-            
-            case 3 ->{
-                Random random = new Random();
-                
-                ArrayList<String> objetsRestants = new ArrayList();
-                for(int i=0;i<this.listeDesObjets.length;i++){
-                    objetsRestants.add(this.listeDesObjets[i]);
-                }
-                
-                objetsRestants.remove(random.nextInt(objetsRestants.size()));
-                // On supprime un objet car 3 joueurs => this.listeDesObjets.length/3 pas entier
-                
-                for(int j=0;j<3;j++){
-                    for(int i=0;i<5;i++){
-                        int indexRandom = random.nextInt(objetsRestants.size());
-                        Mission mission = new Mission(this.listeDeJoueurs.get(j), objetsRestants.get(indexRandom));
-                        allMissions.add(mission);
-                        objetsRestants.remove(indexRandom);
-                    }
-                }
-               
-            }
-            
-            case 4->{
-                Random random = new Random();
-                
-                ArrayList<String> objetsRestants = new ArrayList();
-                for(int i=0;i<16;i++){
-                    objetsRestants.add(this.listeDesObjets[i]);
-                }
-                
-                for(int j=0;j<4;j++){
-                    for(int i=0;i<4;i++){
-                        int indexRandom = random.nextInt(objetsRestants.size());
-                        Mission mission = new Mission(this.listeDeJoueurs.get(j), objetsRestants.get(indexRandom));
-                        allMissions.add(mission);
-                        objetsRestants.remove(indexRandom);
-                    }
-                }
-            }
-
-            
-        }
-
     }
     
     /**

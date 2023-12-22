@@ -425,7 +425,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
         Joueur player2 = new Joueur(nomJ2, "skin" + numSkin2);
         Joueur player3 = new Joueur(nomJ3, "skin" + numSkin3);
         Joueur player4 = new Joueur(nomJ4, "skin" + numSkin4);
-
+        
+        
         switch (nbJoueurs) {
 
             case 1:
@@ -579,7 +580,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_skinJ4ActionPerformed
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
-        Partie partie = new Partie(listeJoueur);
+        Partie partie = new Partie(listeJoueur, slider_nbCartes.getValue());
         partie.startWindow();
         this.dispose();
     }//GEN-LAST:event_btn_startActionPerformed

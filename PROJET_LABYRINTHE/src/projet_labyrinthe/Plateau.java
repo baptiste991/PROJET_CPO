@@ -50,6 +50,8 @@ public class Plateau extends Settings {
     int size;
 
     Carte carteAttente;
+    
+    int nbcardsperplayer;
 
     /**
      * Constructeur de la classe Plateau
@@ -146,6 +148,89 @@ public class Plateau extends Settings {
 
     }
 
+        /**
+     * Methode qui initialise toutes les missions  i.e associe à chaque objet
+     * (représenté par une chaine de caractère) un joueur pour le récupérer
+     * 
+     * C'est à dire que l'array d'objet type "Mission" contient 16 Missions :
+     * Pour rappel une mission est un objet qui comporte deux attributs :
+     * un obet et un joueur. Ces 16 missions sont donc uniques.
+     */
+    public void setAllMissions(){
+        
+        // Remarque : Le switch suivant fait apparaitre beaucoup de code surement factorisable 
+        // en créant une méthode sous jacente, il serait interessant de le faire mais
+        // actuellement on l'utilisera comme tel.
+        switch(this.getListeDeJoueurs().size()){
+            
+            case 1->{
+                for(int i=0;i<this.nbcardsperplayer;i++){
+                    Mission mission = new Mission(this.getListeDeJoueurs().get(0), this.getListeDesObjets()[i]);
+                    this.getAllMissions().add(mission);
+                }
+            }
+            
+            case 2 ->{
+                Random random = new Random();
+                
+                ArrayList<String> objetsRestants = new ArrayList();
+                for(int i=0;i<this.nbcardsperplayer*2;i++){
+                    objetsRestants.add(this.getListeDesObjets()[i]);
+                }
+                                
+                for(int j=0;j<2;j++){
+                    for(int i=0;i<this.nbcardsperplayer;i++){
+                        int indexRandom = random.nextInt(objetsRestants.size());
+                        Mission mission = new Mission(this.getListeDeJoueurs().get(j), objetsRestants.get(indexRandom));
+                         this.getAllMissions().add(mission);
+                        objetsRestants.remove(indexRandom);
+                    }
+                }
+            }    
+            
+            case 3 ->{
+                Random random = new Random();
+                
+                ArrayList<String> objetsRestants = new ArrayList();
+                for(int i=0;i<this.nbcardsperplayer*3;i++){
+                    objetsRestants.add(this.getListeDesObjets()[i]);
+                }
+
+                
+                for(int j=0;j<3;j++){
+                    for(int i=0;i<this.nbcardsperplayer;i++){
+                        int indexRandom = random.nextInt(objetsRestants.size());
+                        Mission mission = new Mission(this.getListeDeJoueurs().get(j), objetsRestants.get(indexRandom));
+                        this.getAllMissions().add(mission);
+                        objetsRestants.remove(indexRandom);
+                    }
+                }
+               
+            }
+            
+            case 4->{
+                Random random = new Random();
+                
+                ArrayList<String> objetsRestants = new ArrayList();
+                for(int i=0;i<this.nbcardsperplayer*4;i++){
+                    objetsRestants.add(this.getListeDesObjets()[i]);
+                }
+                
+                for(int j=0;j<4;j++){
+                    for(int i=0;i<this.nbcardsperplayer;i++){
+                        int indexRandom = random.nextInt(objetsRestants.size());
+                        Mission mission = new Mission(this.getListeDeJoueurs().get(j), objetsRestants.get(indexRandom));
+                        this.getAllMissions().add(mission);
+                        objetsRestants.remove(indexRandom);
+                    }
+                }
+            }
+            
+            
+        }
+
+    }
+    
     /**
      * Methode qui permet de générer l'ensemble des cartes déplacables sous
      * forme d'ArrayList de Carte.

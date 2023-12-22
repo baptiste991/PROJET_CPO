@@ -31,8 +31,9 @@ public class Partie {
      * Constructeur Partie
      * @param listeJoueurs
      */
-    public Partie(ArrayList<Joueur> listeJoueurs) {
-        
+    public Partie(ArrayList<Joueur> listeJoueurs, int nbcardsperplayer) {
+
+       plateau.nbcardsperplayer = nbcardsperplayer;
        //On lance la bonne méthode setPlayerList en fonction du nb de joueur
        switch(listeJoueurs.size()){
            case 1->{
