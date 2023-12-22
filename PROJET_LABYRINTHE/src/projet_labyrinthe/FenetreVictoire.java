@@ -4,19 +4,48 @@
  */
 package projet_labyrinthe;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Ody
  */
 public class FenetreVictoire extends javax.swing.JFrame {
 
+     ArrayList<Joueur> podium;
+    
     /**
      * Creates new form FenetreVictoire
      */
-    public FenetreVictoire() {
+    public FenetreVictoire(ArrayList<Joueur> podium) {
+        this.podium = podium;
+        
+        switch(podium.size()){
+            case 1->{
+                System.out.println("Première place pour "+podium.get(0).name);
+                
+            }
+            case 2->{
+                System.out.println("Première place pour "+podium.get(0).name);
+                System.out.println("Deuxieme place pour "+podium.get(1).name);
+            }
+            case 3->{
+                System.out.println("Première place pour "+podium.get(0).name);
+                System.out.println("Deuxieme place pour "+podium.get(1).name);
+                System.out.println("Troisième place pour "+podium.get(2).name);
+            }
+            case 4->{
+                System.out.println("Première place pour "+podium.get(0).name);
+                System.out.println("Deuxieme place pour "+podium.get(1).name);
+                System.out.println("Troisième place pour "+podium.get(2).name);
+                System.out.println("Dernière place pour "+podium.get(3).name);
+            }
+        }
+        
         initComponents();
         this.setVisible(true);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
