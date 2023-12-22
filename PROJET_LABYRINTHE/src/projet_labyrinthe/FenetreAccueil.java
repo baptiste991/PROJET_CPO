@@ -198,7 +198,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_j1.add(skinJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 126, -1));
 
-        panel_noms.add(panel_j1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 240));
+        panel_noms.add(panel_j1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 250));
 
         panel_j4.setOpaque(false);
         panel_j4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

@@ -3,8 +3,12 @@ package projet_labyrinthe;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /**
  * Fenetre Principale du Jeu
@@ -22,6 +26,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     Joueur turnOff = new Joueur();
     
     ArrayList<Joueur> ordre;
+    
+    private Timer timer;
+    private int secondes;
     
 
     /**
@@ -65,12 +72,48 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         gbc.fill = GridBagConstraints.VERTICAL;
         add(panel_droite, gbc);
 
+        // ajout chrono
+        
+        lbl_chrono.setText("Temps écoulé : 0 seconde");;
+        
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                secondes++;
+                updateTimerLabel();
+            }
+        });
+        
+        startChronometer();
         
         pack();
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         
+    }
+    
+        private void updateTimerLabel() {
+            int minutes = secondes / 60;
+            int temp = secondes % 60;
+            if (secondes == 1){
+                lbl_chrono.setText("Temps écoulé : " + secondes + " seconde");
+            }
+            else if (secondes < 60){
+                lbl_chrono.setText("Temps écoulé : " + secondes + " secondes");
+            }
+            else {
+                lbl_chrono.setText("Temps écoulé : " + minutes + ":" + temp);
+                
+            }
+    }
+
+    public void startChronometer() {
+        timer.start();
+    }
+
+    public void stopChronometer() {
+        timer.stop();
     }
 
     
@@ -449,6 +492,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         RotateRight = new javax.swing.JButton();
         Text1 = new javax.swing.JLabel();
         lbl_nom_joueur = new javax.swing.JLabel();
+        lbl_chrono = new javax.swing.JLabel();
         panel_grille = new javax.swing.JPanel();
         btn_x1g = new javax.swing.JButton();
         btn_x1d = new javax.swing.JButton();
@@ -701,6 +745,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         lbl_nom_joueur.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         lbl_nom_joueur.setText("nom joueur");
         panel_gauche.add(lbl_nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 80, 30));
+
+        lbl_chrono.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lbl_chrono.setText("Chrono");
+        panel_gauche.add(lbl_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 60));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1078,6 +1126,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btn_y3h;
     private javax.swing.JButton btn_y5b;
     private javax.swing.JButton btn_y5h;
+    private javax.swing.JLabel lbl_chrono;
     private javax.swing.JLabel lbl_nom_joueur;
     private javax.swing.JPanel panel_droite;
     private javax.swing.JPanel panel_gauche;
