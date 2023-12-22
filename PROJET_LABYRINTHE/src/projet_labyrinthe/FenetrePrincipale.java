@@ -143,6 +143,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             if(this.plateau.getListeDeJoueurs().get(players).getObjets().isEmpty()){
                 System.out.println("Victoire du joueur : "+this.plateau.getListeDeJoueurs().get(players).name);
                 this.ordre.remove(this.plateau.getListeDeJoueurs().get(players));
+                break;
             }
         }
        switch(this.plateau.getListeDeJoueurs().size()){
@@ -965,11 +966,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // Reaffichage des boutons
         setInjectionButtonsVisible(true);
        
+        if(!(ordre.size()==0)){
         // Changement de joueur
         Joueur temp = ordre.get(0);
         ordre.remove(0);
         ordre.add(temp);
         gen1UItour(ordre);
+        }
         
         
     }//GEN-LAST:event_ValiderActionPerformed
