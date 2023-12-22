@@ -172,7 +172,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         jLabel7.setText("Affichage chronomètre :");
         panel_chrono.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
 
-        toggle_chrono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-chronomètre-64 barré.png"))); // NOI18N
+        toggle_chrono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/iconChronoX.png"))); // NOI18N
         toggle_chrono.setContentAreaFilled(false);
         toggle_chrono.setPreferredSize(new java.awt.Dimension(64, 64));
         toggle_chrono.addActionListener(new java.awt.event.ActionListener() {

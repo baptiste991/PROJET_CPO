@@ -4,7 +4,12 @@
  */
 package projet_labyrinthe;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -19,6 +24,10 @@ public class FenetreVictoire extends javax.swing.JFrame {
      */
     public FenetreVictoire(ArrayList<Joueur> podium) {
         this.podium = podium;
+        this.setLocationRelativeTo(null);
+        
+        
+         
         
         switch(podium.size()){
             case 1->{
@@ -45,6 +54,11 @@ public class FenetreVictoire extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
     }
+
+   
+
+    
+   
     
 
     /**
@@ -56,18 +70,19 @@ public class FenetreVictoire extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Podium = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Labyrinthe : Victoire");
+        setPreferredSize(new java.awt.Dimension(1020, 750));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Podium.setPreferredSize(new java.awt.Dimension(1020, 750));
+        Podium.setLayout(new java.awt.GridLayout(1, 1));
+
+        Podium.add(new UIWin());
+
+        getContentPane().add(Podium, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,5 +90,6 @@ public class FenetreVictoire extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Podium;
     // End of variables declaration//GEN-END:variables
 }
