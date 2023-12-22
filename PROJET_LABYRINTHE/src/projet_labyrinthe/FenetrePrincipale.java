@@ -104,7 +104,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
             else {
                 lbl_chrono.setText("Temps écoulé : " + minutes + ":" + temp);
-                
             }
     }
 

@@ -87,6 +87,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         slider_nbCartes = new javax.swing.JSlider();
         lbl_nb_cartes = new javax.swing.JLabel();
         btn_start = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         btn_home = new javax.swing.JButton();
         panel_noms = new javax.swing.JPanel();
         panel_j1 = new javax.swing.JPanel();
@@ -142,14 +143,14 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         jLabel6.setText("Nombre de cartes par joueur :");
-        panel_reglages.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
+        panel_reglages.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
         slider_nbCartes.setMaximum(16);
         slider_nbCartes.setMinimum(1);
-        panel_reglages.add(slider_nbCartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, -1));
+        panel_reglages.add(slider_nbCartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, -1, -1));
 
         lbl_nb_cartes.setText("nb cartes");
-        panel_reglages.add(lbl_nb_cartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
+        panel_reglages.add(lbl_nb_cartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
 
         btn_start.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/Play.png"))); // NOI18N
         btn_start.setPreferredSize(new java.awt.Dimension(300, 80));
@@ -159,6 +160,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
             }
         });
         panel_reglages.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 300, 80));
+
+        jLabel7.setText("Chronomètre");
+        panel_reglages.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, -1, -1));
 
         getContentPane().add(panel_reglages, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 670));
 
@@ -825,6 +829,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lbl_erreur_noms;
     private javax.swing.JLabel lbl_erreur_skins;
     private javax.swing.JLabel lbl_modeSolo;
