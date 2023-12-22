@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 public class UIPlayerIcon extends JLabel {
     
     BufferedImage image=null;
+    BufferedImage background=null;
     Joueur player = new Joueur();
     
     public UIPlayerIcon(Joueur player) {
@@ -28,11 +29,15 @@ public class UIPlayerIcon extends JLabel {
     // On récupère l'image du joueur
         try {
             image = ImageIO.read(new File("./src/Players/"+player.skinpath+".png"));
+            background = ImageIO.read(new File("./src/imgMenus/PlayerBackground.png"));
 
             } catch (IOException e) {
                 System.out.println(e.getCause());
                 e.printStackTrace();
             }
+        
+
+            g.drawImage(background,0 , 0, 58, 56, null);
             g.drawImage(image,0 , 0, 60, 55, null);
     }
     

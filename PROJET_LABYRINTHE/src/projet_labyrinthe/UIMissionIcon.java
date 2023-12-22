@@ -29,10 +29,12 @@ public class UIMissionIcon extends JLabel{
         try {
             image = ImageIO.read(new File("./src/Missions/"+name+".png"));
 
+
             } catch (IOException e) {
                 System.out.println(e.getCause());
                 e.printStackTrace();
             }
+
             g.drawImage(image,0 , 0, 60, 55, null);
     }
 }

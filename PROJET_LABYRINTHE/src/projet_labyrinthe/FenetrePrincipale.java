@@ -24,9 +24,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * Le plateau de jeu
      */
     Plateau plateau = new Plateau();
-    
-    Partie partie = new Partie();
-    
+
     Joueur turnOff = new Joueur();
     
     ArrayList<Joueur> ordre;
@@ -98,6 +96,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
 
+   
 
     /**
      * méthode qui affiche une carte dans l'emplacement de la carte à injecter
@@ -128,27 +127,37 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         
         //Si le joueur se trouve sur une mission
         if(this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).getMission()!=null){
+            
             //Si cette mission est à faire par le joueur dont c'est le tour
             for(int missions=0;missions<turnOff.getObjets().size();missions++){
-                if(this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).getMission().getObjet().equals(turnOff.getObjets().get(missions))){
+                if(this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).getMission().getPlayerLookingForObject().equals(turnOff)){
                     // Suppression de cet objet à trouver
                     turnOff.getObjets().remove(this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).getMission().getObjet());
                     // Suppression de l'objet sur le plateau
                     this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).setMission(null);
                     // On vérifie que ça n'a pas fait gagner le joueur
-                    verifWin();
+                    break;
                 }
             }
         }
+        verifWin();
     }
     
     public void verifWin(){
         // Pour tous les joueurs
+        boolean won = false;
         for(int players=0;players<this.plateau.getListeDeJoueurs().size();players++){
             //Si un d'eux n'a plus d'objets il gagne
             if(this.plateau.getListeDeJoueurs().get(players).getObjets().isEmpty()){
-                System.out.println("Victoire de "+this.plateau.getListeDeJoueurs().get(players).name);
+                won = true;
             }
+        }
+       
+        if(won){
+            System.out.println("Victoire");
+            FenetreVictoire victoire = new FenetreVictoire();
+            this.dispose();
+
         }
     }
     
@@ -185,6 +194,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 for(int i=0;i<this.plateau.getListeDeJoueurs().get(0).getObjets().size();i++){
                     MissionsP21.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(0).getObjets().get(i)));
                 }
+                               
                 for(int i=0;i<this.plateau.getListeDeJoueurs().get(1).getObjets().size();i++){
                     MissionsP22.add(new UIMissionIcon(this.plateau.getListeDeJoueurs().get(1).getObjets().get(i)));
                 }
@@ -390,33 +400,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        panel_grille = new javax.swing.JPanel();
-        btn_x1g = new javax.swing.JButton();
-        btn_x1d = new javax.swing.JButton();
-        btn_x5g = new javax.swing.JButton();
-        btn_x3g = new javax.swing.JButton();
-        btn_x3d = new javax.swing.JButton();
-        btn_x5d = new javax.swing.JButton();
-        btn_y1h = new javax.swing.JButton();
-        btn_y3h = new javax.swing.JButton();
-        btn_y5h = new javax.swing.JButton();
-        btn_y1b = new javax.swing.JButton();
-        btn_y3b = new javax.swing.JButton();
-        btn_y5b = new javax.swing.JButton();
-        GridPanel = new javax.swing.JPanel();
-        panel_gauche = new javax.swing.JPanel();
-        Left = new javax.swing.JButton();
-        Up = new javax.swing.JButton();
-        Down = new javax.swing.JButton();
-        Right = new javax.swing.JButton();
-        Text3 = new javax.swing.JLabel();
-        PanelTour = new javax.swing.JPanel();
-        Text2 = new javax.swing.JLabel();
-        panneau_carte_attente = new javax.swing.JPanel();
-        RotateRight1 = new javax.swing.JButton();
-        RotateRight = new javax.swing.JButton();
-        Text1 = new javax.swing.JLabel();
-        lbl_nom_joueur = new javax.swing.JLabel();
         panel_droite = new javax.swing.JPanel();
         Objets = new javax.swing.JLabel();
         MissionsView1 = new javax.swing.JPanel();
@@ -444,6 +427,33 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Skin4 = new javax.swing.JPanel();
         MissionP4 = new javax.swing.JPanel();
         Valider = new javax.swing.JButton();
+        panel_gauche = new javax.swing.JPanel();
+        Left = new javax.swing.JButton();
+        Up = new javax.swing.JButton();
+        Down = new javax.swing.JButton();
+        Right = new javax.swing.JButton();
+        Text3 = new javax.swing.JLabel();
+        PanelTour = new javax.swing.JPanel();
+        Text2 = new javax.swing.JLabel();
+        panneau_carte_attente = new javax.swing.JPanel();
+        RotateRight1 = new javax.swing.JButton();
+        RotateRight = new javax.swing.JButton();
+        Text1 = new javax.swing.JLabel();
+        lbl_nom_joueur = new javax.swing.JLabel();
+        panel_grille = new javax.swing.JPanel();
+        btn_x1g = new javax.swing.JButton();
+        btn_x1d = new javax.swing.JButton();
+        btn_x5g = new javax.swing.JButton();
+        btn_x3g = new javax.swing.JButton();
+        btn_x3d = new javax.swing.JButton();
+        btn_x5d = new javax.swing.JButton();
+        btn_y1h = new javax.swing.JButton();
+        btn_y3h = new javax.swing.JButton();
+        btn_y5h = new javax.swing.JButton();
+        btn_y1b = new javax.swing.JButton();
+        btn_y3b = new javax.swing.JButton();
+        btn_y5b = new javax.swing.JButton();
+        GridPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Labyrinthe Remastered");
@@ -461,6 +471,235 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        panel_droite.setBackground(new java.awt.Color(0, 0, 0));
+        panel_droite.setOpaque(false);
+        panel_droite.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Objets.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        Objets.setText("Objets à récupérer");
+        panel_droite.add(Objets, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 170, 20));
+
+        MissionsView1.setOpaque(false);
+        MissionsView1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Player111.setBackground(new java.awt.Color(255, 204, 204));
+        Player111.setOpaque(false);
+        Player111.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin111.setLayout(new java.awt.GridLayout(1, 1));
+        Player111.add(Skin111, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionsP111.setBackground(new java.awt.Color(153, 255, 204));
+        MissionsP111.setOpaque(false);
+        MissionsP111.setLayout(new java.awt.GridLayout(4, 4));
+        Player111.add(MissionsP111, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 310));
+
+        MissionsView1.add(Player111, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 300, 370));
+
+        panel_droite.add(MissionsView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 300, 570));
+
+        MissionsView2.setOpaque(false);
+        MissionsView2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Player21.setBackground(new java.awt.Color(255, 204, 204));
+        Player21.setOpaque(false);
+        Player21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin21.setOpaque(false);
+        Skin21.setLayout(new java.awt.GridLayout(1, 1));
+        Player21.add(Skin21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionsP21.setBackground(new java.awt.Color(153, 255, 204));
+        MissionsP21.setOpaque(false);
+        MissionsP21.setLayout(new java.awt.GridLayout(2, 4));
+        Player21.add(MissionsP21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 160));
+
+        MissionsView2.add(Player21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, -1));
+
+        Player22.setBackground(new java.awt.Color(204, 204, 255));
+        Player22.setOpaque(false);
+        Player22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin22.setLayout(new java.awt.GridLayout(1, 1));
+        Player22.add(Skin22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionsP22.setBackground(new java.awt.Color(102, 255, 153));
+        MissionsP22.setLayout(new java.awt.GridLayout(2, 4));
+        Player22.add(MissionsP22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 140));
+
+        MissionsView2.add(Player22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 200));
+
+        panel_droite.add(MissionsView2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 320, 560));
+
+        MissionsView43.setBackground(new java.awt.Color(255, 0, 255));
+        MissionsView43.setOpaque(false);
+        MissionsView43.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Player1.setBackground(new java.awt.Color(255, 204, 204));
+        Player1.setOpaque(false);
+        Player1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin1.setLayout(new java.awt.GridLayout(1, 1));
+        Player1.add(Skin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionP1.setLayout(new java.awt.GridLayout(1, 4));
+        Player1.add(MissionP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionsView43.add(Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 120));
+
+        Player3.setBackground(new java.awt.Color(204, 204, 255));
+        Player3.setOpaque(false);
+        Player3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin3.setLayout(new java.awt.GridLayout(1, 1));
+        Player3.add(Skin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionP3.setLayout(new java.awt.GridLayout(1, 4));
+        Player3.add(MissionP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionsView43.add(Player3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 120));
+
+        Player2.setBackground(new java.awt.Color(204, 255, 204));
+        Player2.setOpaque(false);
+        Player2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin2.setLayout(new java.awt.GridLayout(1, 1));
+        Player2.add(Skin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionP2.setLayout(new java.awt.GridLayout(1, 4));
+        Player2.add(MissionP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionsView43.add(Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 300, 120));
+
+        Player4.setBackground(new java.awt.Color(204, 204, 0));
+        Player4.setOpaque(false);
+        Player4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Skin4.setLayout(new java.awt.GridLayout(1, 1));
+        Player4.add(Skin4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
+
+        MissionP4.setLayout(new java.awt.GridLayout(1, 4));
+        Player4.add(MissionP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionsView43.add(Player4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 120));
+
+        panel_droite.add(MissionsView43, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 320, 560));
+
+        Valider.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        Valider.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/bouton valider.png"))); // NOI18N
+        Valider.setDoubleBuffered(true);
+        Valider.setFocusCycleRoot(true);
+        Valider.setMaximumSize(new java.awt.Dimension(300, 80));
+        Valider.setMinimumSize(new java.awt.Dimension(300, 80));
+        Valider.setPreferredSize(new java.awt.Dimension(300, 80));
+        Valider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValiderActionPerformed(evt);
+            }
+        });
+        panel_droite.add(Valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 300, 80));
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 190, 0, 0);
+        getContentPane().add(panel_droite, gridBagConstraints);
+
+        panel_gauche.setOpaque(false);
+        panel_gauche.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Left.setText("←");
+        Left.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LeftActionPerformed(evt);
+            }
+        });
+        Left.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LeftKeyPressed(evt);
+            }
+        });
+        panel_gauche.add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 50, 40));
+
+        Up.setText("↑");
+        Up.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(Up, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 50, 40));
+
+        Down.setText("↓");
+        Down.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DownActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(Down, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 50, 40));
+
+        Right.setText("→");
+        Right.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RightActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 50, 40));
+
+        Text3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        Text3.setText("    Actions possibles :");
+        panel_gauche.add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, -1, -1));
+
+        PanelTour.setBackground(new java.awt.Color(153, 255, 153));
+        PanelTour.setForeground(new java.awt.Color(204, 204, 255));
+        PanelTour.setOpaque(false);
+        PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
+        PanelTour.setLayout(new java.awt.GridLayout(1, 1));
+        panel_gauche.add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+
+        Text2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        Text2.setText("    C'est au tour de : " + turnOff.name);
+        panel_gauche.add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 30));
+
+        panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
+        panneau_carte_attente.setOpaque(false);
+        panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
+        panel_gauche.add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 90, 90));
+
+        RotateRight1.setText("↰");
+        RotateRight1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRight1ActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
+
+        RotateRight.setText("↱");
+        RotateRight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRightActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        Text1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        Text1.setText("Carte en dehors du plateau :");
+        panel_gauche.add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        lbl_nom_joueur.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lbl_nom_joueur.setText("nom joueur");
+        panel_gauche.add(lbl_nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 80, 30));
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 17;
+        gridBagConstraints.ipady = 180;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 226, 0, 0);
+        getContentPane().add(panel_gauche, gridBagConstraints);
 
         panel_grille.setOpaque(false);
         panel_grille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -579,225 +818,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         GridPanel.setLayout(new java.awt.GridLayout(7, 7));
         panel_grille.add(GridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 630, 630));
 
-        getContentPane().add(panel_grille, new java.awt.GridBagConstraints());
-
-        panel_gauche.setOpaque(false);
-        panel_gauche.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Left.setText("←");
-        Left.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LeftActionPerformed(evt);
-            }
-        });
-        Left.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                LeftKeyPressed(evt);
-            }
-        });
-        panel_gauche.add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 50, 40));
-
-        Up.setText("↑");
-        Up.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(Up, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 50, 40));
-
-        Down.setText("↓");
-        Down.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DownActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(Down, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 50, 40));
-
-        Right.setText("→");
-        Right.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RightActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 50, 40));
-
-        Text3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        Text3.setText("    Actions possibles :");
-        panel_gauche.add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, -1, -1));
-
-        PanelTour.setBackground(new java.awt.Color(153, 255, 153));
-        PanelTour.setForeground(new java.awt.Color(204, 204, 255));
-        PanelTour.setOpaque(false);
-        PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
-        PanelTour.setLayout(new java.awt.GridLayout(1, 1));
-        panel_gauche.add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
-
-        Text2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        Text2.setText("    C'est au tour de : " + turnOff.name);
-        panel_gauche.add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 30));
-
-        panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
-        panneau_carte_attente.setOpaque(false);
-        panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
-        panel_gauche.add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 90, 90));
-
-        RotateRight1.setText("↰");
-        RotateRight1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RotateRight1ActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
-
-        RotateRight.setText("↱");
-        RotateRight.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RotateRightActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        Text1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        Text1.setText("Carte en dehors du plateau :");
-        panel_gauche.add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-
-        lbl_nom_joueur.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        lbl_nom_joueur.setText("nom joueur");
-        panel_gauche.add(lbl_nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 80, 30));
-
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 17;
-        gridBagConstraints.ipady = 180;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        getContentPane().add(panel_gauche, gridBagConstraints);
-
-        panel_droite.setOpaque(false);
-        panel_droite.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Objets.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
-        Objets.setText("Objets à récupérer");
-        panel_droite.add(Objets, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 170, 20));
-
-        MissionsView1.setOpaque(false);
-        MissionsView1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Player111.setBackground(new java.awt.Color(255, 204, 204));
-        Player111.setOpaque(false);
-        Player111.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Skin111.setLayout(new java.awt.GridLayout(1, 1));
-        Player111.add(Skin111, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
-
-        MissionsP111.setBackground(new java.awt.Color(153, 255, 204));
-        MissionsP111.setLayout(new java.awt.GridLayout(4, 4));
-        Player111.add(MissionsP111, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 310));
-
-        MissionsView1.add(Player111, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 300, 370));
-
-        panel_droite.add(MissionsView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 300, 570));
-
-        MissionsView2.setOpaque(false);
-        MissionsView2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Player21.setBackground(new java.awt.Color(255, 204, 204));
-        Player21.setOpaque(false);
-        Player21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Skin21.setLayout(new java.awt.GridLayout(1, 1));
-        Player21.add(Skin21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
-
-        MissionsP21.setBackground(new java.awt.Color(153, 255, 204));
-        MissionsP21.setLayout(new java.awt.GridLayout(2, 4));
-        Player21.add(MissionsP21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 160));
-
-        MissionsView2.add(Player21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, -1));
-
-        Player22.setBackground(new java.awt.Color(204, 204, 255));
-        Player22.setOpaque(false);
-        Player22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Skin22.setLayout(new java.awt.GridLayout(1, 1));
-        Player22.add(Skin22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
-
-        MissionsP22.setBackground(new java.awt.Color(102, 255, 153));
-        MissionsP22.setLayout(new java.awt.GridLayout(2, 4));
-        Player22.add(MissionsP22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 140));
-
-        MissionsView2.add(Player22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 200));
-
-        panel_droite.add(MissionsView2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 320, 560));
-
-        MissionsView43.setBackground(new java.awt.Color(255, 0, 255));
-        MissionsView43.setOpaque(false);
-        MissionsView43.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Player1.setBackground(new java.awt.Color(255, 204, 204));
-        Player1.setOpaque(false);
-        Player1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Skin1.setLayout(new java.awt.GridLayout(1, 1));
-        Player1.add(Skin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
-
-        MissionP1.setLayout(new java.awt.GridLayout(1, 4));
-        Player1.add(MissionP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
-
-        MissionsView43.add(Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 120));
-
-        Player3.setBackground(new java.awt.Color(204, 204, 255));
-        Player3.setOpaque(false);
-        Player3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Skin3.setLayout(new java.awt.GridLayout(1, 1));
-        Player3.add(Skin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
-
-        MissionP3.setLayout(new java.awt.GridLayout(1, 4));
-        Player3.add(MissionP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
-
-        MissionsView43.add(Player3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 120));
-
-        Player2.setBackground(new java.awt.Color(204, 255, 204));
-        Player2.setOpaque(false);
-        Player2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Skin2.setLayout(new java.awt.GridLayout(1, 1));
-        Player2.add(Skin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
-
-        MissionP2.setLayout(new java.awt.GridLayout(1, 4));
-        Player2.add(MissionP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
-
-        MissionsView43.add(Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 300, 120));
-
-        Player4.setBackground(new java.awt.Color(204, 204, 0));
-        Player4.setOpaque(false);
-        Player4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Skin4.setLayout(new java.awt.GridLayout(1, 1));
-        Player4.add(Skin4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
-
-        MissionP4.setLayout(new java.awt.GridLayout(1, 4));
-        Player4.add(MissionP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
-
-        MissionsView43.add(Player4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 120));
-
-        panel_droite.add(MissionsView43, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 320, 560));
-
-        Valider.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
-        Valider.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/bouton valider.png"))); // NOI18N
-        Valider.setDoubleBuffered(true);
-        Valider.setFocusCycleRoot(true);
-        Valider.setMaximumSize(new java.awt.Dimension(300, 80));
-        Valider.setMinimumSize(new java.awt.Dimension(300, 80));
-        Valider.setPreferredSize(new java.awt.Dimension(300, 80));
-        Valider.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ValiderActionPerformed(evt);
-            }
-        });
-        panel_droite.add(Valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 300, 80));
-
-        getContentPane().add(panel_droite, new java.awt.GridBagConstraints());
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 227);
+        getContentPane().add(panel_grille, gridBagConstraints);
 
         getAccessibleContext().setAccessibleName("Labyrinthe");
 

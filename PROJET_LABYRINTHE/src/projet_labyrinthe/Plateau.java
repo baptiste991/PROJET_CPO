@@ -604,17 +604,9 @@ public class Plateau extends Settings {
                     coordsMissions[i][1] = indexRandomY;
                 }
                 
-                
-                
             } while (coordsalreadyused);
             
 
-            
-            // On vérifie que ces coordonnées n'aient pas déja été choisies
-            
-            
-            System.out.println("Mission en :"+indexRandomX +" "+indexRandomY);
-            
             //La carte d'indice indexRandomX,indexRandomY doit donner sa mission a la carte de mêmes coordonnées
             this.getPlateau().get(indexRandomX).get(indexRandomY).setMission(this.getAllMissions().get(i));
            
