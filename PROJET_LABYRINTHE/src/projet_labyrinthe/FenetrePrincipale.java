@@ -138,10 +138,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public void verifWin(){
         // Pour tous les joueurs
 
-        for(int players=0;players<this.plateau.getListeDeJoueurs().size();players++){
+        for(int players=0;players<ordre.size();players++){
             //Si un d'eux n'a plus d'objets il gagne
-            if(this.plateau.getListeDeJoueurs().get(players).getObjets().isEmpty()){
-                this.ordre.remove(this.plateau.getListeDeJoueurs().get(players));
+            if(ordre.get(players).getObjets().isEmpty()){
+                this.plateau.getPlateau().get(ordre.get(players).getPosx()).get(ordre.get(players).getPosy()).removePlayerRidingCard(ordre.get(players));
+                this.ordre.remove(ordre.get(players));
                 break;
             }
         }
@@ -150,16 +151,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 if(this.ordre.size()==0){
                 FenetreVictoire win = new FenetreVictoire();
                 this.dispose();
-                
+                }
             }
-        }
         
             default->{
+                
+                System.out.println(ordre.size());
                 if(this.ordre.size()==1){
-                 FenetreVictoire win = new FenetreVictoire();
-                this.dispose();
-            }       
-        }
+                    FenetreVictoire win = new FenetreVictoire();
+                    for(int i=0;i<this.ordre.size();i++){
+                        ordre.remove(i);
+                    }
+                    this.dispose();
+                }       
+            }
   
        }
         
