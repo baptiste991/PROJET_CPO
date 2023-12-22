@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 public class UIPlayerCard extends JLabel {
     Carte carte;
     BufferedImage image=null;
+    BufferedImage background=null;
     
     public UIPlayerCard(Carte carte) {
         this.carte = carte;
@@ -28,11 +29,13 @@ public class UIPlayerCard extends JLabel {
             String path = carte.isRidedByPlayers.get(0).skinpath ;
 
             image = ImageIO.read(new File("./src/Players/"+path+".png"));
+            background = ImageIO.read(new File("./src/imgMenus/PlayerBackground.png"));
 
             } catch (IOException e) {
                 System.out.println(e.getCause());
                 e.printStackTrace();
             }
+            g.drawImage(background,0 , 0, 95, 95, null);
             g.drawImage(image, 0, 0, 90, 90, null);
     }
 }
