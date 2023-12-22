@@ -27,6 +27,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
     int numSkin4 = 4;
     ArrayList<Integer> tabSkin = new ArrayList<>();
     ArrayList<Joueur> listeJoueur = new ArrayList<>();
+    boolean chrono = false;
+    
 
     /**
      * Creates new form FenetreAccueil
@@ -87,7 +89,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
         slider_nbCartes = new javax.swing.JSlider();
         lbl_nb_cartes = new javax.swing.JLabel();
         btn_start = new javax.swing.JButton();
+        panel_chrono = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        toggle_chrono = new javax.swing.JToggleButton();
         btn_home = new javax.swing.JButton();
         panel_noms = new javax.swing.JPanel();
         panel_j1 = new javax.swing.JPanel();
@@ -143,14 +147,14 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         jLabel6.setText("Nombre de cartes par joueur :");
-        panel_reglages.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        panel_reglages.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         slider_nbCartes.setMaximum(16);
         slider_nbCartes.setMinimum(1);
-        panel_reglages.add(slider_nbCartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, -1, -1));
+        panel_reglages.add(slider_nbCartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, -1, -1));
 
         lbl_nb_cartes.setText("nb cartes");
-        panel_reglages.add(lbl_nb_cartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
+        panel_reglages.add(lbl_nb_cartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, -1, -1));
 
         btn_start.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/Play.png"))); // NOI18N
         btn_start.setPreferredSize(new java.awt.Dimension(300, 80));
@@ -161,8 +165,24 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_reglages.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 300, 80));
 
-        jLabel7.setText("Chronomètre");
-        panel_reglages.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, -1, -1));
+        panel_chrono.setOpaque(false);
+        panel_chrono.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        jLabel7.setText("Affichage chronomètre :");
+        panel_chrono.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+
+        toggle_chrono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-chronomètre-64 barré.png"))); // NOI18N
+        toggle_chrono.setContentAreaFilled(false);
+        toggle_chrono.setPreferredSize(new java.awt.Dimension(64, 64));
+        toggle_chrono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toggle_chronoActionPerformed(evt);
+            }
+        });
+        panel_chrono.add(toggle_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
+
+        panel_reglages.add(panel_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 630, 130));
 
         getContentPane().add(panel_reglages, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 670));
 
@@ -539,11 +559,13 @@ public class FenetreAccueil extends javax.swing.JFrame {
             case 1:
                 clickBtnPlayers(true, 1);
                 lbl_modeSolo.setVisible(true);
-
+                chrono = true;
+                panel_chrono.setVisible(false);
                 break;
             case 2:
                 panel_multiplayer.setVisible(true);
                 lbl_modeSolo.setVisible(false);
+                panel_chrono.setVisible(true);
                 break;
         }
         img_labyrinthe.setVisible(false);
@@ -584,10 +606,20 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_skinJ4ActionPerformed
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
-        Partie partie = new Partie(listeJoueur, slider_nbCartes.getValue());
+        Partie partie = new Partie(listeJoueur, slider_nbCartes.getValue(), chrono);
         partie.startWindow();
         this.dispose();
     }//GEN-LAST:event_btn_startActionPerformed
+
+    private void toggle_chronoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toggle_chronoActionPerformed
+        
+        if (chrono){
+        toggle_chrono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgMenus/iconChronoX.png")));            
+        }else{
+        toggle_chrono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgMenus/iconChrono.png")));
+        }
+        chrono= !chrono;
+    }//GEN-LAST:event_toggle_chronoActionPerformed
 
     private boolean nombrePareil(ArrayList<Integer> tab) {
 
@@ -684,6 +716,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
         resetUIJoueurs();
 
         listeJoueur.clear();
+        
+        chrono = false;
     }
 
     private void menu_reglages() {
@@ -731,6 +765,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         panel_j2.setVisible(false);
         panel_j3.setVisible(false);
         panel_j4.setVisible(false);
+        toggle_chrono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgMenus/iconChronoX.png")));            
 
         switch (nbJoueurs) {
             // on affiche les joueurs qu'il faut dans chaque cas de nombre de joueurs sélectionné
@@ -839,6 +874,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JTextField nomJoueur3;
     private javax.swing.JTextField nomJoueur4;
     private javax.swing.JPanel panel_btn;
+    private javax.swing.JPanel panel_chrono;
     private javax.swing.JPanel panel_erreur;
     private javax.swing.JPanel panel_j1;
     private javax.swing.JPanel panel_j2;
@@ -854,5 +890,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JButton skinJ3;
     private javax.swing.JButton skinJ4;
     private javax.swing.JSlider slider_nbCartes;
+    private javax.swing.JToggleButton toggle_chrono;
     // End of variables declaration//GEN-END:variables
 }

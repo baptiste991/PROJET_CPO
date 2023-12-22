@@ -27,12 +27,14 @@ public class Partie {
     Random r = new Random();
     Joueur temp = new Joueur();
     FenetrePrincipale gamewindow;
+    boolean chronoON;
     /**
      * Constructeur Partie
      * @param listeJoueurs
      */
-    public Partie(ArrayList<Joueur> listeJoueurs, int nbcardsperplayer) {
+    public Partie(ArrayList<Joueur> listeJoueurs, int nbcardsperplayer, boolean chronoOn) {
 
+       this.chronoON = chronoOn;
        plateau.nbcardsperplayer = nbcardsperplayer;
        //On lance la bonne méthode setPlayerList en fonction du nb de joueur
        switch(listeJoueurs.size()){
@@ -78,7 +80,7 @@ public class Partie {
 
     
     public void startWindow(){
-        this.gamewindow = new FenetrePrincipale(plateau, ordre);
+        this.gamewindow = new FenetrePrincipale(plateau, ordre, chronoON);
     }
     
     

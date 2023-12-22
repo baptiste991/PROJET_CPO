@@ -30,7 +30,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private Timer timer;
     private int secondes;
     
-
+    
     /**
      * Constructeur de la fenêtre Cette fenetre représente graphiquement le
      * plateau ainsi que l'interface graphique du jeu.
@@ -38,7 +38,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * @param plateau Le plateau de jeu qui comprend les missions, cartes, et
      * joueurs
      */
-    public FenetrePrincipale(Plateau plateau, ArrayList<Joueur> ordre) {
+    public FenetrePrincipale(Plateau plateau, ArrayList<Joueur> ordre, boolean chronoOn) {
         this.plateau = plateau;
         this.ordre = ordre;
         plateau.setAllMissions();
@@ -74,6 +74,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         // ajout chrono
         
+        if (!chronoOn){
+            lbl_chrono.setVisible(false);
+        }
         lbl_chrono.setText("Temps écoulé : 0 seconde");;
         
         timer = new Timer(1000, new ActionListener() {
