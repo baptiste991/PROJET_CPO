@@ -137,20 +137,31 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     
     public void verifWin(){
         // Pour tous les joueurs
-        boolean won = false;
+
         for(int players=0;players<this.plateau.getListeDeJoueurs().size();players++){
             //Si un d'eux n'a plus d'objets il gagne
             if(this.plateau.getListeDeJoueurs().get(players).getObjets().isEmpty()){
-                won = true;
+                System.out.println("Victoire du joueur : "+this.plateau.getListeDeJoueurs().get(players).name);
+                this.ordre.remove(this.plateau.getListeDeJoueurs().get(players));
             }
         }
-       
-        if(won){
-            System.out.println("Victoire");
-            FenetreVictoire victoire = new FenetreVictoire();
-            this.dispose();
-
+       switch(this.plateau.getListeDeJoueurs().size()){
+            case 1->{
+                if(this.ordre.size()==0){
+                FenetreVictoire win = new FenetreVictoire();
+                this.dispose();
+            }
         }
+        
+            default->{
+                if(this.ordre.size()==1){
+                 FenetreVictoire win = new FenetreVictoire();
+                this.dispose();
+            }       
+        }
+  
+       }
+        
     }
     
     public void genUIRightSide(){
