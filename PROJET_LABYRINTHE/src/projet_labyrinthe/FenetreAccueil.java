@@ -109,6 +109,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         nomJoueur2 = new javax.swing.JTextField();
         skinJ2 = new javax.swing.JButton();
+        lbl_modeSolo = new javax.swing.JLabel();
         panel_multiplayer = new javax.swing.JPanel();
         panel_btn = new javax.swing.JPanel();
         btn_2j = new javax.swing.JButton();
@@ -116,7 +117,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
         btn_3j = new javax.swing.JButton();
         panel_solo = new javax.swing.JPanel();
         btn_solovs = new javax.swing.JButton();
-        btn_solovsIA = new javax.swing.JButton();
         panel_modes = new javax.swing.JPanel();
         btn_solo = new javax.swing.JButton();
         btn_multiplayer = new javax.swing.JButton();
@@ -292,6 +292,10 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 340, 220));
 
+        lbl_modeSolo.setFont(new java.awt.Font("Showcard Gothic", 0, 48)); // NOI18N
+        lbl_modeSolo.setText("contre-la-montre");
+        panel_noms.add(lbl_modeSolo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+
         getContentPane().add(panel_noms, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 920, 670));
 
         panel_multiplayer.setOpaque(false);
@@ -347,14 +351,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
             }
         });
         panel_solo.add(btn_solovs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 200, 40));
-
-        btn_solovsIA.setText("Solo vs IA");
-        btn_solovsIA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_solovsIAActionPerformed(evt);
-            }
-        });
-        panel_solo.add(btn_solovsIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 200, 40));
 
         getContentPane().add(panel_solo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 280, 140));
 
@@ -530,30 +526,37 @@ public class FenetreAccueil extends javax.swing.JFrame {
         tabSkin.clear();
     }//GEN-LAST:event_btn_validerActionPerformed
 
-    private void btn_mode() {
+    private void btn_mode(int mode) {
         // permet de passer au menu suivant une fois le mode singleplayer ou multiplayer selectionné
+
+        switch (mode) {
+            // affiche le menu solo ou multijoueur
+            case 1:
+                clickBtnPlayers(true, 1);
+                lbl_modeSolo.setVisible(true);
+
+                break;
+            case 2:
+                panel_multiplayer.setVisible(true);
+                lbl_modeSolo.setVisible(false);
+                break;
+        }
         img_labyrinthe.setVisible(false);
         panel_modes.setVisible(false);
         fond_menu.setVisible(true);
     }
 
     private void btn_soloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_soloActionPerformed
-        btn_mode();
-        panel_solo.setVisible(true);
+        btn_mode(1);
     }//GEN-LAST:event_btn_soloActionPerformed
 
     private void btn_multiplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_multiplayerActionPerformed
-        btn_mode();
-        panel_multiplayer.setVisible(true);
+        btn_mode(2);
     }//GEN-LAST:event_btn_multiplayerActionPerformed
 
     private void btn_solovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solovsActionPerformed
         clickBtnPlayers(true, 1);
     }//GEN-LAST:event_btn_solovsActionPerformed
-
-    private void btn_solovsIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solovsIAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_solovsIAActionPerformed
 
     private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
         home();
@@ -810,7 +813,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JButton btn_multiplayer;
     private javax.swing.JButton btn_solo;
     private javax.swing.JButton btn_solovs;
-    private javax.swing.JButton btn_solovsIA;
     private javax.swing.JButton btn_start;
     private javax.swing.JButton btn_valider;
     private javax.swing.JLabel fond_menu;
@@ -824,6 +826,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lbl_erreur_noms;
     private javax.swing.JLabel lbl_erreur_skins;
+    private javax.swing.JLabel lbl_modeSolo;
     private javax.swing.JLabel lbl_nb_cartes;
     private javax.swing.JTextField nomJoueur1;
     private javax.swing.JTextField nomJoueur2;
