@@ -457,6 +457,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btn_y5b.setVisible(action);
     }
     
+    private void refresh_btn(){
+        btn_x1g.setEnabled(true);
+        btn_x1d.setEnabled(true);
+        btn_x3g.setEnabled(true);
+        btn_x3d.setEnabled(true);
+        btn_x5g.setEnabled(true);
+        btn_x5d.setEnabled(true);
+        btn_y1h.setEnabled(true);
+        btn_y1b.setEnabled(true);
+        btn_y3h.setEnabled(true);
+        btn_y3b.setEnabled(true);
+        btn_y5h.setEnabled(true);
+        btn_y5b.setEnabled(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -906,72 +921,96 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_x1gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1gActionPerformed
+        refresh_btn();
+        btn_x1d.setEnabled(false);
         injectUIX(1, true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x1gActionPerformed
 
     private void btn_x1dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1dActionPerformed
+        refresh_btn();
+        btn_x1g.setEnabled(false);
         injectUIX(1, false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x1dActionPerformed
 
     private void btn_x3gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3gActionPerformed
+        refresh_btn();
+        btn_x3d.setEnabled(false);
         injectUIX(3, true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x3gActionPerformed
 
     private void btn_x5gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5gActionPerformed
+        refresh_btn();
+        btn_x5d.setEnabled(false);
         injectUIX(5, true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x5gActionPerformed
 
     private void btn_x3dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3dActionPerformed
+        refresh_btn();
+        btn_x3g.setEnabled(false);
         injectUIX(3, false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x3dActionPerformed
 
     private void btn_x5dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5dActionPerformed
+        refresh_btn();
+        btn_x5g.setEnabled(false);
         injectUIX(5, false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_x5dActionPerformed
 
     private void btn_y1hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1hActionPerformed
+        refresh_btn();
+        btn_y1b.setEnabled(false);
         injectUIY(1,true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y1hActionPerformed
 
     private void btn_y5hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5hActionPerformed
+        refresh_btn();
+        btn_y5b.setEnabled(false);
         injectUIY(5,true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y5hActionPerformed
 
     private void btn_y3hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3hActionPerformed
+        refresh_btn();
+        btn_y3b.setEnabled(false);
         injectUIY(3,true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y3hActionPerformed
 
     private void btn_y1bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1bActionPerformed
+        refresh_btn();
+        btn_y1h.setEnabled(false);
         injectUIY(1,false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y1bActionPerformed
 
     private void btn_y3bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3bActionPerformed
+        refresh_btn();
+        btn_y3h.setEnabled(false);
         injectUIY(3,false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
     }//GEN-LAST:event_btn_y3bActionPerformed
 
     private void btn_y5bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5bActionPerformed
+        refresh_btn();
+        btn_y5h.setEnabled(false);
         injectUIY(5,false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
