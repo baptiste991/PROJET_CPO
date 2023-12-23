@@ -30,8 +30,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     ArrayList<Joueur> ordre;
     
     private Timer timer;
+    
     private int secondes;
     
+    boolean chronoON;
+   
     
     /**
      * Constructeur de la fenêtre Cette fenetre représente graphiquement le
@@ -43,6 +46,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public FenetrePrincipale(Plateau plateau, ArrayList<Joueur> ordre, boolean chronoOn) {
         this.plateau = plateau;
         this.ordre = ordre;
+        this.chronoON = chronoOn;
         plateau.setAllMissions();
         plateau.setAllMissionsToCards();
         plateau.placeAllPlayers();
@@ -263,7 +267,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         switch(this.plateau.getListeDeJoueurs().size()){
             case 1->{
                 if(this.ordre.size()==0){
-                FenetreFinPartie win = new FenetreFinPartie(podium);
+                FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON);
                 this.dispose();
                 }
             }
@@ -272,7 +276,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 
                 if(this.ordre.size()==1){
                     podium.add(ordre.get(0));
-                    FenetreFinPartie win = new FenetreFinPartie(podium);
+                    FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON);
                     for(int i=0;i<this.ordre.size();i++){
                         ordre.remove(i);
                     }
