@@ -45,9 +45,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // on créé un fond noir
-        getContentPane().add(fond_noir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, getWidth(), getHeight()));
-
         // on affiche les panels et labels correspondants au menu d'accueil
         panel_noms.setVisible(false);
 
@@ -63,6 +60,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         panel_reglages.setVisible(false);
 
+        
         pack();
         setVisible(true);
     }
@@ -93,6 +91,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         toggle_chrono = new javax.swing.JToggleButton();
         btn_home = new javax.swing.JButton();
+        btn_quitter = new javax.swing.JButton();
         panel_noms = new javax.swing.JPanel();
         panel_j1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -130,9 +129,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
         fond_noir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(908, 650));
         setMinimumSize(new java.awt.Dimension(908, 633));
         setPreferredSize(new java.awt.Dimension(920, 670));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel_reglages.setMaximumSize(new java.awt.Dimension(920, 670));
@@ -184,7 +183,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
         panel_reglages.add(panel_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 630, 130));
 
-        getContentPane().add(panel_reglages, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 670));
+        getContentPane().add(panel_reglages, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 784, 670));
 
         btn_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/bouton-daccueil-pour-linterface.png"))); // NOI18N
         btn_home.setContentAreaFilled(false);
@@ -193,7 +192,16 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 btn_homeActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 525, -1, 70));
+        getContentPane().add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 525, -1, 70));
+
+        btn_quitter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/quitter.png"))); // NOI18N
+        btn_quitter.setContentAreaFilled(false);
+        btn_quitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_quitterActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_quitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 525, -1, -1));
 
         panel_noms.setOpaque(false);
         panel_noms.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -283,7 +291,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
                 btn_validerActionPerformed(evt);
             }
         });
-        panel_noms.add(btn_valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 300, 80));
+        panel_noms.add(btn_valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 300, 80));
 
         panel_erreur.setOpaque(false);
         panel_erreur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -621,6 +629,11 @@ public class FenetreAccueil extends javax.swing.JFrame {
         chrono= !chrono;
     }//GEN-LAST:event_toggle_chronoActionPerformed
 
+    private void btn_quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitterActionPerformed
+        this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_btn_quitterActionPerformed
+
     private boolean nombrePareil(ArrayList<Integer> tab) {
 
         //test si dans un tableau il y a au moins deux fois un même élément
@@ -851,6 +864,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JButton btn_4j;
     private javax.swing.JButton btn_home;
     private javax.swing.JButton btn_multiplayer;
+    private javax.swing.JButton btn_quitter;
     private javax.swing.JButton btn_solo;
     private javax.swing.JButton btn_solovs;
     private javax.swing.JButton btn_start;
