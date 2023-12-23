@@ -37,6 +37,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
     public FenetreAccueil() {
         CustomInitComponents();
         this.background = new ImageIcon("./accueil.png").getImage();
+        sounds.stopsound();
+        
     }
 
     private void CustomInitComponents() {
@@ -133,6 +135,19 @@ public class FenetreAccueil extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(908, 633));
         setPreferredSize(new java.awt.Dimension(920, 670));
         setResizable(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel_reglages.setMaximumSize(new java.awt.Dimension(920, 670));
@@ -452,6 +467,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private void btn_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validerActionPerformed
 
         sounds.playsound("click");
+
         
         //récupération des noms des jouerus
         String nomJ1 = nomJoueur1.getText();
@@ -629,10 +645,10 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_skinJ4ActionPerformed
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
-        sounds.playsound("click");
-        
-        Partie partie = new Partie(listeJoueur, slider_nbCartes.getValue(), chrono);
+
+        Partie partie = new Partie(listeJoueur, slider_nbCartes.getValue(), chrono, this.sounds);
         partie.startWindow();
+        sounds.playsound("click");
         
         this.dispose();
     }//GEN-LAST:event_btn_startActionPerformed
@@ -648,9 +664,23 @@ public class FenetreAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_toggle_chronoActionPerformed
 
     private void btn_quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitterActionPerformed
+        sounds.playsound("leave");
         this.dispose();
         System.exit(0);
     }//GEN-LAST:event_btn_quitterActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_formWindowClosing
 
     private boolean nombrePareil(ArrayList<Integer> tab) {
 

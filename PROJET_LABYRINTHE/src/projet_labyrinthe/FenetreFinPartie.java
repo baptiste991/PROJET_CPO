@@ -17,6 +17,7 @@ public class FenetreFinPartie extends javax.swing.JFrame {
     int nbCartes;
     boolean chrono;
     int secondes;
+    Sounds sounds;
 
     
     
@@ -25,12 +26,14 @@ public class FenetreFinPartie extends javax.swing.JFrame {
      *
      * @param podium
      */
-    public FenetreFinPartie(ArrayList<Joueur> podium, int nbCartes, boolean chrono, int secondes) {
+    public FenetreFinPartie(ArrayList<Joueur> podium, int nbCartes, boolean chrono, int secondes, Sounds sounds) {
         this.podium = podium;
         this.nbCartes = nbCartes;
         this.chrono = chrono;
         this.secondes = secondes;
+        this.sounds = sounds;
         customInitComponents();
+        sounds.stopsound();
     }
 
     private void customInitComponents() {
@@ -198,8 +201,6 @@ public class FenetreFinPartie extends javax.swing.JFrame {
         panel_podium.add(lbl_nbTours3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 60, 20));
         panel_podium.add(skin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 198, 126, 201));
         panel_podium.add(skin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 126, 201));
-
-        skin3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin2.png"))); // NOI18N
         panel_podium.add(skin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 315, 126, 201));
 
         fond_podium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/podium.png"))); // NOI18N
@@ -244,18 +245,22 @@ public class FenetreFinPartie extends javax.swing.JFrame {
 
     private void btn_revancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_revancheActionPerformed
         vanishObjets();
-        Partie partie = new Partie(podium, nbCartes, chrono);
+        Partie partie = new Partie(podium, nbCartes, chrono, sounds);
         partie.startWindow();
+        sounds.playsound("click");
         this.dispose();
     }//GEN-LAST:event_btn_revancheActionPerformed
 
     private void btn_quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitterActionPerformed
+        sounds.playsound("leave");
         this.dispose();
         System.exit(0);
+        
     }//GEN-LAST:event_btn_quitterActionPerformed
 
     private void btn_accueilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_accueilActionPerformed
         FenetreAccueil fenetre = new FenetreAccueil();
+        sounds.playsound("click");
         this.dispose();
     }//GEN-LAST:event_btn_accueilActionPerformed
 

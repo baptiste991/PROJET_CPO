@@ -57,7 +57,7 @@ public class Joueur {
     public Joueur(String name, String skinpath) {
         this.name = name;
         this.skinpath = skinpath;
-        nbtour =0;
+        nbtour =1;
     }
     
     
