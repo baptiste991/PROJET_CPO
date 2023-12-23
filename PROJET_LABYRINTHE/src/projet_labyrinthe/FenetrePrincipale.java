@@ -1183,6 +1183,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     private void ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActionPerformed
         // TODO add your handling code here:
+        turnOff.nbtour++;
         // Le joueur a récupéré un objet?
         verifFinDeTour();
         // Reaffichage des boutons
