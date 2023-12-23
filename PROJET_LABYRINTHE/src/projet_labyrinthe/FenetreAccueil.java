@@ -4,8 +4,10 @@
  */
 package projet_labyrinthe;
 
+import java.awt.Desktop;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Objects;
 import javax.swing.ImageIcon;
@@ -94,6 +96,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         toggle_chrono = new javax.swing.JToggleButton();
         btn_home = new javax.swing.JButton();
         btn_quitter = new javax.swing.JButton();
+        btn_infos = new javax.swing.JButton();
         panel_noms = new javax.swing.JPanel();
         panel_j1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -218,6 +221,15 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         getContentPane().add(btn_quitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 525, -1, -1));
 
+        btn_infos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-information-64.png"))); // NOI18N
+        btn_infos.setContentAreaFilled(false);
+        btn_infos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_infosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_infos, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 80, 60));
+
         panel_noms.setOpaque(false);
         panel_noms.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -337,7 +349,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         panel_j2.add(skinJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 126, 201));
 
-        panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 340, 220));
+        panel_noms.add(panel_j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 340, 220));
 
         lbl_modeSolo.setFont(new java.awt.Font("Showcard Gothic", 0, 48)); // NOI18N
         lbl_modeSolo.setText("contre-la-montre");
@@ -681,6 +693,20 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosing
 
+    private void btn_infosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_infosActionPerformed
+        sounds.playsound("click");
+        
+            String url = "https://www.regledujeu.fr/labyrinthe/";
+
+    // Ouvrir l'URL dans le navigateur par défaut
+    try {
+        Desktop.getDesktop().browse(new URI(url));
+    } catch (Exception e) {
+        // Gérer les éventuelles exceptions, par exemple URISyntaxException
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_btn_infosActionPerformed
+
     private boolean nombrePareil(ArrayList<Integer> tab) {
 
         //test si dans un tableau il y a au moins deux fois un même élément
@@ -910,6 +936,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JButton btn_3j;
     private javax.swing.JButton btn_4j;
     private javax.swing.JButton btn_home;
+    private javax.swing.JButton btn_infos;
     private javax.swing.JButton btn_multiplayer;
     private javax.swing.JButton btn_quitter;
     private javax.swing.JButton btn_solo;
