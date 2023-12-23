@@ -259,7 +259,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         switch(this.plateau.getListeDeJoueurs().size()){
             case 1->{
                 if(this.ordre.size()==0){
-                FenetreVictoire win = new FenetreVictoire(podium);
+                FenetreFinPartie win = new FenetreFinPartie(podium);
                 this.dispose();
                 }
             }
@@ -268,7 +268,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 
                 if(this.ordre.size()==1){
                     podium.add(ordre.get(0));
-                    FenetreVictoire win = new FenetreVictoire(podium);
+                    FenetreFinPartie win = new FenetreFinPartie(podium);
                     for(int i=0;i<this.ordre.size();i++){
                         ordre.remove(i);
                     }
