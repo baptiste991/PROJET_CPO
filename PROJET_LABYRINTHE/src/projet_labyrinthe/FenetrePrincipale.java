@@ -25,6 +25,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     Joueur turnOff = new Joueur();
     
+    ArrayList<Joueur> podium = new ArrayList<>();
+    
     ArrayList<Joueur> ordre;
     
     private Timer timer;
@@ -199,7 +201,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         public void verifWin(){
         // Pour tous les joueurs
         
-        ArrayList<Joueur> podium = new ArrayList<>();
+
         
         // Pour tous les joueurs
         for(int players=0;players<ordre.size();players++){
@@ -225,6 +227,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         
         //Affichage gagné en fonction des joueurs gagné
         if(this.plateau.getListeDeJoueurs().size() == 3 || this.plateau.getListeDeJoueurs().size() == 4){
+                
+                setAllUIWinVisibleFalse();
                 
                 //On va changer l'affichage pour le panel droite : Lorsqu'un joueur gagne il y a écrit gagné
                 for(int i=0;i<podium.size();i++){
