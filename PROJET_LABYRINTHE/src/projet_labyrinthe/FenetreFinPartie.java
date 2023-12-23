@@ -25,13 +25,12 @@ public class FenetreFinPartie extends javax.swing.JFrame {
      *
      * @param podium
      */
-    public FenetreFinPartie(ArrayList<Joueur> podium, int nbCartes, boolean chrono, int secondes ) {
+    public FenetreFinPartie(ArrayList<Joueur> podium, int nbCartes, boolean chrono, int secondes) {
         this.podium = podium;
         this.nbCartes = nbCartes;
         this.chrono = chrono;
         this.secondes = secondes;
         customInitComponents();
-
     }
 
     private void customInitComponents() {
@@ -39,8 +38,31 @@ public class FenetreFinPartie extends javax.swing.JFrame {
         initComponents();
         setVisible(true);
         affichageSkins();
+        affichageTemps();
+        affichageToursPartie();
+        affichageToursJoueurs();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    }
+    
+    private void affichageToursPartie(){
+        int nbToursMax = 1;
+        for (int i = 0; i< podium.size(); i++){
+            if (podium.get(i).nbtour > nbToursMax){
+                nbToursMax = podium.get(i).nbtour;
+            }
+        }
+        lbl_nbTours.setText(nbToursMax+ "");
+    }
+        
+    private void affichageTemps(){
+        if (secondes < 60){
+            lbl_temps.setText(secondes + " secondes");
+        }else{
+            int minutes = secondes / 60;
+            int reste = secondes %60;
+            lbl_temps.setText(minutes + "'" +reste+"''");
+        }
     }
 
     private void affichageSkins() {
@@ -64,6 +86,22 @@ public class FenetreFinPartie extends javax.swing.JFrame {
                     break;
             }
 
+        }
+    }
+    private void affichageToursJoueurs(){
+        for (int i = 0; i < podium.size();i++){
+            if (i == podium.size()-1)break;
+            switch (i){
+                case 0 : 
+                    lbl_nbTours1.setText(podium.get(i).nbtour+" Tours");
+                    break;
+                case 1 :
+                    lbl_nbTours2.setText(podium.get(i).nbtour+" Tours");
+                    break;
+                case 2 :
+                    lbl_nbTours3.setText(podium.get(i).nbtour+" Tours");
+                    break;
+            }
         }
     }
 
@@ -93,6 +131,9 @@ public class FenetreFinPartie extends javax.swing.JFrame {
         lbl_joueur2 = new javax.swing.JLabel();
         lbl_joueur1 = new javax.swing.JLabel();
         lbl_joueur3 = new javax.swing.JLabel();
+        lbl_nbTours1 = new javax.swing.JLabel();
+        lbl_nbTours2 = new javax.swing.JLabel();
+        lbl_nbTours3 = new javax.swing.JLabel();
         skin1 = new javax.swing.JLabel();
         skin2 = new javax.swing.JLabel();
         skin3 = new javax.swing.JLabel();
@@ -139,18 +180,26 @@ public class FenetreFinPartie extends javax.swing.JFrame {
         panel_podium.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_joueur2.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        lbl_joueur2.setText("    ");
         panel_podium.add(lbl_joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
 
         lbl_joueur1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        lbl_joueur1.setText("    ");
-        panel_podium.add(lbl_joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
+        panel_podium.add(lbl_joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
 
         lbl_joueur3.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        lbl_joueur3.setText("    ");
-        panel_podium.add(lbl_joueur3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        panel_podium.add(lbl_joueur3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 110, 30));
+
+        lbl_nbTours1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        panel_podium.add(lbl_nbTours1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
+
+        lbl_nbTours2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        panel_podium.add(lbl_nbTours2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
+
+        lbl_nbTours3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        panel_podium.add(lbl_nbTours3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 60, 20));
         panel_podium.add(skin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 198, 126, 201));
         panel_podium.add(skin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 126, 201));
+
+        skin3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin2.png"))); // NOI18N
         panel_podium.add(skin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 315, 126, 201));
 
         fond_podium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/podium.png"))); // NOI18N
@@ -269,6 +318,9 @@ public class FenetreFinPartie extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_joueur2;
     private javax.swing.JLabel lbl_joueur3;
     private javax.swing.JLabel lbl_nbTours;
+    private javax.swing.JLabel lbl_nbTours1;
+    private javax.swing.JLabel lbl_nbTours2;
+    private javax.swing.JLabel lbl_nbTours3;
     private javax.swing.JLabel lbl_temps;
     private javax.swing.JLabel lbl_titre;
     private javax.swing.JLabel lbl_titre_partie;
