@@ -78,6 +78,15 @@ public class FenetreFinPartie extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        lbl_titre = new javax.swing.JLabel();
+        panel_infos = new javax.swing.JPanel();
+        lbl_titre_partie = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        lbl_nbTours = new javax.swing.JLabel();
+        lbl_temps = new javax.swing.JLabel();
         panel_podium = new javax.swing.JPanel();
         lbl_joueur2 = new javax.swing.JLabel();
         lbl_joueur1 = new javax.swing.JLabel();
@@ -86,19 +95,43 @@ public class FenetreFinPartie extends javax.swing.JFrame {
         skin2 = new javax.swing.JLabel();
         skin3 = new javax.swing.JLabel();
         fond_podium = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        panel_boutons = new javax.swing.JPanel();
         btn_revanche = new javax.swing.JButton();
         btn_quitter = new javax.swing.JButton();
         btn_accueil = new javax.swing.JButton();
         back = new javax.swing.JLabel();
 
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 54)); // NOI18N
-        jLabel1.setText("FIN DE PARTIE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
+        lbl_titre.setFont(new java.awt.Font("Showcard Gothic", 0, 54)); // NOI18N
+        lbl_titre.setText("FIN DE PARTIE");
+        getContentPane().add(lbl_titre, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
+
+        panel_infos.setOpaque(false);
+        panel_infos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_titre_partie.setText("Infos Partie");
+        panel_infos.add(lbl_titre_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
+
+        jLabel2.setText("Nombre de tours :");
+        panel_infos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+
+        jLabel3.setText("Temps de la partie :");
+        panel_infos.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        panel_infos.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 200, 10));
+        panel_infos.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 200, 20));
+
+        lbl_nbTours.setText("jLabel4");
+        panel_infos.add(lbl_nbTours, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+
+        lbl_temps.setText("jLabel5");
+        panel_infos.add(lbl_temps, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
+
+        getContentPane().add(panel_infos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 320, 350));
 
         panel_podium.setOpaque(false);
         panel_podium.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -123,8 +156,8 @@ public class FenetreFinPartie extends javax.swing.JFrame {
 
         getContentPane().add(panel_podium, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 530, 600));
 
-        jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel_boutons.setOpaque(false);
+        panel_boutons.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_revanche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/btn revanche.png"))); // NOI18N
         btn_revanche.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +165,7 @@ public class FenetreFinPartie extends javax.swing.JFrame {
                 btn_revancheActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_revanche, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 300, 80));
+        panel_boutons.add(btn_revanche, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 300, 80));
 
         btn_quitter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/btn quitter.png"))); // NOI18N
         btn_quitter.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +173,7 @@ public class FenetreFinPartie extends javax.swing.JFrame {
                 btn_quitterActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_quitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 300, 80));
+        panel_boutons.add(btn_quitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 300, 80));
 
         btn_accueil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/btn accueil.png"))); // NOI18N
         btn_accueil.addActionListener(new java.awt.event.ActionListener() {
@@ -148,9 +181,9 @@ public class FenetreFinPartie extends javax.swing.JFrame {
                 btn_accueilActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_accueil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 80));
+        panel_boutons.add(btn_accueil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 80));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 340, 360, 340));
+        getContentPane().add(panel_boutons, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 356, 360, 340));
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/sunset.png"))); // NOI18N
         getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -226,10 +259,19 @@ public class FenetreFinPartie extends javax.swing.JFrame {
     private javax.swing.JButton btn_revanche;
     private javax.swing.JLabel fond_podium;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl_joueur1;
     private javax.swing.JLabel lbl_joueur2;
     private javax.swing.JLabel lbl_joueur3;
+    private javax.swing.JLabel lbl_nbTours;
+    private javax.swing.JLabel lbl_temps;
+    private javax.swing.JLabel lbl_titre;
+    private javax.swing.JLabel lbl_titre_partie;
+    private javax.swing.JPanel panel_boutons;
+    private javax.swing.JPanel panel_infos;
     private javax.swing.JPanel panel_podium;
     private javax.swing.JLabel skin1;
     private javax.swing.JLabel skin2;
