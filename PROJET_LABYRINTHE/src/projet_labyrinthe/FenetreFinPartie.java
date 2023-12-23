@@ -16,6 +16,7 @@ public class FenetreFinPartie extends javax.swing.JFrame {
     ArrayList<Joueur> podium;
     int nbCartes;
     boolean chrono;
+    int secondes;
 
     
     
@@ -24,10 +25,11 @@ public class FenetreFinPartie extends javax.swing.JFrame {
      *
      * @param podium
      */
-    public FenetreFinPartie(ArrayList<Joueur> podium, int nbCartes, boolean chrono ) {
+    public FenetreFinPartie(ArrayList<Joueur> podium, int nbCartes, boolean chrono, int secondes ) {
         this.podium = podium;
         this.nbCartes = nbCartes;
         this.chrono = chrono;
+        this.secondes = secondes;
         customInitComponents();
 
     }
