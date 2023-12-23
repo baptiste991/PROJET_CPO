@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
@@ -98,6 +97,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 secondes++;
                 updateTimerLabel();
                 if (!soundMusic.getClipActive()){
+                    // on laisse toujours une musique en arrière plan lors d'une game 
                     soundMusic.playsound("music");
                 }
             }
