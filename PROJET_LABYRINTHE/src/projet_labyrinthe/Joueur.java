@@ -19,6 +19,7 @@ public class Joueur {
     private int posx, posy;
     String name;
     String skinpath;
+    int nbtour;
     
     private ArrayList<String> objets = new ArrayList<String>();
 
@@ -56,6 +57,7 @@ public class Joueur {
     public Joueur(String name, String skinpath) {
         this.name = name;
         this.skinpath = skinpath;
+        nbtour =0;
     }
     
     
