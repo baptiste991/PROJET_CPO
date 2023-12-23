@@ -47,6 +47,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         plateau.setListMissionOfPlayers();
 
         initComponents();
+        setAllUIWinVisibleFalse();
+        setUIPanelDroite();
         gen1UItour(ordre);
         
         // Configuration du layout de la JFrame
@@ -110,6 +112,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
     }
 
+    public void setUIPanelDroite(){
+        Background1.add(new UIPanelDroiteMissions());
+        Background2.add(new UIPanelDroiteMissions());
+        Background3.add(new UIPanelDroiteMissions());
+        Background4.add(new UIPanelDroiteMissions());
+    }    
+    
     public void startChronometer() {
         timer.start();
     }
@@ -118,6 +127,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         timer.stop();
     }
 
+    public void setAllUIWinVisibleFalse(){
+        Victory1.setVisible(false);
+        Victory2.setVisible(false);
+        Victory3.setVisible(false);
+        Victory4.setVisible(false);
+    }
+    
     
     public void gen1UItour(ArrayList<Joueur> ordre){
         turnOff = ordre.get(0);
@@ -204,7 +220,43 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 break;
             }
         }
-       switch(this.plateau.getListeDeJoueurs().size()){
+        
+        
+        
+        //Affichage gagné en fonction des joueurs gagné
+        if(this.plateau.getListeDeJoueurs().size() == 3 || this.plateau.getListeDeJoueurs().size() == 4){
+                
+                //On va changer l'affichage pour le panel droite : Lorsqu'un joueur gagne il y a écrit gagné
+                for(int i=0;i<podium.size();i++){
+                    
+                    if(podium.get(i)==this.plateau.getListeDeJoueurs().get(0)){
+                        Victory1.add(new UIWinPanelDroite());
+                        Victory1.setVisible(true);
+                    } else if(podium.get(i)==this.plateau.getListeDeJoueurs().get(1)){
+                        Victory2.add(new UIWinPanelDroite());
+                        Victory2.setVisible(true);
+                    } else if(podium.get(i)==this.plateau.getListeDeJoueurs().get(2)){
+                        Victory3.add(new UIWinPanelDroite());
+                        Victory3.setVisible(true);
+                    } else if(podium.get(i)==this.plateau.getListeDeJoueurs().get(3)){
+                        Victory4.add(new UIWinPanelDroite());
+                        Victory4.setVisible(true);
+                    }
+                }
+        } else {
+            switch(this.plateau.getListeDeJoueurs().size()){
+                case 1->{
+                    
+                }
+                case 2->{
+                    
+                }
+            }
+        }
+       
+        
+        // La partie est finie ?
+        switch(this.plateau.getListeDeJoueurs().size()){
             case 1->{
                 if(this.ordre.size()==0){
                 FenetreVictoire win = new FenetreVictoire(podium);
@@ -498,16 +550,24 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionsView43 = new javax.swing.JPanel();
         Player1 = new javax.swing.JPanel();
         Skin1 = new javax.swing.JPanel();
+        Victory1 = new javax.swing.JPanel();
         MissionP1 = new javax.swing.JPanel();
+        Background1 = new javax.swing.JPanel();
         Player3 = new javax.swing.JPanel();
         Skin3 = new javax.swing.JPanel();
+        Victory3 = new javax.swing.JPanel();
         MissionP3 = new javax.swing.JPanel();
+        Background3 = new javax.swing.JPanel();
         Player2 = new javax.swing.JPanel();
         Skin2 = new javax.swing.JPanel();
+        Victory2 = new javax.swing.JPanel();
         MissionP2 = new javax.swing.JPanel();
+        Background2 = new javax.swing.JPanel();
         Player4 = new javax.swing.JPanel();
         Skin4 = new javax.swing.JPanel();
+        Victory4 = new javax.swing.JPanel();
         MissionP4 = new javax.swing.JPanel();
+        Background4 = new javax.swing.JPanel();
         Valider = new javax.swing.JButton();
         panel_gauche = new javax.swing.JPanel();
         Left = new javax.swing.JButton();
@@ -625,11 +685,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Player1.setOpaque(false);
         Player1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Skin1.setOpaque(false);
         Skin1.setLayout(new java.awt.GridLayout(1, 1));
         Player1.add(Skin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
 
+        Victory1.setOpaque(false);
+        Victory1.setLayout(new java.awt.GridLayout(1, 1));
+        Player1.add(Victory1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionP1.setOpaque(false);
         MissionP1.setLayout(new java.awt.GridLayout(1, 4));
         Player1.add(MissionP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        Background1.setOpaque(false);
+        Background1.setLayout(new java.awt.GridLayout(1, 1));
+        Player1.add(Background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 120));
 
         MissionsView43.add(Player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 120));
 
@@ -637,11 +707,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Player3.setOpaque(false);
         Player3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Skin3.setOpaque(false);
         Skin3.setLayout(new java.awt.GridLayout(1, 1));
         Player3.add(Skin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
 
+        Victory3.setOpaque(false);
+        Victory3.setLayout(new java.awt.GridLayout(1, 1));
+        Player3.add(Victory3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionP3.setOpaque(false);
         MissionP3.setLayout(new java.awt.GridLayout(1, 4));
         Player3.add(MissionP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        Background3.setOpaque(false);
+        Background3.setLayout(new java.awt.GridLayout(1, 1));
+        Player3.add(Background3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 120));
 
         MissionsView43.add(Player3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 120));
 
@@ -649,11 +729,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Player2.setOpaque(false);
         Player2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Skin2.setOpaque(false);
         Skin2.setLayout(new java.awt.GridLayout(1, 1));
         Player2.add(Skin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
 
+        Victory2.setOpaque(false);
+        Victory2.setLayout(new java.awt.GridLayout(1, 1));
+        Player2.add(Victory2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionP2.setOpaque(false);
         MissionP2.setLayout(new java.awt.GridLayout(1, 4));
         Player2.add(MissionP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        Background2.setOpaque(false);
+        Background2.setLayout(new java.awt.GridLayout(1, 1));
+        Player2.add(Background2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 120));
 
         MissionsView43.add(Player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 300, 120));
 
@@ -661,11 +751,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Player4.setOpaque(false);
         Player4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Skin4.setOpaque(false);
         Skin4.setLayout(new java.awt.GridLayout(1, 1));
         Player4.add(Skin4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 60));
 
+        Victory4.setOpaque(false);
+        Victory4.setLayout(new java.awt.GridLayout(1, 1));
+        Player4.add(Victory4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        MissionP4.setOpaque(false);
         MissionP4.setLayout(new java.awt.GridLayout(1, 4));
         Player4.add(MissionP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 60));
+
+        Background4.setOpaque(false);
+        Background4.setLayout(new java.awt.GridLayout(1, 1));
+        Player4.add(Background4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 120));
 
         MissionsView43.add(Player4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 120));
 
@@ -1131,6 +1231,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Background1;
+    private javax.swing.JPanel Background2;
+    private javax.swing.JPanel Background3;
+    private javax.swing.JPanel Background4;
     private javax.swing.JButton Down;
     private javax.swing.JPanel GridPanel;
     private javax.swing.JButton Left;
@@ -1168,6 +1272,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JLabel Text3;
     private javax.swing.JButton Up;
     private javax.swing.JButton Valider;
+    private javax.swing.JPanel Victory1;
+    private javax.swing.JPanel Victory2;
+    private javax.swing.JPanel Victory3;
+    private javax.swing.JPanel Victory4;
     private javax.swing.JButton btn_x1d;
     private javax.swing.JButton btn_x1g;
     private javax.swing.JButton btn_x3d;
