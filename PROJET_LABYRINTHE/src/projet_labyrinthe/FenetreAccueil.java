@@ -28,6 +28,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
     ArrayList<Integer> tabSkin = new ArrayList<>();
     ArrayList<Joueur> listeJoueur = new ArrayList<>();
     boolean chrono = false;
+    Sounds sounds = new Sounds();
     
 
     /**
@@ -417,14 +418,18 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
     private void btn_4jActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4jActionPerformed
         clickBtnPlayers(true, 4);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_4jActionPerformed
 
     private void btn_3jActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3jActionPerformed
         clickBtnPlayers(true, 3);
+        sounds.playsound("click");
+
     }//GEN-LAST:event_btn_3jActionPerformed
 
     private void btn_2jActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2jActionPerformed
         clickBtnPlayers(true, 2);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_2jActionPerformed
 
     private void nomJoueur1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomJoueur1ActionPerformed
@@ -438,6 +443,8 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
     private void btn_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validerActionPerformed
 
+        sounds.playsound("click");
+        
         //récupération des noms des jouerus
         String nomJ1 = nomJoueur1.getText();
         String nomJ2 = nomJoueur2.getText();
@@ -575,44 +582,55 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
     private void btn_soloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_soloActionPerformed
         btn_mode(1);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_soloActionPerformed
 
     private void btn_multiplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_multiplayerActionPerformed
         btn_mode(2);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_multiplayerActionPerformed
 
     private void btn_solovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solovsActionPerformed
         clickBtnPlayers(true, 1);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_solovsActionPerformed
 
     private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
         home();
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_homeActionPerformed
 
     private void skinJ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skinJ1ActionPerformed
         changeSkin(1);
+        sounds.playsound("click");
     }//GEN-LAST:event_skinJ1ActionPerformed
 
     private void skinJ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skinJ2ActionPerformed
         changeSkin(2);
+        sounds.playsound("click");
     }//GEN-LAST:event_skinJ2ActionPerformed
 
     private void skinJ3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skinJ3ActionPerformed
         changeSkin(3);
+        sounds.playsound("click");
     }//GEN-LAST:event_skinJ3ActionPerformed
 
     private void skinJ4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skinJ4ActionPerformed
         changeSkin(4);
+        sounds.playsound("click");
     }//GEN-LAST:event_skinJ4ActionPerformed
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        sounds.playsound("click");
+        
         Partie partie = new Partie(listeJoueur, slider_nbCartes.getValue(), chrono);
         partie.startWindow();
+        
         this.dispose();
     }//GEN-LAST:event_btn_startActionPerformed
 
     private void toggle_chronoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toggle_chronoActionPerformed
-        
+        sounds.playsound("click");
         if (chrono){
         toggle_chrono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgMenus/iconChronoX.png")));            
         }else{
