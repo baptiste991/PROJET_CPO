@@ -17,9 +17,16 @@ import javax.swing.JLabel;
  */
 public class UIWinPanelDroite extends JLabel {
     
+    int place;
 
+    public UIWinPanelDroite(int place){
+        this.place = place+1;
+        System.out.println(place+1);
+    }
+    
     BufferedImage background=null;
-    BufferedImage podiumUI=null;
+    BufferedImage first=null;
+    BufferedImage second=null;
 
 
     // On repeint visuellement la carte
@@ -31,13 +38,26 @@ public class UIWinPanelDroite extends JLabel {
         try {
            
             background = ImageIO.read(new File("./src/imgMenus/won.png"));
-          
+            first = ImageIO.read(new File("./src/imgMenus/#1.png"));
+            second = ImageIO.read(new File("./src/imgMenus/#2.png"));
                         
             } catch (IOException e) {
                 System.out.println(e.getCause());
                 e.printStackTrace();
             }
         
-            g.drawImage(background, 0, 0, 300, 60, null);
+        g.drawImage(background, 0, 0, 300, 60, null);
+        switch(place){
+            case 1->{
+               g.drawImage(first, 100, 0, 300, 60, null);
+               g.drawImage(first, -100, 0, 300, 60, null);
+            }
+            case 2->{
+               g.drawImage(second, 100, 0, 300, 60, null);
+               g.drawImage(second, -100, 0, 300, 60, null);
+
+            }
+        }
+            
         }
 }

@@ -19,6 +19,11 @@ public class UIPanelDroiteMissions extends JLabel {
     
 
     BufferedImage background=null;
+    int nbplayer;
+    
+    public UIPanelDroiteMissions(int nbplayer){
+        this.nbplayer = nbplayer;
+    }
 
 
     // On repeint visuellement la carte
@@ -36,7 +41,18 @@ public class UIPanelDroiteMissions extends JLabel {
                 System.out.println(e.getCause());
                 e.printStackTrace();
             }
-        
-            g.drawImage(background, 0, 0, 300, 120, null);
+        switch(nbplayer){
+            case 34->{
+                g.drawImage(background, 0, 0, 300, 120, null);
+            }
+            case 2->{
+                g.drawImage(background, 0, 0, 300, 160, null);
+
+            }
+            case 1->{
+                g.drawImage(background, 0, 0, 300, 310, null);
+            }
+        }
+            
         }
 }
