@@ -49,7 +49,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         plateau.setListMissionOfPlayers();
 
         initComponents();
-        setAllUIWinVisibleFalse();
         setUIPanelDroite();
         gen1UItour(ordre);
         
@@ -115,10 +114,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     public void setUIPanelDroite(){
-        Background1.add(new UIPanelDroiteMissions());
-        Background2.add(new UIPanelDroiteMissions());
-        Background3.add(new UIPanelDroiteMissions());
-        Background4.add(new UIPanelDroiteMissions());
+        Background1.add(new UIPanelDroiteMissions(34));
+        Background2.add(new UIPanelDroiteMissions(34));
+        Background3.add(new UIPanelDroiteMissions(34));
+        Background4.add(new UIPanelDroiteMissions(34));
+        Background21.add(new UIPanelDroiteMissions(2));
+        Background22.add(new UIPanelDroiteMissions(2));
+        Background111.add(new UIPanelDroiteMissions(1));
     }    
     
     public void startChronometer() {
@@ -129,11 +131,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         timer.stop();
     }
 
-    public void setAllUIWinVisibleFalse(){
-        Victory1.setVisible(false);
-        Victory2.setVisible(false);
-        Victory3.setVisible(false);
-        Victory4.setVisible(false);
+    public void AllUIWinRemoveLastIndex(){
+        Victory1.removeAll();
+        Victory2.removeAll();
+        Victory3.removeAll();
+        Victory4.removeAll();
     }
     
     
@@ -199,9 +201,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
     
         public void verifWin(){
-        // Pour tous les joueurs
         
-
+        
+        AllUIWinRemoveLastIndex();
         
         // Pour tous les joueurs
         for(int players=0;players<ordre.size();players++){
@@ -228,37 +230,27 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         //Affichage gagné en fonction des joueurs gagné
         if(this.plateau.getListeDeJoueurs().size() == 3 || this.plateau.getListeDeJoueurs().size() == 4){
                 
-                setAllUIWinVisibleFalse();
+                
                 
                 //On va changer l'affichage pour le panel droite : Lorsqu'un joueur gagne il y a écrit gagné
                 for(int i=0;i<podium.size();i++){
                     
                     if(podium.get(i)==this.plateau.getListeDeJoueurs().get(0)){
-                        Victory1.add(new UIWinPanelDroite());
+                        Victory1.add(new UIWinPanelDroite(i));
                         Victory1.setVisible(true);
                     } else if(podium.get(i)==this.plateau.getListeDeJoueurs().get(1)){
-                        Victory2.add(new UIWinPanelDroite());
+                        Victory2.add(new UIWinPanelDroite(i));
                         Victory2.setVisible(true);
                     } else if(podium.get(i)==this.plateau.getListeDeJoueurs().get(2)){
-                        Victory3.add(new UIWinPanelDroite());
+                        Victory3.add(new UIWinPanelDroite(i));
                         Victory3.setVisible(true);
                     } else if(podium.get(i)==this.plateau.getListeDeJoueurs().get(3)){
-                        Victory4.add(new UIWinPanelDroite());
+                        Victory4.add(new UIWinPanelDroite(i));
                         Victory4.setVisible(true);
                     }
                 }
-        } else {
-            switch(this.plateau.getListeDeJoueurs().size()){
-                case 1->{
-                    
-                }
-                case 2->{
-                    
-                }
-            }
-        }
-       
-        
+        } 
+    
         // La partie est finie ?
         switch(this.plateau.getListeDeJoueurs().size()){
             case 1->{
@@ -544,13 +536,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Player111 = new javax.swing.JPanel();
         Skin111 = new javax.swing.JPanel();
         MissionsP111 = new javax.swing.JPanel();
+        Background111 = new javax.swing.JPanel();
         MissionsView2 = new javax.swing.JPanel();
         Player21 = new javax.swing.JPanel();
         Skin21 = new javax.swing.JPanel();
         MissionsP21 = new javax.swing.JPanel();
+        Background21 = new javax.swing.JPanel();
         Player22 = new javax.swing.JPanel();
         Skin22 = new javax.swing.JPanel();
         MissionsP22 = new javax.swing.JPanel();
+        Background22 = new javax.swing.JPanel();
         MissionsView43 = new javax.swing.JPanel();
         Player1 = new javax.swing.JPanel();
         Skin1 = new javax.swing.JPanel();
@@ -642,6 +637,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionsP111.setLayout(new java.awt.GridLayout(4, 4));
         Player111.add(MissionsP111, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 310));
 
+        Background111.setOpaque(false);
+        Background111.setLayout(new java.awt.GridLayout(1, 1));
+        Player111.add(Background111, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 310));
+
         MissionsView1.add(Player111, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 300, 370));
 
         panel_droite.add(MissionsView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 300, 570));
@@ -662,6 +661,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionsP21.setLayout(new java.awt.GridLayout(2, 4));
         Player21.add(MissionsP21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 160));
 
+        Background21.setOpaque(false);
+        Background21.setLayout(new java.awt.GridLayout(1, 1));
+        Player21.add(Background21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 160));
+
         MissionsView2.add(Player21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, -1));
 
         Player22.setBackground(new java.awt.Color(204, 204, 255));
@@ -676,6 +679,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionsP22.setOpaque(false);
         MissionsP22.setLayout(new java.awt.GridLayout(2, 4));
         Player22.add(MissionsP22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 140));
+
+        Background22.setOpaque(false);
+        Background22.setLayout(new java.awt.GridLayout(1, 1));
+        Player22.add(Background22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 140));
 
         MissionsView2.add(Player22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 200));
 
@@ -1236,7 +1243,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background1;
+    private javax.swing.JPanel Background111;
     private javax.swing.JPanel Background2;
+    private javax.swing.JPanel Background21;
+    private javax.swing.JPanel Background22;
     private javax.swing.JPanel Background3;
     private javax.swing.JPanel Background4;
     private javax.swing.JButton Down;
