@@ -8,7 +8,6 @@ import javax.sound.sampled.LineListener;
 import java.io.File;
 import java.util.Random;
 
-
 /**
  *
  * @author Ody
@@ -23,138 +22,146 @@ public class Sounds implements LineListener {
         }
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     private Clip clip;
-        
+
     Random r = new Random();
-    
+
     /**
      * Stopsound
      */
-    public void stopsound(){
-        if(clip!=null && clip.isRunning()){
+    public void stopsound() {
+        if (clip != null && clip.isRunning()) {
             clip.stop();
             clip.close();
-            System.out.println("Stop");
         }
     }
+
+    /**
+     * getter clip
+     * @return clip value
+     */
+    public boolean getClipActive() {
+        return clip.isActive();
+    }
+
+    
     
     /**
      * Methode qui permet de lire des fichiers audio en arriere plan
-     * @param name
-     *      Le nom du fichier audio que l'on veut entendre
+     *
+     * @param name Le nom du fichier audio que l'on veut entendre
      */
-    public void playsound(String name){
-        
-        switch(name){
-            case "click"->{
-                try{
-                    
-                // Charger le fichier audio
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/sounds/click.wav"));
-                clip = AudioSystem.getClip();
-                clip.open(audioInputStream);
-                
-                // Ajouter un écouteur pour détecter la fin de la lecture
-                clip.addLineListener(this);
+    public void playsound(String name) {
 
-                // Lancer la lecture
-                clip.start();
-                
+        switch (name) {
+            case "click" -> {
+                try {
+
+                    // Charger le fichier audio
+                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/sounds/click.wav"));
+                    clip = AudioSystem.getClip();
+                    clip.open(audioInputStream);
+
+                    // Ajouter un écouteur pour détecter la fin de la lecture
+                    clip.addLineListener(this);
+
+                    // Lancer la lecture
+                    clip.start();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            
-            case "win"->{
-                try{
-                    
-                // Charger le fichier audio
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/sounds/win.wav"));
-                clip = AudioSystem.getClip();
-                clip.open(audioInputStream);
-                
-                // Ajouter un écouteur pour détecter la fin de la lecture
-                clip.addLineListener(this);
 
-                // Lancer la lecture
-                clip.start();
-                
+            case "win" -> {
+                try {
+
+                    // Charger le fichier audio
+                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/sounds/win.wav"));
+                    clip = AudioSystem.getClip();
+                    clip.open(audioInputStream);
+
+                    // Ajouter un écouteur pour détecter la fin de la lecture
+                    clip.addLineListener(this);
+
+                    // Lancer la lecture
+                    clip.start();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            
-            case "leave"->{
-                try{
-                    
-                // Charger le fichier audio
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/sounds/leave.wav"));
-                clip = AudioSystem.getClip();
-                clip.open(audioInputStream);
-                
-                // Ajouter un écouteur pour détecter la fin de la lecture
-                clip.addLineListener(this);
 
-                // Lancer la lecture
-                clip.start();
-                
+            case "leave" -> {
+                try {
+
+                    // Charger le fichier audio
+                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/sounds/leave.wav"));
+                    clip = AudioSystem.getClip();
+                    clip.open(audioInputStream);
+
+                    // Ajouter un écouteur pour détecter la fin de la lecture
+                    clip.addLineListener(this);
+
+                    // Lancer la lecture
+                    clip.start();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            
-            case"music"->{
-                int random = r.nextInt(2);
-                switch(random){
-                    case 0->{
-                        try{
-                        // Charger le fichier audio
-                        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/music/ambient1.wav"));
-                        clip = AudioSystem.getClip();
-                        clip.open(audioInputStream);
 
-                        // Ajouter un écouteur pour détecter la fin de la lecture
-                        clip.addLineListener(this);
+            case "music" -> {
+                int random = r.nextInt(3);
+                switch (random) {
+                    case 0 -> {
+                        try {
+                            // Charger le fichier audio
+                            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/music/ambient1.wav"));
+                            clip = AudioSystem.getClip();
+                            clip.open(audioInputStream);
 
-                        // Lancer la lecture
-                        clip.start();
+                            // Ajouter un écouteur pour détecter la fin de la lecture
+                            clip.addLineListener(this);
+
+                            // Lancer la lecture
+                            clip.start();
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
-                    case 1->{
-                        try{
-                        // Charger le fichier audio
-                        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/music/ambient2.wav"));
-                        System.out.println("executé");
-                        clip = AudioSystem.getClip();
-                        clip.open(audioInputStream);
+                    case 1 -> {
+                        try {
+                            // Charger le fichier audio
+                            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/music/ambient2.wav"));
+                            clip = AudioSystem.getClip();
+                            clip.open(audioInputStream);
 
-                        // Ajouter un écouteur pour détecter la fin de la lecture
-                        clip.addLineListener(this);
+                            // Ajouter un écouteur pour détecter la fin de la lecture
+                            clip.addLineListener(this);
 
-                        // Lancer la lecture
-                        clip.start();
+                            // Lancer la lecture
+                            clip.start();
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        
+
                     }
-                    case 3->{
-                        try{
-                        // Charger le fichier audio
-                        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/music/ambient3.wav"));
-                        clip = AudioSystem.getClip();
-                        clip.open(audioInputStream);
+                    case 2 -> {
+                        try {
+                            // Charger le fichier audio
+                            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/music/ambient3.wav"));
+                            clip = AudioSystem.getClip();
+                            clip.open(audioInputStream);
 
-                        // Ajouter un écouteur pour détecter la fin de la lecture
-                        clip.addLineListener(this);
+                            // Ajouter un écouteur pour détecter la fin de la lecture
+                            clip.addLineListener(this);
 
-                        // Lancer la lecture
-                        clip.start();
+                            // Lancer la lecture
+                            clip.start();
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -162,12 +169,9 @@ public class Sounds implements LineListener {
                     }
                 }
             }
-            
+
         }
-        
-        
+
     }
-    
-    
-    
+
 }

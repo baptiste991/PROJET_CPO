@@ -37,7 +37,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
     public FenetreAccueil() {
         CustomInitComponents();
         this.background = new ImageIcon("./accueil.png").getImage();
-        sounds.stopsound();
         
     }
 

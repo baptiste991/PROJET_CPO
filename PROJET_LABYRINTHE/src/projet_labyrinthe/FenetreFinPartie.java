@@ -17,7 +17,7 @@ public class FenetreFinPartie extends javax.swing.JFrame {
     int nbCartes;
     boolean chrono;
     int secondes;
-    Sounds sounds;
+    Sounds soundsClick;
 
     
     
@@ -26,14 +26,13 @@ public class FenetreFinPartie extends javax.swing.JFrame {
      *
      * @param podium
      */
-    public FenetreFinPartie(ArrayList<Joueur> podium, int nbCartes, boolean chrono, int secondes, Sounds sounds) {
+    public FenetreFinPartie(ArrayList<Joueur> podium, int nbCartes, boolean chrono, int secondes, Sounds soundsClick) {
+        this.soundsClick = soundsClick;
         this.podium = podium;
         this.nbCartes = nbCartes;
         this.chrono = chrono;
         this.secondes = secondes;
-        this.sounds = sounds;
         customInitComponents();
-        sounds.stopsound();
     }
 
     private void customInitComponents() {
@@ -250,22 +249,21 @@ public class FenetreFinPartie extends javax.swing.JFrame {
 
     private void btn_revancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_revancheActionPerformed
         vanishObjets();
-        Partie partie = new Partie(podium, nbCartes, chrono, sounds);
+        Partie partie = new Partie(podium, nbCartes, chrono, soundsClick);
         partie.startWindow();
-        sounds.playsound("click");
+        soundsClick.playsound("click");
         this.dispose();
     }//GEN-LAST:event_btn_revancheActionPerformed
 
     private void btn_quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitterActionPerformed
-        sounds.playsound("leave");
+        soundsClick.playsound("leave");
         this.dispose();
         System.exit(0);
-        
     }//GEN-LAST:event_btn_quitterActionPerformed
 
     private void btn_accueilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_accueilActionPerformed
         FenetreAccueil fenetre = new FenetreAccueil();
-        sounds.playsound("click");
+        soundsClick.playsound("click");
         this.dispose();
     }//GEN-LAST:event_btn_accueilActionPerformed
 

@@ -33,7 +33,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     
     private int secondes;
     
-    Sounds sounds;
+    Sounds soundsClick;
+    
+    Sounds soundMusic = new Sounds();
     
     boolean chronoON;
    
@@ -44,11 +46,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * @param plateau Le plateau de jeu qui comprend les missions, cartes, et
      * joueurs
      */
-    public FenetrePrincipale(Plateau plateau, ArrayList<Joueur> ordre, boolean chronoOn,Sounds sounds) {
+    public FenetrePrincipale(Plateau plateau, ArrayList<Joueur> ordre, boolean chronoOn, Sounds soundsClick) {
         this.plateau = plateau;
         this.ordre = ordre;
         this.chronoON = chronoOn;
-        this.sounds = sounds;
+        this.soundsClick = soundsClick;
         plateau.setAllMissions();
         plateau.setAllMissionsToCards();
         plateau.placeAllPlayers();
@@ -58,8 +60,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         setUIPanelDroite();
         gen1UItour(ordre);
         
-        sounds.playsound("music");
-        
+        soundMusic.playsound("music");
         
         // Configuration du layout de la JFrame
         setLayout(new GridBagLayout());
@@ -89,13 +90,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         if (!chronoOn){
             lbl_chrono.setVisible(false);
         }
-        lbl_chrono.setText("Temps écoulé : 0 seconde");;
+        lbl_chrono.setText("Temps écoulé : 0 seconde");
         
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 secondes++;
                 updateTimerLabel();
+                if (!soundMusic.getClipActive()){
+                    soundMusic.playsound("music");
+                }
             }
         });
         
@@ -221,7 +225,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 podium.add(ordre.get(players));
                 this.plateau.getPlateau().get(ordre.get(players).getPosx()).get(ordre.get(players).getPosy()).removePlayerRidingCard(ordre.get(players));
                 this.ordre.remove(ordre.get(players));
-                sounds.playsound("win");
+                soundsClick.playsound("win");
                 break;
             }
         }
@@ -264,10 +268,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // La partie est finie ?
         switch(this.plateau.getListeDeJoueurs().size()){
             case 1->{
-                sounds.stopsound();
                 if(this.ordre.size()==0){
                 stopChronometer();
-                FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON, secondes, sounds);
+                FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON, secondes, soundsClick);
+                soundMusic.stopsound();
                 this.dispose();
                 }
             }
@@ -275,13 +279,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             default->{
                 
                 if(this.ordre.size()==1){
-                    sounds.stopsound();
                     podium.add(ordre.get(0));
                     stopChronometer();
-                    FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON, secondes, sounds);
+                    FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON, secondes, soundsClick);
                     for(int i=0;i<this.ordre.size();i++){
                         ordre.remove(i);
                     }
+                    soundMusic.stopsound();
                     this.dispose();
                 }       
             }
@@ -1059,7 +1063,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(1, true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_x1gActionPerformed
 
     private void btn_x1dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1dActionPerformed
@@ -1068,7 +1072,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(1, false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_x1dActionPerformed
 
     private void btn_x3gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3gActionPerformed
@@ -1077,7 +1081,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(3, true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_x3gActionPerformed
 
     private void btn_x5gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5gActionPerformed
@@ -1086,7 +1090,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(5, true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_x5gActionPerformed
 
     private void btn_x3dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3dActionPerformed
@@ -1095,7 +1099,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(3, false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_x3dActionPerformed
 
     private void btn_x5dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5dActionPerformed
@@ -1104,7 +1108,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(5, false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_x5dActionPerformed
 
     private void btn_y1hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1hActionPerformed
@@ -1113,7 +1117,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(1,true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_y1hActionPerformed
 
     private void btn_y5hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5hActionPerformed
@@ -1122,7 +1126,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(5,true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_y5hActionPerformed
 
     private void btn_y3hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3hActionPerformed
@@ -1131,7 +1135,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(3,true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_y3hActionPerformed
 
     private void btn_y1bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1bActionPerformed
@@ -1140,7 +1144,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(1,false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_y1bActionPerformed
 
     private void btn_y3bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3bActionPerformed
@@ -1149,7 +1153,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(3,false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_y3bActionPerformed
 
     private void btn_y5bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5bActionPerformed
@@ -1158,21 +1162,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(5,false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_btn_y5bActionPerformed
 
     private void RotateRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRightActionPerformed
         // TODO add your handling code here:
         this.plateau.carteAttente.rotateRight();
         genUIBoard();
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_RotateRightActionPerformed
 
     private void RotateRight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRight1ActionPerformed
         // TODO add your handling code here:
         this.plateau.carteAttente.rotateLeft();
         genUIBoard();
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_RotateRight1ActionPerformed
 
     private void UpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpActionPerformed
@@ -1182,7 +1186,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
         genUIBoard();
         genUIPossibleActions();
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_UpActionPerformed
 
     private void LeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeftActionPerformed
@@ -1192,7 +1196,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
         genUIBoard();
         genUIPossibleActions();
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_LeftActionPerformed
 
     private void RightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RightActionPerformed
@@ -1202,7 +1206,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
         genUIBoard();
         genUIPossibleActions();
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_RightActionPerformed
 
     private void DownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownActionPerformed
@@ -1212,13 +1216,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
         genUIBoard();
         genUIPossibleActions();
-        sounds.playsound("click");
+        soundsClick.playsound("click");
     }//GEN-LAST:event_DownActionPerformed
 
     private void ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActionPerformed
         // TODO add your handling code here:
         
-        sounds.playsound("click");
+        soundsClick.playsound("click");
+        
         
         turnOff.nbtour++;
         // Le joueur a récupéré un objet?
@@ -1253,7 +1258,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         
-        sounds.playsound("leave");
+        soundsClick.playsound("leave");
     }//GEN-LAST:event_formWindowClosing
 
     /**
