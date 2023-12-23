@@ -33,9 +33,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     
     private int secondes;
     
+    Sounds sounds;
+    
     boolean chronoON;
    
-    
     /**
      * Constructeur de la fenêtre Cette fenetre représente graphiquement le
      * plateau ainsi que l'interface graphique du jeu.
@@ -43,10 +44,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * @param plateau Le plateau de jeu qui comprend les missions, cartes, et
      * joueurs
      */
-    public FenetrePrincipale(Plateau plateau, ArrayList<Joueur> ordre, boolean chronoOn) {
+    public FenetrePrincipale(Plateau plateau, ArrayList<Joueur> ordre, boolean chronoOn,Sounds sounds) {
         this.plateau = plateau;
         this.ordre = ordre;
         this.chronoON = chronoOn;
+        this.sounds = sounds;
         plateau.setAllMissions();
         plateau.setAllMissionsToCards();
         plateau.placeAllPlayers();
@@ -55,6 +57,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         initComponents();
         setUIPanelDroite();
         gen1UItour(ordre);
+        
+        sounds.playsound("music");
+        
         
         // Configuration du layout de la JFrame
         setLayout(new GridBagLayout());
@@ -216,6 +221,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 podium.add(ordre.get(players));
                 this.plateau.getPlateau().get(ordre.get(players).getPosx()).get(ordre.get(players).getPosy()).removePlayerRidingCard(ordre.get(players));
                 this.ordre.remove(ordre.get(players));
+                sounds.playsound("win");
                 break;
             }
         }
@@ -258,9 +264,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // La partie est finie ?
         switch(this.plateau.getListeDeJoueurs().size()){
             case 1->{
+                sounds.stopsound();
                 if(this.ordre.size()==0){
                 stopChronometer();
-                FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON, secondes);
+                FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON, secondes, sounds);
                 this.dispose();
                 }
             }
@@ -268,9 +275,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             default->{
                 
                 if(this.ordre.size()==1){
+                    sounds.stopsound();
                     podium.add(ordre.get(0));
                     stopChronometer();
-                    FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON, secondes);
+                    FenetreFinPartie win = new FenetreFinPartie(podium,this.plateau.nbcardsperplayer,chronoON, secondes, sounds);
                     for(int i=0;i<this.ordre.size();i++){
                         ordre.remove(i);
                     }
@@ -536,6 +544,34 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        panel_grille = new javax.swing.JPanel();
+        btn_x1g = new javax.swing.JButton();
+        btn_x1d = new javax.swing.JButton();
+        btn_x5g = new javax.swing.JButton();
+        btn_x3g = new javax.swing.JButton();
+        btn_x3d = new javax.swing.JButton();
+        btn_x5d = new javax.swing.JButton();
+        btn_y1h = new javax.swing.JButton();
+        btn_y3h = new javax.swing.JButton();
+        btn_y5h = new javax.swing.JButton();
+        btn_y1b = new javax.swing.JButton();
+        btn_y3b = new javax.swing.JButton();
+        btn_y5b = new javax.swing.JButton();
+        GridPanel = new javax.swing.JPanel();
+        panel_gauche = new javax.swing.JPanel();
+        Left = new javax.swing.JButton();
+        Up = new javax.swing.JButton();
+        Down = new javax.swing.JButton();
+        Right = new javax.swing.JButton();
+        Text3 = new javax.swing.JLabel();
+        PanelTour = new javax.swing.JPanel();
+        Text2 = new javax.swing.JLabel();
+        panneau_carte_attente = new javax.swing.JPanel();
+        RotateRight1 = new javax.swing.JButton();
+        RotateRight = new javax.swing.JButton();
+        Text1 = new javax.swing.JLabel();
+        lbl_nom_joueur = new javax.swing.JLabel();
+        lbl_chrono = new javax.swing.JLabel();
         panel_droite = new javax.swing.JPanel();
         Objets = new javax.swing.JLabel();
         MissionsView1 = new javax.swing.JPanel();
@@ -574,42 +610,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         MissionP4 = new javax.swing.JPanel();
         Background4 = new javax.swing.JPanel();
         Valider = new javax.swing.JButton();
-        panel_gauche = new javax.swing.JPanel();
-        Left = new javax.swing.JButton();
-        Up = new javax.swing.JButton();
-        Down = new javax.swing.JButton();
-        Right = new javax.swing.JButton();
-        Text3 = new javax.swing.JLabel();
-        PanelTour = new javax.swing.JPanel();
-        Text2 = new javax.swing.JLabel();
-        panneau_carte_attente = new javax.swing.JPanel();
-        RotateRight1 = new javax.swing.JButton();
-        RotateRight = new javax.swing.JButton();
-        Text1 = new javax.swing.JLabel();
-        lbl_nom_joueur = new javax.swing.JLabel();
-        lbl_chrono = new javax.swing.JLabel();
-        panel_grille = new javax.swing.JPanel();
-        btn_x1g = new javax.swing.JButton();
-        btn_x1d = new javax.swing.JButton();
-        btn_x5g = new javax.swing.JButton();
-        btn_x3g = new javax.swing.JButton();
-        btn_x3d = new javax.swing.JButton();
-        btn_x5d = new javax.swing.JButton();
-        btn_y1h = new javax.swing.JButton();
-        btn_y3h = new javax.swing.JButton();
-        btn_y5h = new javax.swing.JButton();
-        btn_y1b = new javax.swing.JButton();
-        btn_y3b = new javax.swing.JButton();
-        btn_y5b = new javax.swing.JButton();
-        GridPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Labyrinthe Remastered");
         setAlwaysOnTop(true);
+        setBackground(new java.awt.Color(229, 162, 87));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFocusTraversalPolicyProvider(true);
         setMinimumSize(new java.awt.Dimension(1515, 750));
         setName("Labyrinthe"); // NOI18N
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -619,6 +633,231 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        panel_grille.setBackground(new java.awt.Color(0, 0, 0));
+        panel_grille.setOpaque(false);
+        panel_grille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_x1g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
+        btn_x1g.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_x1g.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x1gActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_x1g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
+
+        btn_x1d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
+        btn_x1d.setOpaque(true);
+        btn_x1d.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_x1d.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x1dActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_x1d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, -1, -1));
+
+        btn_x5g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
+        btn_x5g.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_x5g.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x5gActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_x5g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, -1, -1));
+
+        btn_x3g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
+        btn_x3g.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_x3g.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x3gActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_x3g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
+
+        btn_x3d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
+        btn_x3d.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_x3d.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x3dActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_x3d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, -1, -1));
+
+        btn_x5d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
+        btn_x5d.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_x5d.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_x5dActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
+
+        btn_y1h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
+        btn_y1h.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_y1h.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y1hActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_y1h, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 0, -1, -1));
+
+        btn_y3h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
+        btn_y3h.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_y3h.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y3hActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_y3h, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 0, -1, -1));
+
+        btn_y5h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
+        btn_y5h.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_y5h.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y5hActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_y5h, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 0, -1, -1));
+
+        btn_y1b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
+        btn_y1b.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_y1b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y1bActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 660, -1, -1));
+
+        btn_y3b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
+        btn_y3b.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_y3b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y3bActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 660, -1, -1));
+
+        btn_y5b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
+        btn_y5b.setPreferredSize(new java.awt.Dimension(30, 30));
+        btn_y5b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_y5bActionPerformed(evt);
+            }
+        });
+        panel_grille.add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 660, -1, -1));
+
+        GridPanel.setBackground(new java.awt.Color(105, 55, 0));
+        GridPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        GridPanel.setLayout(new java.awt.GridLayout(7, 7));
+        panel_grille.add(GridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 630, 630));
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 227);
+        getContentPane().add(panel_grille, gridBagConstraints);
+
+        panel_gauche.setBackground(new java.awt.Color(0, 0, 0));
+        panel_gauche.setOpaque(false);
+        panel_gauche.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Left.setText("←");
+        Left.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LeftActionPerformed(evt);
+            }
+        });
+        Left.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LeftKeyPressed(evt);
+            }
+        });
+        panel_gauche.add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 50, 40));
+
+        Up.setText("↑");
+        Up.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(Up, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 50, 40));
+
+        Down.setText("↓");
+        Down.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DownActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(Down, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 50, 40));
+
+        Right.setText("→");
+        Right.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RightActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 50, 40));
+
+        Text3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        Text3.setText("    Actions possibles :");
+        panel_gauche.add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, -1, -1));
+
+        PanelTour.setBackground(new java.awt.Color(153, 255, 153));
+        PanelTour.setForeground(new java.awt.Color(204, 204, 255));
+        PanelTour.setOpaque(false);
+        PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
+        PanelTour.setLayout(new java.awt.GridLayout(1, 1));
+        panel_gauche.add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+
+        Text2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        Text2.setText("    C'est au tour de : " + turnOff.name);
+        panel_gauche.add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 30));
+
+        panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
+        panneau_carte_attente.setOpaque(false);
+        panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
+        panel_gauche.add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 90, 90));
+
+        RotateRight1.setText("↰");
+        RotateRight1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRight1ActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
+
+        RotateRight.setText("↱");
+        RotateRight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RotateRightActionPerformed(evt);
+            }
+        });
+        panel_gauche.add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        Text1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        Text1.setText("Carte en dehors du plateau :");
+        panel_gauche.add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        lbl_nom_joueur.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lbl_nom_joueur.setText("nom joueur");
+        panel_gauche.add(lbl_nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 80, 30));
+
+        lbl_chrono.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lbl_chrono.setText("Chrono");
+        panel_gauche.add(lbl_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 60));
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 17;
+        gridBagConstraints.ipady = 180;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 226, 0, 0);
+        getContentPane().add(panel_gauche, gridBagConstraints);
 
         panel_droite.setBackground(new java.awt.Color(0, 0, 0));
         panel_droite.setOpaque(false);
@@ -809,229 +1048,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(30, 190, 0, 0);
         getContentPane().add(panel_droite, gridBagConstraints);
 
-        panel_gauche.setOpaque(false);
-        panel_gauche.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Left.setText("←");
-        Left.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LeftActionPerformed(evt);
-            }
-        });
-        Left.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                LeftKeyPressed(evt);
-            }
-        });
-        panel_gauche.add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 50, 40));
-
-        Up.setText("↑");
-        Up.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(Up, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 50, 40));
-
-        Down.setText("↓");
-        Down.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DownActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(Down, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 50, 40));
-
-        Right.setText("→");
-        Right.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RightActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(Right, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 50, 40));
-
-        Text3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        Text3.setText("    Actions possibles :");
-        panel_gauche.add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, -1, -1));
-
-        PanelTour.setBackground(new java.awt.Color(153, 255, 153));
-        PanelTour.setForeground(new java.awt.Color(204, 204, 255));
-        PanelTour.setOpaque(false);
-        PanelTour.setPreferredSize(new java.awt.Dimension(90, 90));
-        PanelTour.setLayout(new java.awt.GridLayout(1, 1));
-        panel_gauche.add(PanelTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
-
-        Text2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        Text2.setText("    C'est au tour de : " + turnOff.name);
-        panel_gauche.add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 30));
-
-        panneau_carte_attente.setBackground(new java.awt.Color(153, 153, 255));
-        panneau_carte_attente.setOpaque(false);
-        panneau_carte_attente.setLayout(new java.awt.GridLayout(1, 1));
-        panel_gauche.add(panneau_carte_attente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 90, 90));
-
-        RotateRight1.setText("↰");
-        RotateRight1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RotateRight1ActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(RotateRight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
-
-        RotateRight.setText("↱");
-        RotateRight.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RotateRightActionPerformed(evt);
-            }
-        });
-        panel_gauche.add(RotateRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        Text1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        Text1.setText("Carte en dehors du plateau :");
-        panel_gauche.add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-
-        lbl_nom_joueur.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        lbl_nom_joueur.setText("nom joueur");
-        panel_gauche.add(lbl_nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 80, 30));
-
-        lbl_chrono.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        lbl_chrono.setText("Chrono");
-        panel_gauche.add(lbl_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 60));
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 17;
-        gridBagConstraints.ipady = 180;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 226, 0, 0);
-        getContentPane().add(panel_gauche, gridBagConstraints);
-
-        panel_grille.setOpaque(false);
-        panel_grille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn_x1g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
-        btn_x1g.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_x1g.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_x1gActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_x1g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
-
-        btn_x1d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
-        btn_x1d.setOpaque(true);
-        btn_x1d.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_x1d.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_x1dActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_x1d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, -1, -1));
-
-        btn_x5g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
-        btn_x5g.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_x5g.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_x5gActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_x5g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, -1, -1));
-
-        btn_x3g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
-        btn_x3g.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_x3g.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_x3gActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_x3g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
-
-        btn_x3d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
-        btn_x3d.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_x3d.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_x3dActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_x3d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, -1, -1));
-
-        btn_x5d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
-        btn_x5d.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_x5d.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_x5dActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
-
-        btn_y1h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
-        btn_y1h.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_y1h.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_y1hActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_y1h, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 0, -1, -1));
-
-        btn_y3h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
-        btn_y3h.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_y3h.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_y3hActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_y3h, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 0, -1, -1));
-
-        btn_y5h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
-        btn_y5h.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_y5h.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_y5hActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_y5h, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 0, -1, -1));
-
-        btn_y1b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
-        btn_y1b.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_y1b.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_y1bActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 660, -1, -1));
-
-        btn_y3b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
-        btn_y3b.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_y3b.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_y3bActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 660, -1, -1));
-
-        btn_y5b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
-        btn_y5b.setPreferredSize(new java.awt.Dimension(30, 30));
-        btn_y5b.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_y5bActionPerformed(evt);
-            }
-        });
-        panel_grille.add(btn_y5b, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 660, -1, -1));
-
-        GridPanel.setBackground(new java.awt.Color(105, 55, 0));
-        GridPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-        GridPanel.setLayout(new java.awt.GridLayout(7, 7));
-        panel_grille.add(GridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 630, 630));
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 227);
-        getContentPane().add(panel_grille, gridBagConstraints);
-
         getAccessibleContext().setAccessibleName("Labyrinthe");
 
         pack();
@@ -1043,6 +1059,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(1, true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_x1gActionPerformed
 
     private void btn_x1dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x1dActionPerformed
@@ -1051,6 +1068,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(1, false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_x1dActionPerformed
 
     private void btn_x3gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3gActionPerformed
@@ -1059,6 +1077,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(3, true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_x3gActionPerformed
 
     private void btn_x5gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5gActionPerformed
@@ -1067,6 +1086,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(5, true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_x5gActionPerformed
 
     private void btn_x3dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x3dActionPerformed
@@ -1075,6 +1095,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(3, false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_x3dActionPerformed
 
     private void btn_x5dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_x5dActionPerformed
@@ -1083,6 +1104,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIX(5, false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_x5dActionPerformed
 
     private void btn_y1hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1hActionPerformed
@@ -1091,6 +1113,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(1,true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_y1hActionPerformed
 
     private void btn_y5hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5hActionPerformed
@@ -1099,6 +1122,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(5,true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_y5hActionPerformed
 
     private void btn_y3hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3hActionPerformed
@@ -1107,6 +1131,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(3,true);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_y3hActionPerformed
 
     private void btn_y1bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y1bActionPerformed
@@ -1115,6 +1140,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(1,false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_y1bActionPerformed
 
     private void btn_y3bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y3bActionPerformed
@@ -1123,6 +1149,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(3,false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_y3bActionPerformed
 
     private void btn_y5bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_y5bActionPerformed
@@ -1131,18 +1158,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         injectUIY(5,false);
         genUIPossibleActions();
         setInjectionButtonsVisible(false);
+        sounds.playsound("click");
     }//GEN-LAST:event_btn_y5bActionPerformed
 
     private void RotateRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRightActionPerformed
         // TODO add your handling code here:
         this.plateau.carteAttente.rotateRight();
         genUIBoard();
+        sounds.playsound("click");
     }//GEN-LAST:event_RotateRightActionPerformed
 
     private void RotateRight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RotateRight1ActionPerformed
         // TODO add your handling code here:
         this.plateau.carteAttente.rotateLeft();
         genUIBoard();
+        sounds.playsound("click");
     }//GEN-LAST:event_RotateRight1ActionPerformed
 
     private void UpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpActionPerformed
@@ -1152,6 +1182,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
         genUIBoard();
         genUIPossibleActions();
+        sounds.playsound("click");
     }//GEN-LAST:event_UpActionPerformed
 
     private void LeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeftActionPerformed
@@ -1161,6 +1192,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
         genUIBoard();
         genUIPossibleActions();
+        sounds.playsound("click");
     }//GEN-LAST:event_LeftActionPerformed
 
     private void RightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RightActionPerformed
@@ -1170,6 +1202,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
         genUIBoard();
         genUIPossibleActions();
+        sounds.playsound("click");
     }//GEN-LAST:event_RightActionPerformed
 
     private void DownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownActionPerformed
@@ -1179,10 +1212,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.plateau.getPlateau().get(turnOff.getPosx()).get(turnOff.getPosy()).isRidedByPlayers.add(turnOff);
         genUIBoard();
         genUIPossibleActions();
+        sounds.playsound("click");
     }//GEN-LAST:event_DownActionPerformed
 
     private void ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActionPerformed
         // TODO add your handling code here:
+        
+        sounds.playsound("click");
+        
         turnOff.nbtour++;
         // Le joueur a récupéré un objet?
         verifFinDeTour();
@@ -1212,6 +1249,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // TODO add your handling code here:
                 
     }//GEN-LAST:event_LeftKeyPressed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        
+        sounds.playsound("leave");
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
