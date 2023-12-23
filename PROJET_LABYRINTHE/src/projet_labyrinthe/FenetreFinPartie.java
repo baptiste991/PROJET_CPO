@@ -157,20 +157,25 @@ public class FenetreFinPartie extends javax.swing.JFrame {
         panel_infos.setOpaque(false);
         panel_infos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lbl_titre_partie.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         lbl_titre_partie.setText("Infos Partie");
         panel_infos.add(lbl_titre_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel2.setText("Nombre de tours :");
         panel_infos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel3.setText("Temps de la partie :");
         panel_infos.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
         panel_infos.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 200, 10));
         panel_infos.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 200, 20));
 
+        lbl_nbTours.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         lbl_nbTours.setText("jLabel4");
         panel_infos.add(lbl_nbTours, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
+        lbl_temps.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         lbl_temps.setText("jLabel5");
         panel_infos.add(lbl_temps, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
 
@@ -198,8 +203,6 @@ public class FenetreFinPartie extends javax.swing.JFrame {
         panel_podium.add(lbl_nbTours3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 60, 20));
         panel_podium.add(skin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 198, 126, 201));
         panel_podium.add(skin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 126, 201));
-
-        skin3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Players/skin2.png"))); // NOI18N
         panel_podium.add(skin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 315, 126, 201));
 
         fond_podium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/podium.png"))); // NOI18N
