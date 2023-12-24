@@ -642,7 +642,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         panel_grille.setOpaque(false);
         panel_grille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_x1g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
+        btn_x1g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject droite.png"))); // NOI18N
         btn_x1g.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x1g.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -651,7 +651,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x1g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
 
-        btn_x1d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
+        btn_x1d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject gauche.png"))); // NOI18N
         btn_x1d.setOpaque(true);
         btn_x1d.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x1d.addActionListener(new java.awt.event.ActionListener() {
@@ -661,7 +661,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x1d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, -1, -1));
 
-        btn_x5g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
+        btn_x5g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject droite.png"))); // NOI18N
         btn_x5g.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x5g.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -670,7 +670,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x5g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, -1, -1));
 
-        btn_x3g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-lecture-emoji-30.png"))); // NOI18N
+        btn_x3g.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject droite.png"))); // NOI18N
         btn_x3g.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x3g.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -679,7 +679,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x3g, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
 
-        btn_x3d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
+        btn_x3d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject gauche.png"))); // NOI18N
         btn_x3d.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x3d.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -688,7 +688,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x3d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, -1, -1));
 
-        btn_x5d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-emoji-bouton-inverse-48.png"))); // NOI18N
+        btn_x5d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject gauche.png"))); // NOI18N
         btn_x5d.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_x5d.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -697,7 +697,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_x5d, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
 
-        btn_y1h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
+        btn_y1h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject bas.png"))); // NOI18N
         btn_y1h.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y1h.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -706,7 +706,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y1h, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 0, -1, -1));
 
-        btn_y3h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
+        btn_y3h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject bas.png"))); // NOI18N
         btn_y3h.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y3h.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -715,7 +715,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y3h, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 0, -1, -1));
 
-        btn_y5h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-bas-emoji-30.png"))); // NOI18N
+        btn_y5h.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject bas.png"))); // NOI18N
         btn_y5h.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y5h.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -724,7 +724,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y5h, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 0, -1, -1));
 
-        btn_y1b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
+        btn_y1b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject haut.png"))); // NOI18N
         btn_y1b.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y1b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -733,7 +733,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y1b, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 660, -1, -1));
 
-        btn_y3b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
+        btn_y3b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject haut.png"))); // NOI18N
         btn_y3b.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y3b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -742,7 +742,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         panel_grille.add(btn_y3b, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 660, -1, -1));
 
-        btn_y5b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-bouton-haut-emoji-30.png"))); // NOI18N
+        btn_y5b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/inject haut.png"))); // NOI18N
         btn_y5b.setPreferredSize(new java.awt.Dimension(30, 30));
         btn_y5b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
