@@ -131,7 +131,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
         btn_multiplayer = new javax.swing.JButton();
         img_labyrinthe = new javax.swing.JLabel();
         fond_menu = new javax.swing.JLabel();
-        fond_noir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(908, 633));
@@ -221,7 +220,7 @@ public class FenetreAccueil extends javax.swing.JFrame {
         });
         getContentPane().add(btn_quitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 525, -1, -1));
 
-        btn_infos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/icons8-information-64.png"))); // NOI18N
+        btn_infos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/infos.png"))); // NOI18N
         btn_infos.setContentAreaFilled(false);
         btn_infos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -442,10 +441,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
         fond_menu.setMaximumSize(new java.awt.Dimension(920, 770));
         fond_menu.setPreferredSize(new java.awt.Dimension(920, 770));
         getContentPane().add(fond_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, -1, -1));
-
-        fond_noir.setBackground(new java.awt.Color(0, 51, 51));
-        fond_noir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgMenus/fond_noir.png"))); // NOI18N
-        getContentPane().add(fond_noir, new org.netbeans.lib.awtextra.AbsoluteConstraints(-620, 120, 1940, 830));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -944,7 +939,6 @@ public class FenetreAccueil extends javax.swing.JFrame {
     private javax.swing.JButton btn_start;
     private javax.swing.JButton btn_valider;
     private javax.swing.JLabel fond_menu;
-    private javax.swing.JLabel fond_noir;
     private javax.swing.JLabel img_labyrinthe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
